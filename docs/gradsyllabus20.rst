@@ -17,7 +17,7 @@ Instructors
 -----------
 
 | Phil Austin, 2-2175, paustin@eos.ubc.ca, Rm 157 EOS South
-| Susan Allen, 2-2828, sallen@eos.ubc.ca, Rm 3017 ESB
+| Susan Allen, 2-2828, sallen@eoas.ubc.ca, Rm 3017 ESB
 
 Prerequisites
 -------------
@@ -48,12 +48,12 @@ course than those that worked on their own.
 You can use a web-browser to examine the course exercises. Point your
 browser to:
 
-http://clouds.eos.ubc.ca/~phil/numeric
+https://clouds.eos.ubc.ca/~phil/numeric
 
 Meeting Times
 -------------
 
-1400-1600 Thursdays, Room 210, Earth and Oceans Sciences (EOS) Main
+1400-1600 Mondays, Room 135, Earth and Oceans Sciences (EOS) Main
 
 Grades
 ------
@@ -76,7 +76,7 @@ include plots and diagrams. Sometimes, rather than a large series of
 plots, you may wish to include a summarizing table. If you do not
 understand the scope of a problem, please ask. The time scales given in
 the Contents section are based on 9 hours/week. Help with the labs is
-available 1) through a mailing list so you can contact your classmates
+available 1) through piazza on Connect so you can contact your classmates
 and ask them 2) during the weekly scheduled lab or 3) directly from the
 instructors. Assignments and the project are expected on time. Late ones
 will be marked and then the mark will be multiplied by
