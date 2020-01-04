@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Laboratory 1: An Introduction to the Numerical Solution of Differential Equations: Discretization (2017/Sept./12) &mdash; E213 course 0.1 documentation</title>
+  <title>Laboratory 1: An Introduction to the Numerical Solution of Differential Equations: Discretization (2017/Sept./12) &mdash; Numeric course 0.1 documentation</title>
   
 
   
@@ -37,7 +37,9 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Stability and accuracy (Sept. 12, 2017)" href="../lab2/01-lab2.html" />
+    <link rel="prev" title="Numeric notebooks" href="../../notebook_toc.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -51,7 +53,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> E213 course
+            <a href="../../index.html" class="icon icon-home"> Numeric course
           
 
           
@@ -81,7 +83,8 @@
               
             
             
-              <ul>
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../course_bootstrap.html">Getting started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../gradsyllabus20.html">Grad Syllabus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../schedule20.html">Detailed Schedule</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../python.html">Getting started</a></li>
@@ -92,7 +95,50 @@
 <li class="toctree-l1"><a class="reference internal" href="../../python.html#demonstration-code">Demonstration code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../python.html#books-and-tutorials">Books and tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../texts.html">Optional texts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../notebook_toc.html">Course/lab descriptions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../notebook_toc.html">Course/lab descriptions</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Lab 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#List-of-Problems">List of Problems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Objectives">Objectives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Readings">Readings</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Running-Code-Cells">Running Code Cells</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Introduction:-Why-bother-with-numerical-methods?">Introduction: Why bother with numerical methods?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Ordinary-Differential-Equations">Ordinary Differential Equations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Partial-Differential-Equations">Partial Differential Equations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Discretization">Discretization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Difference-Approximations-to-the-First-Derivative">Difference Approximations to the First Derivative</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Investigation">Investigation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Forward-Euler-Method">Forward Euler Method</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Other-Approximations">Other Approximations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Generalizations">Generalizations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Higher-Derivatives">Higher Derivatives</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Systems-of-First-order-ODE’s">Systems of First-order ODE’s</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Boundary-Value-Problem">Boundary Value Problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Partial-Differential-Equations">Partial Differential Equations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Mathematical-Notes">Mathematical Notes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Solution-to-the-Heat-Conduction-Equation">Solution to the Heat Conduction Equation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#References">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Glossary">Glossary</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lab2/01-lab2.html">Lab 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab3/01-lab3.html">Lab 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab4/01-lab4.html">Table of Contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab4/01-lab4.html#Solving-Ordinary-Differential-Equations-with-the-Runge-Kutta-Methods">Solving Ordinary Differential Equations with the Runge-Kutta Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab5/01-lab5.html">Lab 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab6/lab6.html">Contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab6/lab6.html#List-of-Problems">List of Problems</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -107,7 +153,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">E213 course</a>
+          <a href="../../index.html">Numeric course</a>
         
       </nav>
 
@@ -137,6 +183,8 @@
   <ul class="wy-breadcrumbs">
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../notebook_toc.html">Numeric notebooks</a> &raquo;</li>
         
       <li>Laboratory 1: An Introduction to the Numerical Solution of Differential Equations: Discretization (2017/Sept./12)</li>
     
@@ -1527,12 +1575,21 @@ a Problem in the Linear Algebra Lab.</p>
           </div>
           <footer>
   
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../lab2/01-lab2.html" class="btn btn-neutral float-right" title="Stability and accuracy (Sept. 12, 2017)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../../notebook_toc.html" class="btn btn-neutral float-left" title="Numeric notebooks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright E213 project
+        &copy; Copyright Numeric project
 
     </p>
   </div>

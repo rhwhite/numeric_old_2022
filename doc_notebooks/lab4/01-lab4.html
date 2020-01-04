@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Table of Contents &mdash; E213 course 0.1 documentation</title>
+  <title>Table of Contents &mdash; Numeric course 0.1 documentation</title>
   
 
   
@@ -37,7 +37,9 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lab 5: Daisyworld" href="../lab5/01-lab5.html" />
+    <link rel="prev" title="Laboratory 3: Linear Algebra (Sept. 12, 2017)" href="../lab3/01-lab3.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -51,7 +53,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> E213 course
+            <a href="../../index.html" class="icon icon-home"> Numeric course
           
 
           
@@ -81,7 +83,8 @@
               
             
             
-              <ul>
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../course_bootstrap.html">Getting started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../gradsyllabus20.html">Grad Syllabus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../schedule20.html">Detailed Schedule</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../python.html">Getting started</a></li>
@@ -92,7 +95,41 @@
 <li class="toctree-l1"><a class="reference internal" href="../../python.html#demonstration-code">Demonstration code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../python.html#books-and-tutorials">Books and tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../texts.html">Optional texts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../notebook_toc.html">Course/lab descriptions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../notebook_toc.html">Course/lab descriptions</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../lab1/01-lab1.html">Lab 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab2/01-lab2.html">Lab 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab3/01-lab3.html">Lab 3</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Table of Contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Solving-Ordinary-Differential-Equations-with-the-Runge-Kutta-Methods">Solving Ordinary Differential Equations with the Runge-Kutta Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#List-of-Problems">List of Problems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Objectives">Objectives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Readings">Readings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Runge-Kutta-methods">Runge-Kutta methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#The-Midpoint-Method:-A-Two-Stage-Runge-Kutta-Method">The Midpoint Method: A Two-Stage Runge-Kutta Method</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Second-Order-Runge-Kutta-Methods">Second-Order Runge-Kutta Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#The-Runge-Kutta-Tableau">The Runge-Kutta Tableau</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Explicit-Fourth-Order-Runge-Kutta-Method">Explicit Fourth-Order Runge-Kutta Method</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Embedded-Runge-Kutta-Methods:-Estimate-of-the-Truncation-Error">Embedded Runge-Kutta Methods: Estimate of the Truncation Error</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Python:-moving-from-a-notebook-to-a-library">Python: moving from a notebook to a library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Writing-a-config-file">Writing a config file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Passing-a-derivative-function-to-an-integrator">Passing a derivative function to an integrator</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Mathematical-Notes">Mathematical Notes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Note-on-the-Derivation-of-the-Second-Order-Runge-Kutta-Methods">Note on the Derivation of the Second-Order Runge-Kutta Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Glossary">Glossary</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lab5/01-lab5.html">Lab 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab6/lab6.html">Contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab6/lab6.html#List-of-Problems">List of Problems</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -107,7 +144,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">E213 course</a>
+          <a href="../../index.html">Numeric course</a>
         
       </nav>
 
@@ -137,6 +174,8 @@
   <ul class="wy-breadcrumbs">
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../notebook_toc.html">Numeric notebooks</a> &raquo;</li>
         
       <li>Table of Contents</li>
     
@@ -1128,12 +1167,21 @@ a c_2 = \frac{1}{2}
           </div>
           <footer>
   
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../lab5/01-lab5.html" class="btn btn-neutral float-right" title="Lab 5: Daisyworld" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../lab3/01-lab3.html" class="btn btn-neutral float-left" title="Laboratory 3: Linear Algebra (Sept. 12, 2017)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright E213 project
+        &copy; Copyright Numeric project
 
     </p>
   </div>

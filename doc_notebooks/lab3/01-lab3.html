@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Laboratory 3: Linear Algebra (Sept. 12, 2017) &mdash; E213 course 0.1 documentation</title>
+  <title>Laboratory 3: Linear Algebra (Sept. 12, 2017) &mdash; Numeric course 0.1 documentation</title>
   
 
   
@@ -37,7 +37,9 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Table of Contents" href="../lab4/01-lab4.html" />
+    <link rel="prev" title="Stability and accuracy (Sept. 12, 2017)" href="../lab2/01-lab2.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -51,7 +53,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> E213 course
+            <a href="../../index.html" class="icon icon-home"> Numeric course
           
 
           
@@ -81,7 +83,8 @@
               
             
             
-              <ul>
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../course_bootstrap.html">Getting started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../gradsyllabus20.html">Grad Syllabus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../schedule20.html">Detailed Schedule</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../python.html">Getting started</a></li>
@@ -92,7 +95,43 @@
 <li class="toctree-l1"><a class="reference internal" href="../../python.html#demonstration-code">Demonstration code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../python.html#books-and-tutorials">Books and tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../texts.html">Optional texts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../notebook_toc.html">Course/lab descriptions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../notebook_toc.html">Course/lab descriptions</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../lab1/01-lab1.html">Lab 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab2/01-lab2.html">Lab 2</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Lab 3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#List-of-Problems">List of Problems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Objectives">Objectives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Linear-Systems">Linear Systems</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#What-is-a-Matrix?">What is a Matrix?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Quick-Review">Quick Review</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Gaussian-Elimination">Gaussian Elimination</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Round-off-Error">Round-off Error</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Matrix-Inversion">Matrix Inversion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Determinant">Determinant</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Computational-cost-of-Gaussian-elimination">Computational cost of Gaussian elimination</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Eigenvalue-Problems">Eigenvalue Problems</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Characteristic-Equation">Characteristic Equation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Eigenvectors">Eigenvectors</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Iterative-Methods">Iterative Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Solution-of-an-ODE-Using-Linear-Algebra">Solution of an ODE Using Linear Algebra</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#####-Problem-Four">#### Problem Four</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#References">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Numpy-and-Python-with-Matrices">Numpy and Python with Matrices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Glossary">Glossary</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lab4/01-lab4.html">Table of Contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab4/01-lab4.html#Solving-Ordinary-Differential-Equations-with-the-Runge-Kutta-Methods">Solving Ordinary Differential Equations with the Runge-Kutta Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab5/01-lab5.html">Lab 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab6/lab6.html">Contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab6/lab6.html#List-of-Problems">List of Problems</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -107,7 +146,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">E213 course</a>
+          <a href="../../index.html">Numeric course</a>
         
       </nav>
 
@@ -137,6 +176,8 @@
   <ul class="wy-breadcrumbs">
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../notebook_toc.html">Numeric notebooks</a> &raquo;</li>
         
       <li>Laboratory 3: Linear Algebra (Sept. 12, 2017)</li>
     
@@ -1985,12 +2026,21 @@ A^{T} =
           </div>
           <footer>
   
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../lab4/01-lab4.html" class="btn btn-neutral float-right" title="Table of Contents" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../lab2/01-lab2.html" class="btn btn-neutral float-left" title="Stability and accuracy (Sept. 12, 2017)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright E213 project
+        &copy; Copyright Numeric project
 
     </p>
   </div>

@@ -7,8 +7,11 @@ Numerical Methods
 ----------------
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
+   Getting started <course_bootstrap.rst>           
+      
+              
    Undergrad Syllabus  <ugradsyllabus20>
 
    Grad Syllabus   <gradsyllabus20>
