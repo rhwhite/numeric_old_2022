@@ -33,7 +33,7 @@
     "cd numeric\n",
     "```\n",
     "\n",
-    "3. cd to the `course_utils` folder and create and activate the e213 environment\n",
+    "3. cd to the `course_utils` folder and create and activate the numeric environment\n",
     "\n",
     "```\n",
     "cd course_utils\n",
