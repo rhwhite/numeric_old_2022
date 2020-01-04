@@ -125,14 +125,14 @@ I set my windows laptop up so that commands like ls, pwd, cat, etc. work from th
    This should bring up a menu item that will take you to the control panel when you click it.  The
    My control panel entry looks like this:
 
-   .. image:: screenshots/environ_good.png
+   .. image:: doc_notebooks/screenshots/environ_good.png
                  :scale: 50
 
    Double click on the path entry to get the list of folders
    currently in your path.  My list looks like this (note
    I've install minconda python into a folder called num36)
                          
-   .. image:: screenshots/path_good.png
+   .. image:: doc_notebooks/screenshots/path_good.png
                  :scale: 50
 
    You want to add the new directory::
