@@ -1,0 +1,504 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Numeric notebooks &mdash; E213 course 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Laboratory 1: An Introduction to the Numerical Solution of Differential Equations: Discretization (2017/Sept./12)" href="doc_notebooks/lab1/01-lab1.html" />
+    <link rel="prev" title="Optional textbooks" href="texts.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> E213 course
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="gradsyllabus20.html">Grad Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schedule20.html">Detailed Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html#learning-bash-and-git">Learning bash and git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html#pulling-changes-from-the-github-repository">Pulling changes from the github repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html#windows-combining-bash-utilities-with-the-windows-cmd-shell">Windows:  Combining bash utilities with the Windows cmd shell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html#working-with-python-modules">Working with python modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html#demonstration-code">Demonstration code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html#books-and-tutorials">Books and tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="texts.html">Optional texts</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Course/lab descriptions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab1/01-lab1.html">Lab 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab2/01-lab2.html">Lab 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html">Lab 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab4/01-lab4.html">Table of Contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab4/01-lab4.html#Solving-Ordinary-Differential-Equations-with-the-Runge-Kutta-Methods">Solving Ordinary Differential Equations with the Runge-Kutta Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab5/01-lab5.html">Lab 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab6/lab6.html">Contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab6/lab6.html#List-of-Problems">List of Problems</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">E213 course</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Numeric notebooks</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/notebook_toc.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="numeric-notebooks">
+<h1>Numeric notebooks<a class="headerlink" href="#numeric-notebooks" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="doc_notebooks/lab1/01-lab1.html">Lab 1</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab1/01-lab1.html#List-of-Problems">List of Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab1/01-lab1.html#Objectives">Objectives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab1/01-lab1.html#Readings">Readings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab1/01-lab1.html#Running-Code-Cells">Running Code Cells</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab1/01-lab1.html#Introduction:-Why-bother-with-numerical-methods?">Introduction: Why bother with numerical methods?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab1/01-lab1.html#Ordinary-Differential-Equations">Ordinary Differential Equations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="doc_notebooks/lab1/01-lab1.html#Example-One"><em>Example One</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="doc_notebooks/lab1/01-lab1.html#Quiz-on-Newton’s-Law-of-Cooling">Quiz on Newton’s Law of Cooling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="doc_notebooks/lab1/01-lab1.html#Example-Two">Example Two</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab1/01-lab1.html#Partial-Differential-Equations">Partial Differential Equations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="doc_notebooks/lab1/01-lab1.html#Example-Three">Example Three</a></li>
+<li class="toctree-l4"><a class="reference internal" href="doc_notebooks/lab1/01-lab1.html#Summary">Summary</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab1/01-lab1.html#Discretization">Discretization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab1/01-lab1.html#Difference-Approximations-to-the-First-Derivative">Difference Approximations to the First Derivative</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab1/01-lab1.html#Investigation">Investigation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab1/01-lab1.html#Forward-Euler-Method">Forward Euler Method</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="doc_notebooks/lab1/01-lab1.html#Example-Seven">Example Seven</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab1/01-lab1.html#Other-Approximations">Other Approximations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="doc_notebooks/lab1/01-lab1.html#Summary">Summary</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab1/01-lab1.html#Generalizations">Generalizations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab1/01-lab1.html#Higher-Derivatives">Higher Derivatives</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="doc_notebooks/lab1/01-lab1.html#Example-Eight"><em>Example Eight</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="doc_notebooks/lab1/01-lab1.html#Problem-One">Problem One</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab1/01-lab1.html#Systems-of-First-order-ODE’s">Systems of First-order ODE’s</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="doc_notebooks/lab1/01-lab1.html#Example-9">Example 9</a></li>
+<li class="toctree-l4"><a class="reference internal" href="doc_notebooks/lab1/01-lab1.html#Problem-Two">Problem Two</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab1/01-lab1.html#Boundary-Value-Problem">Boundary Value Problem</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="doc_notebooks/lab1/01-lab1.html#Example-10">Example 10</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab1/01-lab1.html#Partial-Differential-Equations">Partial Differential Equations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="doc_notebooks/lab1/01-lab1.html#Example-11">Example 11</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab1/01-lab1.html#Mathematical-Notes">Mathematical Notes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab1/01-lab1.html#Solution-to-the-Heat-Conduction-Equation">Solution to the Heat Conduction Equation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab1/01-lab1.html#References">References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab1/01-lab1.html#Glossary">Glossary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="doc_notebooks/lab2/01-lab2.html">Lab 2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab2/01-lab2.html#List-of-Problems">List of Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab2/01-lab2.html#Objectives">Objectives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab2/01-lab2.html#Readings">Readings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab2/01-lab2.html#Introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab2/01-lab2.html#Accuracy-of-Difference-Approximations">Accuracy of Difference Approximations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab2/01-lab2.html#Example-Accuracy">Example Accuracy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="doc_notebooks/lab2/01-lab2.html#Round-off-Error-and-Discretization-Error">Round-off Error and Discretization Error</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="doc_notebooks/lab2/01-lab2.html#Where-does-the-error-come-from?">Where does the error come from?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab2/01-lab2.html#Truncation-error:">Truncation error:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab2/01-lab2.html#Second-order-accuracy">Second order accuracy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab2/01-lab2.html#mid-point-and-leapfrog">mid-point and leapfrog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab2/01-lab2.html#Problem-Error">Problem Error</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab2/01-lab2.html#Problem-Accuracy:">Problem Accuracy:</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="doc_notebooks/lab2/01-lab2.html#Other-Approximations-to-the-First-Derivative">Other Approximations to the First Derivative</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="doc_notebooks/lab2/01-lab2.html#Higher-Order-Taylor-Methods">Higher Order Taylor Methods</a></li>
+<li class="toctree-l5"><a class="reference internal" href="doc_notebooks/lab2/01-lab2.html#Predictor-Corrector-Methods">Predictor-Corrector Methods</a></li>
+<li class="toctree-l5"><a class="reference internal" href="doc_notebooks/lab2/01-lab2.html#Other-Methods">Other Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="doc_notebooks/lab2/01-lab2.html#Accuracy-Summary">Accuracy Summary</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab2/01-lab2.html#Stability-of-Difference-Approximations">Stability of Difference Approximations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab2/01-lab2.html#Problem-Stability">Problem Stability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab2/01-lab2.html#Problem-Backward-Euler">Problem Backward Euler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab2/01-lab2.html#Example:-leap-frog">Example: leap-frog</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab2/01-lab2.html#Stiff-Equations">Stiff Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab2/01-lab2.html#Difference-Approximations-of-Higher-Derivatives">Difference Approximations of Higher Derivatives</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab2/01-lab2.html#Problem-Taylor">Problem Taylor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab2/01-lab2.html#Summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab2/01-lab2.html#Mathematical-Notes">Mathematical Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html">Lab 3</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html#List-of-Problems">List of Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html#Objectives">Objectives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html#Prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html#Linear-Systems">Linear Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html#What-is-a-Matrix?">What is a Matrix?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html#Quiz-on-Matrices">Quiz on Matrices</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html#Quick-Review">Quick Review</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html#Gaussian-Elimination">Gaussian Elimination</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html#Decomposition">Decomposition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html#Example-One">Example One</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html#Round-off-Error">Round-off Error</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html#Example-Two">Example Two</a></li>
+<li class="toctree-l4"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html#Example-Three">Example Three</a></li>
+<li class="toctree-l4"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html#Partial-Pivoting">Partial Pivoting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html#Example-Four">Example Four</a></li>
+<li class="toctree-l4"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html#Full-Pivoting">Full Pivoting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html#Example-Five">Example Five</a></li>
+<li class="toctree-l4"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html#Summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html#Matrix-Inversion">Matrix Inversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html#Determinant">Determinant</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html#Example-Six">Example Six</a></li>
+<li class="toctree-l4"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html#Example-Seven">Example Seven</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html#Computational-cost-of-Gaussian-elimination">Computational cost of Gaussian elimination</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html#Problem-One">Problem One</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html#Eigenvalue-Problems">Eigenvalue Problems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html#Characteristic-Equation">Characteristic Equation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html#Example-Eight">Example Eight</a></li>
+<li class="toctree-l4"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html#Condition-Number">Condition Number</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html#Eigenvectors">Eigenvectors</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html#Example-Nine">Example Nine</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html#Iterative-Methods">Iterative Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html#Solution-of-an-ODE-Using-Linear-Algebra">Solution of an ODE Using Linear Algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html#####-Problem-Four">#### Problem Four</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html#References">References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html#Numpy-and-Python-with-Matrices">Numpy and Python with Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html#Glossary">Glossary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="doc_notebooks/lab4/01-lab4.html">Table of Contents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="doc_notebooks/lab4/01-lab4.html#Solving-Ordinary-Differential-Equations-with-the-Runge-Kutta-Methods">Solving Ordinary Differential Equations with the Runge-Kutta Methods</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab4/01-lab4.html#List-of-Problems">List of Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab4/01-lab4.html#Objectives">Objectives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab4/01-lab4.html#Readings">Readings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab4/01-lab4.html#Introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab4/01-lab4.html#Runge-Kutta-methods">Runge-Kutta methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab4/01-lab4.html#The-Midpoint-Method:-A-Two-Stage-Runge-Kutta-Method">The Midpoint Method: A Two-Stage Runge-Kutta Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab4/01-lab4.html#Second-Order-Runge-Kutta-Methods">Second-Order Runge-Kutta Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab4/01-lab4.html#The-Runge-Kutta-Tableau">The Runge-Kutta Tableau</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="doc_notebooks/lab4/01-lab4.html#Problem-tableau">Problem tableau</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab4/01-lab4.html#Explicit-Fourth-Order-Runge-Kutta-Method">Explicit Fourth-Order Runge-Kutta Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab4/01-lab4.html#Embedded-Runge-Kutta-Methods:-Estimate-of-the-Truncation-Error">Embedded Runge-Kutta Methods: Estimate of the Truncation Error</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="doc_notebooks/lab4/01-lab4.html#Problem-embedded">Problem embedded</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab4/01-lab4.html#Python:-moving-from-a-notebook-to-a-library">Python: moving from a notebook to a library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab4/01-lab4.html#Writing-a-config-file">Writing a config file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab4/01-lab4.html#Passing-a-derivative-function-to-an-integrator">Passing a derivative function to an integrator</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="doc_notebooks/lab4/01-lab4.html#problem-coding-A">problem coding A</a></li>
+<li class="toctree-l4"><a class="reference internal" href="doc_notebooks/lab4/01-lab4.html#problem-coding-B">problem coding B</a></li>
+<li class="toctree-l4"><a class="reference internal" href="doc_notebooks/lab4/01-lab4.html#problem-coding-C">problem coding C</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab4/01-lab4.html#Mathematical-Notes">Mathematical Notes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab4/01-lab4.html#Note-on-the-Derivation-of-the-Second-Order-Runge-Kutta-Methods">Note on the Derivation of the Second-Order Runge-Kutta Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab4/01-lab4.html#Glossary">Glossary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="doc_notebooks/lab5/01-lab5.html">Lab 5</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab5/01-lab5.html#List-of-Problems">List of Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab5/01-lab5.html#Objectives">Objectives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab5/01-lab5.html#Readings">Readings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab5/01-lab5.html#Introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab5/01-lab5.html#Using-solve_ivp-as-a-black-box-integrator">Using solve_ivp as a black box integrator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab5/01-lab5.html#The-Daisyworld-Model">The Daisyworld Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab5/01-lab5.html#The-Daisy-Population">The Daisy Population</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab5/01-lab5.html#Running-the-constant-growth-rate-demo">Running the constant growth rate demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab5/01-lab5.html#The-Daisy-Growth-Rate---Coupling-to-the-Environment">The Daisy Growth Rate - Coupling to the Environment</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab5/01-lab5.html#The-Local-Temperature---Dependence-on-Surface-Heat-Conductivity">The Local Temperature - Dependence on Surface Heat Conductivity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab5/01-lab5.html#The-Feedback-Loop---Feedback-Through-the-Planetary-Albedo">The Feedback Loop - Feedback Through the Planetary Albedo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab5/01-lab5.html#Adaptive-Stepsize-in-Runge-Kutta">Adaptive Stepsize in Runge-Kutta</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab5/01-lab5.html#Why-Adaptive-Stepsize?">Why Adaptive Stepsize?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab5/01-lab5.html#Designing-Adaptive-Stepsize-Control">Designing Adaptive Stepsize Control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab5/01-lab5.html#Error-Estimate-by-Step-Doubling">Error Estimate by Step Doubling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab5/01-lab5.html#Error-Estimate-using-Embedded-Runge-Kutta">Error Estimate using Embedded Runge-Kutta</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab5/01-lab5.html#Using-Error-to-Adjust-the-Stepsize">Using Error to Adjust the Stepsize</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab5/01-lab5.html#Coding-Runge-Kutta-Adaptive-Stepsize-Control">Coding Runge-Kutta Adaptive Stepsize Control</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab5/01-lab5.html#Daisyworld-Steady-States">Daisyworld Steady States</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab5/01-lab5.html#Neutral-Daisies">Neutral Daisies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab5/01-lab5.html#Black-Daisies">Black Daisies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab5/01-lab5.html#White-Daisies">White Daisies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab5/01-lab5.html#Black-and-White-Daisies">Black and White Daisies</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab5/01-lab5.html#Conclusion">Conclusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab5/01-lab5.html#Appendix:-Note-on-Global-Energy-Balance">Appendix: Note on Global Energy Balance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab5/01-lab5.html#Summary:-Daisy-World-Equations">Summary: Daisy World Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab5/01-lab5.html#Appendix:-Organization-of-the-adaptive-Runge-Kutta-routines">Appendix: Organization of the adaptive Runge Kutta routines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab5/01-lab5.html#Appendix:-2-minute-intro-to-object-oriented-programming">Appendix: 2 minute intro to object oriented programming</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab5/01-lab5.html#Classes-and-constructors">Classes and constructors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab5/01-lab5.html#finding-the-attributes-and-methods-of-a-class-instance">finding the attributes and methods of a class instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab5/01-lab5.html#Inheritance">Inheritance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab5/01-lab5.html#Initializing-using-yaml">Initializing using yaml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab5/01-lab5.html#Overriding-initial-values-in-a-derived-class">Overriding initial values in a derived class</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="doc_notebooks/lab6/lab6.html">Contents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="doc_notebooks/lab6/lab6.html#List-of-Problems">List of Problems</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab6/lab6.html#3.1-Using-the-Integrator-class">3.1 Using the Integrator class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab6/lab6.html#4.1-Boundedness-of-the-Solution">4.1 Boundedness of the Solution</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="doc_notebooks/lab1/01-lab1.html" class="btn btn-neutral float-right" title="Laboratory 1: An Introduction to the Numerical Solution of Differential Equations: Discretization (2017/Sept./12)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="texts.html" class="btn btn-neutral float-left" title="Optional textbooks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright E213 project
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

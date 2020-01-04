@@ -1,0 +1,353 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Graduate Numerical Techniques for Atmosphere, Ocean and Earth Scientists: EOSC 511 / ATSC 506 &mdash; E213 course 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> E213 course
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="gradsyllabus20.html">Grad Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schedule20.html">Detailed Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html#learning-bash-and-git">Learning bash and git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html#pulling-changes-from-the-github-repository">Pulling changes from the github repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html#windows-combining-bash-utilities-with-the-windows-cmd-shell">Windows:  Combining bash utilities with the Windows cmd shell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html#working-with-python-modules">Working with python modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html#demonstration-code">Demonstration code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html#books-and-tutorials">Books and tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="texts.html">Optional texts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebook_toc.html">Course/lab descriptions</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">E213 course</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Graduate Numerical Techniques for Atmosphere, Ocean and Earth Scientists: EOSC 511 / ATSC 506</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/gradsyllabus17.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="graduate-numerical-techniques-for-atmosphere-ocean-and-earth-scientists-eosc-511-atsc-506">
+<h1>Graduate Numerical Techniques for Atmosphere, Ocean and Earth Scientists: EOSC 511 / ATSC 506<a class="headerlink" href="#graduate-numerical-techniques-for-atmosphere-ocean-and-earth-scientists-eosc-511-atsc-506" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="pdf-copy">
+<h2>PDF copy<a class="headerlink" href="#pdf-copy" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="pdf_files/numeric.pdf">Grad and Ugrad syllabi and schedule</a></p>
+</div>
+<div class="section" id="course-purpose">
+<h2>Course Purpose<a class="headerlink" href="#course-purpose" title="Permalink to this headline">¶</a></h2>
+<p>The students completing this course will be able to apply standard
+numerical solution techniques to problems in Oceanographic, Atmospheric
+and Earth Science.</p>
+</div>
+<div class="section" id="instructors">
+<h2>Instructors<a class="headerlink" href="#instructors" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">Phil Austin, 2-2175, <a class="reference external" href="mailto:paustin&#37;&#52;&#48;eos&#46;ubc&#46;ca">paustin<span>&#64;</span>eos<span>&#46;</span>ubc<span>&#46;</span>ca</a>, Rm 157 EOS South</div>
+<div class="line">Susan Allen, 2-2828, <a class="reference external" href="mailto:sallen&#37;&#52;&#48;eos&#46;ubc&#46;ca">sallen<span>&#64;</span>eos<span>&#46;</span>ubc<span>&#46;</span>ca</a>, Rm 3017 ESB</div>
+</div>
+</div>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<p>The course assumes a mathematics background including vector calculus
+and linear algebra. Students weak in either of these areas will be
+directed to readings to strengthen their knowledge. Some programming
+experience is greatly recommended.</p>
+</div>
+<div class="section" id="course-structure">
+<h2>Course Structure<a class="headerlink" href="#course-structure" title="Permalink to this headline">¶</a></h2>
+<p>This course is not lecture based. The course is an interactive, computer
+based laboratory course. The computer will lead you through the
+laboratory (like a set of lab notes) and you will answer problems most
+of which use the computer. The course consists of three parts. A set of
+required interactive, computer based laboratory exercises, a choice of
+optional laboratory exercises and a project. The project will be
+determined through consultation between the student and their
+supervisor.</p>
+<p>During the meeting times, we will have brief presentations to help with
+technical matters and the more difficult sections of the course. It is
+highly recommended that you join us to work on the course during the
+meeting times. Past students who did so got a great deal more out of the
+course than those that worked on their own.</p>
+<p>You can use a web-browser to examine the course exercises. Point your
+browser to:</p>
+<p><a class="reference external" href="http://clouds.eos.ubc.ca/~phil/numeric">http://clouds.eos.ubc.ca/~phil/numeric</a></p>
+</div>
+<div class="section" id="meeting-times">
+<h2>Meeting Times<a class="headerlink" href="#meeting-times" title="Permalink to this headline">¶</a></h2>
+<p>1400-1600 Thursdays, Room 210, Earth and Oceans Sciences (EOS) Main</p>
+</div>
+<div class="section" id="grades">
+<h2>Grades<a class="headerlink" href="#grades" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Laboratory Exercises 30%</p></li>
+<li><p>Project Proposal 10%</p></li>
+<li><p>Project 50%</p></li>
+<li><p>Project Oral Presentation 10%</p></li>
+</ul>
+</div>
+<div class="section" id="laboratory-problem-sets">
+<h2>Laboratory Problem Sets<a class="headerlink" href="#laboratory-problem-sets" title="Permalink to this headline">¶</a></h2>
+<p>The laboratory problem sets can be given to either instructor when
+completed. (We have mail boxes in the Earth and Ocean Sciences Main
+Office). They may be hand written or typed. You may wish or be asked to
+include plots and diagrams. Sometimes, rather than a large series of
+plots, you may wish to include a summarizing table. If you do not
+understand the scope of a problem, please ask. The time scales given in
+the Contents section are based on 9 hours/week. Help with the labs is
+available 1) through a mailing list so you can contact your classmates
+and ask them 2) during the weekly scheduled lab or 3) directly from the
+instructors. Assignments and the project are expected on time. Late ones
+will be marked and then the mark will be multiplied by
+<span class="math notranslate nohighlight">\((0.9)^{\rm (number\ of\ days\ or\ part\ days\ late)}\)</span>. (Below we
+give two dates for each assignment. You should aim for the first one
+(this would keep you totally up to date). The later one allows a couple
+of days “in case”.)</p>
+</div>
+<div class="section" id="set-laboratories">
+<h2>Set Laboratories<a class="headerlink" href="#set-laboratories" title="Permalink to this headline">¶</a></h2>
+<p>Recommended timing. Problems to be handed in can be found on the
+webpage.</p>
+<ul class="simple">
+<li><p>Laboratory One: One Week</p></li>
+<li><p>Laboratory Two: One Week</p></li>
+<li><p>Laboratory Three: One Week</p></li>
+<li><p>Laboratory Four: One and a Half Weeks</p></li>
+<li><p>Laboratory Five: Half a Week</p></li>
+<li><p>Laboratory Seven: One Week</p></li>
+</ul>
+</div>
+<div class="section" id="optional-laboratories">
+<h2>Optional Laboratories<a class="headerlink" href="#optional-laboratories" title="Permalink to this headline">¶</a></h2>
+<p>Choose one of the following concentrations or talk to your instructors
+about a combination of your choosing. Time scale two and a half weeks.</p>
+<div class="section" id="odes-and-ffts">
+<h3>ODE’s and FFT’s<a class="headerlink" href="#odes-and-ffts" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Rest of Lab 5</p></li>
+<li><p>Lab 6</p></li>
+<li><p>Lab 9 (FFT’s)</p></li>
+</ul>
+</div>
+<div class="section" id="pdes">
+<h3>PDE’s<a class="headerlink" href="#pdes" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>End of Lab 7</p></li>
+<li><p>Lab 8</p></li>
+<li><p>Lab 10</p></li>
+</ul>
+</div>
+<div class="section" id="smattering-of-ode-s-and-pde-s">
+<h3>Smattering of ODE’s and PDE’s<a class="headerlink" href="#smattering-of-ode-s-and-pde-s" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Rest of Lab 5</p></li>
+<li><p>Lab 6</p></li>
+<li><p>Rest of Lab 7</p></li>
+<li><p>Lab 10</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="project">
+<h2>Project<a class="headerlink" href="#project" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Choosen in consultation with your research supervisor and the
+instructors. Should be choosen before the optional labs.</p></li>
+<li><p>Time scale three and half weeks.</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright E213 project
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
