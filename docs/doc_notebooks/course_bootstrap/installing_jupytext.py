@@ -112,8 +112,48 @@
 # and push to github
 #
 #
-# 1. `cd numeric/docs`
+# 1. `cd numeric/scripts`
 # 2. `./push_pages.sh`
+#
+#
+#
+# ## Push the student notebooks to their download repo
+#
+# We have a separate repo to maintain the notebooks and libraries that the students will
+# download:  https://github.com/phaustin/numeric_students
+#
+# This repository is a mirror of everything that is in our [students folder](https://github.com/phaustin/numeric/tree/master/students).  My workflow for deploying
+# to this folder:
+#
+# 1. add a no-passphrase public key to the numeric_students repository (mine is named new_pha_git)
+#
+# 1. I put the following entry into my .ssh/config:
+#
+#         Host phaustin
+#              HostName github.com
+#              User git
+#              IdentityFile ~/.ssh/new_pha_git
+#              IdentitiesOnly yes
+#              
+# 1. Add the following remote to the main numeric repository
+#
+# ```
+# git add remote students phaustin:phaustin/numeric_students
+# ```
+#
+# 1. Now you can use ghp-import to push the students folder to that remote using [push_students.sh](https://github.com/phaustin/numeric/blob/master/scripts/push_students.sh)
+#
+# ```
+# scripts/push_students.sh
+# ```
+#
+# Note that I've removed the master branch from the repo and made "downloads" the default branch
+# so we don't get confused.
+#
+# **Important point -- you can commit new notebooks to the student folder as part of a numeric branch, but push_students.sh makes a separate commit of every file in the folder and completely overwrites the remote
+# branch for every push.  So treat everything on the remote branch as ephemeral.**
+#
+# # Student installs
 #
 #
 # 1. Install miniconda for you architecture:  https://docs.conda.io/en/latest/miniconda.html
@@ -156,3 +196,5 @@
 # ```
 #
 #
+
+# %%
