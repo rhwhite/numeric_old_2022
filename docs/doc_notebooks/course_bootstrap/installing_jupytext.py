@@ -36,7 +36,7 @@
 #
 # 1. Install miniconda if you don't have it -- note that our environment
 #    will be 100% conda-forge, so you don't want to use a large existing
-#    anaconda installation to create the e213 environment.
+#    anaconda installation to create the numeric environment.
 #
 # 2. clone the repo:
 #
@@ -140,7 +140,7 @@
 # cd numeric
 # ```
 #
-# e. cd to the course folder and create and activate the e213 environment
+# e. cd to the course folder and create and activate the numeric environment
 #
 # ```
 # cd conda
