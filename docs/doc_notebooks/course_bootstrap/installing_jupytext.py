@@ -112,7 +112,7 @@
 # and push to github
 #
 #
-# 1. `cd numeric/scripts`
+# 1. `cd numeric/docs`
 # 2. `./push_pages.sh`
 #
 #
