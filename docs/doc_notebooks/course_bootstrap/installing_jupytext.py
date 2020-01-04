@@ -45,7 +45,7 @@
 # cd numeric
 # ```
 #
-# 3. cd to the `course_utils` folder and create and activate the e213 environment
+# 3. cd to the `course_utils` folder and create and activate the numeric environment
 #
 # ```
 # cd course_utils
