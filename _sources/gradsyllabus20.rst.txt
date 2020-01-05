@@ -48,7 +48,8 @@ course than those that worked on their own.
 You can use a web-browser to examine the course exercises. Point your
 browser to:
 
-https://clouds.eos.ubc.ca/~phil/numeric
+https://phaustin.github.io/numeric/notebook_toc.html
+
 
 Meeting Times
 -------------

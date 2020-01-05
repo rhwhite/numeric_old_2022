@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Laboratory 1: An Introduction to the Numerical Solution of Differential Equations: Discretization (2017/Sept./12) &mdash; Numeric course 0.1 documentation</title>
+  <title>Laboratory 1: An Introduction to the Numerical Solution of Differential Equations: Discretization (2020/Jan/6) &mdash; Numeric course 0.1 documentation</title>
   
 
   
@@ -85,6 +85,7 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../course_bootstrap.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ugradsyllabus20.html">Undergrad Syllabus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../gradsyllabus20.html">Grad Syllabus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../schedule20.html">Detailed Schedule</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../python.html">Getting started</a></li>
@@ -186,7 +187,7 @@
         
           <li><a href="../../notebook_toc.html">Numeric notebooks</a> &raquo;</li>
         
-      <li>Laboratory 1: An Introduction to the Numerical Solution of Differential Equations: Discretization (2017/Sept./12)</li>
+      <li>Laboratory 1: An Introduction to the Numerical Solution of Differential Equations: Discretization (2020/Jan/6)</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -427,33 +428,10 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<div class="section" id="Laboratory-1:-An-Introduction-to-the-Numerical-Solution-of-Differential-Equations:-Discretization-(2017/Sept./12)">
-<h1>Laboratory 1: An Introduction to the Numerical Solution of Differential Equations: Discretization (2017/Sept./12)<a class="headerlink" href="#Laboratory-1:-An-Introduction-to-the-Numerical-Solution-of-Differential-Equations:-Discretization-(2017/Sept./12)" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="Laboratory-1:-An-Introduction-to-the-Numerical-Solution-of-Differential-Equations:-Discretization-(2020/Jan/6)">
+<h1>Laboratory 1: An Introduction to the Numerical Solution of Differential Equations: Discretization (2020/Jan/6)<a class="headerlink" href="#Laboratory-1:-An-Introduction-to-the-Numerical-Solution-of-Differential-Equations:-Discretization-(2020/Jan/6)" title="Permalink to this headline">¶</a></h1>
 <p>John M. Stockie</p>
-<p># Table of Contents</p>
-<div class="toc" style="margin-top: 1em;"><ul class="toc-item" id="toc-level0"><li><p>1  Laboratory 1: An Introduction to the Numerical Solution of Differential Equations: Discretization (2017/Sept./12)</p>
-<ul class="toc-item"><li><p>1.1  List of Problems</p>
-</li><li><p>1.2  Objectives</p>
-</li><li><p>1.3  Readings</p>
-<ul class="toc-item"><li><p>1.3.1  Running Code Cells</p>
-</li></ul></li><li><p>1.4  Introduction: Why bother with numerical methods?</p>
-<ul class="toc-item"><li><p>1.4.1  Ordinary Differential Equations</p>
-</li><li><p>1.4.2  Partial Differential Equations</p>
-</li></ul></li><li><p>1.5  Discretization</p>
-</li><li><p>1.6  Difference Approximations to the First Derivative</p>
-<ul class="toc-item"><li><p>1.6.1  Investigation</p>
-</li><li><p>1.6.2  Forward Euler Method</p>
-</li><li><p>1.6.3  Other Approximations</p>
-</li></ul></li><li><p>1.7  Generalizations</p>
-<ul class="toc-item"><li><p>1.7.1  Higher Derivatives</p>
-</li><li><p>1.7.2  Systems of First-order ODE’s</p>
-</li><li><p>1.7.3  Boundary Value Problem</p>
-</li><li><p>1.7.4  Partial Differential Equations</p>
-</li></ul></li><li><p>1.8  Mathematical Notes</p>
-<ul class="toc-item"><li><p>1.8.1  Solution to the Heat Conduction Equation</p>
-</li></ul></li><li><p>1.9  References</p>
-</li><li><p>1.10  Glossary</p>
-</li></ul></li></ul></div><div class="section" id="List-of-Problems">
+<div class="section" id="List-of-Problems">
 <h2>List of Problems<a class="headerlink" href="#List-of-Problems" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="#Problem-One">Problem One</a></p></li>
@@ -501,11 +479,10 @@ div.rendered_html tbody tr:hover {
 <span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
 <span class="c1"># import plotting package and numerical python package for use in examples later</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="c1"># make the plots happen inline</span>
-<span class="o">%</span> <span class="n">matplotlib</span> <span class="n">inline</span>
 <span class="c1"># import the numpy array handling library</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="c1"># import the quiz script</span>
+<span class="kn">import</span> <span class="nn">context</span>
 <span class="kn">from</span> <span class="nn">numlabs.lab1</span> <span class="kn">import</span> <span class="n">quiz1</span> <span class="k">as</span> <span class="n">quiz</span>
 </pre></div>
 </div>
@@ -513,9 +490,15 @@ div.rendered_html tbody tr:hover {
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
-<div class="output_area stderr docutils container">
+<div class="output_area docutils container">
 <div class="highlight"><pre>
-UsageError: Line magic function `%` not found.
+******************************
+context imported. Front of path:
+/Users/phil/repos/numeric
+back of path: /Users/phil/.ipython
+******************************
+
+through /Users/phil/repos/numeric/notebooks/lab1/context.py
 </pre></div></div>
 </div>
 </div>
@@ -590,12 +573,7 @@ UsageError: Line magic function `%` not found.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-2-102d02c64088&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>print <span class="ansi-blue-fg">(</span>quiz<span class="ansi-blue-fg">.</span>conduction_quiz<span class="ansi-blue-fg">(</span>answer <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">&#39;xxxx&#39;</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">NameError</span>: name &#39;quiz&#39; is not defined
+Acceptable answers are &#39;True&#39;, &#39;False&#39;, &#39;Hint 1&#39; or &#39;Hint 2&#39;
 </pre></div></div>
 </div>
 <p>If we assume that <span class="math notranslate nohighlight">\(\lambda\)</span> is a constant, then the solution to this equation is given by</p>
@@ -620,14 +598,14 @@ UsageError: Line magic function `%` not found.
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab1_01-lab1_14_0.png"><img alt="../../_images/doc_notebooks_lab1_01-lab1_14_0.png" src="../../_images/doc_notebooks_lab1_01-lab1_14_0.png" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab1_01-lab1_13_0.png"><img alt="../../_images/doc_notebooks_lab1_01-lab1_13_0.png" src="../../_images/doc_notebooks_lab1_01-lab1_13_0.png" style="width: 60%;" /></a>
 </div>
 </div>
 <div id="lab1:fig:conduction"><p><strong>Figure: Conduction</strong> Plot of solution curves <span class="math notranslate nohighlight">\(T(t)\)</span> for <span class="math notranslate nohighlight">\(T_0=-10,15,20,30\)</span>; parameter values: <span class="math notranslate nohighlight">\(\lambda=10^{-5}\)</span>, <span class="math notranslate nohighlight">\(T_a=20\)</span>.</p>
 </div><p>##Demo: Conduction [lab1:demo:conduction]: &lt;#Demo:-Conduction&gt; “Conduction Demo”</p>
 <p>Here is an interactive example that investigates the behaviour of the solution.</p>
 <p>The first we import the function that does the calculation and plotting. You need to run this cell (<a class="reference external" href="#Running-Code-Cells">how to</a>) to load it. Loading it does not run the function.</p>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
@@ -635,19 +613,6 @@ UsageError: Line magic function `%` not found.
 <span></span><span class="kn">from</span> <span class="nn">numlabs.lab1</span> <span class="kn">import</span> <span class="n">temperature_conduction</span> <span class="k">as</span> <span class="n">tc</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-4-2425c7e4410c&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span><span class="ansi-green-fg">from</span> numlabs<span class="ansi-blue-fg">.</span>lab1 <span class="ansi-green-fg">import</span> temperature_conduction <span class="ansi-green-fg">as</span> tc
-
-<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;numlabs&#39;
-</pre></div></div>
 </div>
 <p>You need to call the function. Simpliest call is next cell.</p>
 <div class="nbinput docutils container">
@@ -664,15 +629,8 @@ UsageError: Line magic function `%` not found.
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-5-19293d0db797&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-red-fg"># simple call to temperature demo</span>
-<span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg"> </span>tc<span class="ansi-blue-fg">.</span>temperature<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">NameError</span>: name &#39;tc&#39; is not defined
-</pre></div></div>
+<img alt="../../_images/doc_notebooks_lab1_01-lab1_18_0.png" src="../../_images/doc_notebooks_lab1_01-lab1_18_0.png" />
+</div>
 </div>
 <p>After running as is try changing To = To (the initial temperature), Ta = Ta (the ambient temperature) or la = λ (the effective conductivity) to investigate changes in the solution.</p>
 <div class="nbinput docutils container">
@@ -690,16 +648,8 @@ UsageError: Line magic function `%` not found.
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-6-100653d35822&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-red-fg"># setting different values</span>
-<span class="ansi-green-intense-fg ansi-bold">      2</span> <span class="ansi-red-fg"># (note this uses the defaults again as written, you should change the values)</span>
-<span class="ansi-green-fg">----&gt; 3</span><span class="ansi-red-fg"> </span>tc<span class="ansi-blue-fg">.</span>temperature<span class="ansi-blue-fg">(</span>Ta <span class="ansi-blue-fg">=</span> <span class="ansi-cyan-fg">20</span><span class="ansi-blue-fg">,</span> To <span class="ansi-blue-fg">=</span> np<span class="ansi-blue-fg">.</span>array<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">-</span><span class="ansi-cyan-fg">10.</span><span class="ansi-blue-fg">,</span> <span class="ansi-cyan-fg">10.</span><span class="ansi-blue-fg">,</span> <span class="ansi-cyan-fg">20.</span><span class="ansi-blue-fg">,</span> <span class="ansi-cyan-fg">30.</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">,</span> la <span class="ansi-blue-fg">=</span> <span class="ansi-cyan-fg">0.00001</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">NameError</span>: name &#39;tc&#39; is not defined
-</pre></div></div>
+<img alt="../../_images/doc_notebooks_lab1_01-lab1_20_0.png" src="../../_images/doc_notebooks_lab1_01-lab1_20_0.png" />
+</div>
 </div>
 </div>
 <div class="section" id="Example-Two">
@@ -764,7 +714,7 @@ may not provide a solution.</p>
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab1_01-lab1_23_0.png"><img alt="../../_images/doc_notebooks_lab1_01-lab1_23_0.png" src="../../_images/doc_notebooks_lab1_01-lab1_23_0.png" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab1_01-lab1_22_0.png"><img alt="../../_images/doc_notebooks_lab1_01-lab1_22_0.png" src="../../_images/doc_notebooks_lab1_01-lab1_22_0.png" style="width: 60%;" /></a>
 </div>
 </div>
 <div id="lab1:fig:table"><p><strong>Figure Table</strong>: A rock with <span class="math notranslate nohighlight">\(\lambda\)</span> known only at a sequence of discrete temperature values, from experimental measurements. The function <span class="math notranslate nohighlight">\(\lambda(T)\)</span> can be represented approximately using linear interpolation (and the resulting approximate function can then be used to solve the problem numerically.</p>
@@ -792,7 +742,7 @@ may not provide a solution.</p>
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab1_01-lab1_26_0.png"><img alt="../../_images/doc_notebooks_lab1_01-lab1_26_0.png" src="../../_images/doc_notebooks_lab1_01-lab1_26_0.png" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab1_01-lab1_25_0.png"><img alt="../../_images/doc_notebooks_lab1_01-lab1_25_0.png" src="../../_images/doc_notebooks_lab1_01-lab1_25_0.png" style="width: 60%;" /></a>
 </div>
 </div>
 <div id="lab1:fig:rock-1d"><p><strong>Figure Rod</strong>: A thin rod can be thought of as a model for a one-dimensional rock.</p>
@@ -849,7 +799,7 @@ may not provide a solution.</p>
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab1_01-lab1_30_0.png"><img alt="../../_images/doc_notebooks_lab1_01-lab1_30_0.png" src="../../_images/doc_notebooks_lab1_01-lab1_30_0.png" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab1_01-lab1_29_0.png"><img alt="../../_images/doc_notebooks_lab1_01-lab1_29_0.png" src="../../_images/doc_notebooks_lab1_01-lab1_29_0.png" style="width: 60%;" /></a>
 </div>
 </div>
 <div id="lab1:fig:diffusion-1d"><p><strong>Figure 1d-diffusion</strong> Temperature vs. position curves at various times, for heat diffusion in a rod with sinusoidal initial temperature distribution and parameter value <span class="math notranslate nohighlight">\(\alpha=0.2\)</span>.</p>
@@ -943,7 +893,7 @@ example of a <em>discrete function</em>.</p>
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab1_01-lab1_37_0.png"><img alt="../../_images/doc_notebooks_lab1_01-lab1_37_0.png" src="../../_images/doc_notebooks_lab1_01-lab1_37_0.png" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab1_01-lab1_36_0.png"><img alt="../../_images/doc_notebooks_lab1_01-lab1_36_0.png" src="../../_images/doc_notebooks_lab1_01-lab1_36_0.png" style="width: 60%;" /></a>
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -967,7 +917,7 @@ example of a <em>discrete function</em>.</p>
 <dt class="field-even">fancy</dt>
 <dd class="field-even"><p></p></dd>
 </dl>
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab1_01-lab1_38_0.png"><img alt="../../_images/doc_notebooks_lab1_01-lab1_38_0.png" src="../../_images/doc_notebooks_lab1_01-lab1_38_0.png" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab1_01-lab1_37_0.png"><img alt="../../_images/doc_notebooks_lab1_01-lab1_37_0.png" src="../../_images/doc_notebooks_lab1_01-lab1_37_0.png" style="width: 60%;" /></a>
 </div></blockquote>
 <div id="lab1:fig:discrete-f"><p><strong>Figure f and g</strong>: The functions <span class="math notranslate nohighlight">\(f\)</span> and <span class="math notranslate nohighlight">\(g\)</span> are known only at discrete points. The function can be approximated at other values by linear interpolation, where straight line segments are used to join successive points.</p>
 </div></div>
@@ -978,7 +928,7 @@ in this course.</p>
 </div></blockquote>
 <p>Here is an interactive example demonstrating the use of interpolation (linear and cubic) in approximating functions.</p>
 <p>The next cell imports a module containing two python functions that interpolate the two algebraic functions, f and g (<a class="reference external" href="#lab1:fig:discrete-f">Figure f and g</a>). You need to run this cells (<a class="reference external" href="#Running-Code-Cells">how to</a>) to load them.</p>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
@@ -986,19 +936,6 @@ in this course.</p>
 <span></span><span class="kn">from</span> <span class="nn">numlabs.lab1</span> <span class="kn">import</span> <span class="n">interpolate</span> <span class="k">as</span> <span class="n">ip</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-13-9b7b1c8e6886&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span><span class="ansi-green-fg">from</span> numlabs<span class="ansi-blue-fg">.</span>lab1 <span class="ansi-green-fg">import</span> interpolate <span class="ansi-green-fg">as</span> ip
-
-<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;numlabs&#39;
-</pre></div></div>
 </div>
 <p>Once you have loaded the module, you can call the interpolation routines as ip.interpol_f(pn) and ip.interpol_g(pn). pn is the number of points used the interpolation. Watch what changing pn does to the solutions.</p>
 <div class="nbinput docutils container">
@@ -1010,17 +947,21 @@ in this course.</p>
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
+<div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
+<img alt="../../_images/doc_notebooks_lab1_01-lab1_42_0.png" src="../../_images/doc_notebooks_lab1_01-lab1_42_0.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
 <div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-14-000aa2ccabd7&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>ip<span class="ansi-blue-fg">.</span>interpol_f<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">6</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">NameError</span>: name &#39;ip&#39; is not defined
+(array([-5., -3., -1.,  1.,  3.,  5.]),
+ array([-100.,  -12.,    4.,   -4.,   12.,  100.]))
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1032,17 +973,22 @@ in this course.</p>
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
+<div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
+<img alt="../../_images/doc_notebooks_lab1_01-lab1_43_0.png" src="../../_images/doc_notebooks_lab1_01-lab1_43_0.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
 <div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-15-2946d1afe315&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>ip<span class="ansi-blue-fg">.</span>interpol_g<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">6</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">NameError</span>: name &#39;ip&#39; is not defined
+(array([-5., -3., -1.,  1.,  3.,  5.]),
+ array([2.92401774, 2.08008382, 1.        , 1.        , 2.08008382,
+        2.92401774]))
 </pre></div></div>
 </div>
 <p>The accuracy of an approximation using linear or cubic interpolation improves as the number of points is increased. True or False?</p>
@@ -1061,12 +1007,7 @@ in this course.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-16-68a68ca3b420&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>print <span class="ansi-blue-fg">(</span>quiz<span class="ansi-blue-fg">.</span>interpolation_quiz<span class="ansi-blue-fg">(</span>answer <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">&#39;xxx&#39;</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">NameError</span>: name &#39;quiz&#39; is not defined
+Acceptable answers are &#39;True&#39;, &#39;False&#39;, or &#39;Hint&#39;
 </pre></div></div>
 </div>
 <p>When solving differential equations numerically, it is essential to reduce the continuous problem to a discrete one. The basic idea is to look for an approximate solution, which is defined at a finite number of discrete points. This set of points is called a <em>grid</em>. Consider the one-dimensional conduction problem of Example <a class="reference external" href="#Example-One">One, Conduction</a>, which in its most general form reads</p>
@@ -1101,7 +1042,7 @@ in this course.</p>
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab1_01-lab1_48_0.png"><img alt="../../_images/doc_notebooks_lab1_01-lab1_48_0.png" src="../../_images/doc_notebooks_lab1_01-lab1_48_0.png" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab1_01-lab1_47_0.png"><img alt="../../_images/doc_notebooks_lab1_01-lab1_47_0.png" src="../../_images/doc_notebooks_lab1_01-lab1_47_0.png" style="width: 80%;" /></a>
 </div>
 </div>
 <div id="lab1:fig:discrete-points"><p><strong>Figure Grid:</strong> A grid of equally-spaced points, <span class="math notranslate nohighlight">\(t_i=t_0+i\Delta t\)</span>, for <span class="math notranslate nohighlight">\(i=0,1,2,\ldots\)</span>.</p>
@@ -1126,12 +1067,7 @@ in this course.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-18-14f2522db01d&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>print <span class="ansi-blue-fg">(</span>quiz<span class="ansi-blue-fg">.</span>discretization_quiz<span class="ansi-blue-fg">(</span>answer <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">&#39;x&#39;</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">NameError</span>: name &#39;quiz&#39; is not defined
+Acceptable answers are &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39; or &#39;Hint&#39;
 </pre></div></div>
 </div>
 <p>The basic idea in this section is that continuous functions can be approximated by discrete ones, through the process of <em>discretization</em>. In the course of looking at discrete approximations in the interactive example, we introduced the idea of the <em>accuracy</em> of an approximation, and showed that increasing the accuracy of an approximation is not straightforward.</p>
@@ -1170,7 +1106,7 @@ difference:</p>
 <dt class="field-even">fancy</dt>
 <dd class="field-even"><p></p></dd>
 </dl>
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab1_01-lab1_54_0.png"><img alt="../../_images/doc_notebooks_lab1_01-lab1_54_0.png" src="../../_images/doc_notebooks_lab1_01-lab1_54_0.png" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab1_01-lab1_53_0.png"><img alt="../../_images/doc_notebooks_lab1_01-lab1_53_0.png" src="../../_images/doc_notebooks_lab1_01-lab1_53_0.png" style="width: 60%;" /></a>
 </div></blockquote>
 <div id="lab1:fig:deriv"><p><strong>Figure Tangents:</strong> Plot of the function <span class="math notranslate nohighlight">\(y=x^3-5x\)</span> and the forward difference approximations to the derivative for various values of <span class="math notranslate nohighlight">\(\Delta t\)</span></p>
 </div></div>
@@ -1182,7 +1118,7 @@ difference:</p>
 <h3>Investigation<a class="headerlink" href="#Investigation" title="Permalink to this headline">¶</a></h3>
 <p>Investigate the use of the forward difference approximation of the derivative in the following interactive example.</p>
 <p>The next cell loads a python function that plots a function f(x) and approximates its derivative at <span class="math notranslate nohighlight">\(x=1\)</span> based on a second x-point that you chose (xb). You need to run this cell (<a class="reference external" href="#Running-Code-Cells">how to</a>) to load it.</p>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
@@ -1190,19 +1126,6 @@ difference:</p>
 <span></span><span class="kn">from</span> <span class="nn">numlabs.lab1</span> <span class="kn">import</span> <span class="n">derivative_approx</span> <span class="k">as</span> <span class="n">da</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-20-77319cef66ed&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span><span class="ansi-green-fg">from</span> numlabs<span class="ansi-blue-fg">.</span>lab1 <span class="ansi-green-fg">import</span> derivative_approx <span class="ansi-green-fg">as</span> da
-
-<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;numlabs&#39;
-</pre></div></div>
 </div>
 <p>Once you have loaded the function you can call it as da.plot_secant(xb) where xb the second point used to estimate the derivative (slope) at <span class="math notranslate nohighlight">\(x=1\)</span>. You can compare the slope of the estimate (straight line) to the slope of the function (blue curve).</p>
 <div class="nbinput docutils container">
@@ -1218,14 +1141,8 @@ difference:</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-21-f48248ca7ce7&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>da<span class="ansi-blue-fg">.</span>plot_secant<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">2.</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">NameError</span>: name &#39;da&#39; is not defined
-</pre></div></div>
+<img alt="../../_images/doc_notebooks_lab1_01-lab1_58_0.png" src="../../_images/doc_notebooks_lab1_01-lab1_58_0.png" />
+</div>
 </div>
 </div>
 <div class="section" id="Forward-Euler-Method">
@@ -1278,7 +1195,7 @@ actually quite simple.</p>
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab1_01-lab1_62_0.png"><img alt="../../_images/doc_notebooks_lab1_01-lab1_62_0.png" src="../../_images/doc_notebooks_lab1_01-lab1_62_0.png" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab1_01-lab1_61_0.png"><img alt="../../_images/doc_notebooks_lab1_01-lab1_61_0.png" src="../../_images/doc_notebooks_lab1_01-lab1_61_0.png" style="width: 60%;" /></a>
 </div>
 </div>
 <div id="lab1:fig:saturation"><p><strong>Figure Saturation Time Series:</strong> Plot of the saturation ratio as a function of time using the Forward Euler method. “nt” is the number of time steps.</p>
@@ -1377,7 +1294,7 @@ There are two things to notice here, both related to the importance of the choic
 <dt class="field-even">fancy</dt>
 <dd class="field-even"><p></p></dd>
 </dl>
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab1_01-lab1_69_0.png"><img alt="../../_images/doc_notebooks_lab1_01-lab1_69_0.png" src="../../_images/doc_notebooks_lab1_01-lab1_69_0.png" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab1_01-lab1_68_0.png"><img alt="../../_images/doc_notebooks_lab1_01-lab1_68_0.png" src="../../_images/doc_notebooks_lab1_01-lab1_68_0.png" style="width: 60%;" /></a>
 </div></blockquote>
 <div id="lab1:fig:balloon"><p><strong>Figure Weather Balloon:</strong> A weather balloon oscillating about its level of neutral buoyancy.</p>
 </div></div>
@@ -1474,7 +1391,7 @@ a Problem in the Linear Algebra Lab.</p>
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab1_01-lab1_77_0.png"><img alt="../../_images/doc_notebooks_lab1_01-lab1_77_0.png" src="../../_images/doc_notebooks_lab1_01-lab1_77_0.png" style="width: 40%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab1_01-lab1_76_0.png"><img alt="../../_images/doc_notebooks_lab1_01-lab1_76_0.png" src="../../_images/doc_notebooks_lab1_01-lab1_76_0.png" style="width: 40%;" /></a>
 </div>
 </div>
 <div id="lab1:fig:pde-grid"><p><strong>Figure PDE Grid:</strong> The computational grid for the heat diffusion problem, with discrete points <span class="math notranslate nohighlight">\((x_i,t_n)\)</span>.</p>
