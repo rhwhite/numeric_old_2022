@@ -22,7 +22,9 @@
   },
   {
    "cell_type": "markdown",
-   "metadata": {},
+   "metadata": {
+    "lines_to_next_cell": 0
+   },
    "source": [
     "## Objectives\n",
     "\n",
@@ -52,6 +54,18 @@
     "-   Define the term: Interpolation, Convergence, and Instability.\n",
     "\n",
     "-   Define the term or perform: Linear interpolation.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "lines_to_next_cell": 0
+   },
+   "source": [
+    "## Assignment\n",
+    "\n",
+    "This lab has written assignment. Hand in the hard copy with your answers\n",
+    "to Susan by xxx.  Here is the link to the [Assignment 1 pdf](pdfs/assignment1.pdf)\n"
    ]
   },
   {
