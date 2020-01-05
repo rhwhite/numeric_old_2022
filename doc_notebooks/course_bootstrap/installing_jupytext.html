@@ -94,7 +94,12 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#Student-installs">Student installs</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#For-MacOS">For MacOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#For-MacOS-new-installs">For MacOS new installs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#For-Windows-new-installs">For Windows new installs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Git-install">Git install</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Setting-up-the-course-repository">Setting up the course repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Creating-the-course-environment">Creating the course environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Opening-the-notebook-folder">Opening the notebook folder</a></li>
 </ul>
 </li>
 </ul>
@@ -179,204 +184,6 @@
             
   
 <style>
-/* CSS for nbsphinx extension */
-
-/* remove conflicting styling from Sphinx themes */
-div.nbinput.container,
-div.nbinput.container div.prompt,
-div.nbinput.container div.input_area,
-div.nbinput.container div[class*=highlight],
-div.nbinput.container div[class*=highlight] pre,
-div.nboutput.container,
-div.nboutput.container div.prompt,
-div.nboutput.container div.output_area,
-div.nboutput.container div[class*=highlight],
-div.nboutput.container div[class*=highlight] pre {
-    background: none;
-    border: none;
-    padding: 0 0;
-    margin: 0;
-    box-shadow: none;
-}
-
-/* avoid gaps between output lines */
-div.nboutput.container div[class*=highlight] pre {
-    line-height: normal;
-}
-
-/* input/output containers */
-div.nbinput.container,
-div.nboutput.container {
-    display: -webkit-flex;
-    display: flex;
-    align-items: flex-start;
-    margin: 0;
-    width: 100%;
-}
-@media (max-width: 540px) {
-    div.nbinput.container,
-    div.nboutput.container {
-        flex-direction: column;
-    }
-}
-
-/* input container */
-div.nbinput.container {
-    padding-top: 5px;
-}
-
-/* last container */
-div.nblast.container {
-    padding-bottom: 5px;
-}
-
-/* input prompt */
-div.nbinput.container div.prompt pre {
-    color: #307FC1;
-}
-
-/* output prompt */
-div.nboutput.container div.prompt pre {
-    color: #BF5B3D;
-}
-
-/* all prompts */
-div.nbinput.container div.prompt,
-div.nboutput.container div.prompt {
-    min-width: 5ex;
-    padding-top: 0.4em;
-    padding-right: 0.4em;
-    text-align: right;
-    flex: 0;
-}
-@media (max-width: 540px) {
-    div.nbinput.container div.prompt,
-    div.nboutput.container div.prompt {
-        text-align: left;
-        padding: 0.4em;
-    }
-    div.nboutput.container div.prompt.empty {
-        padding: 0;
-    }
-}
-
-/* disable scrollbars on prompts */
-div.nbinput.container div.prompt pre,
-div.nboutput.container div.prompt pre {
-    overflow: hidden;
-}
-
-/* input/output area */
-div.nbinput.container div.input_area,
-div.nboutput.container div.output_area {
-    padding: 0.4em;
-    -webkit-flex: 1;
-    flex: 1;
-    overflow: auto;
-}
-@media (max-width: 540px) {
-    div.nbinput.container div.input_area,
-    div.nboutput.container div.output_area {
-        width: 100%;
-    }
-}
-
-/* input area */
-div.nbinput.container div.input_area {
-    border: 1px solid #e0e0e0;
-    border-radius: 2px;
-    background: #f5f5f5;
-}
-
-/* override MathJax center alignment in output cells */
-div.nboutput.container div[class*=MathJax] {
-    text-align: left !important;
-}
-
-/* override sphinx.ext.imgmath center alignment in output cells */
-div.nboutput.container div.math p {
-    text-align: left;
-}
-
-/* standard error */
-div.nboutput.container div.output_area.stderr {
-    background: #fdd;
-}
-
-/* ANSI colors */
-.ansi-black-fg { color: #3E424D; }
-.ansi-black-bg { background-color: #3E424D; }
-.ansi-black-intense-fg { color: #282C36; }
-.ansi-black-intense-bg { background-color: #282C36; }
-.ansi-red-fg { color: #E75C58; }
-.ansi-red-bg { background-color: #E75C58; }
-.ansi-red-intense-fg { color: #B22B31; }
-.ansi-red-intense-bg { background-color: #B22B31; }
-.ansi-green-fg { color: #00A250; }
-.ansi-green-bg { background-color: #00A250; }
-.ansi-green-intense-fg { color: #007427; }
-.ansi-green-intense-bg { background-color: #007427; }
-.ansi-yellow-fg { color: #DDB62B; }
-.ansi-yellow-bg { background-color: #DDB62B; }
-.ansi-yellow-intense-fg { color: #B27D12; }
-.ansi-yellow-intense-bg { background-color: #B27D12; }
-.ansi-blue-fg { color: #208FFB; }
-.ansi-blue-bg { background-color: #208FFB; }
-.ansi-blue-intense-fg { color: #0065CA; }
-.ansi-blue-intense-bg { background-color: #0065CA; }
-.ansi-magenta-fg { color: #D160C4; }
-.ansi-magenta-bg { background-color: #D160C4; }
-.ansi-magenta-intense-fg { color: #A03196; }
-.ansi-magenta-intense-bg { background-color: #A03196; }
-.ansi-cyan-fg { color: #60C6C8; }
-.ansi-cyan-bg { background-color: #60C6C8; }
-.ansi-cyan-intense-fg { color: #258F8F; }
-.ansi-cyan-intense-bg { background-color: #258F8F; }
-.ansi-white-fg { color: #C5C1B4; }
-.ansi-white-bg { background-color: #C5C1B4; }
-.ansi-white-intense-fg { color: #A1A6B2; }
-.ansi-white-intense-bg { background-color: #A1A6B2; }
-
-.ansi-default-inverse-fg { color: #FFFFFF; }
-.ansi-default-inverse-bg { background-color: #000000; }
-
-.ansi-bold { font-weight: bold; }
-.ansi-underline { text-decoration: underline; }
-
-/* Some additional styling taken form the Jupyter notebook CSS */
-div.rendered_html table {
-  border: none;
-  border-collapse: collapse;
-  border-spacing: 0;
-  color: black;
-  font-size: 12px;
-  table-layout: fixed;
-}
-div.rendered_html thead {
-  border-bottom: 1px solid black;
-  vertical-align: bottom;
-}
-div.rendered_html tr,
-div.rendered_html th,
-div.rendered_html td {
-  text-align: right;
-  vertical-align: middle;
-  padding: 0.5em 0.5em;
-  line-height: normal;
-  white-space: normal;
-  max-width: none;
-  border: none;
-}
-div.rendered_html th {
-  font-weight: bold;
-}
-div.rendered_html tbody tr:nth-child(odd) {
-  background: #f5f5f5;
-}
-div.rendered_html tbody tr:hover {
-  background: rgba(66, 165, 245, 0.2);
-}
-
 /* CSS overrides for sphinx_rtd_theme */
 
 /* 24px margin */
@@ -499,7 +306,7 @@ div.rendered_html tbody tr:hover {
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="n">remote</span> <span class="n">students</span> <span class="n">phaustin</span><span class="p">:</span><span class="n">phaustin</span><span class="o">/</span><span class="n">numeric_students</span>
 </pre></div>
 </div>
-<ol class="arabic simple">
+<ol class="arabic simple" start="2">
 <li><p>Now you can use ghp-import to push the students folder to that remote using <a class="reference external" href="https://github.com/phaustin/numeric/blob/master/scripts/push_students.sh">push_students.sh</a></p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scripts</span><span class="o">/</span><span class="n">push_students</span><span class="o">.</span><span class="n">sh</span>
@@ -511,54 +318,74 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="Student-installs">
 <h1>Student installs<a class="headerlink" href="#Student-installs" title="Permalink to this headline">¶</a></h1>
+<p><strong>If you already have conda or anaconda installed, skip to ``Git install`` below</strong></p>
+<div class="section" id="For-MacOS-new-installs">
+<h2>For MacOS new installs<a class="headerlink" href="#For-MacOS-new-installs" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li><p>Install miniconda for you architecture: <a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">https://docs.conda.io/en/latest/miniconda.html</a></p></li>
+<li><p>Download miniconda from <a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">https://docs.conda.io/en/latest/miniconda.html</a> – choose the <code class="docutils literal notranslate"><span class="pre">Miniconda3</span> <span class="pre">MacOSX</span> <span class="pre">64-bit</span> <span class="pre">pkg</span></code> file from the menu and run it, agreeing to the licences and accepting all defaults. You should install for “just me”</p></li>
+<li><p>To test your installation, open a fresh terminal window and at the prompt type <code class="docutils literal notranslate"><span class="pre">which</span> <span class="pre">conda</span></code>. You should see something resembling the following output, with your username instead of <code class="docutils literal notranslate"><span class="pre">phil</span></code>:</p></li>
 </ol>
-<div class="section" id="For-MacOS">
-<h2>For MacOS<a class="headerlink" href="#For-MacOS" title="Permalink to this headline">¶</a></h2>
-<ol class="loweralpha simple">
-<li><p>Start a terminal and type:</p></li>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">which</span> <span class="n">conda</span>
+<span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">phil</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">miniconda3</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">conda</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="For-Windows-new-installs">
+<h2>For Windows new installs<a class="headerlink" href="#For-Windows-new-installs" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Download miniconda from <a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">https://docs.conda.io/en/latest/miniconda.html</a> – choose the <code class="docutils literal notranslate"><span class="pre">Miniconda3</span> <span class="pre">Windows</span> <span class="pre">64-bit</span></code>. download from the menu and run it, agreeing to the licences and accepting all defaults.</p></li>
 </ol>
+<p>The installer should suggest installing in a path that looks like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">phil</span>\<span class="n">Miniconda3</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Once the install completes hit the windows key and start typing <code class="docutils literal notranslate"><span class="pre">anaconda</span></code>. You should see a shortcut that looks like:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Anaconda</span> <span class="n">Powershell</span> <span class="n">Prompt</span>
+<span class="p">(</span><span class="n">Miniconda3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Note that Windows comes with two different terminals ``cmd`` (old) and ``powershell`` (new). Always select the powershell version of the anaconda terminal</strong></p>
+<ol class="arabic simple" start="3">
+<li><p>Select the short cut. If the install was successful you should see something like:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">base</span><span class="p">)</span> <span class="p">(</span><span class="n">Miniconda3</span><span class="p">):</span><span class="n">Users</span><span class="o">/</span><span class="n">phil</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>with your username substituted for phil.</p>
+</div>
+<div class="section" id="Git-install">
+<h2>Git install<a class="headerlink" href="#Git-install" title="Permalink to this headline">¶</a></h2>
+<p>Inside your powershell or MacOs terminal, install git using conda:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">git</span>
 </pre></div>
 </div>
-<ol class="loweralpha simple" start="2">
-<li><p>cd to your home directory and make a folder called repos</p></li>
-</ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">repos</span>
+</div>
+<div class="section" id="Setting-up-the-course-repository">
+<h2>Setting up the course repository<a class="headerlink" href="#Setting-up-the-course-repository" title="Permalink to this headline">¶</a></h2>
+<p>In the terminal, change directories to your home directory (called <code class="docutils literal notranslate"><span class="pre">~</span></code> for short) and make a new directory called <code class="docutils literal notranslate"><span class="pre">repos</span></code> to hold the course notebook repository. Change into <code class="docutils literal notranslate"><span class="pre">repos</span></code> and clone the course:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~</span>
+<span class="n">mkdir</span> <span class="n">repos</span>
 <span class="n">cd</span> <span class="n">repos</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">phaustin</span><span class="o">/</span><span class="n">numeric_students</span><span class="o">.</span><span class="n">git</span>
 </pre></div>
 </div>
-<ol class="loweralpha simple" start="3">
-<li><p>clone the course repository and cd into it</p></li>
-</ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">phaustin</span><span class="o">/</span><span class="n">numeric</span>
-<span class="n">cd</span> <span class="n">numeric</span>
-</pre></div>
 </div>
-<ol class="loweralpha simple" start="5">
-<li><p>cd to the course folder and create and activate the numeric environment</p></li>
-</ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">conda</span>
+<div class="section" id="Creating-the-course-environment">
+<h2>Creating the course environment<a class="headerlink" href="#Creating-the-course-environment" title="Permalink to this headline">¶</a></h2>
+<p>In the terminal, execute the following commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">numeric_students</span><span class="o">/</span><span class="n">utils</span>
 <span class="n">conda</span> <span class="n">env</span> <span class="n">create</span> <span class="o">-</span><span class="n">f</span> <span class="n">numeric</span><span class="o">.</span><span class="n">yml</span>
 <span class="n">conda</span> <span class="n">activate</span> <span class="n">numeric</span>
 </pre></div>
 </div>
-<ol class="loweralpha simple" start="6">
-<li><p>change back to the notebooks folder and start jupyter</p></li>
-</ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">../</span><span class="n">notebooks</span>
+</div>
+<div class="section" id="Opening-the-notebook-folder">
+<h2>Opening the notebook folder<a class="headerlink" href="#Opening-the-notebook-folder" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="n">repos</span><span class="o">/</span><span class="n">numeric_students</span><span class="o">/</span><span class="n">numeric_notebooks</span>
 <span class="n">jupyter</span> <span class="n">notebook</span>
 </pre></div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>
-</pre></div>
-</div>
 </div>
 </div>
 </div>
