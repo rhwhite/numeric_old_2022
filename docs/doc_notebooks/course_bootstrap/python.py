@@ -16,13 +16,16 @@
 # ---
 
 # %% [markdown]
-# # Learning bash and git
+# # The command line shell and git
 #
 #   - The default shell on OSX is bash, which is taught in this set of
-#     lessons: <https://swcarpentry.github.io/shell-novice/>
+#     lessons: <https://swcarpentry.github.io/shell-novice/> or in this
+#     [detailed bash reference](https://programminghistorian.org/en/lessons/intro-to-bash)
 #   - if you are on Windows, powershell is somewhat similar -- here is
-#     a table listing commands for both shell side by side
-# # Bash and powershell command reference
+#     a table listing commands for both shell side by side taken from
+#     this in-depth [powershell tutorial](https://programminghistorian.org/en/lessons/intro-to-powershell#quick-reference)
+#
+# ## Bash and powershell command reference
 #
 # | Cmdlet | Alias | Bash Equivalent | Description |
 # | ------- | ------- | ------- | ------- |
@@ -47,12 +50,12 @@
 #
 # Remember the keyboard shortcuts of `tab` for auto-completion and the up and down arrows to scroll through recent commands. These shortcuts can save a lot of typing!
 #
-# # Git
+# ## Git
 #
 # - A good place to go to learn git fundamentals is this lesson
 #     <https://swcarpentry.github.io/git-novice/>
 #
-# # Pulling changes from the github repository
+# ## Pulling changes from the github repository
 #
 # When we commit changes to the master branch and push to our github
 # repository, you'll need to download those changes to keep current. To do
@@ -89,7 +92,7 @@
 #
 #   - We will be referring to our version of  David Pine's Introduction to Python:
 #     http://phaustin.github.io/pyman.  The notebooks for each chapter are included
-#     in the numeric_students folder.
+#     in the [numeric_students/pyman](https://github.com/phaustin/numeric_students/tree/downloads/pyman) folder.
 #   - If you are new to python, I would recommend you also go over the
 #     following short ebook in detail:
 #       - Jake Vanderplas' [Whirlwind tour of
@@ -111,8 +114,6 @@
 #     clone with git:
 #       - <https://github.com/fangohr/introduction-to-python-for-computational-science-and-engineering>
 #       - <https://github.com/jakevdp/PythonDataScienceHandbook/blob/master/notebooks/Index.ipynb>
-#   - Our version of David Pine's Introduction to Python:
-#     <http://clouds.eos.ubc.ca/~phil/djpine_python/>
 #   - My favorite O'Reilly book is:
 #       - [Python for Data
 #         Analysis](http://shop.oreilly.com/product/0636920023784.do)
