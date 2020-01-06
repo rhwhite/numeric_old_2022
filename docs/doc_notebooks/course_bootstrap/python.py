@@ -15,7 +15,7 @@
 #     name: python3
 # ---
 
-#
+# %% [markdown]
 # # Learning bash and git
 #
 #   - The default shell on OSX is bash, which is taught in this set of
