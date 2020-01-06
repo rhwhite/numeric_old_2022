@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Optional textbooks &mdash; Numeric course 0.1 documentation</title>
+  <title>&lt;no title&gt; &mdash; Numeric course 0.1 documentation</title>
   
 
   
@@ -37,9 +37,7 @@
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Numeric notebooks" href="notebook_toc.html" />
-    <link rel="prev" title="Dates" href="schedule20.html" /> 
+    <link rel="search" title="Search" href="search.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -83,12 +81,12 @@
               
             
             
-              <ul class="current">
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="course_bootstrap.html">Getting started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ugradsyllabus20.html">Undergrad Syllabus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gradsyllabus20.html">Grad Syllabus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="schedule20.html">Detailed Schedule</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Optional texts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="texts.html">Optional texts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebook_toc.html">Course/lab descriptions</a></li>
 </ul>
 
@@ -135,13 +133,13 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Optional textbooks</li>
+      <li>&lt;no title&gt;</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/texts.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/powershell_table.md.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -178,42 +176,56 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="optional-textbooks">
-<h1>Optional textbooks<a class="headerlink" href="#optional-textbooks" title="Permalink to this headline">¶</a></h1>
-<p>The labs in this course are meant to be self-contained.  If you’d like additional information/greater depth here are
-some texts that we have found useful:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="http://www-personal.umich.edu/~mejn/computational-physics/">Computational Physics with Python</a>
-<a class="reference external" href="http://www.amazon.ca/Computational-Physics-Mark-Newman/dp/1480145513">Amazon.ca link</a></p>
-<ul>
-<li><p>Comprehensive treatment of our course topics using physics-examples (but obviously the techniques and equations apply
-to all disciplines).  Good python intro material in Chapters 2 and 3 can be downloaded at the author’s website.</p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="http://webcat1.library.ubc.ca/vwebv/holdingsInfo?bibId=1062079">Introduction to applied mathematics, Gilbert Strang</a>
-Compact chapters on ordinary differential equations and linear algebra</p></li>
-<li><p><a class="reference external" href="http://webcat1.library.ubc.ca/vwebv/holdingsInfo?searchId=221651&amp;recCount=10&amp;recPointer=1&amp;bibId=2437826">Numerical analysis – Burden and Faires</a></p></li>
-<li><p><a class="reference external" href="http://webcat1.library.ubc.ca/vwebv/holdingsInfo?searchId=221672&amp;recCount=10&amp;recPointer=1&amp;bibId=491733">Elemenatary differential equations – Boyce and de Prima</a></p></li>
-<li><p><a class="reference external" href="http://apps.nrbook.com/fortran/index.html">Numerical recipes free online edition</a></p></li>
-<li><p><a class="reference external" href="http://www.amazon.ca/Schaums-Outline-Numerical-Analysis-Francis/dp/0070552215">Schaum’s outline of Numerical Analysis</a></p></li>
-<li><p><a class="reference external" href="http://www.amazon.ca/Schaums-Outline-Differential-Equations-Edition/dp/0071824855/ref=pd_sim_14_7?ie=UTF8&amp;refRID=00K1TCAPNXMD652MYV6N">Schaum’s outline of Differential Equations</a></p></li>
-</ul>
+<p>—
+jupyter:</p>
+<blockquote>
+<div><dl>
+<dt>jupytext:</dt><dd><p>cell_metadata_filter: -all
+text_representation:</p>
+<blockquote>
+<div><p>extension: .md
+format_name: markdown
+format_version: ‘1.2’
+jupytext_version: 1.3.1</p>
+</div></blockquote>
+</dd>
+<dt>kernelspec:</dt><dd><p>display_name: Python 3
+language: python
+name: python3</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>—</p>
+<p># Bash and powershell command reference</p>
+<div class="line-block">
+<div class="line">Cmdlet | Alias | Bash Equivalent | Description |</div>
+<div class="line">——- | ——- | ——- | ——- |</div>
+<div class="line"><cite>Get-ChildItem</cite> | <cite>gci</cite> | <cite>ls</cite> | List the directories and files in the current location. |</div>
+<div class="line"><cite>Set-Location</cite> | <cite>sl</cite> | <cite>cd</cite> | Change to the directory at the given path. Typing <cite>..</cite> rather than a path will move up one directory. |</div>
+<div class="line"><cite>Push-Location</cite> | <cite>pushd</cite> | <cite>pushd</cite> | Changes to the directory. |</div>
+<div class="line"><cite>Pop-Location</cite> | <cite>popd</cite> | <cite>popd</cite> | Changes back to the previous directory after using <cite>pushd</cite> |</div>
+<div class="line"><cite>New-Item</cite> | <cite>ni</cite> | (<cite>touch</cite>) | Creates a new item. Used with no parameter, the item is by default a file. Using <cite>mkdir</cite> is a shortcut for including the parameter <cite>-ItemType dir</cite>. |</div>
+<div class="line"><cite>mkdir</cite> | none | <cite>mkdir</cite> | Creates a new directory. (See <cite>New-Item</cite>.) |</div>
+<div class="line"><cite>Explorer</cite> | none | (<cite>open</cite>) | Open something using File Explorer (the GUI) |</div>
+<div class="line"><cite>Remove-Item</cite> | <cite>rm</cite> | <cite>rm</cite> | Deletes something. Permanently! |</div>
+<div class="line"><cite>Move-Item</cite> | <cite>mv</cite> | <cite>mv</cite> | Moves something. Takes two arguments - first a filename (i.e. its present path), then a path for its new location (including the name it should have there). By not changing the path, it can be used to rename files. |</div>
+<div class="line"><cite>Copy-Item</cite> | <cite>cp</cite> | <cite>cp</cite> | Copies a file to a new location. Takes same arguments as move, but keeps the original file in its location. |</div>
+<div class="line"><cite>Write-Output</cite> | <cite>write</cite> | <cite>echo</cite> | Outputs whatever you type. Use redirection to output to a file. Redirection with <cite>&gt;&gt;</cite> will add to the file, rather than overwriting contents. |</div>
+<div class="line"><cite>Get-Content</cite> | <cite>gc</cite> | <cite>cat</cite> | Gets the contents of a file and prints it to the screen. Adding the parameter <cite>-TotalCount</cite> followed by a number x prints only the first x lines. Adding the parameter <cite>-Tail</cite> followed by a number x prints only the final x lines. |</div>
+<div class="line"><cite>Select-String</cite> | <cite>sls</cite> | (<cite>grep</cite>) | Searches for specific content. |</div>
+<div class="line"><cite>Measure-Object</cite> | <cite>measure</cite> | (<cite>wc</cite>) | Gets statistical information about an object. Use <cite>Get-Content</cite> and pipe the output to <cite>Measure-Object</cite> with the parameters <cite>-line</cite>, <cite>-word</cite>, and <cite>-character</cite> to get word count information. |</div>
+<div class="line"><cite>&gt;</cite> | none | <cite>&gt;</cite> <a href="#id1"><span class="problematic" id="id2">|</span></a>Redirection. Puts the output of the command to the left of <cite>&gt;</cite> into a file to the right of <cite>&gt;</cite>. |</div>
+<div class="line"><cite>|</cite> | none | <cite>|</cite> <a href="#id3"><span class="problematic" id="id4">|</span></a>Piping. Takes the output of the command to the left and uses it as the input for the command to the right. |</div>
+<div class="line"><cite>Get-Help</cite> | none | <cite>man</cite> | Gets the help file for a cmdlet. Adding the parameter <cite>-online</cite> opens the help page on TechNet. |</div>
+<div class="line"><cite>exit</cite> | none | <cite>exit</cite> | Exits PowerShell |</div>
 </div>
+<p>Remember the keyboard shortcuts of <cite>tab</cite> for auto-completion and the up and down arrows to scroll through recent commands. These shortcuts can save a lot of typing!</p>
 
 
            </div>
            
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="notebook_toc.html" class="btn btn-neutral float-right" title="Numeric notebooks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="schedule20.html" class="btn btn-neutral float-left" title="Dates" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>

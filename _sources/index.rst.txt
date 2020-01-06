@@ -10,7 +10,6 @@ Numerical Methods
    :maxdepth: 1
 
    Getting started <course_bootstrap.rst>           
-      
               
    Undergrad Syllabus  <ugradsyllabus20>
 
@@ -18,8 +17,6 @@ Numerical Methods
    
    Detailed Schedule <schedule20>
               
-   Python resources: start here <python>
-
    Optional texts <texts>
    
    Course/lab descriptions <notebook_toc>
