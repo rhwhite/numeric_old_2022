@@ -4,7 +4,7 @@ find all notebooks and write a json file
 that that gives the notebooks and their rendered
 destination
 
-example:  python $sphinxlib/find_notebooks.py 
+example:  python scripts/find_notebooks.py docs/doc_notebooks notebook_docs_filelist.json
 """
 from pathlib import Path
 import click
