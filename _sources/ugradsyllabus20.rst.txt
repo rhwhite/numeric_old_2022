@@ -102,9 +102,12 @@ covered in the quizzes.
 
    -  Estimate: 8 hours
 
-   -  Quiz #1 Objectives [2]_ pertaining to Lab 1 sections 4-6
+   -  Quiz #1 Objectives [2]_ pertaining to Lab 1 sections
+      Introduction, Discretization, Difference Approximations to the
+      First Derivative
 
-   -  Quiz #2 Objectives pertaining to Lab 1 and Lab 2 sections 4-5.
+   -  Quiz #2 Objectives pertaining to Lab 1 all sections and Lab 2
+      sections Introduction, Accuracy of Difference Approximations
 
    -  Assignment: See web.
 
@@ -112,9 +115,10 @@ covered in the quizzes.
 
    -  Estimate: 6 hours
 
-   -  Quiz #2 Objectives pertaining to Lab 1 and Lab 2 sections 4-5.
+   -  Quiz #2 Objectives pertaining to Lab 1 all section and Lab 2 sections Introduction, Accuracy of Difference Approximations
 
-   -  Quiz #3 Objectives pertaining to Lab 2 and Lab 3 section 4.
+   -  Quiz #3 Objectives pertaining to Lab 2 all sections and Lab 3
+      section Linear Systems.
 
    -  Assignment: See web.
 
@@ -122,9 +126,10 @@ covered in the quizzes.
 
    -  Estimate: 8 hours
 
-   -  Quiz #3 Objectives pertaining to Lab 2 and Lab 3 section 4.
+   -  Quiz #3 Objectives pertaining to Lab 2 all sections and Lab 3
+      section Linear Systems.
 
-   -  Quiz #4 Objectives pertaining to Lab 3.
+   -  Quiz #4 Objectives pertaining to Lab 3 all sections.
 
    -  Assignment: See web.
 
@@ -138,9 +143,11 @@ covered in the quizzes.
 
    -  Estimate: 8 hours
 
-   -  Quiz #5 Objectives pertaining to Lab 4 sections 4-5.2
+   -  Quiz #5 Objectives pertaining to Lab 4 section Solving Ordinary
+      Diff. Eqns with the Runge-Kutta Method, to end of subsection The
+      Runge-Kutta Tableau
 
-   -  Quiz #6 Objectives pertaining to Lab 4 and Lab 5 section 4
+   -  Quiz #6 Objectives pertaining to Lab 4 all sections and Lab 5 section Daisyworld
 
    -  Assignment: See web.
 
@@ -148,9 +155,10 @@ covered in the quizzes.
 
    -  Estimate: 6 hours
 
-   -  Quiz #6 Objectives pertaining to Lab 4 and Lab 5 section 4
+   -  Quiz #6 Objectives pertaining to Lab 4 all sections and Lab 5
+      section Daisyworld
 
-   -  Quiz #7 Objectives pertaining to Lab 5
+   -  Quiz #7 Objectives pertaining to Lab 5 all sections
 
    -  Assignment: 4a, 4b, 6-1, 6-2, 6-3
 
@@ -164,7 +172,8 @@ covered in the quizzes.
 
    -  Estimate: 8 hours
 
-   -  Quiz #8 Objectives pertaining to Lab 7 section 4-5.3
+   -  Quiz #8 Objectives pertaining to Lab 7 sections Physical Example,
+      Poincare Waves and Numerical Solution
 
    -  Assignment: See web.
 
@@ -172,7 +181,8 @@ covered in the quizzes.
 
    -  Estimate: 8 hours
 
-   -  Quiz #8 Objections pertaining to Lab 6 section 4
+   -  Quiz #8 Objections pertaining to Lab 6 sections Introduction and
+      the Lorenz Equations
 
 -  Assignment: See web.
 
