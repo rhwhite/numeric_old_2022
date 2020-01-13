@@ -100,15 +100,26 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#Introduction">Introduction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Accuracy-of-Difference-Approximations">Accuracy of Difference Approximations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Example-Accuracy">Example Accuracy</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#Round-off-Error-and-Discretization-Error">Round-off Error and Discretization Error</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Where-does-the-error-come-from?">Where does the error come from?</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#Problem-Error-–-hand-in-png-file-or-paper">Problem Error – hand-in png file or paper</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#How-can-we-control-the-error?">How can we control the error?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Problem-Accuracy:-hand-in-as-part-of-a-jupyter-notebook">Problem Accuracy: hand in as part of a jupyter notebook</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#Other-Approximations-to-the-First-Derivative">Other Approximations to the First Derivative</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#Accuracy-Summary">Accuracy Summary</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#Stability-of-Difference-Approximations">Stability of Difference Approximations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Stability-of-Difference-Approximations">Stability of Difference Approximations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Problem-Stability-–-hand-in-as-part-of-a-jupyter-notebook">Problem Stability – hand in as part of a jupyter notebook</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Problem-Backward-Euler-–-hand-in-png-file-or-paper">Problem Backward Euler – hand in png file or paper</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#Stiff-Equations">Stiff Equations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Difference-Approximations-of-Higher-Derivatives">Difference Approximations of Higher Derivatives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Difference-Approximations-of-Higher-Derivatives">Difference Approximations of Higher Derivatives</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Problem-Taylor:-Hand-in-png-file-or-paper">Problem Taylor: Hand in png file or paper</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#Summary">Summary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Mathematical-Notes">Mathematical Notes</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#Taylor-Polynomials-and-Taylor-Series">Taylor Polynomials and Taylor Series</a></li>
@@ -422,14 +433,21 @@ div.rendered_html tbody tr:hover {
 <ul class="toc-item"><li><p>1.3.1  Other recommended books</p>
 </li></ul></li><li><p>1.4  Introduction</p>
 </li><li><p>1.5  Accuracy of Difference Approximations</p>
-<ul class="toc-item"><li><p>1.5.1  Round-off Error and Discretization Error</p>
-</li><li><p>1.5.2  Problem Error – hand-in png file or paper</p>
-</li><li><p>1.5.3  Other Approximations to the First Derivative</p>
-</li><li><p>1.5.4  Accuracy Summary</p>
+<ul class="toc-item"><li><p>1.5.1  Example Accuracy</p>
+</li><li><p>1.5.2  Round-off Error and Discretization Error</p>
+</li><li><p>1.5.3  Where does the error come from?</p>
+</li><li><p>1.5.4  Problem Error – hand-in png file or paper</p>
+</li><li><p>1.5.5  How can we control the error?</p>
+</li><li><p>1.5.6  Problem Accuracy: hand in as part of a jupyter notebook</p>
+</li><li><p>1.5.7  Other Approximations to the First Derivative</p>
+</li><li><p>1.5.8  Accuracy Summary</p>
 </li></ul></li><li><p>1.6  Stability of Difference Approximations</p>
-</li><li><p>1.7  Stiff Equations</p>
+<ul class="toc-item"><li><p>1.6.1  Problem Stability – hand in as part of a jupyter notebook</p>
+</li><li><p>1.6.2  Problem Backward Euler – hand in png file or paper</p>
+</li></ul></li><li><p>1.7  Stiff Equations</p>
 </li><li><p>1.8  Difference Approximations of Higher Derivatives</p>
-</li><li><p>1.9  Summary</p>
+<ul class="toc-item"><li><p>1.8.1  Problem Taylor: Hand in png file or paper</p>
+</li></ul></li><li><p>1.9  Summary</p>
 </li><li><p>1.10  Mathematical Notes</p>
 <ul class="toc-item"><li><p>1.10.1  Taylor Polynomials and Taylor Series</p>
 </li><li><p>1.10.2  Floating Point Representation of Numbers</p>
@@ -519,6 +537,8 @@ always depend on the problem that is being dealt with.</p>
 <div class="section" id="Accuracy-of-Difference-Approximations">
 <h2>Accuracy of Difference Approximations<a class="headerlink" href="#Accuracy-of-Difference-Approximations" title="Permalink to this headline">¶</a></h2>
 <p>Before moving on to the details of how to measure the error in a scheme, let’s take a closer look at another example which we’ve seen already …</p>
+<div class="section" id="Example-Accuracy">
+<h3>Example Accuracy<a class="headerlink" href="#Example-Accuracy" title="Permalink to this headline">¶</a></h3>
 <p>Let’s go back to the heat conduction equation from Lab #1, where the temperature, <span class="math notranslate nohighlight">\(T(t)\)</span>, of a rock immersed in water or air, evolves in time according to the first order ODE:</p>
 <div class="math notranslate nohighlight">
 \[\frac{dT}{dt} = \lambda(T,t) \, (T-T_a)\]</div>
@@ -617,6 +637,7 @@ through /Users/phil/repos/numeric/notebooks/lab2/context.py
 <p><strong>Figure 1</strong> A plot of the exact and computed solutions for the temperature of a rock, with parameters: <span class="math notranslate nohighlight">\(T_a=20\)</span>, <span class="math notranslate nohighlight">\(T(0)=30\)</span>, <span class="math notranslate nohighlight">\(\lambda= +0.8\)</span>, <span class="math notranslate nohighlight">\(\Delta t=\frac{1}{3}\)</span></p>
 <p>Notice from these results that the centered/leapfrog scheme is the most accurate, and backward Euler the least accurate.</p>
 <p>The next section explains why some schemes are more accurate than others, and introduces a means to quantify the accuracy of a numerical approximation.</p>
+</div>
 <div class="section" id="Round-off-Error-and-Discretization-Error">
 <h3>Round-off Error and Discretization Error<a class="headerlink" href="#Round-off-Error-and-Discretization-Error" title="Permalink to this headline">¶</a></h3>
 <p>From <a class="reference external" href="#ex_accuracy">Example Accuracy</a> and the example in the Forward Euler section of the previous lab,  it is obvious that a numerical approximation is exactly that - <strong>an approximation</strong>. The process of discretizing a differential equation inevitably leads to errors. In this section, we will tackle two fundamental questions related to the accuracy of a numerical approximation:</p>
@@ -624,9 +645,11 @@ through /Users/phil/repos/numeric/notebooks/lab2/context.py
 <li><p>Where does the error come from (and how can we measure it)?</p></li>
 <li><p>How can the error be controlled?</p></li>
 </ul>
+</div>
 <div class="section" id="Where-does-the-error-come-from?">
-<h4>Where does the error come from?<a class="headerlink" href="#Where-does-the-error-come-from?" title="Permalink to this headline">¶</a></h4>
-<p>#####Round-off error:</p>
+<h3>Where does the error come from?<a class="headerlink" href="#Where-does-the-error-come-from?" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="Round-off-error:">
+<h4>Round-off error:<a class="headerlink" href="#Round-off-error:" title="Permalink to this headline">¶</a></h4>
 <p>When attempting to solve differential equations on a computer, there are two main sources of error. The first, <em>round-off error</em>, derives from the fact that a computer can only represent real numbers by <em>floating point</em> approximations, which have only a finite number of digits of accuracy.</p>
 <ul class="simple">
 <li><p>Mathematical note <a class="reference external" href="#floating-point">floating point notation</a></p></li>
@@ -636,8 +659,9 @@ through /Users/phil/repos/numeric/notebooks/lab2/context.py
 <div class="math notranslate nohighlight">
 \[\frac{\pi}{(\pi + 0.00000001)-\pi}.\]</div>
 <p>Since the computer can only “see” 8 significant digits, the addition <span class="math notranslate nohighlight">\(\pi+0.00000001\)</span> is simply equal to <span class="math notranslate nohighlight">\(\pi\)</span> as far as the computer is concerned. Hence, the computed result is <span class="math notranslate nohighlight">\(\frac{1}{0}\)</span> - an undefined expression! The exact answer <span class="math notranslate nohighlight">\(100000000\pi\)</span>, however, is a very well-defined non-zero value.</p>
+</div>
 <div class="section" id="Truncation-error:">
-<h5>Truncation error:<a class="headerlink" href="#Truncation-error:" title="Permalink to this headline">¶</a></h5>
+<h4>Truncation error:<a class="headerlink" href="#Truncation-error:" title="Permalink to this headline">¶</a></h4>
 <p>The second source of error stems from the discretization of the problem, and hence is called <em>discretization error</em> or <em>truncation error</em>. In comparison, round-off error is always present, and is independent of the discretization being used. The simplest and most common way to analyse the truncation error in a scheme is using <em>Taylor series expansions</em>.</p>
 <p>Let us begin with the forward difference formula for the first derivative, , which involves the discrete solution at times <span class="math notranslate nohighlight">\(t_{i+1}\)</span> and <span class="math notranslate nohighlight">\(t_{i}\)</span>. Since only continuous functions can be written as Taylor series, we expand the exact solution (instead of the discrete values <span class="math notranslate nohighlight">\(T_i\)</span>) at the discrete point <span class="math notranslate nohighlight">\(t_{i+1}\)</span>:</p>
 <div class="math notranslate nohighlight">
@@ -663,7 +687,7 @@ _{\mbox{ truncation error}} \\ \;
 <p>but this expression can only be evaluated if the exact solution is known ahead of time (which is not the case in most problems we want to compute, since otherwise we wouldn’t be computing it in the first place!). Therefore, when we refer to truncation error, we will always be referring to the local truncation error.</p>
 </div>
 <div class="section" id="Second-order-accuracy">
-<h5>Second order accuracy<a class="headerlink" href="#Second-order-accuracy" title="Permalink to this headline">¶</a></h5>
+<h4>Second order accuracy<a class="headerlink" href="#Second-order-accuracy" title="Permalink to this headline">¶</a></h4>
 <p>Above we mentioned a problem with evaluating the mid-point method. If we start with three points <span class="math notranslate nohighlight">\((t_0,t_1,t_2)\)</span>, each separated by <span class="math notranslate nohighlight">\(\Delta t/2\)</span> so that <span class="math notranslate nohighlight">\(t_2 - t_0=\Delta t\)</span></p>
 <p><span class="math">\begin{align}
 y(t_2)&=y(t_1) + y^\prime (t_1,y(t_1))(t_2 - t_1) + \frac{y^{\prime \prime}(t_1,y(t_1))}{2} (t_2 - t_1)^2 + \frac{y^{\prime \prime \prime}(t_1,y(t_1))}{6} (t_2 - t_1)^3 + h.o.t. \ (eq.\ a)\\
@@ -682,7 +706,7 @@ y(t_2)&=y(t_0) + \Delta t y^\prime (t_1,y(t_1))  + \frac{\Delta t^3}{24} y^{\pri
 <p>Comparing with <a class="reference external" href="#eq:%20feuler">eq: feuler</a> we can see that we’ve canceled the <span class="math notranslate nohighlight">\(\Delta t^2\)</span> terms, so that if we drop the <span class="math notranslate nohighlight">\(\frac{\Delta t^3}{24} y^{\prime \prime \prime}(t_1,y(t_1))\)</span> and higher order terms we’re doing one order better that foward euler, as long as we can solve the problem of estimating y at the midpoint: <span class="math notranslate nohighlight">\(y(t_1) = y(t_0 + \Delta t/2)\)</span></p>
 </div>
 <div class="section" id="mid-point-and-leapfrog">
-<h5>mid-point and leapfrog<a class="headerlink" href="#mid-point-and-leapfrog" title="Permalink to this headline">¶</a></h5>
+<h4>mid-point and leapfrog<a class="headerlink" href="#mid-point-and-leapfrog" title="Permalink to this headline">¶</a></h4>
 <div class="line-block">
 <div class="line">The mid-point and leapfrog methods take two slightly different approaches to estimating <span class="math notranslate nohighlight">\(y(t_0 + \Delta t/2)\)</span>.</div>
 <div class="line">For the <a class="reference external" href="https://en.wikipedia.org/wiki/Midpoint_method">explicit mid-point method</a>, we estimate <span class="math notranslate nohighlight">\(y\)</span> at the midpoint by taking a half-step:</div>
@@ -703,7 +727,6 @@ y(t_0 + 2 \Delta t)  & = y(t_0 + \Delta t) + \Delta t y^\prime(t_0 + 3\Delta t/2
 <p>The leapfrog scheme has the advantage that it is <em>time reversible</em> or as the Wikipedia article says <em>sympletic</em>. This means that estimating <span class="math notranslate nohighlight">\(y(t_1)\)</span> and then using that value to go backwards by <span class="math notranslate nohighlight">\(-\Delta t\)</span> yields <span class="math notranslate nohighlight">\(y(t_0)\)</span> exactly, which the mid-point method does not. The mid-point method, however, is one member (the 2nd order member) of a family of <em>Runge Kutta</em> integrators, which will be covered in more detail in Lab 4.</p>
 <div id="Problem-Error" /></div>
 </div>
-</div>
 <div class="section" id="Problem-Error-–-hand-in-png-file-or-paper">
 <h3>Problem Error – hand-in png file or paper<a class="headerlink" href="#Problem-Error-–-hand-in-png-file-or-paper" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
@@ -716,8 +739,9 @@ y(t_0 + 2 \Delta t)  & = y(t_0 + \Delta t) + \Delta t y^\prime(t_0 + 3\Delta t/2
 </ol>
 </li>
 </ul>
+</div>
 <div class="section" id="How-can-we-control-the-error?">
-<h4>How can we control the error?<a class="headerlink" href="#How-can-we-control-the-error?" title="Permalink to this headline">¶</a></h4>
+<h3>How can we control the error?<a class="headerlink" href="#How-can-we-control-the-error?" title="Permalink to this headline">¶</a></h3>
 <p>Now that we’ve determined the source of the error in numerical methods, we would like to find a way to control it; that is, we would like to be able to compute and be confident that our approximate solution is “close” to the exact solution. Round-off error is intrinsic to all numerical computations, and cannot be controlled (except to develop methods that do not magnify the error unduly … more on this later). Truncation error, on the other hand, <em>is</em> under our control.</p>
 <p>In the simple ODE examples that we’re dealing with in this lab, the round-off error in a calculation is much smaller than the truncation error. Furthermore, the schemes being used are <em>stable with respect to round-off error</em> in the sense that round-off errors are not magnified in the course of a computation. So, we will restrict our discussion of error control in what follows to the truncation error.</p>
 <p>However, there are many numerical algorithms in which the round-off error can dominate the the result of a computation (Gaussian elimination is one example, which you will see in Lab #3 ), and so we must always keep it in mind when doing numerical computations.</p>
@@ -727,8 +751,9 @@ y(t_0 + 2 \Delta t)  & = y(t_0 + \Delta t) + \Delta t y^\prime(t_0 + 3\Delta t/2
 <li><p>Increase the order of the approximation. We saw above that the forward difference approximation of the first derivative is first order accurate in the grid spacing. It is also possible to derive higher order difference formulas which have a leading error term of the form <span class="math notranslate nohighlight">\((\Delta t)^p\)</span>, with <span class="math notranslate nohighlight">\(p&gt;1\)</span>. As noted above in <a class="reference external" href="#sec_secondOrder">Section Second Order</a> in the midpoint formula is a second order scheme, and some further examples will be given in <a class="reference external" href="#sec_HigherOrderTaylor">Section Higher order
 Taylor</a>. The main disadvantage to using very high order schemes is that the error term depends on higher derivatives of the solution, which can sometimes be very large – in this case, the stability of the scheme can be adversely affected (for more on this, see <a class="reference external" href="#sec_stability">Section Stability</a>.</p></li>
 </ol>
-<div id="Problem-Accuracy" /><div class="section" id="Problem-Accuracy:-hand-in-as-part-of-a-jupyter-notebook">
-<h5>Problem Accuracy: hand in as part of a jupyter notebook<a class="headerlink" href="#Problem-Accuracy:-hand-in-as-part-of-a-jupyter-notebook" title="Permalink to this headline">¶</a></h5>
+<div id="Problem-Accuracy" /></div>
+<div class="section" id="Problem-Accuracy:-hand-in-as-part-of-a-jupyter-notebook">
+<h3>Problem Accuracy: hand in as part of a jupyter notebook<a class="headerlink" href="#Problem-Accuracy:-hand-in-as-part-of-a-jupyter-notebook" title="Permalink to this headline">¶</a></h3>
 <p>In order to investigate these two approaches to improving the accuracy of an approximation, you can use the code in <a class="reference external" href="https://github.com/phaustin/numeric/blob/master/numlabs/lab2/terror2.py">terror.py</a> to play with the solutions to the heat conduction equation. For a given function <span class="math notranslate nohighlight">\(\lambda(T)\)</span>, and specified parameter values, you should experiment with various time steps and schemes, and compare the computed results (Note: only the answers to the assigned questions need to be handed
 in). Look at the different schemes (euler, leapfrog, midpoint, 4th order runge kutta) run them for various total times (tend) and step sizes (dt=tend/npts).</p>
 <p>The three schemes that will be used here are forward Euler (first order), leap frog (second order) and the fourth order Runge-Kutta scheme (which will be introduced in Lab 4).</p>
@@ -749,8 +774,6 @@ in). Look at the different schemes (euler, leapfrog, midpoint, 4th order runge k
 </li>
 </ul>
 </div>
-</div>
-</div>
 <div class="section" id="Other-Approximations-to-the-First-Derivative">
 <h3>Other Approximations to the First Derivative<a class="headerlink" href="#Other-Approximations-to-the-First-Derivative" title="Permalink to this headline">¶</a></h3>
 <p>The Taylor series method of deriving difference formulae for the first derivative is the simplest, and can be used to obtain approximations with even higher order than two. There are also many other ways to discretize the derivatives appearing in ODE’s, as shown in the following sections…</p>
@@ -765,7 +788,7 @@ in). Look at the different schemes (euler, leapfrog, midpoint, 4th order runge k
 <div class="math notranslate nohighlight">
 \[\frac{-T(t_{i+2})+8T(t_{i+1})-8T(t_{i-1})+T(t_{i-2})}{12\Delta t} =
   T^\prime(t_i) + {\cal O}((\Delta t)^4)\]</div>
-<p><strong>Quiz:</strong> Try the quiz at <a class="reference external" href="https://phaustin.github.io/numeric">this link</a> related to this higher order scheme.</p>
+<p><strong>Quiz:</strong> Try the quiz at <a class="reference external" href="https://phaustin.github.io/numeric/quizzes2/order.html">this link</a> related to this higher order scheme.</p>
 </div>
 <div class="section" id="Predictor-Corrector-Methods">
 <h4>Predictor-Corrector Methods<a class="headerlink" href="#Predictor-Corrector-Methods" title="Permalink to this headline">¶</a></h4>
@@ -816,7 +839,9 @@ methods). When selecting a numerical scheme, it is important to keep in mind thi
 <div class="section" id="Stability-of-Difference-Approximations">
 <h2>Stability of Difference Approximations<a class="headerlink" href="#Stability-of-Difference-Approximations" title="Permalink to this headline">¶</a></h2>
 <p>The easiest way to introduce the concept of stability is for you to see it yourself.</p>
-<div id="Problem-Stability" /><p>This example is a slight modification of <a class="reference external" href="#Problem-Accuracy">Problem accuracy</a> from the previous section on accuracy. We will add one scheme (backward euler) and drop the 4th order Runge-Kutta, and change the focus from error to stability. The value of <span class="math notranslate nohighlight">\(\lambda\)</span> is assumed a constant, so that the backward Euler scheme results in an explicit method, and we’ll also compute a bit further in time, so that any instability manifests itself more clearly. Run the
+<div id="Problem-Stability" /><div class="section" id="Problem-Stability-–-hand-in-as-part-of-a-jupyter-notebook">
+<h3>Problem Stability – hand in as part of a jupyter notebook<a class="headerlink" href="#Problem-Stability-–-hand-in-as-part-of-a-jupyter-notebook" title="Permalink to this headline">¶</a></h3>
+<p>This example is a slight modification of <a class="reference external" href="#Problem-Accuracy">Problem accuracy</a> from the previous section on accuracy. We will add one scheme (backward euler) and drop the 4th order Runge-Kutta, and change the focus from error to stability. The value of <span class="math notranslate nohighlight">\(\lambda\)</span> is assumed a constant, so that the backward Euler scheme results in an explicit method, and we’ll also compute a bit further in time, so that any instability manifests itself more clearly. Run the
 <a class="reference external" href="https://github.com/phaustin/numeric/blob/master/numlabs/lab2/stability2.py">stability2.py</a> script in ipython or the notebook with <span class="math notranslate nohighlight">\(\lambda= -8\ s^{-1}\)</span>, with <span class="math notranslate nohighlight">\(\Delta t\)</span> values that just straddle the stability condition for the forward euler scheme (<span class="math notranslate nohighlight">\(\Delta t &lt; \frac{-2}{\lambda}\)</span>, derived below). Hand in plots with comments that show that 1) the stability condition does in fact predict the onset of the instablity in the euler scheme, and 2) the backward euler and leapfrog
 are either stable or unstable for the same <span class="math notranslate nohighlight">\(\Delta t\)</span> values. (you should run out to longer than tend=10 seconds to see if there is a delayed instability.)</p>
 <p>The heat conduction problem, as you saw in Lab #1, has solutions that are stable when <span class="math notranslate nohighlight">\(\lambda&lt;0\)</span>. It is clear from <a class="reference external" href="#Problem-Stability">Problem stability</a> above that some higher order schemes (namely, the leap-frog scheme) introduce a spurious oscillation not present in the continuous solution. This is called a <em>computational</em> or <em>numerical instability</em>, because it is an artifact of the discretization process only. This instability is not a characteristic of the heat conduction problem
@@ -843,7 +868,12 @@ z_{i+1} &amp;=&amp; (1+\lambda \Delta t)z_{i} \\
 <div class="math notranslate nohighlight">
 \[\Delta t &lt; \frac{-2}{\lambda},\]</div>
 <p>which is a restriction on how large the time step can be so that the numerical solution is stable.</p>
-<div id="Problem-Backward-Euler" /><p>Perform a similar analysis for the backward Euler formula, and show that it is <em>always stable</em> when <span class="math notranslate nohighlight">\(\lambda\)</span> is real and negative.</p>
+<div id="Problem-Backward-Euler" /></div>
+<div class="section" id="Problem-Backward-Euler-–-hand-in-png-file-or-paper">
+<h3>Problem Backward Euler – hand in png file or paper<a class="headerlink" href="#Problem-Backward-Euler-–-hand-in-png-file-or-paper" title="Permalink to this headline">¶</a></h3>
+<p>Perform a similar analysis for the backward Euler formula, and show that it is <em>always stable</em> when <span class="math notranslate nohighlight">\(\lambda\)</span> is real and negative.</p>
+<div class="section" id="Example:-leap-frog">
+<h4>Example: leap-frog<a class="headerlink" href="#Example:-leap-frog" title="Permalink to this headline">¶</a></h4>
 <p><em>Now, what about the leap frog scheme?</em></p>
 <p>Applying the test equation to the leap frog scheme results in the difference equation</p>
 <div class="math notranslate nohighlight">
@@ -900,6 +930,8 @@ explains the presence of the instability for the leap-frog scheme.</p>
 <p><strong>Figure numerical</strong>: Numerical solution to the undamped harmonic oscillator problem, using the forward Euler and leap-frog schemes. Parameter values: <span class="math notranslate nohighlight">\(\gamma / m=1.0\)</span>, <span class="math notranslate nohighlight">\(\Delta t=0.25\)</span>, <span class="math notranslate nohighlight">\(y(0)=0\)</span>, <span class="math notranslate nohighlight">\(u(0)=1.0\)</span>. The exact solution is a sinusoidal wave.</p>
 <p>Had we taken a larger time step (such as <span class="math notranslate nohighlight">\(\Delta t=2.0\)</span>, for example), then even the leap-frog scheme is unstable. Furthermore, if we add damping (<span class="math notranslate nohighlight">\(\beta\neq 0\)</span>), then the eigenvalues are no longer pure imaginary, and the leap frog scheme is unstable no matter what time step we use.</p>
 </div>
+</div>
+</div>
 <div class="section" id="Stiff-Equations">
 <h2>Stiff Equations<a class="headerlink" href="#Stiff-Equations" title="Permalink to this headline">¶</a></h2>
 <p>One final note: this Lab has dealt only with ODE’s (and systems of ODE’s) that are <em>non-stiff</em>. <em>Stiff equations</em> are equations that have solutions with at least two widely varying times scales over which the solution changes. An example of stiff solution behaviour is a problem with solutions that have rapid, transitory oscillations, which die out over a short time scale, after which the solution slowly decays to an equilibrium. A small time step is required in the initial transitory region in
@@ -913,7 +945,9 @@ order to capture the rapid oscillations. However, a larger time step can be take
 \[\frac{y(t_{i+1})-2y(t_i)+y(t_{i-1})}{(\Delta t)^2} =
   y^{\prime\prime}(t_i) + {\cal O}((\Delta t)^2),\]</div>
 <p>There are, of course, many other possible formulae that we might use, but this is the most commonly used.</p>
-<div id="Problem-Taylor" /><ul class="simple">
+<div id="Problem-Taylor" /><div class="section" id="Problem-Taylor:-Hand-in-png-file-or-paper">
+<h3>Problem Taylor: Hand in png file or paper<a class="headerlink" href="#Problem-Taylor:-Hand-in-png-file-or-paper" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
 <li><ol class="loweralpha simple">
 <li><p>Use Taylor series to derive this formula.</p></li>
 </ol>
@@ -923,6 +957,7 @@ order to capture the rapid oscillations. However, a larger time step can be take
 </ol>
 </li>
 </ul>
+</div>
 </div>
 <div class="section" id="Summary">
 <h2>Summary<a class="headerlink" href="#Summary" title="Permalink to this headline">¶</a></h2>
