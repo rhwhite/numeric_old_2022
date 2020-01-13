@@ -21,7 +21,6 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Both grad and undergrad should do each of the 5 problems below and upload their solutions to canvas as a zip file with a jupyter notebook containing the solutions to Problems Accuracy and Stability and png/pdf/paper solutions to probems Error, Backward-Euler and Taylor\n",
     "\n",
     "**Hint** -- as shown in class, installing:\n",
     "\n",
@@ -38,6 +37,8 @@
    "metadata": {},
    "source": [
     "## List of Problems\n",
+    "\n",
+    "Both grad and undergrad should do each of the 5 problems below and upload their solutions to canvas as a zip file with a jupyter notebook containing the solutions to Problems Accuracy and Stability and png/pdf/paper solutions to probems Error, Backward-Euler and Taylor\n",
     "\n",
     "- [Problem Error](#Problem-Error) \n",
     "- [Problem Accuracy](#Problem-Accuracy) \n",
@@ -1081,9 +1082,9 @@
     "\n",
     "### Problem Taylor:  Hand in png file or paper\n",
     "\n",
-    "-   a\\) Use Taylor series to derive this formula.\n",
+    "-   a) Use Taylor series to derive this formula.\n",
     "\n",
-    "-   b\\) Derive a higher order approximation."
+    "-   b) Derive a higher order approximation."
    ]
   },
   {

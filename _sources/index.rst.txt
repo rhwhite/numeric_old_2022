@@ -21,4 +21,6 @@ Numerical Methods
    
    Course/lab descriptions <notebook_toc>
 
+   Weekly assignments <assignments>
+   
    Quizzes <quizzes>
