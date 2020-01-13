@@ -89,7 +89,13 @@
 <li class="toctree-l2"><a class="reference internal" href="installing_jupytext.html#Student-installs">Student installs</a></li>
 <li class="toctree-l2"><a class="reference external" href="https://phaustin.github.io/pyman">Python introduction</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">The command line shell and git</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#Bash-and-powershell-command-reference">Bash and powershell command reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Using-the-command-line">Using the command line</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Powershell-and-Bash-common-commands">Powershell and Bash common commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#To-configure-powershell-on-windows">To configure powershell on windows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#To-configure-bash-or-zsh-on-MacOS">To configure bash or zsh on MacOS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Bash-and-powershell-command-reference">Bash and powershell command reference</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#Git">Git</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Pulling-changes-from-the-github-repository">Pulling changes from the github repository</a></li>
 </ul>
@@ -102,6 +108,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../schedule20.html">Detailed Schedule</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../texts.html">Optional texts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../notebook_toc.html">Course/lab descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../week_notes.html">Weekly notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assignments.html">Weekly assignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quizzes.html">Quizzes</a></li>
 </ul>
 
             
@@ -170,6 +179,204 @@
             
   
 <style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    min-width: 5ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
 /* CSS overrides for sphinx_rtd_theme */
 
 /* 24px margin */
@@ -198,8 +405,72 @@
 <li><p>The default shell on OSX is bash, which is taught in this set of lessons: <a class="reference external" href="https://swcarpentry.github.io/shell-novice/">https://swcarpentry.github.io/shell-novice/</a> or in this <a class="reference external" href="https://programminghistorian.org/en/lessons/intro-to-bash">detailed bash reference</a></p></li>
 <li><p>if you are on Windows, powershell is somewhat similar – here is a table listing commands for both shell side by side taken from this in-depth <a class="reference external" href="https://programminghistorian.org/en/lessons/intro-to-powershell#quick-reference">powershell tutorial</a></p></li>
 </ul>
+<div class="section" id="Using-the-command-line">
+<h2>Using the command line<a class="headerlink" href="#Using-the-command-line" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Powershell-and-Bash-common-commands">
+<h3>Powershell and Bash common commands<a class="headerlink" href="#Powershell-and-Bash-common-commands" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>To go to your $HOME folder:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cd ~
+
+or
+
+cd $HOME
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>To open explorer or finder for the current folder:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">windows</span> <span class="n">explorer</span> <span class="n">do</span><span class="p">:</span>
+
+   <span class="n">start</span> <span class="o">.</span>
+
+<span class="n">MacOs</span> <span class="n">finder</span> <span class="n">do</span><span class="p">:</span>
+
+   <span class="nb">open</span> <span class="o">.</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>To move up one folder:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">..</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>To save typing, remember that hitting the tab key completes filenames</p></li>
+</ul>
+</div>
+<div class="section" id="To-configure-powershell-on-windows">
+<h3>To configure powershell on windows<a class="headerlink" href="#To-configure-powershell-on-windows" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>first start a powershell terminal with admin privileges, then type:</p>
+<p><code class="docutils literal notranslate"><span class="pre">set-executionpolicy</span> <span class="pre">remotesigned</span></code></p>
+</li>
+<li><p>then, in your miniconda3 powershel profile, do:</p>
+<p><code class="docutils literal notranslate"><span class="pre">Test-Path</span> <span class="pre">$profile</span></code></p>
+<p>to see whether you have an existing profile.</p>
+</li>
+<li><p>if you don’t have a profile, then do the following (this will overwrite an existing profile, so be aware):</p>
+<p><code class="docutils literal notranslate"><span class="pre">New-Item</span> <span class="pre">–Path</span> <span class="pre">$Profile</span> <span class="pre">–Type</span> <span class="pre">File</span> <span class="pre">–Force</span></code></p>
+</li>
+<li><p>To add to your profile, open with:</p>
+<p><code class="docutils literal notranslate"><span class="pre">start</span> <span class="pre">$profile</span></code></p>
+</li>
+</ul>
+</div>
+<div class="section" id="To-configure-bash-or-zsh-on-MacOS">
+<h3>To configure bash or zsh on MacOS<a class="headerlink" href="#To-configure-bash-or-zsh-on-MacOS" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>open a terminal then type either</p>
+<p><code class="docutils literal notranslate"><span class="pre">open</span> <span class="pre">.bash_profile</span></code></p>
+<p>or for Catalina</p>
+<p><code class="docutils literal notranslate"><span class="pre">open</span> <span class="pre">.zshenv</span></code></p>
+</li>
+</ul>
+</div>
 <div class="section" id="Bash-and-powershell-command-reference">
-<h2>Bash and powershell command reference<a class="headerlink" href="#Bash-and-powershell-command-reference" title="Permalink to this headline">¶</a></h2>
+<h3>Bash and powershell command reference<a class="headerlink" href="#Bash-and-powershell-command-reference" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 25%" />
@@ -295,9 +566,9 @@ parameters <code class="docutils literal notranslate"><span class="pre">-line</s
 <td><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p></td>
 <td><p>Redirection. Puts the output of the command to the left of <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> into a file to the right of <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">|</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\|</span></code></p></td>
 <td><p>none</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">|</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">\|</span></code></p></td>
 <td><p>Piping. Takes the output of the command to the left and uses it as the input for the command to the right.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Get-Help</span></code></p></td>
@@ -313,6 +584,7 @@ parameters <code class="docutils literal notranslate"><span class="pre">-line</s
 </tbody>
 </table>
 <p>Remember the keyboard shortcuts of <code class="docutils literal notranslate"><span class="pre">tab</span></code> for auto-completion and the up and down arrows to scroll through recent commands. These shortcuts can save a lot of typing!</p>
+</div>
 </div>
 <div class="section" id="Git">
 <h2>Git<a class="headerlink" href="#Git" title="Permalink to this headline">¶</a></h2>
@@ -391,7 +663,7 @@ parameters <code class="docutils literal notranslate"><span class="pre">-line</s
 <ul class="simple">
 <li><p>If you know Matlab, there is <a class="reference external" href="http://wiki.scipy.org/NumPy_for_Matlab_Users">Numpy for Maltab users</a></p></li>
 <li><p>Here is a <a class="reference external" href="http://nbviewer.jupyter.org/gist/phaustin/1af744215e51562d010b9f6a19c0724c">python translation</a> by <a class="reference external" href="http://blogs.siam.org/from-matlab-guide-to-ipython-notebook/">Don MacMillen</a> of <a class="reference external" href="http://clouds.eos.ubc.ca/~phil/courses/atsc301/downloads_pw/matlab_guide_2nd.pdf">Chapter 1 of his matlab guide</a></p></li>
-<li><p><a class="reference external" href="pdffiles/Python-data-manipulations.pdf">Python data structure cheat sheet</a></p></li>
+<li><p><a class="reference external" href="pdfs/Python-data-manipulations.pdf">Python data structure cheat sheet</a></p></li>
 <li><p><a class="reference external" href="http://www.packtpub.com/numpy-mathematical-2e-beginners-guide/book">Numpy beginners guide</a></p></li>
 <li><p><a class="reference external" href="http://www.packtpub.com/learning-ipython-for-interactive-computing-and-data-visualization/book">Learning Ipython</a></p></li>
 <li><p><a class="reference external" href="http://docs.python.org/tut/tut.html">The official Python tutorial</a></p></li>
@@ -402,6 +674,15 @@ parameters <code class="docutils literal notranslate"><span class="pre">-line</s
 </ul>
 </li>
 </ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
 </div>
 
 

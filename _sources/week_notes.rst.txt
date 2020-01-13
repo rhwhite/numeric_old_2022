@@ -1,0 +1,18 @@
+Weekly notes
+++++++++++++
+
+* Week 1: Jan. 6
+
+  - Went over `laptop installs <https://phaustin.github.io/numeric/doc_notebooks/course_bootstrap/installing_jupytext.html#Student-installs>`_
+
+  - Started `lab 1 <https://phaustin.github.io/numeric/doc_notebooks/lab1/01-lab1.html>`_
+
+* Week 2: Jan. 13
+
+  - Introduced `git <doc_notebooks/course_bootstrap/python.html#Git>`_
+
+  - Go over `common command line commands <doc_notebooks/course_bootstrap/python.html#Powershell-and-Bash-common-commands>`_
+
+  - Look at `pyman/chap2_jupyter.ipynb <http://phaustin.github.io/pyman/notebooks/chap2_jupyter.html>`_ and `Lab 2 <https://phaustin.github.io/numeric/doc_notebooks/lab2/01-lab2.html#Stability-and-accuracy-(Jan.%C2%A02020)>`_
+    
+
