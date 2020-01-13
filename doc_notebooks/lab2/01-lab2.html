@@ -101,7 +101,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#Introduction">Introduction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Accuracy-of-Difference-Approximations">Accuracy of Difference Approximations</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#Round-off-Error-and-Discretization-Error">Round-off Error and Discretization Error</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#Problem-Error-–-hand-in-png-file-or-paper">Problem Error – hand in png file or paper</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Problem-Error-–-hand-in-png-file-or-paper">Problem Error – hand-in png file or paper</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#Other-Approximations-to-the-First-Derivative">Other Approximations to the First Derivative</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#Accuracy-Summary">Accuracy Summary</a></li>
 </ul>
@@ -423,7 +423,7 @@ div.rendered_html tbody tr:hover {
 </li></ul></li><li><p>1.4  Introduction</p>
 </li><li><p>1.5  Accuracy of Difference Approximations</p>
 <ul class="toc-item"><li><p>1.5.1  Round-off Error and Discretization Error</p>
-</li><li><p>1.5.2  Problem Error – hand in png file or paper</p>
+</li><li><p>1.5.2  Problem Error – hand-in png file or paper</p>
 </li><li><p>1.5.3  Other Approximations to the First Derivative</p>
 </li><li><p>1.5.4  Accuracy Summary</p>
 </li></ul></li><li><p>1.6  Stability of Difference Approximations</p>
@@ -435,7 +435,12 @@ div.rendered_html tbody tr:hover {
 </li><li><p>1.10.2  Floating Point Representation of Numbers</p>
 </li></ul></li></ul></li></ul></div><div class="section" id="Stability-and-accuracy-(Jan. 2020)">
 <h1>Stability and accuracy (Jan. 2020)<a class="headerlink" href="#Stability-and-accuracy-(Jan. 2020)" title="Permalink to this headline">¶</a></h1>
-<p>Both grad and undergrad should do each of the 5 problems below and upload their solutions to canvas.</p>
+<p>Both grad and undergrad should do each of the 5 problems below and upload their solutions to canvas as a zip file with a jupyter notebook containing the solutions to Problems Accuracy and Stability and png/pdf/paper solutions to probems Error, Backward-Euler and Taylor</p>
+<p><strong>Hint</strong> – as shown in class, installing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">jupyter_nbextensions_configurator</span>
+</pre></div>
+</div>
+<p>and setting up the table of contents sidebar extension makes it easier to move back and forth between problems.</p>
 <div class="section" id="List-of-Problems">
 <h2>List of Problems<a class="headerlink" href="#List-of-Problems" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -696,11 +701,11 @@ y(t_0 + 2 \Delta t)  & = y(t_0 + \Delta t) + \Delta t y^\prime(t_0 + 3\Delta t/2
 \end{align}</span></p>
 <p>Comparing (iii) and (iv) shows how the method gets its name: the half-interval and whole interval values are calculated by leaping over each other. Once the first half and whole steps are done, the rest of the integration is completed by repeating (iii) and (iv) as until the endpoint is reached.</p>
 <p>The leapfrog scheme has the advantage that it is <em>time reversible</em> or as the Wikipedia article says <em>sympletic</em>. This means that estimating <span class="math notranslate nohighlight">\(y(t_1)\)</span> and then using that value to go backwards by <span class="math notranslate nohighlight">\(-\Delta t\)</span> yields <span class="math notranslate nohighlight">\(y(t_0)\)</span> exactly, which the mid-point method does not. The mid-point method, however, is one member (the 2nd order member) of a family of <em>Runge Kutta</em> integrators, which will be covered in more detail in Lab 4.</p>
-</div>
+<div id="Problem-Error" /></div>
 </div>
 </div>
 <div class="section" id="Problem-Error-–-hand-in-png-file-or-paper">
-<h3>Problem Error – hand in png file or paper<a class="headerlink" href="#Problem-Error-–-hand-in-png-file-or-paper" title="Permalink to this headline">¶</a></h3>
+<h3>Problem Error – hand-in png file or paper<a class="headerlink" href="#Problem-Error-–-hand-in-png-file-or-paper" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><ol class="loweralpha simple">
 <li><p>Derive the error term for the backward difference formula using Taylor series, and hence show that it is also first order.</p></li>
@@ -722,8 +727,8 @@ y(t_0 + 2 \Delta t)  & = y(t_0 + \Delta t) + \Delta t y^\prime(t_0 + 3\Delta t/2
 <li><p>Increase the order of the approximation. We saw above that the forward difference approximation of the first derivative is first order accurate in the grid spacing. It is also possible to derive higher order difference formulas which have a leading error term of the form <span class="math notranslate nohighlight">\((\Delta t)^p\)</span>, with <span class="math notranslate nohighlight">\(p&gt;1\)</span>. As noted above in <a class="reference external" href="#sec_secondOrder">Section Second Order</a> in the midpoint formula is a second order scheme, and some further examples will be given in <a class="reference external" href="#sec_HigherOrderTaylor">Section Higher order
 Taylor</a>. The main disadvantage to using very high order schemes is that the error term depends on higher derivatives of the solution, which can sometimes be very large – in this case, the stability of the scheme can be adversely affected (for more on this, see <a class="reference external" href="#sec_stability">Section Stability</a>.</p></li>
 </ol>
-<div class="section" id="Problem-Accuracy:">
-<h5>Problem Accuracy:<a class="headerlink" href="#Problem-Accuracy:" title="Permalink to this headline">¶</a></h5>
+<div id="Problem-Accuracy" /><div class="section" id="Problem-Accuracy:-hand-in-as-part-of-a-jupyter-notebook">
+<h5>Problem Accuracy: hand in as part of a jupyter notebook<a class="headerlink" href="#Problem-Accuracy:-hand-in-as-part-of-a-jupyter-notebook" title="Permalink to this headline">¶</a></h5>
 <p>In order to investigate these two approaches to improving the accuracy of an approximation, you can use the code in <a class="reference external" href="https://github.com/phaustin/numeric/blob/master/numlabs/lab2/terror2.py">terror.py</a> to play with the solutions to the heat conduction equation. For a given function <span class="math notranslate nohighlight">\(\lambda(T)\)</span>, and specified parameter values, you should experiment with various time steps and schemes, and compare the computed results (Note: only the answers to the assigned questions need to be handed
 in). Look at the different schemes (euler, leapfrog, midpoint, 4th order runge kutta) run them for various total times (tend) and step sizes (dt=tend/npts).</p>
 <p>The three schemes that will be used here are forward Euler (first order), leap frog (second order) and the fourth order Runge-Kutta scheme (which will be introduced in Lab 4).</p>
@@ -811,7 +816,7 @@ methods). When selecting a numerical scheme, it is important to keep in mind thi
 <div class="section" id="Stability-of-Difference-Approximations">
 <h2>Stability of Difference Approximations<a class="headerlink" href="#Stability-of-Difference-Approximations" title="Permalink to this headline">¶</a></h2>
 <p>The easiest way to introduce the concept of stability is for you to see it yourself.</p>
-<p>This example is a slight modification of <a class="reference external" href="#Problem-Accuracy">Problem accuracy</a> from the previous section on accuracy. We will add one scheme (backward euler) and drop the 4th order Runge-Kutta, and change the focus from error to stability. The value of <span class="math notranslate nohighlight">\(\lambda\)</span> is assumed a constant, so that the backward Euler scheme results in an explicit method, and we’ll also compute a bit further in time, so that any instability manifests itself more clearly. Run the
+<div id="Problem-Stability" /><p>This example is a slight modification of <a class="reference external" href="#Problem-Accuracy">Problem accuracy</a> from the previous section on accuracy. We will add one scheme (backward euler) and drop the 4th order Runge-Kutta, and change the focus from error to stability. The value of <span class="math notranslate nohighlight">\(\lambda\)</span> is assumed a constant, so that the backward Euler scheme results in an explicit method, and we’ll also compute a bit further in time, so that any instability manifests itself more clearly. Run the
 <a class="reference external" href="https://github.com/phaustin/numeric/blob/master/numlabs/lab2/stability2.py">stability2.py</a> script in ipython or the notebook with <span class="math notranslate nohighlight">\(\lambda= -8\ s^{-1}\)</span>, with <span class="math notranslate nohighlight">\(\Delta t\)</span> values that just straddle the stability condition for the forward euler scheme (<span class="math notranslate nohighlight">\(\Delta t &lt; \frac{-2}{\lambda}\)</span>, derived below). Hand in plots with comments that show that 1) the stability condition does in fact predict the onset of the instablity in the euler scheme, and 2) the backward euler and leapfrog
 are either stable or unstable for the same <span class="math notranslate nohighlight">\(\Delta t\)</span> values. (you should run out to longer than tend=10 seconds to see if there is a delayed instability.)</p>
 <p>The heat conduction problem, as you saw in Lab #1, has solutions that are stable when <span class="math notranslate nohighlight">\(\lambda&lt;0\)</span>. It is clear from <a class="reference external" href="#Problem-Stability">Problem stability</a> above that some higher order schemes (namely, the leap-frog scheme) introduce a spurious oscillation not present in the continuous solution. This is called a <em>computational</em> or <em>numerical instability</em>, because it is an artifact of the discretization process only. This instability is not a characteristic of the heat conduction problem
@@ -838,7 +843,7 @@ z_{i+1} &amp;=&amp; (1+\lambda \Delta t)z_{i} \\
 <div class="math notranslate nohighlight">
 \[\Delta t &lt; \frac{-2}{\lambda},\]</div>
 <p>which is a restriction on how large the time step can be so that the numerical solution is stable.</p>
-<p>Perform a similar analysis for the backward Euler formula, and show that it is <em>always stable</em> when <span class="math notranslate nohighlight">\(\lambda\)</span> is real and negative.</p>
+<div id="Problem-Backward-Euler" /><p>Perform a similar analysis for the backward Euler formula, and show that it is <em>always stable</em> when <span class="math notranslate nohighlight">\(\lambda\)</span> is real and negative.</p>
 <p><em>Now, what about the leap frog scheme?</em></p>
 <p>Applying the test equation to the leap frog scheme results in the difference equation</p>
 <div class="math notranslate nohighlight">
@@ -908,7 +913,7 @@ order to capture the rapid oscillations. However, a larger time step can be take
 \[\frac{y(t_{i+1})-2y(t_i)+y(t_{i-1})}{(\Delta t)^2} =
   y^{\prime\prime}(t_i) + {\cal O}((\Delta t)^2),\]</div>
 <p>There are, of course, many other possible formulae that we might use, but this is the most commonly used.</p>
-<ul class="simple">
+<div id="Problem-Taylor" /><ul class="simple">
 <li><ol class="loweralpha simple">
 <li><p>Use Taylor series to derive this formula.</p></li>
 </ol>
