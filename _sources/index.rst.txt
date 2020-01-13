@@ -21,3 +21,4 @@ Numerical Methods
    
    Course/lab descriptions <notebook_toc>
 
+   Quizzes <quizzes>

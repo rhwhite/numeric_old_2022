@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Stability and accuracy (Sept. 12, 2017) &mdash; Numeric course 0.1 documentation</title>
+  <title>Stability and accuracy (Jan. 2020) &mdash; Numeric course 0.1 documentation</title>
   
 
   
@@ -94,30 +94,27 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Lab 2</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#List-of-Problems">List of Problems</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Objectives">Objectives</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Readings">Readings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Readings">Readings</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Other-recommended-books">Other recommended books</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#Introduction">Introduction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Accuracy-of-Difference-Approximations">Accuracy of Difference Approximations</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#Example-Accuracy">Example Accuracy</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#Truncation-error:">Truncation error:</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#Second-order-accuracy">Second order accuracy</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#mid-point-and-leapfrog">mid-point and leapfrog</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#Problem-Error">Problem Error</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#Problem-Accuracy:">Problem Accuracy:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Round-off-Error-and-Discretization-Error">Round-off Error and Discretization Error</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Problem-Error-–-hand-in-png-file-or-paper">Problem Error – hand in png file or paper</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Other-Approximations-to-the-First-Derivative">Other Approximations to the First Derivative</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Accuracy-Summary">Accuracy Summary</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#Stability-of-Difference-Approximations">Stability of Difference Approximations</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#Problem-Stability">Problem Stability</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#Problem-Backward-Euler">Problem Backward Euler</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#Example:-leap-frog">Example: leap-frog</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="#Stability-of-Difference-Approximations">Stability of Difference Approximations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Stiff-Equations">Stiff Equations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Difference-Approximations-of-Higher-Derivatives">Difference Approximations of Higher Derivatives</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#Problem-Taylor">Problem Taylor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Difference-Approximations-of-Higher-Derivatives">Difference Approximations of Higher Derivatives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Summary">Summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Mathematical-Notes">Mathematical Notes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Taylor-Polynomials-and-Taylor-Series">Taylor Polynomials and Taylor Series</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Floating-Point-Representation-of-Numbers">Floating Point Representation of Numbers</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#Summary">Summary</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Mathematical-Notes">Mathematical Notes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../lab3/01-lab3.html">Lab 3</a></li>
@@ -128,6 +125,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../lab6/lab6.html#List-of-Problems">List of Problems</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../quizzes.html">Quizzes</a></li>
 </ul>
 
             
@@ -175,7 +173,7 @@
         
           <li><a href="../../notebook_toc.html">Numeric notebooks</a> &raquo;</li>
         
-      <li>Stability and accuracy (Sept. 12, 2017)</li>
+      <li>Stability and accuracy (Jan. 2020)</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -416,27 +414,29 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<div class="section" id="Stability-and-accuracy-(Sept. 12,-2017)">
-<h1>Stability and accuracy (Sept. 12, 2017)<a class="headerlink" href="#Stability-and-accuracy-(Sept. 12,-2017)" title="Permalink to this headline">¶</a></h1>
-<p># Table of Contents</p>
-<div class="toc" style="margin-top: 1em;"><ul class="toc-item" id="toc-level0"><li><p>1  Stability and accuracy (Sept. 12, 2017)</p>
-</li><li><p>2  Stability and accuracy (Sept. 12, 2017)</p>
-<ul class="toc-item"><li><p>2.1  List of Problems</p>
-</li><li><p>2.2  Objectives</p>
-</li><li><p>2.3  Readings</p>
-</li><li><p>2.4  Introduction</p>
-</li><li><p>2.5  Accuracy of Difference Approximations</p>
-<ul class="toc-item"><li><p>2.5.1  Round-off Error and Discretization Error</p>
-</li><li><p>2.5.2  Other Approximations to the First Derivative</p>
-</li><li><p>2.5.3  Accuracy Summary</p>
-</li></ul></li><li><p>2.6  Stability of Difference Approximations</p>
-</li><li><p>2.7  Stiff Equations</p>
-</li><li><p>2.8  Difference Approximations of Higher Derivatives</p>
-</li><li><p>2.9  Summary</p>
-</li><li><p>2.10  Mathematical Notes</p>
-<ul class="toc-item"><li><p>2.10.1  Taylor Polynomials and Taylor Series</p>
-</li><li><p>2.10.2  Floating Point Representation of Numbers</p>
-</li></ul></li></ul></li></ul></div><div class="section" id="List-of-Problems">
+<h1><p>Table of Contents</p>
+</h1><div class="toc"><ul class="toc-item"><li><p>1  Stability and accuracy (Jan. 2020)</p>
+<ul class="toc-item"><li><p>1.1  List of Problems</p>
+</li><li><p>1.2  Objectives</p>
+</li><li><p>1.3  Readings</p>
+<ul class="toc-item"><li><p>1.3.1  Other recommended books</p>
+</li></ul></li><li><p>1.4  Introduction</p>
+</li><li><p>1.5  Accuracy of Difference Approximations</p>
+<ul class="toc-item"><li><p>1.5.1  Round-off Error and Discretization Error</p>
+</li><li><p>1.5.2  Problem Error – hand in png file or paper</p>
+</li><li><p>1.5.3  Other Approximations to the First Derivative</p>
+</li><li><p>1.5.4  Accuracy Summary</p>
+</li></ul></li><li><p>1.6  Stability of Difference Approximations</p>
+</li><li><p>1.7  Stiff Equations</p>
+</li><li><p>1.8  Difference Approximations of Higher Derivatives</p>
+</li><li><p>1.9  Summary</p>
+</li><li><p>1.10  Mathematical Notes</p>
+<ul class="toc-item"><li><p>1.10.1  Taylor Polynomials and Taylor Series</p>
+</li><li><p>1.10.2  Floating Point Representation of Numbers</p>
+</li></ul></li></ul></li></ul></div><div class="section" id="Stability-and-accuracy-(Jan. 2020)">
+<h1>Stability and accuracy (Jan. 2020)<a class="headerlink" href="#Stability-and-accuracy-(Jan. 2020)" title="Permalink to this headline">¶</a></h1>
+<p>Both grad and undergrad should do each of the 5 problems below and upload their solutions to canvas.</p>
+<div class="section" id="List-of-Problems">
 <h2>List of Problems<a class="headerlink" href="#List-of-Problems" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="#Problem-Error">Problem Error</a></p></li>
@@ -463,7 +463,10 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="Readings">
 <h2>Readings<a class="headerlink" href="#Readings" title="Permalink to this headline">¶</a></h2>
-<p>This lab is designed to be entirely self-contained. If you would like additional background on any of the following topics, then refer to the indicated sections in the references.</p>
+<p>This lab is designed to be self-contained. If you would like additional background on any of the following topics, I’d recommend this book: <a class="reference external" href="https://link-springer-com.ezproxy.library.ubc.ca/book/10.1007/978-3-319-55456-3">Finite difference computing with PDES</a> by Hans Petter Langtangen and Svein Linge The entire book is available on <a class="reference external" href="http://hplgit.github.io/fdm-book/doc/pub/book/html/decay-book.html">github</a> with the python code
+<a class="reference external" href="https://github.com/hplgit/fdm-book/tree/master/src">here</a>. Much of the content of this lab is summarized in <a class="reference external" href="https://link-springer-com.ezproxy.library.ubc.ca/content/pdf/bbm%3A978-3-319-55456-3%2F1.pdf">Appendix B – truncation analysis</a></p>
+<div class="section" id="Other-recommended-books">
+<h3>Other recommended books<a class="headerlink" href="#Other-recommended-books" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><strong>Differential Equations:</strong></p>
 <ul>
@@ -478,6 +481,7 @@ div.rendered_html tbody tr:hover {
 </ul>
 </li>
 </ul>
+</div>
 </div>
 <div class="section" id="Introduction">
 <h2>Introduction<a class="headerlink" href="#Introduction" title="Permalink to this headline">¶</a></h2>
@@ -510,8 +514,6 @@ always depend on the problem that is being dealt with.</p>
 <div class="section" id="Accuracy-of-Difference-Approximations">
 <h2>Accuracy of Difference Approximations<a class="headerlink" href="#Accuracy-of-Difference-Approximations" title="Permalink to this headline">¶</a></h2>
 <p>Before moving on to the details of how to measure the error in a scheme, let’s take a closer look at another example which we’ve seen already …</p>
-<div class="section" id="Example-Accuracy">
-<h3>Example Accuracy<a class="headerlink" href="#Example-Accuracy" title="Permalink to this headline">¶</a></h3>
 <p>Let’s go back to the heat conduction equation from Lab #1, where the temperature, <span class="math notranslate nohighlight">\(T(t)\)</span>, of a rock immersed in water or air, evolves in time according to the first order ODE:</p>
 <div class="math notranslate nohighlight">
 \[\frac{dT}{dt} = \lambda(T,t) \, (T-T_a)\]</div>
@@ -532,6 +534,7 @@ will pass over this case for now, and refer you to a reference such as Burden an
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">context</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">numlabs.lab2.lab2_functions</span> <span class="kn">import</span> <span class="n">euler</span><span class="p">,</span><span class="n">beuler</span><span class="p">,</span><span class="n">leapfrog</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -585,35 +588,39 @@ will pass over this case for now, and refer you to a reference such as Burden an
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
+<div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-1-049357dbcd87&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> get_ipython<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">.</span>run_line_magic<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;matplotlib&#39;</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#39;inline&#39;</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      2</span> <span class="ansi-green-fg">import</span> matplotlib<span class="ansi-blue-fg">.</span>pyplot <span class="ansi-green-fg">as</span> plt
-<span class="ansi-green-fg">----&gt; 3</span><span class="ansi-red-fg"> </span><span class="ansi-green-fg">from</span> numlabs<span class="ansi-blue-fg">.</span>lab2<span class="ansi-blue-fg">.</span>lab2_functions <span class="ansi-green-fg">import</span> euler<span class="ansi-blue-fg">,</span>beuler<span class="ansi-blue-fg">,</span>leapfrog
-<span class="ansi-green-intense-fg ansi-bold">      4</span> <span class="ansi-green-fg">import</span> numpy <span class="ansi-green-fg">as</span> np
-<span class="ansi-green-intense-fg ansi-bold">      5</span> plt<span class="ansi-blue-fg">.</span>style<span class="ansi-blue-fg">.</span>use<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;ggplot&#39;</span><span class="ansi-blue-fg">)</span>
+******************************
+context imported. Front of path:
+/Users/phil/repos/numeric
+back of path: /Users/phil/.ipython
+******************************
 
-<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;numlabs&#39;
+through /Users/phil/repos/numeric/notebooks/lab2/context.py
 </pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/doc_notebooks_lab2_01-lab2_10_1.png" src="../../_images/doc_notebooks_lab2_01-lab2_10_1.png" />
+</div>
 </div>
 <p><strong>Figure 1</strong> A plot of the exact and computed solutions for the temperature of a rock, with parameters: <span class="math notranslate nohighlight">\(T_a=20\)</span>, <span class="math notranslate nohighlight">\(T(0)=30\)</span>, <span class="math notranslate nohighlight">\(\lambda= +0.8\)</span>, <span class="math notranslate nohighlight">\(\Delta t=\frac{1}{3}\)</span></p>
 <p>Notice from these results that the centered/leapfrog scheme is the most accurate, and backward Euler the least accurate.</p>
 <p>The next section explains why some schemes are more accurate than others, and introduces a means to quantify the accuracy of a numerical approximation.</p>
 <div class="section" id="Round-off-Error-and-Discretization-Error">
-<h4>Round-off Error and Discretization Error<a class="headerlink" href="#Round-off-Error-and-Discretization-Error" title="Permalink to this headline">¶</a></h4>
+<h3>Round-off Error and Discretization Error<a class="headerlink" href="#Round-off-Error-and-Discretization-Error" title="Permalink to this headline">¶</a></h3>
 <p>From <a class="reference external" href="#ex_accuracy">Example Accuracy</a> and the example in the Forward Euler section of the previous lab,  it is obvious that a numerical approximation is exactly that - <strong>an approximation</strong>. The process of discretizing a differential equation inevitably leads to errors. In this section, we will tackle two fundamental questions related to the accuracy of a numerical approximation:</p>
 <ul class="simple">
 <li><p>Where does the error come from (and how can we measure it)?</p></li>
 <li><p>How can the error be controlled?</p></li>
 </ul>
 <div class="section" id="Where-does-the-error-come-from?">
-<h5>Where does the error come from?<a class="headerlink" href="#Where-does-the-error-come-from?" title="Permalink to this headline">¶</a></h5>
+<h4>Where does the error come from?<a class="headerlink" href="#Where-does-the-error-come-from?" title="Permalink to this headline">¶</a></h4>
 <p>#####Round-off error:</p>
 <p>When attempting to solve differential equations on a computer, there are two main sources of error. The first, <em>round-off error</em>, derives from the fact that a computer can only represent real numbers by <em>floating point</em> approximations, which have only a finite number of digits of accuracy.</p>
 <ul class="simple">
@@ -624,11 +631,8 @@ will pass over this case for now, and refer you to a reference such as Burden an
 <div class="math notranslate nohighlight">
 \[\frac{\pi}{(\pi + 0.00000001)-\pi}.\]</div>
 <p>Since the computer can only “see” 8 significant digits, the addition <span class="math notranslate nohighlight">\(\pi+0.00000001\)</span> is simply equal to <span class="math notranslate nohighlight">\(\pi\)</span> as far as the computer is concerned. Hence, the computed result is <span class="math notranslate nohighlight">\(\frac{1}{0}\)</span> - an undefined expression! The exact answer <span class="math notranslate nohighlight">\(100000000\pi\)</span>, however, is a very well-defined non-zero value.</p>
-</div>
-</div>
-</div>
 <div class="section" id="Truncation-error:">
-<h3>Truncation error:<a class="headerlink" href="#Truncation-error:" title="Permalink to this headline">¶</a></h3>
+<h5>Truncation error:<a class="headerlink" href="#Truncation-error:" title="Permalink to this headline">¶</a></h5>
 <p>The second source of error stems from the discretization of the problem, and hence is called <em>discretization error</em> or <em>truncation error</em>. In comparison, round-off error is always present, and is independent of the discretization being used. The simplest and most common way to analyse the truncation error in a scheme is using <em>Taylor series expansions</em>.</p>
 <p>Let us begin with the forward difference formula for the first derivative, , which involves the discrete solution at times <span class="math notranslate nohighlight">\(t_{i+1}\)</span> and <span class="math notranslate nohighlight">\(t_{i}\)</span>. Since only continuous functions can be written as Taylor series, we expand the exact solution (instead of the discrete values <span class="math notranslate nohighlight">\(T_i\)</span>) at the discrete point <span class="math notranslate nohighlight">\(t_{i+1}\)</span>:</p>
 <div class="math notranslate nohighlight">
@@ -647,24 +651,6 @@ _{\mbox{ truncation error}} \\ \;
 <p>It is clear from that as <span class="math notranslate nohighlight">\(\Delta t\)</span> is reduced in size (as the computational grid is refined), the error is also reduced. If you remember that we derived the approximation from the limit definition of derivative, then this should make sense. This dependence of the error on powers of the grid spacing <span class="math notranslate nohighlight">\(\Delta t\)</span> is an underlying characteristic of difference approximations, and we will see approximations with higher orders in the coming sections …</p>
 <p>There is one more important distinction to be made here. The “truncation error” we have been discussing so far is actually what is called <em>local truncation error</em>. It is “local” in the sense that we have expanded the Taylor series <em>locally</em> about the exact solution at the point <span class="math notranslate nohighlight">\(t_i\)</span>.</p>
 <p>There is also a <em>global truncation error</em> (or, simply, <em>global error</em>), which is the error made during the course of the entire computation, from time <span class="math notranslate nohighlight">\(t_0\)</span> to time <span class="math notranslate nohighlight">\(t_n\)</span>. The difference between local and global truncation error is illustrated in Figure 2. If the local error stays approximately constant, then the global error will be approximately the local error times the number of timesteps, or about one order of <span class="math notranslate nohighlight">\(\Delta t\)</span> worse than the local error.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
-<span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;images/error.png&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<img alt="../../_images/doc_notebooks_lab2_01-lab2_16_0.png" src="../../_images/doc_notebooks_lab2_01-lab2_16_0.png" />
-</div>
-</div>
 <p><strong>Figure Error:</strong> Local and global truncation error.</p>
 <p>It is easy to get a handle on the order of the local truncation error using Taylor series, regardless of whether the exact solution is known, but no similar analysis is available for the global error. We can write</p>
 <div class="math notranslate nohighlight">
@@ -672,7 +658,7 @@ _{\mbox{ truncation error}} \\ \;
 <p>but this expression can only be evaluated if the exact solution is known ahead of time (which is not the case in most problems we want to compute, since otherwise we wouldn’t be computing it in the first place!). Therefore, when we refer to truncation error, we will always be referring to the local truncation error.</p>
 </div>
 <div class="section" id="Second-order-accuracy">
-<h3>Second order accuracy<a class="headerlink" href="#Second-order-accuracy" title="Permalink to this headline">¶</a></h3>
+<h5>Second order accuracy<a class="headerlink" href="#Second-order-accuracy" title="Permalink to this headline">¶</a></h5>
 <p>Above we mentioned a problem with evaluating the mid-point method. If we start with three points <span class="math notranslate nohighlight">\((t_0,t_1,t_2)\)</span>, each separated by <span class="math notranslate nohighlight">\(\Delta t/2\)</span> so that <span class="math notranslate nohighlight">\(t_2 - t_0=\Delta t\)</span></p>
 <p><span class="math">\begin{align}
 y(t_2)&=y(t_1) + y^\prime (t_1,y(t_1))(t_2 - t_1) + \frac{y^{\prime \prime}(t_1,y(t_1))}{2} (t_2 - t_1)^2 + \frac{y^{\prime \prime \prime}(t_1,y(t_1))}{6} (t_2 - t_1)^3 + h.o.t. \ (eq.\ a)\\
@@ -691,7 +677,7 @@ y(t_2)&=y(t_0) + \Delta t y^\prime (t_1,y(t_1))  + \frac{\Delta t^3}{24} y^{\pri
 <p>Comparing with <a class="reference external" href="#eq:%20feuler">eq: feuler</a> we can see that we’ve canceled the <span class="math notranslate nohighlight">\(\Delta t^2\)</span> terms, so that if we drop the <span class="math notranslate nohighlight">\(\frac{\Delta t^3}{24} y^{\prime \prime \prime}(t_1,y(t_1))\)</span> and higher order terms we’re doing one order better that foward euler, as long as we can solve the problem of estimating y at the midpoint: <span class="math notranslate nohighlight">\(y(t_1) = y(t_0 + \Delta t/2)\)</span></p>
 </div>
 <div class="section" id="mid-point-and-leapfrog">
-<h3>mid-point and leapfrog<a class="headerlink" href="#mid-point-and-leapfrog" title="Permalink to this headline">¶</a></h3>
+<h5>mid-point and leapfrog<a class="headerlink" href="#mid-point-and-leapfrog" title="Permalink to this headline">¶</a></h5>
 <div class="line-block">
 <div class="line">The mid-point and leapfrog methods take two slightly different approaches to estimating <span class="math notranslate nohighlight">\(y(t_0 + \Delta t/2)\)</span>.</div>
 <div class="line">For the <a class="reference external" href="https://en.wikipedia.org/wiki/Midpoint_method">explicit mid-point method</a>, we estimate <span class="math notranslate nohighlight">\(y\)</span> at the midpoint by taking a half-step:</div>
@@ -711,8 +697,10 @@ y(t_0 + 2 \Delta t)  & = y(t_0 + \Delta t) + \Delta t y^\prime(t_0 + 3\Delta t/2
 <p>Comparing (iii) and (iv) shows how the method gets its name: the half-interval and whole interval values are calculated by leaping over each other. Once the first half and whole steps are done, the rest of the integration is completed by repeating (iii) and (iv) as until the endpoint is reached.</p>
 <p>The leapfrog scheme has the advantage that it is <em>time reversible</em> or as the Wikipedia article says <em>sympletic</em>. This means that estimating <span class="math notranslate nohighlight">\(y(t_1)\)</span> and then using that value to go backwards by <span class="math notranslate nohighlight">\(-\Delta t\)</span> yields <span class="math notranslate nohighlight">\(y(t_0)\)</span> exactly, which the mid-point method does not. The mid-point method, however, is one member (the 2nd order member) of a family of <em>Runge Kutta</em> integrators, which will be covered in more detail in Lab 4.</p>
 </div>
-<div class="section" id="Problem-Error">
-<h3>Problem Error<a class="headerlink" href="#Problem-Error" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="Problem-Error-–-hand-in-png-file-or-paper">
+<h3>Problem Error – hand in png file or paper<a class="headerlink" href="#Problem-Error-–-hand-in-png-file-or-paper" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><ol class="loweralpha simple">
 <li><p>Derive the error term for the backward difference formula using Taylor series, and hence show that it is also first order.</p></li>
@@ -723,6 +711,8 @@ y(t_0 + 2 \Delta t)  & = y(t_0 + \Delta t) + \Delta t y^\prime(t_0 + 3\Delta t/2
 </ol>
 </li>
 </ul>
+<div class="section" id="How-can-we-control-the-error?">
+<h4>How can we control the error?<a class="headerlink" href="#How-can-we-control-the-error?" title="Permalink to this headline">¶</a></h4>
 <p>Now that we’ve determined the source of the error in numerical methods, we would like to find a way to control it; that is, we would like to be able to compute and be confident that our approximate solution is “close” to the exact solution. Round-off error is intrinsic to all numerical computations, and cannot be controlled (except to develop methods that do not magnify the error unduly … more on this later). Truncation error, on the other hand, <em>is</em> under our control.</p>
 <p>In the simple ODE examples that we’re dealing with in this lab, the round-off error in a calculation is much smaller than the truncation error. Furthermore, the schemes being used are <em>stable with respect to round-off error</em> in the sense that round-off errors are not magnified in the course of a computation. So, we will restrict our discussion of error control in what follows to the truncation error.</p>
 <p>However, there are many numerical algorithms in which the round-off error can dominate the the result of a computation (Gaussian elimination is one example, which you will see in Lab #3 ), and so we must always keep it in mind when doing numerical computations.</p>
@@ -732,9 +722,8 @@ y(t_0 + 2 \Delta t)  & = y(t_0 + \Delta t) + \Delta t y^\prime(t_0 + 3\Delta t/2
 <li><p>Increase the order of the approximation. We saw above that the forward difference approximation of the first derivative is first order accurate in the grid spacing. It is also possible to derive higher order difference formulas which have a leading error term of the form <span class="math notranslate nohighlight">\((\Delta t)^p\)</span>, with <span class="math notranslate nohighlight">\(p&gt;1\)</span>. As noted above in <a class="reference external" href="#sec_secondOrder">Section Second Order</a> in the midpoint formula is a second order scheme, and some further examples will be given in <a class="reference external" href="#sec_HigherOrderTaylor">Section Higher order
 Taylor</a>. The main disadvantage to using very high order schemes is that the error term depends on higher derivatives of the solution, which can sometimes be very large – in this case, the stability of the scheme can be adversely affected (for more on this, see <a class="reference external" href="#sec_stability">Section Stability</a>.</p></li>
 </ol>
-</div>
 <div class="section" id="Problem-Accuracy:">
-<h3>Problem Accuracy:<a class="headerlink" href="#Problem-Accuracy:" title="Permalink to this headline">¶</a></h3>
+<h5>Problem Accuracy:<a class="headerlink" href="#Problem-Accuracy:" title="Permalink to this headline">¶</a></h5>
 <p>In order to investigate these two approaches to improving the accuracy of an approximation, you can use the code in <a class="reference external" href="https://github.com/phaustin/numeric/blob/master/numlabs/lab2/terror2.py">terror.py</a> to play with the solutions to the heat conduction equation. For a given function <span class="math notranslate nohighlight">\(\lambda(T)\)</span>, and specified parameter values, you should experiment with various time steps and schemes, and compare the computed results (Note: only the answers to the assigned questions need to be handed
 in). Look at the different schemes (euler, leapfrog, midpoint, 4th order runge kutta) run them for various total times (tend) and step sizes (dt=tend/npts).</p>
 <p>The three schemes that will be used here are forward Euler (first order), leap frog (second order) and the fourth order Runge-Kutta scheme (which will be introduced in Lab 4).</p>
@@ -754,11 +743,14 @@ in). Look at the different schemes (euler, leapfrog, midpoint, 4th order runge k
 </ol>
 </li>
 </ul>
+</div>
+</div>
+</div>
 <div class="section" id="Other-Approximations-to-the-First-Derivative">
-<h4>Other Approximations to the First Derivative<a class="headerlink" href="#Other-Approximations-to-the-First-Derivative" title="Permalink to this headline">¶</a></h4>
+<h3>Other Approximations to the First Derivative<a class="headerlink" href="#Other-Approximations-to-the-First-Derivative" title="Permalink to this headline">¶</a></h3>
 <p>The Taylor series method of deriving difference formulae for the first derivative is the simplest, and can be used to obtain approximations with even higher order than two. There are also many other ways to discretize the derivatives appearing in ODE’s, as shown in the following sections…</p>
 <div class="section" id="Higher-Order-Taylor-Methods">
-<h5>Higher Order Taylor Methods<a class="headerlink" href="#Higher-Order-Taylor-Methods" title="Permalink to this headline">¶</a></h5>
+<h4>Higher Order Taylor Methods<a class="headerlink" href="#Higher-Order-Taylor-Methods" title="Permalink to this headline">¶</a></h4>
 <p>As mentioned earlier, there are many other possible approximations to the first derivative using the Taylor series approach. The basic approach in these methods is as follows:</p>
 <ol class="arabic simple">
 <li><p>expand the solution in a Taylor series at one or more points surrounding the point where the derivative is to be approximated (for example, for the centered scheme, you used two points, <span class="math notranslate nohighlight">\(T(t_i+\Delta t)\)</span> and <span class="math notranslate nohighlight">\(T(t_i-\Delta t)\)</span>. You also have to make sure that you expand the series to a high enough order …</p></li>
@@ -768,10 +760,10 @@ in). Look at the different schemes (euler, leapfrog, midpoint, 4th order runge k
 <div class="math notranslate nohighlight">
 \[\frac{-T(t_{i+2})+8T(t_{i+1})-8T(t_{i-1})+T(t_{i-2})}{12\Delta t} =
   T^\prime(t_i) + {\cal O}((\Delta t)^4)\]</div>
-<p><strong>Quiz:</strong> Try the quiz at <a class="reference external" href="http://clouds.eos.ubc.ca/~phil/numeric/quizzes2/order.html">this link</a> related to this higher order scheme.</p>
+<p><strong>Quiz:</strong> Try the quiz at <a class="reference external" href="https://phaustin.github.io/numeric">this link</a> related to this higher order scheme.</p>
 </div>
 <div class="section" id="Predictor-Corrector-Methods">
-<h5>Predictor-Corrector Methods<a class="headerlink" href="#Predictor-Corrector-Methods" title="Permalink to this headline">¶</a></h5>
+<h4>Predictor-Corrector Methods<a class="headerlink" href="#Predictor-Corrector-Methods" title="Permalink to this headline">¶</a></h4>
 <p>Another class of discretizations are called <em>predictor-corrector methods</em>. Implicit methods can be difficult or expensive to use because of the solution step, and so they are seldom used to integrate ODE’s. Rather, they are often used as the basis for predictor-corrector algorithms, in which a “prediction” for <span class="math notranslate nohighlight">\(T_{i+1}\)</span> based only on an explicit method is then “corrected” to give a better value by using this precision in an implicit method.</p>
 <p>To see the basic idea behind these methods, let’s go back (once again) to the backward Euler method for the heat conduction problem which reads:</p>
 <div class="math notranslate nohighlight">
@@ -790,7 +782,7 @@ value of <span class="math notranslate nohighlight">\(T_{i+1}\)</span> using the
 <p>This method is an explicit scheme, which can also be shown to be second order accurate in . It is the simplest in a whole class of schemes called <em>predictor-corrector schemes</em> (more information is available on these methods in a numerical analysis book such as  &#64;burden-faires).</p>
 </div>
 <div class="section" id="Other-Methods">
-<h5>Other Methods<a class="headerlink" href="#Other-Methods" title="Permalink to this headline">¶</a></h5>
+<h4>Other Methods<a class="headerlink" href="#Other-Methods" title="Permalink to this headline">¶</a></h4>
 <p>The choice of methods is made even greater by two other classes of schemes:</p>
 <p><strong>Runge-Kutta methods:</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">We</span> <span class="n">have</span> <span class="n">already</span> <span class="n">seen</span> <span class="n">two</span> <span class="n">examples</span> <span class="n">of</span> <span class="n">the</span> <span class="n">Runge</span><span class="o">-</span><span class="n">Kutta</span> <span class="n">family</span> <span class="n">of</span> <span class="n">integrators</span><span class="p">:</span>  <span class="n">Forward</span> <span class="n">Euler</span> <span class="ow">is</span>
@@ -810,18 +802,15 @@ value of <span class="math notranslate nohighlight">\(T_{i+1}\)</span> using the
 </div>
 </div>
 <div class="section" id="Accuracy-Summary">
-<h4>Accuracy Summary<a class="headerlink" href="#Accuracy-Summary" title="Permalink to this headline">¶</a></h4>
+<h3>Accuracy Summary<a class="headerlink" href="#Accuracy-Summary" title="Permalink to this headline">¶</a></h3>
 <p>In this section, you’ve been given a short overview of the accuracy of difference schemes for first order ordinary differential equations. We’ve seen that accuracy can be improved by either decreasing the grid spacing, or by choosing a higher order scheme from one of several classes of methods. When using a higher order scheme, it is important to realize that the cost of the computation usually rises due to an added number of function evaluations (especially for multi-step and Runge-Kutta
 methods). When selecting a numerical scheme, it is important to keep in mind this trade-off between accuracy and cost.</p>
 <p>However, there is another important aspect of discretization that we have pretty much ignored. The next section will take a look at schemes of various orders from a different light, namely that of <em>stability</em>.</p>
 </div>
 </div>
-</div>
 <div class="section" id="Stability-of-Difference-Approximations">
 <h2>Stability of Difference Approximations<a class="headerlink" href="#Stability-of-Difference-Approximations" title="Permalink to this headline">¶</a></h2>
 <p>The easiest way to introduce the concept of stability is for you to see it yourself.</p>
-<div class="section" id="Problem-Stability">
-<h3>Problem Stability<a class="headerlink" href="#Problem-Stability" title="Permalink to this headline">¶</a></h3>
 <p>This example is a slight modification of <a class="reference external" href="#Problem-Accuracy">Problem accuracy</a> from the previous section on accuracy. We will add one scheme (backward euler) and drop the 4th order Runge-Kutta, and change the focus from error to stability. The value of <span class="math notranslate nohighlight">\(\lambda\)</span> is assumed a constant, so that the backward Euler scheme results in an explicit method, and we’ll also compute a bit further in time, so that any instability manifests itself more clearly. Run the
 <a class="reference external" href="https://github.com/phaustin/numeric/blob/master/numlabs/lab2/stability2.py">stability2.py</a> script in ipython or the notebook with <span class="math notranslate nohighlight">\(\lambda= -8\ s^{-1}\)</span>, with <span class="math notranslate nohighlight">\(\Delta t\)</span> values that just straddle the stability condition for the forward euler scheme (<span class="math notranslate nohighlight">\(\Delta t &lt; \frac{-2}{\lambda}\)</span>, derived below). Hand in plots with comments that show that 1) the stability condition does in fact predict the onset of the instablity in the euler scheme, and 2) the backward euler and leapfrog
 are either stable or unstable for the same <span class="math notranslate nohighlight">\(\Delta t\)</span> values. (you should run out to longer than tend=10 seconds to see if there is a delayed instability.)</p>
@@ -849,13 +838,7 @@ z_{i+1} &amp;=&amp; (1+\lambda \Delta t)z_{i} \\
 <div class="math notranslate nohighlight">
 \[\Delta t &lt; \frac{-2}{\lambda},\]</div>
 <p>which is a restriction on how large the time step can be so that the numerical solution is stable.</p>
-</div>
-<div class="section" id="Problem-Backward-Euler">
-<h3>Problem Backward Euler<a class="headerlink" href="#Problem-Backward-Euler" title="Permalink to this headline">¶</a></h3>
 <p>Perform a similar analysis for the backward Euler formula, and show that it is <em>always stable</em> when <span class="math notranslate nohighlight">\(\lambda\)</span> is real and negative.</p>
-</div>
-<div class="section" id="Example:-leap-frog">
-<h3>Example: leap-frog<a class="headerlink" href="#Example:-leap-frog" title="Permalink to this headline">¶</a></h3>
 <p><em>Now, what about the leap frog scheme?</em></p>
 <p>Applying the test equation to the leap frog scheme results in the difference equation</p>
 <div class="math notranslate nohighlight">
@@ -880,7 +863,7 @@ explains the presence of the instability for the leap-frog scheme.</p>
 <p>Solution plots are given in <a class="reference external" href="#fig_oscillator">Figure oscilator</a>, for parameters <span class="math notranslate nohighlight">\(\gamma/m=1\)</span>, <span class="math notranslate nohighlight">\(\Delta t=0.25\)</span>, <span class="math notranslate nohighlight">\(y(0)=0.0\)</span> and <span class="math notranslate nohighlight">\(u(0)=1.0\)</span>, and demonstrate that the leap-frog scheme is stable, while forward Euler is unstable. This can easily be explained in terms of the stability criteria we derived for the two schemes when applied to the test equation. The undamped oscillator problem is a linear problem with pure imaginary eigenvalues, so as long as
 <span class="math notranslate nohighlight">\(|\sqrt{\gamma/m}\Delta t|&lt;1\)</span>, the leap frog scheme is stable, which is obviously true for the parameter values we are given. Furthermore, the forward Euler stability condition <span class="math notranslate nohighlight">\(|1+\lambda\Delta  t|&lt;1\)</span> is violated for any choice of time step (when <span class="math notranslate nohighlight">\(\lambda\)</span> is pure imaginary) and so this scheme is always unstable for the undamped oscillator. The github link to the oscillator module is <a class="reference external" href="https://github.com/phaustin/numeric/blob/master/numlabs/lab2/oscillator.py">oscillator.py</a></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -898,7 +881,7 @@ explains the presence of the instability for the leap-frog scheme.</p>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">the_times</span><span class="p">,(</span><span class="n">output_leap</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span><span class="o">-</span><span class="n">answer</span><span class="p">),</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;leapfrog&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span><span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">],</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;global error between sin(t) and approx. for three schemes&#39;</span><span class="p">,</span>
       <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;exact - approx&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -906,22 +889,11 @@ explains the presence of the instability for the leap-frog scheme.</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-3-22f599ff2aaa&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span><span class="ansi-green-fg">import</span> numlabs<span class="ansi-blue-fg">.</span>lab2<span class="ansi-blue-fg">.</span>oscillator <span class="ansi-green-fg">as</span> os
-<span class="ansi-green-intense-fg ansi-bold">      2</span> the_times<span class="ansi-blue-fg">=</span>np<span class="ansi-blue-fg">.</span>linspace<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">,</span><span class="ansi-cyan-fg">20.</span><span class="ansi-blue-fg">,</span><span class="ansi-cyan-fg">80</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      3</span> yvec_init<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">,</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">]</span>
-<span class="ansi-green-intense-fg ansi-bold">      4</span> output_euler<span class="ansi-blue-fg">=</span>os<span class="ansi-blue-fg">.</span>euler<span class="ansi-blue-fg">(</span>the_times<span class="ansi-blue-fg">,</span>yvec_init<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      5</span> output_mid<span class="ansi-blue-fg">=</span>os<span class="ansi-blue-fg">.</span>midpoint<span class="ansi-blue-fg">(</span>the_times<span class="ansi-blue-fg">,</span>yvec_init<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;numlabs&#39;
-</pre></div></div>
+<img alt="../../_images/doc_notebooks_lab2_01-lab2_32_0.png" src="../../_images/doc_notebooks_lab2_01-lab2_32_0.png" />
+</div>
 </div>
 <p><strong>Figure numerical</strong>: Numerical solution to the undamped harmonic oscillator problem, using the forward Euler and leap-frog schemes. Parameter values: <span class="math notranslate nohighlight">\(\gamma / m=1.0\)</span>, <span class="math notranslate nohighlight">\(\Delta t=0.25\)</span>, <span class="math notranslate nohighlight">\(y(0)=0\)</span>, <span class="math notranslate nohighlight">\(u(0)=1.0\)</span>. The exact solution is a sinusoidal wave.</p>
 <p>Had we taken a larger time step (such as <span class="math notranslate nohighlight">\(\Delta t=2.0\)</span>, for example), then even the leap-frog scheme is unstable. Furthermore, if we add damping (<span class="math notranslate nohighlight">\(\beta\neq 0\)</span>), then the eigenvalues are no longer pure imaginary, and the leap frog scheme is unstable no matter what time step we use.</p>
-</div>
 </div>
 <div class="section" id="Stiff-Equations">
 <h2>Stiff Equations<a class="headerlink" href="#Stiff-Equations" title="Permalink to this headline">¶</a></h2>
@@ -936,8 +908,6 @@ order to capture the rapid oscillations. However, a larger time step can be take
 \[\frac{y(t_{i+1})-2y(t_i)+y(t_{i-1})}{(\Delta t)^2} =
   y^{\prime\prime}(t_i) + {\cal O}((\Delta t)^2),\]</div>
 <p>There are, of course, many other possible formulae that we might use, but this is the most commonly used.</p>
-<div class="section" id="Problem-Taylor">
-<h3>Problem Taylor<a class="headerlink" href="#Problem-Taylor" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><ol class="loweralpha simple">
 <li><p>Use Taylor series to derive this formula.</p></li>
@@ -949,13 +919,14 @@ order to capture the rapid oscillations. However, a larger time step can be take
 </li>
 </ul>
 </div>
-</div>
 <div class="section" id="Summary">
 <h2>Summary<a class="headerlink" href="#Summary" title="Permalink to this headline">¶</a></h2>
 <p>This lab has discussed the accuracy and stability of difference schemes for simple first order ODEs. The results of the problems should have made it clear to you that choosing an accurate and stable discretization for even a very simple problem is not straightforward. One must take into account not only the considerations of accuracy and stability, but also the cost or complexity of the scheme. Selecting a numerical method for a given problem can be considered as an art in itself.</p>
 </div>
 <div class="section" id="Mathematical-Notes">
 <h2>Mathematical Notes<a class="headerlink" href="#Mathematical-Notes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Taylor-Polynomials-and-Taylor-Series">
+<h3>Taylor Polynomials and Taylor Series<a class="headerlink" href="#Taylor-Polynomials-and-Taylor-Series" title="Permalink to this headline">¶</a></h3>
 <p>Taylor Series are of fundamental importance in numerical analysis. They are the most basic tool for talking about the approximation of functions. Consider a function <span class="math notranslate nohighlight">\(f(x)\)</span> that is smooth – when we say “smooth”, what we mean is that its derivatives exist and are bounded (for the following discussion, we need <span class="math notranslate nohighlight">\(f\)</span> to have <span class="math notranslate nohighlight">\((n+1)\)</span> derivatives). We would like to approximate <span class="math notranslate nohighlight">\(f(x)\)</span> near the point <span class="math notranslate nohighlight">\(x=x_0\)</span>, and we can do it as follows:</p>
 <div class="math notranslate nohighlight">
 \[f(x) = \underbrace{P_n(x)}_{\mbox{Taylor polynomial}} +
@@ -981,26 +952,12 @@ order to capture the rapid oscillations. However, a larger time step can be take
     +\frac{x^{2k+1}}{(2k+1)!}.\ eq: taylor\]</div>
 <p>The plot in Figure: Taylor illustrates quite clearly how the approximation improves both as <span class="math notranslate nohighlight">\(x\)</span> approaches 0, and as <span class="math notranslate nohighlight">\(n\)</span> is increased.</p>
 <p>(We’ll go over <a class="reference external" href="https://github.com/phaustin/numeric/blob/master/numlabs/lab2/taylor_sin.py">sin_taylor.py</a>, the python module that generated Figure: Taylor in class)</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;images/taylor.png&#39;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;80%&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab2_01-lab2_40_0.png"><img alt="../../_images/doc_notebooks_lab2_01-lab2_40_0.png" src="../../_images/doc_notebooks_lab2_01-lab2_40_0.png" style="width: 80%;" /></a>
-</div>
-</div>
 <p>Figure: Taylor – Plot of <span class="math notranslate nohighlight">\(\sin(x)\)</span> compared to its Taylor polynomial approximations about <span class="math notranslate nohighlight">\(x_0=0\)</span>, for various values of <span class="math notranslate nohighlight">\(n=2k +1\)</span> in eq: taylor.</p>
 <p>Consider a specific Taylor polynomial, say <span class="math notranslate nohighlight">\(P_3(x)\)</span> ( fix <span class="math notranslate nohighlight">\(n=3\)</span>). Notice that for <span class="math notranslate nohighlight">\(x\)</span> far away from the origin, the polynomial is nowhere near the function <span class="math notranslate nohighlight">\(\sin(x)\)</span>. However, it approximates the function quite well near the origin. On the other hand, we could take a specific point, <span class="math notranslate nohighlight">\(x=5\)</span>, and notice that the Taylor series of orders 1 through 7 do not approximate the function very well at all. Nevertheless the approximation improves as <span class="math notranslate nohighlight">\(n\)</span> increases, as is
 shown by the 15th order Taylor polynomial.</p>
+</div>
+<div class="section" id="Floating-Point-Representation-of-Numbers">
+<h3>Floating Point Representation of Numbers<a class="headerlink" href="#Floating-Point-Representation-of-Numbers" title="Permalink to this headline">¶</a></h3>
 <p>Unlike a mathematician, who can deal with real numbers having infinite precision, a computer can represent numbers with only a finite number of digits. The best way to understand how a computer stores a number is to look at its <em>floating-point form</em>, in which a number is written as</p>
 <div class="math notranslate nohighlight">
 \[\pm 0.d_1 d_2 d_3 \ldots d_k \times 10^n,\]</div>
@@ -1018,27 +975,11 @@ shown by the 15th order Taylor polynomial.</p>
 <p>The floating-point numbers (each represented by a <span class="math notranslate nohighlight">\(\times\)</span>) are more dense near the origin.</p>
 </li>
 </ul>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;images/float1.png&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<img alt="../../_images/doc_notebooks_lab2_01-lab2_44_0.png" src="../../_images/doc_notebooks_lab2_01-lab2_44_0.png" />
-</div>
-</div>
 <p>The values <span class="math notranslate nohighlight">\(k=8\)</span> and <span class="math notranslate nohighlight">\(-38\leq n \leq 38\)</span> correspond to what is known as <em>single precision arithmetic</em>, in which 4 bytes (or units of memory in a computer) are used to store each number. It is typical in many programming languages, including <span class="math notranslate nohighlight">\(C++\)</span>, to allow the use of higher precision, or <em>double precision</em>, using 8 bytes for each number, corresponding to values of <span class="math notranslate nohighlight">\(k=16\)</span> and <span class="math notranslate nohighlight">\(-308\leq n \leq 308\)</span>, thereby greatly increasing the range and density of numbers that can
 be represented. When doing numerical computations, it is customary to use double-precision arithmetic, in order to minimize the effects of round-off error (in a <span class="math notranslate nohighlight">\(C++\)</span> program, you can define a variable <code class="docutils literal notranslate"><span class="pre">x</span></code> to be double precision using the declaration <code class="docutils literal notranslate"><span class="pre">double</span> <span class="pre">x;</span></code>).</p>
 <p>Sometimes, double precision arithmetic may help in eliminating round-off error problems in a computation. On the minus side, double precision numbers require more storage than their single precision counterparts, and it is sometimes (but not always) more costly to compute in double precision. Ultimately, though, using double precision should not be expected to be a cure-all against the difficulties of round-off errors. The best approach is to use an algorithm that is not unstable with respect to
 round-off error. For an example where increasing precision will not help, see the section on Gaussian elimination in Lab #3.</p>
+</div>
 </div>
 </div>
 
