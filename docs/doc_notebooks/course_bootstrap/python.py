@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # ---
 # jupyter:
 #   jupytext:
@@ -25,7 +26,74 @@
 #     a table listing commands for both shell side by side taken from
 #     this in-depth [powershell tutorial](https://programminghistorian.org/en/lessons/intro-to-powershell#quick-reference)
 #
-# ## Bash and powershell command reference
+# ## Using the command line
+#
+# ### Powershell and Bash common commands
+#
+# * To go to your $HOME folder:
+#   
+# ```
+# cd ~
+#
+# or
+#
+# cd $HOME
+# ```
+#
+# * To open explorer or finder for the current folder:
+#
+# ```
+# windows explorer do:
+#
+#    start .
+#
+# MacOs finder do:
+#
+#    open .
+#    
+# ```
+#        
+# * To move up one folder:
+#
+# ```
+# cd ..
+# ```
+#
+# * To save typing, remember that hitting the tab key completes filenames
+#
+# ### To configure  powershell on windows
+#
+# * first start a powershell terminal with admin privileges, then type:
+#
+#    `set-executionpolicy remotesigned`
+#    
+# * then, in your miniconda3 powershel profile, do:
+#
+#    `Test-Path $profile`
+#    
+#   to see whether you have an existing profile.
+#   
+# * if you don't have a profile, then do the following (this will overwrite an existing profile, so be aware):
+#
+#    `New-Item –Path $Profile –Type File –Force`
+#    
+# * To add to your profile, open with:
+#
+#    `start $profile`
+#    
+# ### To configure bash or zsh on MacOS
+#
+# * open a terminal then type either
+#
+#    `open .bash_profile`
+#    
+#   or for Catalina
+#   
+#     `open .zshenv`
+#    
+#   
+#
+# ### Bash and powershell command reference
 #
 # | Cmdlet | Alias | Bash Equivalent | Description |
 # | ------- | ------- | ------- | ------- |
@@ -44,7 +112,7 @@
 # | `Select-String` | `sls` | (`grep`) | Searches for specific content. |
 # | `Measure-Object` | `measure` | (`wc`) | Gets statistical information about an object. Use `Get-Content` and pipe the output to `Measure-Object` with the parameters `-line`, `-word`, and `-character` to get word count information. |
 # | `>` | none | `>` |Redirection. Puts the output of the command to the left of `>` into a file to the right of `>`. |
-# | `|` | none | `|` |Piping. Takes the output of the command to the left and uses it as the input for the command to the right. |
+# | `\|` | none | `\|` |Piping. Takes the output of the command to the left and uses it as the input for the command to the right. |
 # | `Get-Help` | none | `man` | Gets the help file for a cmdlet. Adding the parameter `-online` opens the help page on TechNet. |
 # | `exit` | none | `exit` | Exits PowerShell |
 #
@@ -127,7 +195,7 @@
 #         of [Chapter 1 of his matlab
 #         guide](http://clouds.eos.ubc.ca/~phil/courses/atsc301/downloads_pw/matlab_guide_2nd.pdf)
 #       - [Python data structure cheat
-#         sheet](pdffiles/Python-data-manipulations.pdf)
+#         sheet](pdfs/Python-data-manipulations.pdf)
 #       - [Numpy beginners
 #         guide](http://www.packtpub.com/numpy-mathematical-2e-beginners-guide/book)
 #       - [Learning
@@ -142,3 +210,5 @@
 #         version](http://interactivepython.org/courselib/static/thinkcspy/index.html)
 #       - [Think Stats](http://greenteapress.com/wp/think-stats-2e/)
 #       - [Think Bayes](http://greenteapress.com/wp/think-bayes/)
+
+# %%

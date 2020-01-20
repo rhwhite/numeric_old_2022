@@ -1,21 +1,20 @@
 import matplotlib.pyplot as plt
+import context
 from numlabs.lab2.lab2_functions import euler,leapfrog,runge,midpoint
 import numpy as np
 
 theFuncs={'euler':euler,'leapfrog':leapfrog,'runge':runge,'midpoint':midpoint}
+fun_list =['leapfrog','midpoint','euler']
+default_args=dict(Ta=20,To=30,tend=10,theLambda=0.8,funChoice='euler')
+
+def make_plot(
 
 if __name__=="__main__":
-    Ta= 20
-    To= 30
-    tend = 10.0
-    theLambda= 0.8
-    npts=30
-    funChoice='leapfrog'
-    funChoice='midpoint'
-    funChoice='euler'
+
     #
     #find the method in the theFuncs dictionary and call it
     #
+    
     approxTime,approxTemp=theFuncs[funChoice](npts,tend,To,Ta,theLambda)
     plt.close('all')
     fig1,ax1=plt.subplots(1,1)
