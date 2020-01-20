@@ -16,3 +16,10 @@ Weekly notes
   - Look at `pyman/chap2_jupyter.ipynb <http://phaustin.github.io/pyman/notebooks/chap2_jupyter.html>`_ and `Lab 2 <https://phaustin.github.io/numeric/doc_notebooks/lab2/01-lab2.html#Stability-and-accuracy-(Jan.%C2%A02020)>`_
     
 
+* Week 3: Jan. 20
+
+  - Finish lab 2
+
+  - Start `Lab 3 - Linear algebra <https://phaustin.github.io/numeric/doc_notebooks/lab3/01-lab3.html>`_
+
+    
