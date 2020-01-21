@@ -57,8 +57,10 @@
 #
 #
 # <div style="padding-top:1.5cm">
-# [<span style='font-size:7em'>&#x1F43E;</span>  Numpy and Python with Matrices](#Numpy-and-Python-with-Matrices)
+# <span style='font-size:7em'>&#x1F43E;</span> 
 # </div>
+#
+# [Numpy and Python with Matrices](#Numpy-and-Python-with-Matrices)
 #
 # when you are not sure what
 # functions to use, and this will lead you to the mini-manual.
@@ -69,6 +71,8 @@
 # You should have had an introductory course in linear algebra.
 
 # %%
+# import the context to find files
+import context
 # import the quiz script
 from numlabs.lab3 import quiz3
 # import image handling
@@ -211,10 +215,11 @@ print (quiz3.matrix_quiz(answer = 'x'))
 # After solving the questions by hand, you can also use Python to check
 # your answers.
 #
-# <div align='right'>
-# <span style='font-size:7em'>
-# [&#x1F43E;](#Numpy-and-Python-with-Matrices)</span>
+# <div style="padding-top:1.5cm">
+# <span style='font-size:7em'>&#x1F43E;</span> 
 # </div>
+#
+# [Numpy and Python with Matrices](#Numpy-and-Python-with-Matrices)
 #
 
 # %% [markdown]
@@ -254,10 +259,11 @@ print (quiz3.matrix_quiz(answer = 'x'))
 # After solving the system by hand, you can use Python to check your
 # answer.
 #
-# <div align='right'>
-# <span style='font-size:7em'>
-# [&#x1F43E;](#Numpy-and-Python-with-Matrices)</span>
+# <div style="padding-top:1.5cm">
+# <span style='font-size:7em'>&#x1F43E;</span> 
 # </div>
+#
+# [Numpy and Python with Matrices](#Numpy-and-Python-with-Matrices)
 #
 
 # %% [markdown]
@@ -403,11 +409,11 @@ print (quiz3.matrix_quiz(answer = 'x'))
 # direct methods of solving linear systems (of which Gaussian elimination
 # is only one) and for methods for finding eigenvalues ([Characteristic Equation](#Characteristic-Equation)).
 #
-# <div align='right'>
-# <span style='font-size:5em'>
-# [&#x1F43E;](#Numpy-and-Python-with-Matrices)</span>
+# <div style="padding-top:1.5cm">
+# <span style='font-size:7em'>&#x1F43E;</span> 
 # </div>
 #
+# [Numpy and Python with Matrices](#Numpy-and-Python-with-Matrices)
 
 # %% [markdown]
 # ### Round-off Error
@@ -551,11 +557,11 @@ print (quiz3.matrix_quiz(answer = 'x'))
 #
 # > You can try the example with Python.
 #
-# <div align='right'>
-# <span style='font-size:7em'>
-# [&#x1F43E;](#Numpy-and-Python-with-Matrices)</span>
+# <div style="padding-top:1.5cm">
+# <span style='font-size:7em'>&#x1F43E;</span> 
 # </div>
 #
+# [Numpy and Python with Matrices](#Numpy-and-Python-with-Matrices)
 #
 
 # %% [markdown]
@@ -633,10 +639,11 @@ print (quiz3.matrix_quiz(answer = 'x'))
 #
 # > You can try the example with Python.
 #
-# <div align='right'>
-# <span style='font-size:7em'>
-# [&#x1F43E;](#Numpy-and-Python-with-Matrices)</span>
+# <div style="padding-top:1.5cm">
+# <span style='font-size:7em'>&#x1F43E;</span> 
 # </div>
+#
+# [Numpy and Python with Matrices](#Numpy-and-Python-with-Matrices)
 #
 #
 #
@@ -814,10 +821,11 @@ print (quiz3.matrix_quiz(answer = 'x'))
 #
 # > You can try the example with Python.
 #
-# <div align='right'>
-# <span style='font-size:7em'>
-# [&#x1F43E;](#Numpy-and-Python-with-Matrices)</span>
+# <div style="padding-top:1.5cm">
+# <span style='font-size:7em'>&#x1F43E;</span> 
 # </div>
+#
+# [Numpy and Python with Matrices](#Numpy-and-Python-with-Matrices)
 #
 
 # %% [markdown]
@@ -866,10 +874,11 @@ print (quiz3.matrix_quiz(answer = 'x'))
 # After solving the questions by hand, you can use Python to check your
 # answer.
 #
-# <div align='right'>
-# <span style='font-size:7em'>
-# [&#x1F43E;](#Numpy-and-Python-with-Matrices)</span>
+# <div style="padding-top:1.5cm">
+# <span style='font-size:7em'>&#x1F43E;</span> 
 # </div>
+#
+# [Numpy and Python with Matrices](#Numpy-and-Python-with-Matrices)
 #
 
 # %% [markdown]
@@ -992,10 +1001,11 @@ Image(filename='images/det-plot.png', width='60%')
 # After solving the questions by hand, you can use Python to check your
 # answer.
 #
-# <div align='right'>
-# <span style='font-size:7em'>
-# [&#x1F43E;](#Numpy-and-Python-with-Matrices)</span>
+# <div style="padding-top:1.5cm">
+# <span style='font-size:7em'>&#x1F43E;</span> 
 # </div>
+#
+# [Numpy and Python with Matrices](#Numpy-and-Python-with-Matrices)
 
 # %% [markdown]
 # ### Computational cost of Gaussian elimination
@@ -1158,10 +1168,11 @@ Image(filename='images/C_cycle_problem.png', width='60%')
 # After solving the questions by hand, you can use Python to check your
 # answer.
 #
-# <div align='right'>
-# <span style='font-size:7em'>
-# [&#x1F43E;](#Numpy-and-Python-with-Matrices)</span>
+# <div style="padding-top:1.5cm">
+# <span style='font-size:7em'>&#x1F43E;</span> 
 # </div>
+#
+# [Numpy and Python with Matrices](#Numpy-and-Python-with-Matrices)
 #
 
 # %% [markdown]
@@ -1315,10 +1326,11 @@ Image(filename='images/C_cycle_problem.png', width='60%')
 # After solving the questions by hand, you can use Python to check your
 # answer.
 #
-# <div align='right'>
-# <span style='font-size:7em'>
-# [&#x1F43E;](#Numpy-and-Python-with-Matrices)</span>
+# <div style="padding-top:1.5cm">
+# <span style='font-size:7em'>&#x1F43E;</span> 
 # </div>
+#
+# [Numpy and Python with Matrices](#Numpy-and-Python-with-Matrices)
 #
 # Although the method used here to find the eigenvalues is a direct way to
 # find the solution, it is not very efficient, especially for large
