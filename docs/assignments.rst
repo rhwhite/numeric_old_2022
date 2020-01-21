@@ -5,5 +5,5 @@ Assignment details
 
 * Lab 2 `Problem list <https://phaustin.github.io/numeric/doc_notebooks/lab2/01-lab2.html#List-of-Problems>`_  
 
-* Lab 3 `assignment3.pdf  <https://phaustin.github.io/numeric/doc_notebooks/lab3/pdfs/assignment3.pdf>`_
+* Lab 3 `assignment3.pdf  <https://phaustin.github.io/numeric/doc_notebooks/lab3/pdfs/numeric_assignment3.pdf>`_
   
