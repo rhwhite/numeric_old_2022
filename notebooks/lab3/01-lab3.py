@@ -9,7 +9,7 @@
 #       extension: .py
 #       format_name: percent
 #       format_version: '1.3'
-#       jupytext_version: 1.3.2
+#       jupytext_version: 1.3.1
 #   kernelspec:
 #     display_name: Python 3
 #     language: python
@@ -75,7 +75,6 @@
 # import the context to find files
 import context
 # import the quiz script
-import context
 from numlabs.lab3 import quiz3
 # import image handling
 from IPython.display import Image
@@ -173,7 +172,7 @@ from IPython.display import Image
 # In the following, replace 'x' by 'A', 'B', 'C', or 'D' and run the cell.
 
 # %%
-print (quiz3.matrix_quiz(answer = 'x'))
+print(quiz3.matrix_quiz(answer = 'B'))
 
 # %% [markdown]
 # ### Quick Review
