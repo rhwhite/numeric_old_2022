@@ -76,8 +76,8 @@
 import context
 # import the quiz script
 from numlabs.lab3 import quiz3
-# import image handling
-from IPython.display import Image
+
+
 
 # %% [markdown]
 # ## Linear Systems
@@ -211,7 +211,7 @@ print(quiz3.matrix_quiz(answer = 'B'))
 #
 # 8.  $AA$
 #
-# The solutions to these exercises are available [here](https://clouds.eos.ubc.ca/~phil/numeric/quizzes3/quick/quick.html)
+# The solutions to these exercises are available [here](lab3_files/quizzes/quick/quick.html)
 #
 # After solving the questions by hand, you can also use Python to check
 # your answers.
@@ -255,7 +255,7 @@ print(quiz3.matrix_quiz(answer = 'B'))
 #         E_{3j}: & x_{1} & + & 2x_{2} & - & x_{3} & = & 13
 # \end{array}$$
 #
-# The solution to this problem is available [here](http://clouds.eos.ubc.ca/~phil/numeric/quizzes3/gaus/gaus.html)
+# The solution to this problem is available [here](lab3_files/quizzes/gaus/gaus.html)
 #
 # After solving the system by hand, you can use Python to check your
 # answer.
@@ -870,7 +870,7 @@ print(quiz3.matrix_quiz(answer = 'B'))
 #                                         -3 &  1 & -5 \\
 #                                          2 & -1 &  3     \end{array} \right]$$
 #
-# The solutions to these exercises are available [here](http://clouds.eos.ubc.ca/~phil/numeric/quizzes3/inverse/inverse.html)
+# The solutions to these exercises are available [here](lab3_files/quizzes/inverse/inverse.html)
 #
 # After solving the questions by hand, you can use Python to check your
 # answer.
@@ -923,8 +923,8 @@ print(quiz3.matrix_quiz(answer = 'B'))
 #     
 # > Graphically, the parallelogram looks as follows:
 
-# %%
-Image(filename='images/det-plot.png', width='60%')
+# %% [markdown]
+# <img src='images/det-plot.png' width='60%' />
 
 # %% [markdown]
 # The basic procedure in finding a determinant of a matrix larger than 2
@@ -997,7 +997,7 @@ Image(filename='images/det-plot.png', width='60%')
 #                                         0 &  1 & -5 &  3
 #     \end{array} \right]$$
 #
-# The solutions to these exercises are available [here](http://clouds.eos.ubc.ca/~phil/numeric/quizzes3/det/det.html)
+# The solutions to these exercises are available [here](lab3_files/quizzes/det/det.html)
 #
 # After solving the questions by hand, you can use Python to check your
 # answer.
@@ -1099,8 +1099,8 @@ Image(filename='images/det-plot.png', width='60%')
 # -   d\) For part c) above, what needs to be specified in order to determine a
 #     single physical solution. How would you put this in the matrix equation.
 
-# %%
-Image(filename='images/C_cycle_problem.png', width='60%')
+# %% [markdown]
+# <img src='images/C_cycle_problem.png' width='60%' />
 
 # %% [markdown]
 # <div id="Figure-Box-Model">
@@ -1164,7 +1164,7 @@ Image(filename='images/C_cycle_problem.png', width='60%')
 #    \begin{array}{ccc}  3 & 2 & 4 \\ 2 & 0 & 2 \\ 4 & 2 & 3
 #    \end{array}    \right]$$
 #
-# The solution to this problem is available [here](http://clouds.eos.ubc.ca/~phil/numeric/quizzes3/char/char.html)
+# The solution to this problem is available [here](lab3_files/quizzes/char/char.html)
 #
 # After solving the questions by hand, you can use Python to check your
 # answer.
@@ -1322,7 +1322,7 @@ Image(filename='images/C_cycle_problem.png', width='60%')
 #    \begin{array}{ccc}  3 & 2 & 4 \\ 2 & 0 & 2 \\ 4 & 2 & 3
 #    \end{array}    \right]$$
 #
-# The solution to this problem is available [here](http://clouds.eos.ubc.ca/~phil/numeric/quizzes3/eigvec/eigvec.html)
+# The solution to this problem is available [here](lab3_file/quizzes/eigvec/eigvec.html)
 #
 # After solving the questions by hand, you can use Python to check your
 # answer.

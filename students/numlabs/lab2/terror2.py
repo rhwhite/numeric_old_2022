@@ -1,8 +1,10 @@
+# %%
 import matplotlib.pyplot as plt
 import context
 from numlabs.lab2.lab2_functions import euler, leapfrog, runge, midpoint
 import numpy as np
 
+# %%
 theFuncs = {
     'euler': euler,
     'leapfrog': leapfrog,
@@ -11,6 +13,7 @@ theFuncs = {
 }
 
 
+# %%
 def eval_fun(fun_choice, arg_dict):
     """
     Parameters
@@ -38,6 +41,7 @@ def eval_fun(fun_choice, arg_dict):
     return approxTime, approxTemp
 
 
+# %%
 if __name__ == "__main__":
 
     Ta = 20
