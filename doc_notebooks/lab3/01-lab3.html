@@ -420,45 +420,25 @@ div.rendered_html tbody tr:hover {
 <div class="section" id="Laboratory-3:-Linear-Algebra-(Sept. 12,-2017)">
 <h1>Laboratory 3: Linear Algebra (Sept. 12, 2017)<a class="headerlink" href="#Laboratory-3:-Linear-Algebra-(Sept. 12,-2017)" title="Permalink to this headline">¶</a></h1>
 <p>Grace Yung</p>
-<p># Table of Contents</p>
-<div class="toc" style="margin-top: 1em;"><ul class="toc-item" id="toc-level0"><li><p>1  Laboratory 3: Linear Algebra (Sept. 12, 2017)</p>
+<h1><p>Table of Contents</p>
+</h1><div class="toc"><ul class="toc-item"><li><p>1  Laboratory 3: Linear Algebra (Sept. 12, 2017)</p>
 <ul class="toc-item"><li><p>1.1  List of Problems</p>
 </li><li><p>1.2  Objectives</p>
 </li><li><p>1.3  Prerequisites</p>
 </li><li><p>1.4  Linear Systems</p>
 <ul class="toc-item"><li><p>1.4.1  What is a Matrix?</p>
-<ul class="toc-item"><li><p>1.4.1.1  Quiz on Matrices</p>
-</li></ul></li><li><p>1.4.2  Quick Review</p>
+</li><li><p>1.4.2  Quick Review</p>
 </li><li><p>1.4.3  Gaussian Elimination</p>
-<ul class="toc-item"><li><p>1.4.3.1  Decomposition</p>
-</li><li><p>1.4.3.2  Example One</p>
-</li></ul></li><li><p>1.4.4  Round-off Error</p>
-<ul class="toc-item"><li><p>1.4.4.1  Example Two</p>
-</li><li><p>1.4.4.2  Example Three</p>
-</li><li><p>1.4.4.3  Partial Pivoting</p>
-</li><li><p>1.4.4.4  Example Four</p>
-</li><li><p>1.4.4.5  Full Pivoting</p>
-</li><li><p>1.4.4.6  Example Five</p>
-</li><li><p>1.4.4.7  Summary</p>
-</li></ul></li><li><p>1.4.5  Matrix Inversion</p>
+</li><li><p>1.4.4  Round-off Error</p>
+</li><li><p>1.4.5  Matrix Inversion</p>
 </li><li><p>1.4.6  Determinant</p>
-<ul class="toc-item"><li><p>1.4.6.1  Example Six</p>
-</li><li><p>1.4.6.2  Example Seven</p>
-</li></ul></li><li><p>1.4.7  Computational cost of Gaussian elimination</p>
-<ul class="toc-item"><li><p>1.4.7.1  Problem One</p>
-</li></ul></li></ul></li><li><p>1.5  Eigenvalue Problems</p>
+</li><li><p>1.4.7  Computational cost of Gaussian elimination</p>
+</li></ul></li><li><p>1.5  Eigenvalue Problems</p>
 <ul class="toc-item"><li><p>1.5.1  Characteristic Equation</p>
-<ul class="toc-item"><li><p>1.5.1.1  Example Eight</p>
-</li><li><p>1.5.1.2  Condition Number</p>
-</li></ul></li><li><p>1.5.2  Eigenvectors</p>
-<ul class="toc-item"><li><p>1.5.2.1  Example Nine</p>
-</li></ul></li></ul></li><li><p>1.6  Iterative Methods</p>
+</li><li><p>1.5.2  Eigenvectors</p>
+</li></ul></li><li><p>1.6  Iterative Methods</p>
 </li><li><p>1.7  Solution of an ODE Using Linear Algebra</p>
-<ul class="toc-item"><ul class="toc-item"><li><p>1.7.0.1  Problem Two</p>
-</li><li><p>1.7.0.2  Problem Three</p>
-</li><li><p>1.7.0.3  Problem Four</p>
-</li><li><p>1.7.0.4  Summary</p>
-</li></ul></ul></li><li><p>1.8  References</p>
+</li><li><p>1.8  References</p>
 </li><li><p>1.9  Numpy and Python with Matrices</p>
 </li><li><p>1.10  Glossary</p>
 </li></ul></li></ul></div><div class="section" id="List-of-Problems">
@@ -480,8 +460,9 @@ div.rendered_html tbody tr:hover {
 <li><p>Explain: pivoting.</p></li>
 </ul>
 <p>There is a description of using Numpy and Python for Matrices at the end of the lab. It includes a brief description of how to use the built-in functions introduced in this lab. Just look for the paw prints:</p>
-<div style="padding-top:1.5cm"><p><a class="reference external" href="#Numpy-and-Python-with-Matrices">🐾 Numpy and Python with Matrices</a></p>
-</div><p>when you are not sure what functions to use, and this will lead you to the mini-manual.</p>
+<div style="padding-top:1.5cm"><p>🐾</p>
+</div><p><a class="reference external" href="#Numpy-and-Python-with-Matrices">Numpy and Python with Matrices</a></p>
+<p>when you are not sure what functions to use, and this will lead you to the mini-manual.</p>
 </div>
 <div class="section" id="Prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#Prerequisites" title="Permalink to this headline">¶</a></h2>
@@ -491,10 +472,12 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># import the quiz script</span>
+<span></span><span class="c1"># import the context to find files</span>
+<span class="kn">import</span> <span class="nn">context</span>
+<span class="c1"># import the quiz script</span>
 <span class="kn">from</span> <span class="nn">numlabs.lab3</span> <span class="kn">import</span> <span class="n">quiz3</span>
-<span class="c1"># import image handling</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+
+
 </pre></div>
 </div>
 </div>
@@ -503,15 +486,13 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-1-770201e76dfd&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-red-fg"># import the quiz script</span>
-<span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg"> </span><span class="ansi-green-fg">from</span> numlabs<span class="ansi-blue-fg">.</span>lab3 <span class="ansi-green-fg">import</span> quiz3
-<span class="ansi-green-intense-fg ansi-bold">      3</span> <span class="ansi-red-fg"># import image handling</span>
-<span class="ansi-green-intense-fg ansi-bold">      4</span> <span class="ansi-green-fg">from</span> IPython<span class="ansi-blue-fg">.</span>display <span class="ansi-green-fg">import</span> Image
+******************************
+context imported. Front of path:
+/Users/phil/repos/numeric
+back of path: /Users/phil/.ipython
+******************************
 
-<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;numlabs&#39;
+through /Users/phil/repos/numeric/notebooks/lab3/context.py
 </pre></div></div>
 </div>
 </div>
@@ -598,7 +579,7 @@ x + 5y + 10z &amp;=&amp; 0
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="nb">print</span> <span class="p">(</span><span class="n">quiz3</span><span class="o">.</span><span class="n">matrix_quiz</span><span class="p">(</span><span class="n">answer</span> <span class="o">=</span> <span class="s1">&#39;x&#39;</span><span class="p">))</span>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">quiz3</span><span class="o">.</span><span class="n">matrix_quiz</span><span class="p">(</span><span class="n">answer</span> <span class="o">=</span> <span class="s1">&#39;B&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -607,12 +588,7 @@ x + 5y + 10z &amp;=&amp; 0
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-2-099d508afb75&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>print <span class="ansi-blue-fg">(</span>quiz3<span class="ansi-blue-fg">.</span>matrix_quiz<span class="ansi-blue-fg">(</span>answer <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">&#39;x&#39;</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">NameError</span>: name &#39;quiz3&#39; is not defined
+You forgot the augmented column. Try again.
 </pre></div></div>
 </div>
 </div>
@@ -633,10 +609,11 @@ x + 5y + 10z &amp;=&amp; 0
 <li><p><span class="math notranslate nohighlight">\(BA\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(AA\)</span></p></li>
 </ol>
-<p>The solutions to these exercises are available <a class="reference external" href="https://clouds.eos.ubc.ca/~phil/numeric/quizzes3/quick/quick.html">here</a></p>
+<p>The solutions to these exercises are available <a class="reference external" href="lab3_files/quizzes/quick/quick.html">here</a></p>
 <p>After solving the questions by hand, you can also use Python to check your answers.</p>
-<div align="right"><p><a class="reference external" href="#Numpy-and-Python-with-Matrices">🐾</a></p>
-</div></div>
+<div style="padding-top:1.5cm"><p>🐾</p>
+</div><p><a class="reference external" href="#Numpy-and-Python-with-Matrices">Numpy and Python with Matrices</a></p>
+</div>
 <div class="section" id="Gaussian-Elimination">
 <h3>Gaussian Elimination<a class="headerlink" href="#Gaussian-Elimination" title="Permalink to this headline">¶</a></h3>
 <p>The simplest method for solving a linear system is Gaussian elimination, which uses three types of <em>elementary row operations</em>:</p>
@@ -654,10 +631,11 @@ be able to proceed with back-substitution to find the values of the unknowns.</p
         E_{2j}: &amp; 3x_{1} &amp; - &amp; 6x_{2} &amp; + &amp; 4x_{3} &amp; = &amp; -48 \\
         E_{3j}: &amp; x_{1} &amp; + &amp; 2x_{2} &amp; - &amp; x_{3} &amp; = &amp; 13
 \end{array}\end{split}\]</div>
-<p>The solution to this problem is available <a class="reference external" href="http://clouds.eos.ubc.ca/~phil/numeric/quizzes3/gaus/gaus.html">here</a></p>
+<p>The solution to this problem is available <a class="reference external" href="lab3_files/quizzes/gaus/gaus.html">here</a></p>
 <p>After solving the system by hand, you can use Python to check your answer.</p>
-<div align="right"><p><a class="reference external" href="#Numpy-and-Python-with-Matrices">🐾</a></p>
-</div><div class="section" id="Decomposition">
+<div style="padding-top:1.5cm"><p>🐾</p>
+</div><p><a class="reference external" href="#Numpy-and-Python-with-Matrices">Numpy and Python with Matrices</a></p>
+<div class="section" id="Decomposition">
 <h4>Decomposition<a class="headerlink" href="#Decomposition" title="Permalink to this headline">¶</a></h4>
 <p>Any invertible, square matrix, <span class="math notranslate nohighlight">\(A\)</span>, can be factored out into a product of a lower and an upper triangular matrices, <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(U\)</span>, respectively, so that <span class="math notranslate nohighlight">\(A\)</span> = <span class="math notranslate nohighlight">\(LU\)</span>. The <span class="math notranslate nohighlight">\(LU\)</span>- <em>decomposition</em> is closely linked to the process of Gaussian elimination.</p>
 </div>
@@ -788,8 +766,9 @@ U = \left[  \begin{array}{ccc}  2 &amp;   8 &amp; -5   \\
 <p>Use Python to confirm that <span class="math notranslate nohighlight">\(LU\)</span> = <span class="math notranslate nohighlight">\(A\)</span>.</p>
 </div></blockquote>
 <p>The reason decomposition is introduced here is not because of Gaussian elimination <span class="math notranslate nohighlight">\(-\)</span> one seldom explicitly computes the <span class="math notranslate nohighlight">\(LU\)</span> decomposition of a matrix. However, the idea of factoring a matrix is important for other direct methods of solving linear systems (of which Gaussian elimination is only one) and for methods for finding eigenvalues (<a class="reference external" href="#Characteristic-Equation">Characteristic Equation</a>).</p>
-<div align="right"><p><a class="reference external" href="#Numpy-and-Python-with-Matrices">🐾</a></p>
-</div></div>
+<div style="padding-top:1.5cm"><p>🐾</p>
+</div><p><a class="reference external" href="#Numpy-and-Python-with-Matrices">Numpy and Python with Matrices</a></p>
+</div>
 </div>
 <div class="section" id="Round-off-Error">
 <h3>Round-off Error<a class="headerlink" href="#Round-off-Error" title="Permalink to this headline">¶</a></h3>
@@ -894,8 +873,9 @@ b2 = \left[ \begin{array}{c} 1 \\ 2.0001  \end{array}  \right] .
 <div><p>The result is <span class="math notranslate nohighlight">\(x_1\)</span> = 0 and <span class="math notranslate nohighlight">\(x_2\)</span> = 1, which is quite different from the correct answers. So Gaussian elimination might mislead you to think that a matrix is ill-conditioned by giving an inaccurate solution to the system. In fact, the problem is that Gaussian elimination on its own is a method that is unstable in the presence of round-off error, even for well-conditioned matrices. Can this be fixed?</p>
 <p>You can try the example with Python.</p>
 </div></blockquote>
-<div align="right"><p><a class="reference external" href="#Numpy-and-Python-with-Matrices">🐾</a></p>
-</div></div>
+<div style="padding-top:1.5cm"><p>🐾</p>
+</div><p><a class="reference external" href="#Numpy-and-Python-with-Matrices">Numpy and Python with Matrices</a></p>
+</div>
 <div class="section" id="Partial-Pivoting">
 <h4>Partial Pivoting<a class="headerlink" href="#Partial-Pivoting" title="Permalink to this headline">¶</a></h4>
 <p>There are a number of ways to avoid inaccuracy, one of which is applying partial pivoting to the Gaussian elimination.</p>
@@ -953,8 +933,9 @@ b2 = \left[ \begin{array}{c} 1 \\ 2.0001  \end{array}  \right] .
 <blockquote>
 <div><p>You can try the example with Python.</p>
 </div></blockquote>
-<div align="right"><p><a class="reference external" href="#Numpy-and-Python-with-Matrices">🐾</a></p>
-</div><p>Note: This section has described row pivoting. The same process can be applied to columns, with the resulting procedure being called column pivoting.</p>
+<div style="padding-top:1.5cm"><p>🐾</p>
+</div><p><a class="reference external" href="#Numpy-and-Python-with-Matrices">Numpy and Python with Matrices</a></p>
+<p>Note: This section has described row pivoting. The same process can be applied to columns, with the resulting procedure being called column pivoting.</p>
 </div>
 <div class="section" id="Full-Pivoting">
 <h4>Full Pivoting<a class="headerlink" href="#Full-Pivoting" title="Permalink to this headline">¶</a></h4>
@@ -1109,8 +1090,9 @@ E_{3j}-0.5 E_{2j} \\
 <blockquote>
 <div><p>You can try the example with Python.</p>
 </div></blockquote>
-<div align="right"><p><a class="reference external" href="#Numpy-and-Python-with-Matrices">🐾</a></p>
-</div></div>
+<div style="padding-top:1.5cm"><p>🐾</p>
+</div><p><a class="reference external" href="#Numpy-and-Python-with-Matrices">Numpy and Python with Matrices</a></p>
+</div>
 <div class="section" id="Summary">
 <h4>Summary<a class="headerlink" href="#Summary" title="Permalink to this headline">¶</a></h4>
 <p>In a system <span class="math notranslate nohighlight">\(Ax = b\)</span>, if round-off errors in <span class="math notranslate nohighlight">\(A\)</span> or <span class="math notranslate nohighlight">\(b\)</span> affect the system such that it may not give a solution that is close to the real answer, then <span class="math notranslate nohighlight">\(A\)</span> is ill-conditioned, and it has a very large condition number.</p>
@@ -1134,10 +1116,11 @@ E_{3j}-0.5 E_{2j} \\
                                      2 &amp; -1 &amp;  3     \end{array} \right]\end{split}\]</div>
 </li>
 </ol>
-<p>The solutions to these exercises are available <a class="reference external" href="http://clouds.eos.ubc.ca/~phil/numeric/quizzes3/inverse/inverse.html">here</a></p>
+<p>The solutions to these exercises are available <a class="reference external" href="lab3_files/quizzes/inverse/inverse.html">here</a></p>
 <p>After solving the questions by hand, you can use Python to check your answer.</p>
-<div align="right"><p><a class="reference external" href="#Numpy-and-Python-with-Matrices">🐾</a></p>
-</div></div>
+<div style="padding-top:1.5cm"><p>🐾</p>
+</div><p><a class="reference external" href="#Numpy-and-Python-with-Matrices">Numpy and Python with Matrices</a></p>
+</div>
 <div class="section" id="Determinant">
 <h3>Determinant<a class="headerlink" href="#Determinant" title="Permalink to this headline">¶</a></h3>
 <p>Every square matrix <span class="math notranslate nohighlight">\(A\)</span> has a scalar associated with it. This number is the determinant of the matrix, represented as <span class="math notranslate nohighlight">\(\det(A)\)</span>. Its absolute value is the volume of the parallelogram that can be generated from the rows of <span class="math notranslate nohighlight">\(A\)</span>.</p>
@@ -1173,28 +1156,6 @@ E_{3j}-0.5 E_{2j} \\
 <blockquote>
 <div><p>Graphically, the parallelogram looks as follows:</p>
 </div></blockquote>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;images/det-plot.png&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s1">&#39;60%&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-3-cfbc671641f8&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>Image<span class="ansi-blue-fg">(</span>filename<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#39;images/det-plot.png&#39;</span><span class="ansi-blue-fg">,</span> width<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#39;60%&#39;</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">NameError</span>: name &#39;Image&#39; is not defined
-</pre></div></div>
-</div>
 <p>The basic procedure in finding a determinant of a matrix larger than 2 <span class="math notranslate nohighlight">\(\times\)</span> 2 is to calculate the product of the non-zero entries in each of the <em>permutations</em> of the matrix, and then add them together. A permutation of a matrix <span class="math notranslate nohighlight">\(A\)</span> is a matrix of the same size with one element from each row and column of <span class="math notranslate nohighlight">\(A\)</span>. The sign of each permutation is <span class="math notranslate nohighlight">\(+\)</span> or <span class="math notranslate nohighlight">\(-\)</span> depending on whether the permutation is odd or even. This is illustrated in the following example …</p>
 </div>
 <div class="section" id="Example-Seven">
@@ -1264,10 +1225,11 @@ det(A) &amp; = &amp; +1\cdot 5\cdot 9 +  2 \cdot 6 \cdot 7 + 3 \cdot 4 \cdot 8 -
 \end{array} \right]\end{split}\]</div>
 </li>
 </ol>
-<p>The solutions to these exercises are available <a class="reference external" href="http://clouds.eos.ubc.ca/~phil/numeric/quizzes3/det/det.html">here</a></p>
+<p>The solutions to these exercises are available <a class="reference external" href="lab3_files/quizzes/det/det.html">here</a></p>
 <p>After solving the questions by hand, you can use Python to check your answer.</p>
-<div align="right"><p><a class="reference external" href="#Numpy-and-Python-with-Matrices">🐾</a></p>
-</div></div>
+<div style="padding-top:1.5cm"><p>🐾</p>
+</div><p><a class="reference external" href="#Numpy-and-Python-with-Matrices">Numpy and Python with Matrices</a></p>
+</div>
 </div>
 <div class="section" id="Computational-cost-of-Gaussian-elimination">
 <h3>Computational cost of Gaussian elimination<a class="headerlink" href="#Computational-cost-of-Gaussian-elimination" title="Permalink to this headline">¶</a></h3>
@@ -1318,28 +1280,6 @@ rate of Q = 36 x 10<span class="math notranslate nohighlight">\(^{12}\)</span> t
 </ol>
 </li>
 </ul>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;images/C_cycle_problem.png&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s1">&#39;60%&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-4-09a803c7bfa7&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>Image<span class="ansi-blue-fg">(</span>filename<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#39;images/C_cycle_problem.png&#39;</span><span class="ansi-blue-fg">,</span> width<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#39;60%&#39;</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">NameError</span>: name &#39;Image&#39; is not defined
-</pre></div></div>
-</div>
 <div id="Figure-Box-Model"><p><strong>Figure Box Model:</strong> Schematic for <a class="reference external" href="#Problem-One">Problem One</a>.</p>
 </div></div>
 </div>
@@ -1393,10 +1333,11 @@ rate of Q = 36 x 10<span class="math notranslate nohighlight">\(^{12}\)</span> t
 \[\begin{split}B = \left[
    \begin{array}{ccc}  3 &amp; 2 &amp; 4 \\ 2 &amp; 0 &amp; 2 \\ 4 &amp; 2 &amp; 3
    \end{array}    \right]\end{split}\]</div>
-<p>The solution to this problem is available <a class="reference external" href="http://clouds.eos.ubc.ca/~phil/numeric/quizzes3/char/char.html">here</a></p>
+<p>The solution to this problem is available <a class="reference external" href="lab3_files/quizzes/char/char.html">here</a></p>
 <p>After solving the questions by hand, you can use Python to check your answer.</p>
-<div align="right"><p><a class="reference external" href="#Numpy-and-Python-with-Matrices">🐾</a></p>
-</div></div>
+<div style="padding-top:1.5cm"><p>🐾</p>
+</div><p><a class="reference external" href="#Numpy-and-Python-with-Matrices">Numpy and Python with Matrices</a></p>
+</div>
 <div class="section" id="Condition-Number">
 <h4>Condition Number<a class="headerlink" href="#Condition-Number" title="Permalink to this headline">¶</a></h4>
 <p>The eigenvalues of a matrix <span class="math notranslate nohighlight">\(A\)</span> can be used to calculate an approximation to the condition number <span class="math notranslate nohighlight">\(K\)</span> of the matrix, i.e.</p>
@@ -1501,10 +1442,11 @@ rate of Q = 36 x 10<span class="math notranslate nohighlight">\(^{12}\)</span> t
 \[\begin{split}B = \left[
    \begin{array}{ccc}  3 &amp; 2 &amp; 4 \\ 2 &amp; 0 &amp; 2 \\ 4 &amp; 2 &amp; 3
    \end{array}    \right]\end{split}\]</div>
-<p>The solution to this problem is available <a class="reference external" href="http://clouds.eos.ubc.ca/~phil/numeric/quizzes3/eigvec/eigvec.html">here</a></p>
+<p>The solution to this problem is available <a class="reference external" href="lab3_file/quizzes/eigvec/eigvec.html">here</a></p>
 <p>After solving the questions by hand, you can use Python to check your answer.</p>
-<div align="right"><p><a class="reference external" href="#Numpy-and-Python-with-Matrices">🐾</a></p>
-</div><p>Although the method used here to find the eigenvalues is a direct way to find the solution, it is not very efficient, especially for large matrices. Typically, iterative methods such as the Power Method or the QR algorithm are used (see a linear algebra text such as <a class="reference external" href="#Ref:Strang88">Strang (1988)</a> for more details).</p>
+<div style="padding-top:1.5cm"><p>🐾</p>
+</div><p><a class="reference external" href="#Numpy-and-Python-with-Matrices">Numpy and Python with Matrices</a></p>
+<p>Although the method used here to find the eigenvalues is a direct way to find the solution, it is not very efficient, especially for large matrices. Typically, iterative methods such as the Power Method or the QR algorithm are used (see a linear algebra text such as <a class="reference external" href="#Ref:Strang88">Strang (1988)</a> for more details).</p>
 </div>
 </div>
 </div>
