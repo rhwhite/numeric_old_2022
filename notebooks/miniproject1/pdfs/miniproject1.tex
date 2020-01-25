@@ -1,0 +1,58 @@
+\documentclass[12pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper,top=50pt,hmargin={20mm,20mm},headheight=15pt} 
+
+\input{def}
+\begin{document}
+
+\subsection*{Miniproject \# 1 for ATSC 409: Arctic Ocean Near Surface Temperature Maximum}
+
+Consider summer in the Arctic Ocean (Canada Basin).  The surface of
+the ocean is partially covered by ice (say ice fraction $\beta$).  The sun
+is bright (assume no clouds) and shines most of the day (assume all
+day).  Take an incoming radiative flux of 100 W m$^{-2}$, a water albedo of
+0.1 and assume that no light penetrates through the ice-covered portion
+(i.e. it has lots of snow on top).  Ice is melting, and so the surface
+temperature is the freezing temperature of salty water, say
+-1$^o$C. Deep in the water column, at 200 m depth, the temperature is
+-2$^o$C.  The light energy $I$ decays exponentially with depth with an
+e-folding scale of $\alpha$.
+
+In the polar ocean, density is determined by salinity.\footnote{Which
+  means its perfectly possible to have colder water above warmer
+  water} The surface layer of the ocean of depth ($h$) is well-mixed
+and relatively fresh.  Below that is a strongly stratified layer and
+then less stratified water.  Assume an eddy-viscosity or mixing
+coefficient ($A_h$) of the form
+
+\begin{eqnarray}
+ A_{max}, & d < h \\
+A_{depth} + \left[A_{max}-A_{depth}-A_{dip}(d-h)\right] \exp \left[-0.5(d-h)\right], & d > h.
+\end{eqnarray}
+where $d$ is the depth, positive in the ocean, measured down from the surface.
+
+An equation for the temperature $T$ as a function of depth, $d$ is
+\begin{equation}
+\dTdt = \frac {\pa}{\pa d} \left(A_h \frac {\pa T}{\pa d} \right) - \frac 1 {c_p} \frac {\pa I}{\pa d}
+\end{equation}
+where $c_p = 4000$J kg$^{-1}$ $^o$C$^{-1} = 4 \times 10^6$J m$^{-3}$ $^o$C$^{-1}$ is specific heat.
+
+Assume steady state and explore the temperature profiles for various ice concentrations $\beta$, mixing profiles(make sure your $A_h$ does not go negative), light attenuation rates ($\alpha$).
+
+Starting parameter suggestions: $\beta = 0.5$, $\alpha = 1/(10$ m), $h = 10$ m, $A_{max} = 1 \times 10^{-2} $m$^2$s$^{-1}$, $A_{depth} = 1 \times 10^{-4} $m$^2$s$^{-1}$, and $A_{dip} = 1.5 \times 10^{-3} $m$^2$s$^{-1}$.  These should give you a Near Surface Temperature Maximum (NSTM) --- see Figure 2 of Jackson et al. https://circle.ubc.ca/handle/2429/34555 but note that the vertical axis is a logscale.
+
+\subsubsection*{Hand-In, as a notebook}
+\begin{enumerate}
+\item Derivation of the equations you put into your computer model.
+\item A paragraph discussing the method of solution.
+\item Your code
+\item Results of the base case and your variations (graphs, summary tables)
+\item A discussion of the results of your variations
+\end{enumerate}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
