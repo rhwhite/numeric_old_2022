@@ -9,3 +9,5 @@ Getting started
     
     Next steps <doc_notebooks/course_bootstrap/python.ipynb>
     
+    VS code notes <doc_notebooks/course_bootstrap/vscode.ipynb>
+    
