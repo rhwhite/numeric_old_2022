@@ -382,7 +382,7 @@ theAx.set_title('interactive 4.1');
 #
 # 1.  [Heun’s method](#eq:heuns)
 #
-# 2.  the fourth-order Runge-Kutta method ([eq:rk4]) discussed in the
+# 2.  the fourth-order Runge-Kutta method ([eq:rk4](#eq:rk4)) discussed in the
 #     next section.
 
 # %% [markdown]
