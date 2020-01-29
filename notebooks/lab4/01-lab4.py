@@ -2,22 +2,19 @@
 # ---
 # jupyter:
 #   jupytext:
+#     cell_metadata_filter: all
 #     formats: ipynb,py:percent
 #     notebook_metadata_filter: all,-language_info,-toc,-latex_envs
 #     text_representation:
 #       extension: .py
 #       format_name: percent
 #       format_version: '1.3'
-#       jupytext_version: 1.3.1
+#       jupytext_version: 1.3.2
 #   kernelspec:
 #     display_name: Python 3
 #     language: python
 #     name: python3
 # ---
-
-# %% [markdown] toc="true"
-# # Table of Contents
-#  <p><div class="lev1 toc-item"><a href="#Solving-Ordinary-Differential-Equations-with-the-Runge-Kutta-Methods" data-toc-modified-id="Solving-Ordinary-Differential-Equations-with-the-Runge-Kutta-Methods-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Solving Ordinary Differential Equations with the Runge-Kutta Methods</a></div><div class="lev2 toc-item"><a href="#List-of-Problems" data-toc-modified-id="List-of-Problems-11"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>List of Problems</a></div><div class="lev2 toc-item"><a href="#Objectives" data-toc-modified-id="Objectives-12"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Objectives</a></div><div class="lev2 toc-item"><a href="#Readings" data-toc-modified-id="Readings-13"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Readings</a></div><div class="lev2 toc-item"><a href="#Introduction" data-toc-modified-id="Introduction-14"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>Introduction</a></div><div class="lev2 toc-item"><a href="#Runge-Kutta-methods" data-toc-modified-id="Runge-Kutta-methods-15"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>Runge-Kutta methods</a></div><div class="lev3 toc-item"><a href="#The-Midpoint-Method:-A-Two-Stage-Runge-Kutta-Method" data-toc-modified-id="The-Midpoint-Method:-A-Two-Stage-Runge-Kutta-Method-151"><span class="toc-item-num">1.5.1&nbsp;&nbsp;</span>The Midpoint Method: A Two-Stage Runge-Kutta Method</a></div><div class="lev3 toc-item"><a href="#Second-Order-Runge-Kutta-Methods" data-toc-modified-id="Second-Order-Runge-Kutta-Methods-152"><span class="toc-item-num">1.5.2&nbsp;&nbsp;</span>Second-Order Runge-Kutta Methods</a></div><div class="lev3 toc-item"><a href="#The-Runge-Kutta-Tableau" data-toc-modified-id="The-Runge-Kutta-Tableau-153"><span class="toc-item-num">1.5.3&nbsp;&nbsp;</span>The Runge-Kutta Tableau</a></div><div class="lev5 toc-item"><a href="#Problem-tableau" data-toc-modified-id="Problem-tableau-15301"><span class="toc-item-num">1.5.3.0.1&nbsp;&nbsp;</span>Problem tableau</a></div><div class="lev3 toc-item"><a href="#Explicit-Fourth-Order-Runge-Kutta-Method" data-toc-modified-id="Explicit-Fourth-Order-Runge-Kutta-Method-154"><span class="toc-item-num">1.5.4&nbsp;&nbsp;</span>Explicit Fourth-Order Runge-Kutta Method</a></div><div class="lev3 toc-item"><a href="#Embedded-Runge-Kutta-Methods:-Estimate-of-the-Truncation-Error" data-toc-modified-id="Embedded-Runge-Kutta-Methods:-Estimate-of-the-Truncation-Error-155"><span class="toc-item-num">1.5.5&nbsp;&nbsp;</span>Embedded Runge-Kutta Methods: Estimate of the Truncation Error</a></div><div class="lev5 toc-item"><a href="#Problem-embedded" data-toc-modified-id="Problem-embedded-15501"><span class="toc-item-num">1.5.5.0.1&nbsp;&nbsp;</span>Problem embedded</a></div><div class="lev2 toc-item"><a href="#Python:-moving-from-a-notebook-to-a-library" data-toc-modified-id="Python:-moving-from-a-notebook-to-a-library-16"><span class="toc-item-num">1.6&nbsp;&nbsp;</span>Python: moving from a notebook to a library</a></div><div class="lev3 toc-item"><a href="#Writing-a-config-file" data-toc-modified-id="Writing-a-config-file-161"><span class="toc-item-num">1.6.1&nbsp;&nbsp;</span>Writing a config file</a></div><div class="lev3 toc-item"><a href="#Passing-a-derivative-function-to-an-integrator" data-toc-modified-id="Passing-a-derivative-function-to-an-integrator-162"><span class="toc-item-num">1.6.2&nbsp;&nbsp;</span>Passing a derivative function to an integrator</a></div><div class="lev5 toc-item"><a href="#problem-coding-A" data-toc-modified-id="problem-coding-A-16201"><span class="toc-item-num">1.6.2.0.1&nbsp;&nbsp;</span>problem coding A</a></div><div class="lev5 toc-item"><a href="#problem-coding-B" data-toc-modified-id="problem-coding-B-16202"><span class="toc-item-num">1.6.2.0.2&nbsp;&nbsp;</span>problem coding B</a></div><div class="lev5 toc-item"><a href="#problem-coding-C" data-toc-modified-id="problem-coding-C-16203"><span class="toc-item-num">1.6.2.0.3&nbsp;&nbsp;</span>problem coding C</a></div><div class="lev2 toc-item"><a href="#Mathematical-Notes" data-toc-modified-id="Mathematical-Notes-17"><span class="toc-item-num">1.7&nbsp;&nbsp;</span>Mathematical Notes</a></div><div class="lev3 toc-item"><a href="#Note-on-the-Derivation-of-the-Second-Order-Runge-Kutta-Methods" data-toc-modified-id="Note-on-the-Derivation-of-the-Second-Order-Runge-Kutta-Methods-171"><span class="toc-item-num">1.7.1&nbsp;&nbsp;</span>Note on the Derivation of the Second-Order Runge-Kutta Methods</a></div><div class="lev2 toc-item"><a href="#Glossary" data-toc-modified-id="Glossary-18"><span class="toc-item-num">1.8&nbsp;&nbsp;</span>Glossary</a></div>
 
 # %% [markdown]
 # # Solving Ordinary Differential Equations with the Runge-Kutta Methods 
@@ -31,7 +28,7 @@
 #
 # - [Problem tableau](#problem_tableau)
 #
-# - [Problem Runge Kutta4](#problem_rk4)
+# - [Problem Runge Kutta4](#problemrk4)
 #
 # - [Problem embedded](#problem_embedded)
 #
@@ -149,9 +146,8 @@
 #
 # where $h \equiv \Delta t$.
 
-# %%
-from IPython.display import Image
-Image(filename="images/euler.png")
+# %% [markdown [markdown] trusted=true
+# ![fig1](images/euler.png)
 
 # %% [markdown]
 # Figure euler: The forward Euler method is essentially a straight-line approximation
@@ -168,12 +164,12 @@ Image(filename="images/euler.png")
 # midpoint is then used to advance the solution to the next step. The
 # method can be written in two *stages* $k_i$,
 #
-# <a name="eq_midpoint"></a>
+# <div id="eq:midpoint"><b>eq:midpoint</b></div>
 # $$
 # \begin{aligned}
 #    \begin{array}{l}
 #     k_1 =  h f(y_n,t_n)\\
-#     k_2 = h f(y_n+\frac{1}{2}k_1, t_n+\frac{1}{2}h)\ \ \rm{eq: midpoint}\\
+#     k_2 = h f(y_n+\frac{1}{2}k_1, t_n+\frac{1}{2}h)\\
 #     y_{n+1} = y_n + k_2
 #   \end{array}
 # \end{aligned}
@@ -184,8 +180,8 @@ Image(filename="images/euler.png")
 #
 #
 
-# %%
-Image(filename='images/midpoint.png')
+# %% [markdown] trusted=false
+# ![fig2](images/midpoint.png)
 
 # %% [markdown]
 # Figure midpoint: The midpoint method again uses the derivative at the starting point to
@@ -203,30 +199,32 @@ Image(filename='images/midpoint.png')
 # information at the midpoint results in the first order error term
 # cancelling out, making the method *second order* accurate.
 # This can be shown by a Taylor expansion of equation
-# [eq: midpoint](#eq_midpoint)
+# [eq:midpoint](#eq:midpoint)
 #
-# <a name='problem_midpoint'></a>
-# **Problem midpoint**: Even though the midpoint method is second-order
+# <div id='problem_midpoint'><b>Problem midpoint</b></div>
+#
+# Even though the midpoint method is second-order
 # accurate, it may still be less accurate than the forward Euler method.
 # In the demo below, compare the accuracy of the two methods on the
 # initial value problem 
 #
-# $$
-#   \frac{dy}{dt} = -y +t +1,  \;\;\;\; y(0) =1\ \ \textbf{eq: linexp}
-# $$ 
+# <div id="eq:linexp"><b>eq:linexp</b></div>
+# \begin{equation}
+#  \frac{dy}{dt} = -y +t +1,  \;\;\;\; y(0) =1
+# \end{equation}
 #
 # which has the exact
 # solution 
-# $$
+# \begin{equation}
 #   y(t) = t + e^{-t}
-# $$
+# \end{equation}
 
 # %% [markdown]
 # 1.  Why is it possible that the midpoint method may be less accurate
 #     than the forward Euler method, even though it is a higher order
 #     method?
 #
-# 2.  Based on the numerical solutions of (eq: linexp), which method
+# 2.  Based on the numerical solutions of [eq:linexp](#eq:linexp), which method
 #     appears more accurate?
 #
 # 3.  Cut the stepsize in half and check the error at a given time. Repeat
@@ -237,7 +235,7 @@ Image(filename='images/midpoint.png')
 #     you change the initial time? Why?
 
 # %%
-# %matplotlib inline
+import context
 from numlabs.lab4.lab4_functions import initinter41,eulerinter41,midpointinter41
 import numpy as np
 from matplotlib import pyplot as plt
@@ -264,21 +262,23 @@ theAx.set_xlabel('time (seconds)')
 l2=theAx.plot(timeVec,ye,'r-',label='euler')
 l3=theAx.plot(timeVec,ym,'g-',label='midpoint')
 theAx.legend(loc='best')
-theAx.set_title('interactive 4.1')
+theAx.set_title('interactive 4.1');
 
 # %% [markdown]
 # In general, an *explicit* 2-stage Runge-Kutta method can be
-# written as, 
+# written as
 #
 #
-# $$
-#    \begin{array}{l}
-#     k_1 =  h f(y_n,t_n)\\
-#     k_2 = h f(y_n+b_{21}k_1, t_n+a_2h)\ \ \ \textbf{eq: explicitrk2}  \\
-#     y_{n+1} = y_n + c_1k_1 +c_2k_2
-#   \end{array}
-# $$
 #
+# <div id='eq:explicitrk2'><b> eq:explicitrk1</b> </div>
+#
+# \begin{align}
+# k_1 =&  h f(y_n,t_n)\\
+# k_2 =& h f(y_n+b_{21}k_1, t_n+a_2h) \\
+# y_{n+1} =& y_n + c_1k_1 +c_2k_2
+# \end{align}
+
+# %% [markdown]
 #    
 #    The scheme is said to be
 # <span>*explicit*</span> since a given stage does not depend
@@ -286,7 +286,7 @@ theAx.set_title('interactive 4.1')
 # or on a later stage.
 #
 # Other explicit second-order schemes can be derived by comparing the
-# formula [eq: explicitrk2](#eq: explicitrk2) to the second-order Taylor method and
+# formula [eq: explicitrk2](#eq:explicitrk2) to the second-order Taylor method and
 # matching terms to determine the coefficients $a_2$, $b_{21}$, $c_1$ and
 # $c_2$.
 #
@@ -368,7 +368,7 @@ theAx.set_title('interactive 4.1')
 # $$
 
 # %% [markdown]
-# <a name="problem_tableau"></a>
+# <div id="problem_tableau"></div>
 #
 # ##### Problem tableau 
 #
@@ -378,7 +378,8 @@ theAx.set_title('interactive 4.1')
 #
 # 2.  the fourth-order Runge-Kutta method ([lab4:eq:rk4]) discussed in the
 #     next section.
-#
+
+# %% [markdown]
 # ### Explicit Fourth-Order Runge-Kutta Method 
 #
 # <!-- {#lab4:sec:rk4} -->
@@ -415,20 +416,23 @@ theAx.set_title('interactive 4.1')
 #   \end{array}
 # $$
 #
-# <!-- \label{lab4:eq:rk4}  -->
-# <a name="problem_rk4"></a>
-# **Problem rk4**: In the demo below, compare compare solutions to the test
-# problem (eq: test)
 #
+#
+# <div id="problemrk4"><b>Problem RK4</b>
+#     
+# In the cell below, compare compare solutions to the test
+# problem
+#
+# <div id="eq:test"><b>eq:test</b><div>
 # $$
-# \frac{dy}{dt} = -y +t +1,  \;\;\;\; y(0) =1\ \ \ \mathbf{eq: test}
+# \frac{dy}{dt} = -y +t +1,  \;\;\;\; y(0) =1
 # $$ 
 #
 # generated with the
 # fourth-order Runge-Kutta method to solutions generated by the forward
 # Euler and midpoint methods.
 #
-# 1.  Based on the numerical solutions of (eq: test), which of the
+# 1.  Based on the numerical solutions of ([eq:test](#eq:test)), which of the
 #     three methods appears more accurate?
 #
 # 2.  Again determine how the error changes relative to the change in
@@ -595,11 +599,76 @@ theAx.set_xlabel('time (seconds)')
 l2=theAx.plot(timeVec,yrkck,'g-',label='rkck')
 l3=theAx.plot(timeVec,yrk,'m-',label='rk')
 theAx.legend(loc='best')
-theAx.set_title('interactive 4.3')
+theAx.set_title('interactive 4.3');
 
 # %% [markdown]
 # ## Python: moving from a notebook to a library
 #
+# ### Managing problem configurations
+#
+# So far we've hardcoded our initialVars file into a cell.  We need a strategy for saving
+# this information into a file that we can keep track of using git, and modify for
+# various runs.  In python the fundamental data type is the dictionary.  It's very
+# flexible, but that comes at a cost -- there are other data structures that are better
+# suited to storing this type of information.
+#
+# #### Mutable vs. immutable data types
+#
+# Python dictionaries and lists are **mutable**, which means they can be modified after they
+# are created.  Python tuples, on the other hand, are **immutable** -- there is no way of changing
+# them without creating a copy.  Why does this matter?  One reason is efficiency and safety, an
+# immutable object is easier to reason about.  Another reason is that immutable objects are **hashable**,
+# that is, they can be turned into a unique string that can be guaranteed to represent that exact
+# instance of the datatype.  Hashable data structures can be used as dictionary keys, mutable
+# data structures can't.  Here's an illustration -- this cell works:
+
+# %%
+test_dict=dict()
+the_key = (0,1,2,3)
+test_dict[the_key]=5
+print(test_dict)
+
+# %% [markdown]
+# this cell fails:
+
+# %%
+test_dict=dict()
+the_key = [0,1,2,3]
+test_dict[the_key]=5
+print(test_dict)
+
+# %% [markdown]
+# #### Named tuples
+#
+# One particular tuple flavor that bridges the gap between tuples and dictionaries
+# is the [namedtuple](https://docs.python.org/3/library/collections.html#collections.namedtuple).
+# It has the ability to look up values by name/string instead of numerical index like
+# a dictionary, but it's immutable and so can be used as a dictionary key.  The cell
+# below show how to convert from a dictionary to a namedtuple for our case:
+
+# %%
+from collections import namedtuple
+initialDict={'yinitial': 1,'t_beg':0.,'t_end':1.,
+                    'dt':0.2,'c1':-1.,'c2':1.,'c3':1.}     
+inittup=namedtuple('inittup','dt c1 c2 c3 t_beg t_end yinitial')
+initialCond=inittup(**initialDict)
+print(f"values are {initialCond.c1} and {initialCond.yinitial}")
+
+# %% [markdown]
+# Note the other big benefit for namedtuples -- "initialCond.c1" is self-documenting,
+# you don't have to explain that the tuple value initialCond[3]  holds c1,
+# and you never have to worry about changes to  the order of the tuple changing the 
+# results of your code.
+
+# %% [markdown]
+# ### Saving named tuples to a file
+#
+#
+#
+#
+#
+
+# %% [markdown]
 # If we want our ODE routines to be more generally useful, we need to lift
 # two restrictions from the code:
 #
@@ -701,9 +770,6 @@ theAx.set_title('interactive 4.3')
 # as a namedtuple:
 # initvals(dt=0.1, c1=0.0, c2=1.0, t_beg=0.0, t_end=40.0, yinitial=[0.0, 1.0], comment='written Sep. 29, 2015', plot_title='simple damped oscillator run 1')
 # ```
-#
-#
-#
 
 # %% [markdown]
 # ### Passing a derivative function to an integrator
@@ -726,8 +792,6 @@ theAx.set_title('interactive 4.3')
 # Here's an example using foward euler to integrate the harmonic oscillator
 
 # %%
-# %matplotlib inline
-
 import json
 from numlabs.lab4.example.test import read_init,euler4
 #
@@ -770,16 +834,21 @@ theFig,theAx=plt.subplots(1,1,figsize=(8,8))
 theAx.plot(time,savedata,'o-')
 theAx.set_title(coeff.plot_title)
 theAx.set_xlabel('time (seconds)')
-theAx.set_ylabel('y0')       
+theAx.set_ylabel('y0');
 
 
 
 # %% [markdown]
-# <a name="prob_a"></a>
+# <div id="prob_a"></div>
 #
 # ##### problem coding A
 #
-# Try out [the lab4 example](https://github.com/phaustin/numeric/tree/master/numlabs/lab4/example):
+# Try out [the lab4 example](https://github.com/phaustin/numeric/tree/master/numlabs/lab4/example) by
+# doing a `cd` to the example folder and executing:
+#
+# ```
+# python test.py
+# ```
 #
 # As set up above, test.py
 # solved the damped, harmonic oscillator with the (unstable) forward Euler method.
@@ -798,10 +867,9 @@ theAx.set_ylabel('y0')
 #     $$f(y,t) = t - y  + 1.0$$ 
 #     
 #     Choose two sets
-#     of initial conditions and investigate the behaviour.
-#
-# 2.  Is there any difference between the two methods when applied to
-#     either problem? Should there be? Explain by analyzing the steps
+#     of initial conditions and determine if 
+#     there is any difference between the two methods when applied to
+#     either problem. Should there be? Explain by analyzing the steps
 #     that each method is taking.
 #
 #
@@ -837,7 +905,8 @@ theAx.set_ylabel('y0')
 #   where
 #
 # ${\displaystyle \sum_{j=1}^{s} } b_{ij} = a_i$.
-#
+
+# %% [markdown]
 # In particular, an *explicit* 2-stage Runge-Kutta method can
 # be written as, 
 #
@@ -915,7 +984,7 @@ theAx.set_ylabel('y0')
 # for the Runge-Kutta method to be
 # second-order.
 #
-# <a name="app_midpoint"></a>
+# <div id="app_midpoint"></div>
 # If we choose $a = 1/2$, this implies $c_2 = 1$ and $c_1=0$. This gives
 # us the midpoint method.
 #
@@ -935,13 +1004,11 @@ theAx.set_ylabel('y0')
 #   \end{array}
 # $$
 #     
-#     while the choice
+# while the choice
 # $a=\frac{2}{3}$, $c_1=\frac{1}{4}$ and $c_2=\frac{3}{4}$, gives us
-# *Heun’s method*,
+# *Heun’s method*:
 #
-# <!-- \label{lab4:eq:heuns} -->
-#
-# <a name="eq_heuns"></a>
+# <div id="eq_heuns"><b>eq:heuns</div>
 #
 # $$
 #   \begin{array}{l}
@@ -950,7 +1017,6 @@ theAx.set_ylabel('y0')
 #     y_{n+1} = y_n + \frac{1}{4}k_1 + \frac{3}{4}k_2
 #   \end{array}
 # $$
-#
 
 # %% [markdown]
 # ## Glossary 
@@ -987,9 +1053,5 @@ theAx.set_ylabel('y0')
 #   organizes the coefficients for the method in tabular form.
 #
 #
-
-# %%
-
-# %%
 
 
