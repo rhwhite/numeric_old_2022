@@ -655,6 +655,21 @@ initialCond=inittup(**initialDict)
 print(f"values are {initialCond.c1} and {initialCond.yinitial}")
 
 # %% [markdown]
+# Comment on the cell above:
+#
+# 1) `inittup=namedtuple('inittup','dt c1 c2 c3 t_beg t_end yinitial')`
+#    creats a new data type with a type name (inittup) and properties
+#    (the attributes we wlll need like dt, c1 etc.)
+#    
+# 2) `initialCond=inittup(**initialDict)`
+#    uses "keyword expansion" via the "doublesplat" operator `**` to expand
+#    the initialDict into a set of key=value pairs for the inittup constructor
+#    which makes an instance of our new datatype called initialCond
+#    
+# 3) we access these readonly members of the instance using attributes like this:
+#    `newc1 = initialCond.c1`
+#
+#    
 # Note the other big benefit for namedtuples -- "initialCond.c1" is self-documenting,
 # you don't have to explain that the tuple value initialCond[3]  holds c1,
 # and you never have to worry about changes to  the order of the tuple changing the 
@@ -663,10 +678,34 @@ print(f"values are {initialCond.c1} and {initialCond.yinitial}")
 # %% [markdown]
 # ### Saving named tuples to a file
 #
+# One drawback to namedtuples is that there's no one annointed way to **serialize** them
+# i.e. we are in charge of trying to figure out how to write our namedtuple out
+# to a file for future use.  Contrast this with lists, strings, and scalar numbers and
+# dictionaries, which all have a builtin **json** representation in text form.
 #
+# So here's how to turn our named tuple back into a dictionary:
 #
+# %%
 #
+# make the named tuple a dictionary
 #
+initialDict = initialCond._asdict()
+print(initialDict)
+
+# %% [markdown]
+# Why does `_asdict` start with an underscore?  It's to keep the fundamental
+# methods and attributes of the namedtuple class separate from the attributes
+# we added when we created the new `inittup` class. For more information, see
+# the [collections docs](https://docs.python.org/3.7/library/collections.html#module-collections)
+
+# %%
+outputDict = dict(yinitial = initialDict)
+import json
+outputDict={'yinitial': [0.,1.],'t_beg':0.,'t_end':40.,'dt':0.1,'c1':0.,'c2':1.}
+outputDict['history'] = 'written Jan. 28, 2020'
+outputDict['plot_title'] = 'simple damped oscillator run 1'
+with open('run1.json', 'w') as jsonout:
+    json.dump(outputDict,jsonout,indent=4)
 
 # %% [markdown]
 # If we want our ODE routines to be more generally useful, we need to lift
