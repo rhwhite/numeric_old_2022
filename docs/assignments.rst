@@ -1,11 +1,11 @@
 Assignment details
 ++++++++++++++++++
 
-* Lab 1: `assigment1.pdf <https://phaustin.github.io/numeric/doc_notebooks/lab1/pdfs/assignment1.pdf>`_
+* Lab 1: `assigment1.pdf <doc_notebooks/lab1/pdfs/assignment1.pdf>`_
 
-* Lab 2 `Problem list <https://phaustin.github.io/numeric/doc_notebooks/lab2/01-lab2.html#List-of-Problems>`_
+* Lab 2 `Problem list <doc_notebooks/lab2/01-lab2.html#List-of-Problems>`_
 
-* Lab 3 `assignment3.pdf  <https://phaustin.github.io/numeric/doc_notebooks/lab3/pdfs/numeric_assignment3.pdf>`_
+* Lab 3 `assignment3.pdf  <doc_notebooks/lab3/pdfs/numeric_assignment3.pdf>`_
 
-* Miniproject 1 `miniproject1.pdf <https://phaustin.github.io/numeric/doc_notebooks/miniproject1/pdfs/miniproject1.pdf>`_
+* Miniproject 1 `miniproject1.pdf <pdfs/miniproject1.pdf>`_
 
