@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Table of Contents &mdash; Numeric course 0.1 documentation</title>
+  <title>Solving Ordinary Differential Equations with the Runge-Kutta Methods &mdash; Numeric course 0.1 documentation</title>
   
 
   
@@ -93,9 +93,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../lab1/01-lab1.html">Lab 1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lab2/01-lab2.html">Lab 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lab3/01-lab3.html">Lab 3</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Table of Contents</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Solving-Ordinary-Differential-Equations-with-the-Runge-Kutta-Methods">Solving Ordinary Differential Equations with the Runge-Kutta Methods</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Lab 4</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#List-of-Problems">List of Problems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Assignment-handin-–-upload-a-single,-fresh-notebook-that-contains-your-answers">Assignment handin – upload a single, fresh notebook that contains your answers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Objectives">Objectives</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Readings">Readings</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Introduction">Introduction</a></li>
@@ -108,7 +108,9 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#Python:-moving-from-a-notebook-to-a-library">Python: moving from a notebook to a library</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#Writing-a-config-file">Writing a config file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Managing-problem-configurations">Managing problem configurations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Saving-named-tuples-to-a-file">Saving named tuples to a file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Reading-a-json-file-back-into-python">Reading a json file back into python</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#Passing-a-derivative-function-to-an-integrator">Passing a derivative function to an integrator</a></li>
 </ul>
 </li>
@@ -174,7 +176,7 @@
         
           <li><a href="../../notebook_toc.html">Numeric notebooks</a> &raquo;</li>
         
-      <li>Table of Contents</li>
+      <li>Solving Ordinary Differential Equations with the Runge-Kutta Methods</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -415,31 +417,6 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<div class="section" id="Table-of-Contents">
-<h1>Table of Contents<a class="headerlink" href="#Table-of-Contents" title="Permalink to this headline">¶</a></h1>
-<p><div class="lev1 toc-item"><p>1  Solving Ordinary Differential Equations with the Runge-Kutta Methods</p>
-</div><div class="lev2 toc-item"><p>1.1  List of Problems</p>
-</div><div class="lev2 toc-item"><p>1.2  Objectives</p>
-</div><div class="lev2 toc-item"><p>1.3  Readings</p>
-</div><div class="lev2 toc-item"><p>1.4  Introduction</p>
-</div><div class="lev2 toc-item"><p>1.5  Runge-Kutta methods</p>
-</div><div class="lev3 toc-item"><p>1.5.1  The Midpoint Method: A Two-Stage Runge-Kutta Method</p>
-</div><div class="lev3 toc-item"><p>1.5.2  Second-Order Runge-Kutta Methods</p>
-</div><div class="lev3 toc-item"><p>1.5.3  The Runge-Kutta Tableau</p>
-</div><div class="lev5 toc-item"><p>1.5.3.0.1  Problem tableau</p>
-</div><div class="lev3 toc-item"><p>1.5.4  Explicit Fourth-Order Runge-Kutta Method</p>
-</div><div class="lev3 toc-item"><p>1.5.5  Embedded Runge-Kutta Methods: Estimate of the Truncation Error</p>
-</div><div class="lev5 toc-item"><p>1.5.5.0.1  Problem embedded</p>
-</div><div class="lev2 toc-item"><p>1.6  Python: moving from a notebook to a library</p>
-</div><div class="lev3 toc-item"><p>1.6.1  Writing a config file</p>
-</div><div class="lev3 toc-item"><p>1.6.2  Passing a derivative function to an integrator</p>
-</div><div class="lev5 toc-item"><p>1.6.2.0.1  problem coding A</p>
-</div><div class="lev5 toc-item"><p>1.6.2.0.2  problem coding B</p>
-</div><div class="lev5 toc-item"><p>1.6.2.0.3  problem coding C</p>
-</div><div class="lev2 toc-item"><p>1.7  Mathematical Notes</p>
-</div><div class="lev3 toc-item"><p>1.7.1  Note on the Derivation of the Second-Order Runge-Kutta Methods</p>
-</div><div class="lev2 toc-item"><p>1.8  Glossary</p>
-</div></div>
 <div class="section" id="Solving-Ordinary-Differential-Equations-with-the-Runge-Kutta-Methods">
 <h1>Solving Ordinary Differential Equations with the Runge-Kutta Methods<a class="headerlink" href="#Solving-Ordinary-Differential-Equations-with-the-Runge-Kutta-Methods" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="List-of-Problems">
@@ -447,11 +424,18 @@ div.rendered_html tbody tr:hover {
 <!-- {#list-of-problems .unnumbered} --><ul class="simple">
 <li><p><a class="reference external" href="#problem_midpoint">Problem midpoint</a></p></li>
 <li><p><a class="reference external" href="#problem_tableau">Problem tableau</a></p></li>
-<li><p><a class="reference external" href="#problem_rk4">Problem Runge Kutta4</a></p></li>
+<li><p><a class="reference external" href="#problemrk4">Problem Runge Kutta4</a></p></li>
 <li><p><a class="reference external" href="#problem_embedded">Problem embedded</a></p></li>
 <li><p><a class="reference external" href="#prob_a">Problem coding A</a></p></li>
 <li><p><a class="reference external" href="#prob_b">Problem coding B</a></p></li>
 <li><p><a class="reference external" href="#prob_c">Problem coding C</a></p></li>
+</ul>
+</div>
+<div class="section" id="Assignment-handin-–-upload-a-single,-fresh-notebook-that-contains-your-answers">
+<h2>Assignment handin – upload a single, fresh notebook that contains your answers<a class="headerlink" href="#Assignment-handin-–-upload-a-single,-fresh-notebook-that-contains-your-answers" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Assignment: A409 do Problems 2 (tableau), 3 (Runge Kutta4), 4 (embedded), Coding A and Coding B</p></li>
+<li><p>Assignment: Grads do Problems 2 (tableau), 3 (Runge Kutta4), 4 (embedded), Coding A, Coding B and Coding C</p></li>
 </ul>
 </div>
 <div class="section" id="Objectives">
@@ -503,77 +487,48 @@ non-stiff IVPs.</p>
 <div class="math notranslate nohighlight">
 \[y_{n+1} = y_n + h f(y_n,t_n)\]</div>
 <p>where <span class="math notranslate nohighlight">\(h \equiv \Delta t\)</span>.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
-<span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;images/euler.png&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<img alt="../../_images/doc_notebooks_lab4_01-lab4_8_0.png" src="../../_images/doc_notebooks_lab4_01-lab4_8_0.png" />
-</div>
-</div>
+<p><img alt="fig1" src="../../_images/euler.png" /></p>
 <p>Figure euler: The forward Euler method is essentially a straight-line approximation to the solution, over the interval of one step, using the derivative at the starting point as the slope.</p>
 <p>The idea of the Runge-Kutta schemes is to take advantage of derivative information at the times between <span class="math notranslate nohighlight">\(t_n\)</span> and <span class="math notranslate nohighlight">\(t_{n+1}\)</span> to increase the order of accuracy.</p>
 <p>For example, in the midpoint method, the derivative at the initial time is used to approximate the derivative at the midpoint of the interval, <span class="math notranslate nohighlight">\(f(y_n+\frac{1}{2}hf(y_n,t_n), t_n+\frac{1}{2}h)\)</span>. The derivative at the midpoint is then used to advance the solution to the next step. The method can be written in two <em>stages</em> <span class="math notranslate nohighlight">\(k_i\)</span>,</p>
-<div class="math notranslate nohighlight">
+<div id="eq:midpoint"><p>eq:midpoint</p>
+</div><div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
    \begin{array}{l}
     k_1 =  h f(y_n,t_n)\\
-    k_2 = h f(y_n+\frac{1}{2}k_1, t_n+\frac{1}{2}h)\ \ \rm{eq: midpoint}\\
+    k_2 = h f(y_n+\frac{1}{2}k_1, t_n+\frac{1}{2}h)\\
     y_{n+1} = y_n + k_2
   \end{array}
 \end{aligned}\end{split}\]</div>
 <p>The midpoint method is known as a 2-stage Runge-Kutta formula.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;images/midpoint.png&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<img alt="../../_images/doc_notebooks_lab4_01-lab4_10_0.png" src="../../_images/doc_notebooks_lab4_01-lab4_10_0.png" />
-</div>
-</div>
+<p><img alt="fig2" src="../../_images/midpoint.png" /></p>
 <p>Figure midpoint: The midpoint method again uses the derivative at the starting point to approximate the solution at the midpoint. The derivative at the midpoint is then used as the slope of the straight-line approximation.</p>
 </div>
 <div class="section" id="Second-Order-Runge-Kutta-Methods">
 <h3>Second-Order Runge-Kutta Methods<a class="headerlink" href="#Second-Order-Runge-Kutta-Methods" title="Permalink to this headline">¶</a></h3>
 <p>As was shown in lab 2 , the error in the forward Euler method is proportional to <span class="math notranslate nohighlight">\(h\)</span>. In other words, the forward Euler method has an accuracy which is <em>first order</em> in <span class="math notranslate nohighlight">\(h\)</span>.</p>
-<p>The advantage of the midpoint method is that the extra derivative information at the midpoint results in the first order error term cancelling out, making the method <em>second order</em> accurate. This can be shown by a Taylor expansion of equation <a class="reference external" href="#eq_midpoint">eq: midpoint</a></p>
-<p><strong>Problem midpoint</strong>: Even though the midpoint method is second-order accurate, it may still be less accurate than the forward Euler method. In the demo below, compare the accuracy of the two methods on the initial value problem</p>
-<div class="math notranslate nohighlight">
-\[\frac{dy}{dt} = -y +t +1,  \;\;\;\; y(0) =1\ \ \textbf{eq: linexp}\]</div>
-<p>which has the exact solution</p>
-<div class="math notranslate nohighlight">
-\[y(t) = t + e^{-t}\]</div>
+<p>The advantage of the midpoint method is that the extra derivative information at the midpoint results in the first order error term cancelling out, making the method <em>second order</em> accurate. This can be shown by a Taylor expansion of equation <a class="reference external" href="#eq:midpoint">eq:midpoint</a></p>
+<div id="problem_midpoint"><p>Problem midpoint</p>
+</div><p>Even though the midpoint method is second-order accurate, it may still be less accurate than the forward Euler method. In the demo below, compare the accuracy of the two methods on the initial value problem</p>
+<div id="eq:linexp"><p>eq:linexp</p>
+</div><p><span class="math">\begin{equation}
+\frac{dy}{dt} = -y +t +1,  \;\;\;\; y(0) =1
+\end{equation}</span></p>
+<p>which has the exact solution <span class="math">\begin{equation}
+y(t) = t + e^{-t}
+\end{equation}</span></p>
 <ol class="arabic simple">
 <li><p>Why is it possible that the midpoint method may be less accurate than the forward Euler method, even though it is a higher order method?</p></li>
-<li><p>Based on the numerical solutions of (eq: linexp), which method appears more accurate?</p></li>
+<li><p>Based on the numerical solutions of <a class="reference external" href="#eq:linexp">eq:linexp</a>, which method appears more accurate?</p></li>
 <li><p>Cut the stepsize in half and check the error at a given time. Repeat a couple of more times. How does the error drop relative to the change in stepsize?</p></li>
 <li><p>How do the numerical solutions compare to <span class="math notranslate nohighlight">\(y(t) = t + e^{-t}\)</span> when you change the initial time? Why?</p></li>
 </ol>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span></span><span class="kn">import</span> <span class="nn">context</span>
 <span class="kn">from</span> <span class="nn">numlabs.lab4.lab4_functions</span> <span class="kn">import</span> <span class="n">initinter41</span><span class="p">,</span><span class="n">eulerinter41</span><span class="p">,</span><span class="n">midpointinter41</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
@@ -600,36 +555,40 @@ non-stiff IVPs.</p>
 <span class="n">l2</span><span class="o">=</span><span class="n">theAx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeVec</span><span class="p">,</span><span class="n">ye</span><span class="p">,</span><span class="s1">&#39;r-&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;euler&#39;</span><span class="p">)</span>
 <span class="n">l3</span><span class="o">=</span><span class="n">theAx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeVec</span><span class="p">,</span><span class="n">ym</span><span class="p">,</span><span class="s1">&#39;g-&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;midpoint&#39;</span><span class="p">)</span>
 <span class="n">theAx</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
-<span class="n">theAx</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;interactive 4.1&#39;</span><span class="p">)</span>
+<span class="n">theAx</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;interactive 4.1&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+******************************
+context imported. Front of path:
+/Users/phil/repos/numeric
+back of path: /Users/phil/.ipython
+******************************
+
+through /Users/phil/repos/numeric/notebooks/lab4/context.py
+</pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-3-6780d6ca58a0&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> get_ipython<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">.</span>run_line_magic<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;matplotlib&#39;</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#39;inline&#39;</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg"> </span><span class="ansi-green-fg">from</span> numlabs<span class="ansi-blue-fg">.</span>lab4<span class="ansi-blue-fg">.</span>lab4_functions <span class="ansi-green-fg">import</span> initinter41<span class="ansi-blue-fg">,</span>eulerinter41<span class="ansi-blue-fg">,</span>midpointinter41
-<span class="ansi-green-intense-fg ansi-bold">      3</span> <span class="ansi-green-fg">import</span> numpy <span class="ansi-green-fg">as</span> np
-<span class="ansi-green-intense-fg ansi-bold">      4</span> <span class="ansi-green-fg">from</span> matplotlib <span class="ansi-green-fg">import</span> pyplot <span class="ansi-green-fg">as</span> plt
-<span class="ansi-green-intense-fg ansi-bold">      5</span>
-
-<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;numlabs&#39;
-</pre></div></div>
+<img alt="../../_images/doc_notebooks_lab4_01-lab4_14_1.png" src="../../_images/doc_notebooks_lab4_01-lab4_14_1.png" />
 </div>
-<p>In general, an <em>explicit</em> 2-stage Runge-Kutta method can be written as,</p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{array}{l}
-  k_1 =  h f(y_n,t_n)\\
-  k_2 = h f(y_n+b_{21}k_1, t_n+a_2h)\ \ \ \textbf{eq: explicitrk2}  \\
-  y_{n+1} = y_n + c_1k_1 +c_2k_2
-\end{array}\end{split}\]</div>
+</div>
+<p>In general, an <em>explicit</em> 2-stage Runge-Kutta method can be written as</p>
+<div id="eq:explicitrk2"><p>eq:explicitrk1</p>
+</div><p><span class="math">\begin{align}
+k_1 =&  h f(y_n,t_n)\\
+k_2 =& h f(y_n+b_{21}k_1, t_n+a_2h) \\
+y_{n+1} =& y_n + c_1k_1 +c_2k_2
+\end{align}</span></p>
 <p>The scheme is said to be <em>explicit</em> since a given stage does not depend <em>implicitly</em> on itself, as in the backward Euler method , or on a later stage.</p>
-<p>Other explicit second-order schemes can be derived by comparing the formula <a class="reference external" href="#eq:%20explicitrk2">eq: explicitrk2</a> to the second-order Taylor method and matching terms to determine the coefficients <span class="math notranslate nohighlight">\(a_2\)</span>, <span class="math notranslate nohighlight">\(b_{21}\)</span>, <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span>.</p>
+<p>Other explicit second-order schemes can be derived by comparing the formula <a class="reference external" href="#eq:explicitrk2">eq: explicitrk2</a> to the second-order Taylor method and matching terms to determine the coefficients <span class="math notranslate nohighlight">\(a_2\)</span>, <span class="math notranslate nohighlight">\(b_{21}\)</span>, <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span>.</p>
 <p>See <a class="reference external" href="#app_midpoint">Appendix midpoint</a> for the derivation of the midpoint method.</p>
 </div>
 <div class="section" id="The-Runge-Kutta-Tableau">
@@ -676,12 +635,12 @@ i &amp; a_i &amp; {b_{ij}} &amp;   &amp; c_i \\ \hline
 2 &amp; \frac{1}{2} &amp; \frac{1}{2} &amp; 0 &amp; 1\\ \hline
 {j=} &amp; &amp; 1 &amp; 2 &amp; \\ \hline
 \end{array}\end{split}\]</div>
-<div class="section" id="Problem-tableau">
+<div id="problem_tableau"></div><div class="section" id="Problem-tableau">
 <h4>Problem tableau<a class="headerlink" href="#Problem-tableau" title="Permalink to this headline">¶</a></h4>
 <p>Write out the tableau for</p>
 <ol class="arabic simple">
-<li><p><a class="reference external" href="#eq_heuns">Heun’s method</a></p></li>
-<li><p>the fourth-order Runge-Kutta method ([lab4:eq:rk4]) discussed in the next section.</p></li>
+<li><p><a class="reference external" href="#eq:heuns">Heun’s method</a></p></li>
+<li><p>the fourth-order Runge-Kutta method (<a class="reference external" href="#eq:rk4">eq:rk4</a>) discussed in the next section.</p></li>
 </ol>
 </div>
 </div>
@@ -699,16 +658,18 @@ i &amp; a_i &amp; {b_{ij}} &amp;   &amp; c_i \\ \hline
   k_4 = h f(y_n+k_3, t_n+h)\\
   y_{n+1} = y_n + \frac{k_1}{6}+ \frac{k_2}{3}+ \frac{k_3}{3} + \frac{k_4}{6}
 \end{array}\end{split}\]</div>
-<!-- \label{lab4:eq:rk4}  --><p><strong>Problem rk4</strong>: In the demo below, compare compare solutions to the test problem (eq: test)</p>
-<div class="math notranslate nohighlight">
-\[\frac{dy}{dt} = -y +t +1,  \;\;\;\; y(0) =1\ \ \ \mathbf{eq: test}\]</div>
+<div id="problemrk4"><p>Problem RK4</p>
+<p>In the cell below, compare compare solutions to the test problem</p>
+<div id="eq:test"><p>eq:test</p>
+<div><div class="math notranslate nohighlight">
+\[\frac{dy}{dt} = -y +t +1,  \;\;\;\; y(0) =1\]</div>
 <p>generated with the fourth-order Runge-Kutta method to solutions generated by the forward Euler and midpoint methods.</p>
 <ol class="arabic simple">
-<li><p>Based on the numerical solutions of (eq: test), which of the three methods appears more accurate?</p></li>
+<li><p>Based on the numerical solutions of (<a class="reference external" href="#eq:test">eq:test</a>), which of the three methods appears more accurate?</p></li>
 <li><p>Again determine how the error changes relative to the change in stepsize, as the stepsize is halved.</p></li>
 </ol>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -743,7 +704,7 @@ i &amp; a_i &amp; {b_{ij}} &amp;   &amp; c_i \\ \hline
 <span class="n">l3</span><span class="o">=</span><span class="n">theAx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeVec</span><span class="p">,</span><span class="n">ym</span><span class="p">,</span><span class="s1">&#39;g-&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;midpoint&#39;</span><span class="p">)</span>
 <span class="n">l4</span><span class="o">=</span><span class="n">theAx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeVec</span><span class="p">,</span><span class="n">yrk</span><span class="p">,</span><span class="s1">&#39;m-&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;rk4&#39;</span><span class="p">)</span>
 <span class="n">theAx</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
-<span class="n">theAx</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;interactive 4.2&#39;</span><span class="p">)</span>
+<span class="n">theAx</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;interactive 4.2&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -751,18 +712,8 @@ i &amp; a_i &amp; {b_{ij}} &amp;   &amp; c_i \\ \hline
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-4-97044a0015e2&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span><span class="ansi-green-fg">from</span> numlabs<span class="ansi-blue-fg">.</span>lab4<span class="ansi-blue-fg">.</span>lab4_functions <span class="ansi-green-fg">import</span> initinter41<span class="ansi-blue-fg">,</span>eulerinter41<span class="ansi-blue-fg">,</span>midpointinter41<span class="ansi-blue-fg">,</span><span class="ansi-red-fg">\</span>
-<span class="ansi-green-intense-fg ansi-bold">      2</span>                                         rk4ODEinter41
-<span class="ansi-green-intense-fg ansi-bold">      3</span> initialVals<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">{</span><span class="ansi-blue-fg">&#39;yinitial&#39;</span><span class="ansi-blue-fg">:</span> <span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">,</span><span class="ansi-blue-fg">&#39;t_beg&#39;</span><span class="ansi-blue-fg">:</span><span class="ansi-cyan-fg">0.</span><span class="ansi-blue-fg">,</span><span class="ansi-blue-fg">&#39;t_end&#39;</span><span class="ansi-blue-fg">:</span><span class="ansi-cyan-fg">1.</span><span class="ansi-blue-fg">,</span><span class="ansi-blue-fg">&#39;dt&#39;</span><span class="ansi-blue-fg">:</span><span class="ansi-cyan-fg">0.05</span><span class="ansi-blue-fg">,</span><span class="ansi-blue-fg">&#39;c1&#39;</span><span class="ansi-blue-fg">:</span><span class="ansi-blue-fg">-</span><span class="ansi-cyan-fg">1.</span><span class="ansi-blue-fg">,</span><span class="ansi-blue-fg">&#39;c2&#39;</span><span class="ansi-blue-fg">:</span><span class="ansi-cyan-fg">1.</span><span class="ansi-blue-fg">,</span><span class="ansi-blue-fg">&#39;c3&#39;</span><span class="ansi-blue-fg">:</span><span class="ansi-cyan-fg">1.</span><span class="ansi-blue-fg">}</span>
-<span class="ansi-green-intense-fg ansi-bold">      4</span> coeff <span class="ansi-blue-fg">=</span> initinter41<span class="ansi-blue-fg">(</span>initialVals<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      5</span> timeVec<span class="ansi-blue-fg">=</span>np<span class="ansi-blue-fg">.</span>arange<span class="ansi-blue-fg">(</span>coeff<span class="ansi-blue-fg">.</span>t_beg<span class="ansi-blue-fg">,</span>coeff<span class="ansi-blue-fg">.</span>t_end<span class="ansi-blue-fg">,</span>coeff<span class="ansi-blue-fg">.</span>dt<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;numlabs&#39;
-</pre></div></div>
+<img alt="../../_images/doc_notebooks_lab4_01-lab4_21_0.png" src="../../_images/doc_notebooks_lab4_01-lab4_21_0.png" />
+</div>
 </div>
 </div>
 <div class="section" id="Embedded-Runge-Kutta-Methods:-Estimate-of-the-Truncation-Error">
@@ -801,12 +752,13 @@ i &amp; a_i &amp; {b_{ij}} &amp; &amp; &amp; &amp; &amp;  &amp; c_i &amp; c^*_i 
 \end{array}\end{split}\]</div>
 <div class="section" id="Problem-embedded">
 <h4>Problem embedded<a class="headerlink" href="#Problem-embedded" title="Permalink to this headline">¶</a></h4>
-<p>Though the error estimate is for the embedded fourth-order Runge-Kutta method, the fifth-order method can be used in practice for calculating the solution, the assumption being the fifth-order method should be at least as accurate as the fourth-order method. In the demo below, compare solutions of the test problem (eq: test2])</p>
-<div class="math notranslate nohighlight">
-\[\frac{dy}{dt} = -y +t +1,  \;\;\;\; y(0) =1\ \ \ \mathbf{eq: test2}\]</div>
+<p>Though the error estimate is for the embedded fourth-order Runge-Kutta method, the fifth-order method can be used in practice for calculating the solution, the assumption being the fifth-order method should be at least as accurate as the fourth-order method. In the demo below, compare solutions of the test problem <a class="reference external" href="#eq:test2%5D">eq:test2</a></p>
+<div id="eq:test2"><p>eq:test2</p>
+</div><div class="math notranslate nohighlight">
+\[\frac{dy}{dt} = -y +t +1,  \;\;\;\; y(0) =1\]</div>
 <p>generated by the fifth-order method with solutions generated by the standard fourth-order Runge-Kutta method. Which method is more accurate? Again, determine how the error decreases as you halve the stepsizes.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -841,7 +793,36 @@ i &amp; a_i &amp; {b_{ij}} &amp; &amp; &amp; &amp; &amp;  &amp; c_i &amp; c^*_i 
 <span class="n">l2</span><span class="o">=</span><span class="n">theAx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeVec</span><span class="p">,</span><span class="n">yrkck</span><span class="p">,</span><span class="s1">&#39;g-&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;rkck&#39;</span><span class="p">)</span>
 <span class="n">l3</span><span class="o">=</span><span class="n">theAx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeVec</span><span class="p">,</span><span class="n">yrk</span><span class="p">,</span><span class="s1">&#39;m-&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;rk&#39;</span><span class="p">)</span>
 <span class="n">theAx</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
-<span class="n">theAx</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;interactive 4.3&#39;</span><span class="p">)</span>
+<span class="n">theAx</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;interactive 4.3&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/doc_notebooks_lab4_01-lab4_25_0.png" src="../../_images/doc_notebooks_lab4_01-lab4_25_0.png" />
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Python:-moving-from-a-notebook-to-a-library">
+<h2>Python: moving from a notebook to a library<a class="headerlink" href="#Python:-moving-from-a-notebook-to-a-library" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Managing-problem-configurations">
+<h3>Managing problem configurations<a class="headerlink" href="#Managing-problem-configurations" title="Permalink to this headline">¶</a></h3>
+<p>So far we’ve hardcoded our initialVars file into a cell. We need a strategy for saving this information into a file that we can keep track of using git, and modify for various runs. In python the fundamental data type is the dictionary. It’s very flexible, but that comes at a cost – there are other data structures that are better suited to storing this type of information.</p>
+<p>Python dictionaries and lists are <strong>mutable</strong>, which means they can be modified after they are created. Python tuples, on the other hand, are <strong>immutable</strong> – there is no way of changing them without creating a copy. Why does this matter? One reason is efficiency and safety, an immutable object is easier to reason about. Another reason is that immutable objects are <strong>hashable</strong>, that is, they can be turned into a unique string that can be guaranteed to represent that exact instance of the
+datatype. Hashable data structures can be used as dictionary keys, mutable data structures can’t. Here’s an illustration – this cell works:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">test_dict</span><span class="o">=</span><span class="nb">dict</span><span class="p">()</span>
+<span class="n">the_key</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">test_dict</span><span class="p">[</span><span class="n">the_key</span><span class="p">]</span><span class="o">=</span><span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test_dict</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -850,98 +831,147 @@ i &amp; a_i &amp; {b_{ij}} &amp; &amp; &amp; &amp; &amp;  &amp; c_i &amp; c^*_i 
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-5-45005b2148d9&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">      2</span> <span class="ansi-green-fg">from</span> matplotlib <span class="ansi-green-fg">import</span> pyplot <span class="ansi-green-fg">as</span> plt
-<span class="ansi-green-intense-fg ansi-bold">      3</span>
-<span class="ansi-green-fg">----&gt; 4</span><span class="ansi-red-fg"> </span><span class="ansi-green-fg">from</span> numlabs<span class="ansi-blue-fg">.</span>lab4<span class="ansi-blue-fg">.</span>lab4_functions <span class="ansi-green-fg">import</span> initinter41<span class="ansi-blue-fg">,</span>rk4ODEinter41<span class="ansi-blue-fg">,</span>rkckODEinter41
-<span class="ansi-green-intense-fg ansi-bold">      5</span> initialVals<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">{</span><span class="ansi-blue-fg">&#39;yinitial&#39;</span><span class="ansi-blue-fg">:</span> <span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">,</span><span class="ansi-blue-fg">&#39;t_beg&#39;</span><span class="ansi-blue-fg">:</span><span class="ansi-cyan-fg">0.</span><span class="ansi-blue-fg">,</span><span class="ansi-blue-fg">&#39;t_end&#39;</span><span class="ansi-blue-fg">:</span><span class="ansi-cyan-fg">1.</span><span class="ansi-blue-fg">,</span><span class="ansi-blue-fg">&#39;dt&#39;</span><span class="ansi-blue-fg">:</span><span class="ansi-cyan-fg">0.2</span><span class="ansi-blue-fg">,</span><span class="ansi-blue-fg">&#39;c1&#39;</span><span class="ansi-blue-fg">:</span><span class="ansi-blue-fg">-</span><span class="ansi-cyan-fg">1.</span><span class="ansi-blue-fg">,</span><span class="ansi-blue-fg">&#39;c2&#39;</span><span class="ansi-blue-fg">:</span><span class="ansi-cyan-fg">1.</span><span class="ansi-blue-fg">,</span><span class="ansi-blue-fg">&#39;c3&#39;</span><span class="ansi-blue-fg">:</span><span class="ansi-cyan-fg">1.</span><span class="ansi-blue-fg">}</span>
-<span class="ansi-green-intense-fg ansi-bold">      6</span> coeff <span class="ansi-blue-fg">=</span> initinter41<span class="ansi-blue-fg">(</span>initialVals<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;numlabs&#39;
+{(0, 1, 2, 3): 5}
 </pre></div></div>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="Python:-moving-from-a-notebook-to-a-library">
-<h2>Python: moving from a notebook to a library<a class="headerlink" href="#Python:-moving-from-a-notebook-to-a-library" title="Permalink to this headline">¶</a></h2>
-<p>If we want our ODE routines to be more generally useful, we need to lift two restrictions from the code:</p>
-<ol class="arabic">
-<li><p>Inital conditions are currently specified in the main script as a dictionary, e.g.:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">initialVals</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;yinitial&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span><span class="s1">&#39;t_beg&#39;</span><span class="p">:</span><span class="mf">0.</span><span class="p">,</span><span class="s1">&#39;t_end&#39;</span><span class="p">:</span><span class="mf">1.</span><span class="p">,</span>
-             <span class="s1">&#39;dt&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span><span class="s1">&#39;c1&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span><span class="s1">&#39;c2&#39;</span><span class="p">:</span><span class="mf">1.</span><span class="p">,</span><span class="s1">&#39;c3&#39;</span><span class="p">:</span><span class="mf">1.</span><span class="p">}</span>
+<p>this cell fails:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<p>and then converted to a named tuple in <a class="reference external" href="https://github.com/phaustin/numeric/blob/master/numlabs/lab4/lab4_functions.py#L5-L9">initinter41</a></p>
-<p>We need to move this into an external configuration file that we can keep track of using version control, so we can keep the library code and the input and output files in separate folders and keep a record of our runs.</p>
-</li>
-<li><p>The derivatives are hardwired into the library, for example in <a class="reference external" href="https://github.com/phaustin/numeric/blob/3bab591fb584abbc95757eb40ae5c83dce3cb94a/numlabs/lab4/lab4_functions.py#L15-L17">eulerinter41</a>, . We need to be able to have integrators work with any derivative function.</p></li>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">traceback</span><span class="o">,</span> <span class="nn">sys</span>
+<span class="n">test_dict</span><span class="o">=</span><span class="nb">dict</span><span class="p">()</span>
+<span class="n">the_key</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">test_dict</span><span class="p">[</span><span class="n">the_key</span><span class="p">]</span><span class="o">=</span><span class="mi">5</span>
+<span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="n">tb</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()</span>
+    <span class="n">traceback</span><span class="o">.</span><span class="n">print_exception</span><span class="p">(</span><span class="o">*</span><span class="n">tb</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Traceback (most recent call last):
+  File &#34;&lt;ipython-input-5-5d4d6e884142&gt;&#34;, line 5, in &lt;module&gt;
+    test_dict[the_key]=5
+TypeError: unhashable type: &#39;list&#39;
+</pre></div></div>
+</div>
+<p>One particular tuple flavor that bridges the gap between tuples and dictionaries is the <a class="reference external" href="https://docs.python.org/3/library/collections.html#collections.namedtuple">namedtuple</a>. It has the ability to look up values by attribute instead of numerical index (unlike a tuple), but it’s immutable and so can be used as a dictionary key. The cell below show how to convert from a dictionary to a namedtuple for our case:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
+<span class="n">initialDict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;yinitial&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span><span class="s1">&#39;t_beg&#39;</span><span class="p">:</span><span class="mf">0.</span><span class="p">,</span><span class="s1">&#39;t_end&#39;</span><span class="p">:</span><span class="mf">1.</span><span class="p">,</span>
+                    <span class="s1">&#39;dt&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span><span class="s1">&#39;c1&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span><span class="s1">&#39;c2&#39;</span><span class="p">:</span><span class="mf">1.</span><span class="p">,</span><span class="s1">&#39;c3&#39;</span><span class="p">:</span><span class="mf">1.</span><span class="p">}</span>
+<span class="n">inittup</span><span class="o">=</span><span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;inittup&#39;</span><span class="p">,</span><span class="s1">&#39;dt c1 c2 c3 t_beg t_end yinitial&#39;</span><span class="p">)</span>
+<span class="n">initialCond</span><span class="o">=</span><span class="n">inittup</span><span class="p">(</span><span class="o">**</span><span class="n">initialDict</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;values are </span><span class="si">{initialCond.c1}</span><span class="s2"> and </span><span class="si">{initialCond.yinitial}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+values are -1.0 and 1
+</pre></div></div>
+</div>
+<p>Comment on the cell above:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">inittup=namedtuple('inittup','dt</span> <span class="pre">c1</span> <span class="pre">c2</span> <span class="pre">c3</span> <span class="pre">t_beg</span> <span class="pre">t_end</span> <span class="pre">yinitial')</span></code> creats a new data type with a type name (inittup) and properties (the attributes we wlll need like dt, c1 etc.)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">initialCond=inittup(**initialDict)</span></code> uses “keyword expansion” via the “doublesplat” operator <code class="docutils literal notranslate"><span class="pre">**</span></code> to expand the initialDict into a set of key=value pairs for the inittup constructor which makes an instance of our new datatype called initialCond</p></li>
+<li><p>we access these readonly members of the instance using attributes like this: <code class="docutils literal notranslate"><span class="pre">newc1</span> <span class="pre">=</span> <span class="pre">initialCond.c1</span></code></p></li>
 </ol>
-<div class="section" id="Writing-a-config-file">
-<h3>Writing a config file<a class="headerlink" href="#Writing-a-config-file" title="Permalink to this headline">¶</a></h3>
-<p>Python has a variety of configuration libraries, including <a class="reference external" href="https://docs.python.org/3.4/library/configparser.html">configparser</a> in the standard library. This is overkill, however, for our simple programs. We just need a way to input and output a dictionary in human readable form. One example of how to do this is <a class="reference external" href="https://github.com/phaustin/numeric/blob/master/numlabs/lab4/example/write_init.py">write_init.py</a>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">   write the initial condition file for the simple oscillator</span>
-<span class="sd">   example</span>
-<span class="sd">&quot;&quot;&quot;</span>
-
+<p>Note the other big benefit for namedtuples – “initialCond.c1” is self-documenting, you don’t have to explain that the tuple value initialCond[3] holds c1, and you never have to worry about changes to the order of the tuple changing the results of your code.</p>
+</div>
+<div class="section" id="Saving-named-tuples-to-a-file">
+<h3>Saving named tuples to a file<a class="headerlink" href="#Saving-named-tuples-to-a-file" title="Permalink to this headline">¶</a></h3>
+<p>One drawback to namedtuples is that there’s no one annointed way to <strong>serialize</strong> them i.e. we are in charge of trying to figure out how to write our namedtuple out to a file for future use. Contrast this with lists, strings, and scalar numbers and dictionaries, which all have a builtin <strong>json</strong> representation in text form.</p>
+<p>So here’s how to turn our named tuple back into a dictionary:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#</span>
+<span class="c1"># make the named tuple a dictionary</span>
+<span class="c1">#</span>
+<span class="n">initialDict</span> <span class="o">=</span> <span class="n">initialCond</span><span class="o">.</span><span class="n">_asdict</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">initialDict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+OrderedDict([(&#39;dt&#39;, 0.2), (&#39;c1&#39;, -1.0), (&#39;c2&#39;, 1.0), (&#39;c3&#39;, 1.0), (&#39;t_beg&#39;, 0.0), (&#39;t_end&#39;, 1.0), (&#39;yinitial&#39;, 1)])
+</pre></div></div>
+</div>
+<p>Why does <code class="docutils literal notranslate"><span class="pre">_asdict</span></code> start with an underscore? It’s to keep the fundamental methods and attributes of the namedtuple class separate from the attributes we added when we created the new <code class="docutils literal notranslate"><span class="pre">inittup</span></code> class. For more information, see the <a class="reference external" href="https://docs.python.org/3.7/library/collections.html#module-collections">collections docs</a></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">outputDict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">initialconds</span> <span class="o">=</span> <span class="n">initialDict</span><span class="p">)</span>
 <span class="kn">import</span> <span class="nn">json</span>
-
-<span class="n">initialVals</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;yinitial&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.</span><span class="p">,</span><span class="mf">1.</span><span class="p">],</span><span class="s1">&#39;t_beg&#39;</span><span class="p">:</span><span class="mf">0.</span><span class="p">,</span><span class="s1">&#39;t_end&#39;</span><span class="p">:</span><span class="mf">40.</span><span class="p">,</span><span class="s1">&#39;dt&#39;</span><span class="p">:</span><span class="mf">0.1</span><span class="p">,</span><span class="s1">&#39;c1&#39;</span><span class="p">:</span><span class="mf">0.</span><span class="p">,</span><span class="s1">&#39;c2&#39;</span><span class="p">:</span><span class="mf">1.</span><span class="p">}</span>
-<span class="n">initialVals</span><span class="p">[</span><span class="s1">&#39;comment&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;written Sep. 29, 2015&#39;</span>
-<span class="n">initialVals</span><span class="p">[</span><span class="s1">&#39;plot_title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;simple damped oscillator run 1&#39;</span>
-
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;run_1.json&#39;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-      <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">initialVals</span><span class="p">,</span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">outputDict</span><span class="p">[</span><span class="s1">&#39;history&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;written Jan. 28, 2020&#39;</span>
+<span class="n">outputDict</span><span class="p">[</span><span class="s1">&#39;plot_title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;simple damped oscillator run 1&#39;</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;run1.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">jsonout</span><span class="p">:</span>
+    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">outputDict</span><span class="p">,</span><span class="n">jsonout</span><span class="p">,</span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>When you run this from the command line or IPython with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">19</span><span class="p">]:</span> <span class="n">run</span> <span class="n">write_init</span>
-</pre></div>
 </div>
-<p>you get a json <a class="reference external" href="https://en.wikipedia.org/wiki/JSON">Javascript Object Notation</a> file that looks like this:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;t_beg&quot;</span><span class="o">:</span> <span class="mf">0.0</span><span class="p">,</span>
-    <span class="s2">&quot;c1&quot;</span><span class="o">:</span> <span class="mf">0.0</span><span class="p">,</span>
-    <span class="s2">&quot;c2&quot;</span><span class="o">:</span> <span class="mf">1.0</span><span class="p">,</span>
-    <span class="s2">&quot;t_end&quot;</span><span class="o">:</span> <span class="mf">40.0</span><span class="p">,</span>
-    <span class="s2">&quot;dt&quot;</span><span class="o">:</span> <span class="mf">0.1</span><span class="p">,</span>
-    <span class="s2">&quot;plot_title&quot;</span><span class="o">:</span> <span class="s2">&quot;simple damped oscillator run 1&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;comment&quot;</span><span class="o">:</span> <span class="s2">&quot;written Sep. 29, 2015&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;yinitial&quot;</span><span class="o">:</span> <span class="p">[</span>
-        <span class="mf">0.0</span><span class="p">,</span>
-        <span class="mf">1.0</span>
-    <span class="p">]</span>
+<p>After running this cell, you should see the following <a class="reference external" href="https://en.wikipedia.org/wiki/JSON">json output</a> in the file <code class="docutils literal notranslate"><span class="pre">run1.json</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;initialconds&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;dt&quot;</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span>
+        <span class="s2">&quot;c1&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="s2">&quot;c2&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="s2">&quot;c3&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="s2">&quot;t_beg&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="s2">&quot;t_end&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="s2">&quot;yinitial&quot;</span><span class="p">:</span> <span class="mi">1</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;history&quot;</span><span class="p">:</span> <span class="s2">&quot;written Jan. 28, 2020&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;plot_title&quot;</span><span class="p">:</span> <span class="s2">&quot;simple damped oscillator run 1&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>This format is simple enough to change with a text editor.</p>
-<p>To load this into a program, do something like <a class="reference external" href="https://github.com/phaustin/numeric/blob/master/numlabs/lab4/example/read_init.py">read_init.py</a>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
-
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;run_1.json&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-      <span class="n">init_dict</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;as a dictionary:</span><span class="se">\n</span><span class="si">{}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">init_dict</span><span class="p">))</span>
-
-<span class="c1">#either use this as a dict or convert to a namedtuple</span>
-<span class="n">initvals</span><span class="o">=</span><span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;initvals&#39;</span><span class="p">,</span><span class="s1">&#39;dt c1 c2 t_beg t_end yinitial comment plot_title&#39;</span><span class="p">)</span>
-<span class="n">theCoeff</span><span class="o">=</span><span class="n">initvals</span><span class="p">(</span><span class="o">**</span><span class="n">init_dict</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;as a namedtuple:</span><span class="se">\n</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">theCoeff</span><span class="p">))</span>
+</div>
+<div class="section" id="Reading-a-json-file-back-into-python">
+<h3>Reading a json file back into python<a class="headerlink" href="#Reading-a-json-file-back-into-python" title="Permalink to this headline">¶</a></h3>
+<p>To recover your conditions read the file back in as a dictionary:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<p>which produces:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">21</span><span class="p">]:</span> <span class="n">run</span> <span class="n">read_init</span>
-<span class="k">as</span> <span class="n">a</span> <span class="n">dictionary</span><span class="p">:</span>
-<span class="p">{</span><span class="s1">&#39;yinitial&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="s1">&#39;c2&#39;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s1">&#39;plot_title&#39;</span><span class="p">:</span> <span class="s1">&#39;simple damped oscillator run 1&#39;</span><span class="p">,</span> <span class="s1">&#39;comment&#39;</span><span class="p">:</span> <span class="s1">&#39;written Sep. 29, 2015&#39;</span><span class="p">,</span> <span class="s1">&#39;t_end&#39;</span><span class="p">:</span> <span class="mf">40.0</span><span class="p">,</span> <span class="s1">&#39;c1&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;t_beg&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;dt&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">}</span>
-
-<span class="k">as</span> <span class="n">a</span> <span class="n">namedtuple</span><span class="p">:</span>
-<span class="n">initvals</span><span class="p">(</span><span class="n">dt</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">c1</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">c2</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">t_beg</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">t_end</span><span class="o">=</span><span class="mf">40.0</span><span class="p">,</span> <span class="n">yinitial</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="n">comment</span><span class="o">=</span><span class="s1">&#39;written Sep. 29, 2015&#39;</span><span class="p">,</span> <span class="n">plot_title</span><span class="o">=</span><span class="s1">&#39;simple damped oscillator run 1&#39;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;run1.json&quot;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">jsonin</span><span class="p">:</span>
+    <span class="n">inputDict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">jsonin</span><span class="p">)</span>
+<span class="n">initial_conds</span> <span class="o">=</span> <span class="n">inittup</span><span class="p">(</span><span class="o">**</span><span class="n">inputDict</span><span class="p">[</span><span class="s1">&#39;initialconds&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;values are </span><span class="si">{initial_conds.c1}</span><span class="s2"> and </span><span class="si">{initial_conds.yinitial}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+values are -1.0 and 1
+</pre></div></div>
 </div>
 </div>
 <div class="section" id="Passing-a-derivative-function-to-an-integrator">
@@ -952,15 +982,18 @@ i &amp; a_i &amp; {b_{ij}} &amp; &amp; &amp; &amp; &amp;  &amp; c_i &amp; c^*_i 
 </div>
 <p>i.e. as long as the derivative can be written in terms of coefficients and the previous value of y, the integrator will move the ode ahead one timestep. If we wanted coefficients that were a function of time, we would need to also include those functions the coeff namedtuple, and add keep track of the timestep through the integration.</p>
 <p>Here’s an example using foward euler to integrate the harmonic oscillator</p>
+<p>Note that you can also run this from the terminal by doing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">numlabs</span><span class="o">/</span><span class="n">lab4</span><span class="o">/</span><span class="n">example</span>
+<span class="n">python</span> <span class="n">do_example</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%</span><span class="k">matplotlib</span> inline
-
-<span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">from</span> <span class="nn">numlabs.lab4.example.test</span> <span class="kn">import</span> <span class="n">read_init</span><span class="p">,</span><span class="n">euler4</span>
+<span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">numlabs.lab4.example.do_example</span> <span class="kn">import</span> <span class="n">get_init</span><span class="p">,</span><span class="n">euler4</span>
 <span class="c1">#</span>
 <span class="c1"># specify the derivs function</span>
 <span class="c1">#</span>
@@ -972,19 +1005,8 @@ i &amp; a_i &amp; {b_{ij}} &amp; &amp; &amp; &amp; &amp;  &amp; c_i &amp; c^*_i 
 <span class="c1">#</span>
 <span class="c1"># first make sure we have an input file in this directory</span>
 <span class="c1">#</span>
-<span class="n">initialVals</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;yinitial&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.</span><span class="p">,</span><span class="mf">1.</span><span class="p">],</span><span class="s1">&#39;t_beg&#39;</span><span class="p">:</span><span class="mf">0.</span><span class="p">,</span><span class="s1">&#39;t_end&#39;</span><span class="p">:</span><span class="mf">40.</span><span class="p">,</span><span class="s1">&#39;dt&#39;</span><span class="p">:</span><span class="mf">0.1</span><span class="p">,</span><span class="s1">&#39;c1&#39;</span><span class="p">:</span><span class="mf">0.</span><span class="p">,</span><span class="s1">&#39;c2&#39;</span><span class="p">:</span><span class="mf">1.</span><span class="p">}</span>
-<span class="n">initialVals</span><span class="p">[</span><span class="s1">&#39;comment&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;written Sep. 29, 2015&#39;</span>
-<span class="n">initialVals</span><span class="p">[</span><span class="s1">&#39;plot_title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;simple damped oscillator run 1&#39;</span>
 
-<span class="n">infile</span><span class="o">=</span><span class="s1">&#39;run_1.json&#39;</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">infile</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-      <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">initialVals</span><span class="p">,</span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
-<span class="c1">#</span>
-<span class="c1">#  now read the initial information into a namedtuple coeff</span>
-<span class="c1">#</span>
-
-<span class="n">infile</span><span class="o">=</span><span class="s1">&#39;run_1.json&#39;</span>
-<span class="n">coeff</span><span class="o">=</span><span class="n">read_init</span><span class="p">(</span><span class="n">infile</span><span class="p">)</span>
+<span class="n">coeff</span><span class="o">=</span><span class="n">get_init</span><span class="p">()</span>
 
 <span class="c1">#</span>
 <span class="c1"># integrate and save the result in savedata</span>
@@ -1001,7 +1023,7 @@ i &amp; a_i &amp; {b_{ij}} &amp; &amp; &amp; &amp; &amp;  &amp; c_i &amp; c^*_i 
 <span class="n">theAx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">savedata</span><span class="p">,</span><span class="s1">&#39;o-&#39;</span><span class="p">)</span>
 <span class="n">theAx</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">coeff</span><span class="o">.</span><span class="n">plot_title</span><span class="p">)</span>
 <span class="n">theAx</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;time (seconds)&#39;</span><span class="p">)</span>
-<span class="n">theAx</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;y0&#39;</span><span class="p">)</span>
+<span class="n">theAx</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;y0&#39;</span><span class="p">);</span>
 
 
 </pre></div>
@@ -1011,26 +1033,15 @@ i &amp; a_i &amp; {b_{ij}} &amp; &amp; &amp; &amp; &amp;  &amp; c_i &amp; c^*_i 
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-6-e7a0de13c6bd&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">      2</span>
-<span class="ansi-green-intense-fg ansi-bold">      3</span> <span class="ansi-green-fg">import</span> json
-<span class="ansi-green-fg">----&gt; 4</span><span class="ansi-red-fg"> </span><span class="ansi-green-fg">from</span> numlabs<span class="ansi-blue-fg">.</span>lab4<span class="ansi-blue-fg">.</span>example<span class="ansi-blue-fg">.</span>test <span class="ansi-green-fg">import</span> read_init<span class="ansi-blue-fg">,</span>euler4
-<span class="ansi-green-intense-fg ansi-bold">      5</span> <span class="ansi-red-fg">#</span>
-<span class="ansi-green-intense-fg ansi-bold">      6</span> <span class="ansi-red-fg"># specify the derivs function</span>
-
-<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;numlabs&#39;
-</pre></div></div>
+<img alt="../../_images/doc_notebooks_lab4_01-lab4_41_0.png" src="../../_images/doc_notebooks_lab4_01-lab4_41_0.png" />
 </div>
-<div class="section" id="problem-coding-A">
+</div>
+<div id="prob_a"></div><div class="section" id="problem-coding-A">
 <h4>problem coding A<a class="headerlink" href="#problem-coding-A" title="Permalink to this headline">¶</a></h4>
-<p>Try out <a class="reference external" href="https://github.com/phaustin/numeric/tree/master/numlabs/lab4/example">the lab4 example</a>:</p>
-<p>As set up above, test.py solved the damped, harmonic oscillator with the (unstable) forward Euler method.</p>
+<p>As set up above, do_example.py solves the damped, harmonic oscillator with the (unstable) forward Euler method.</p>
 <ol class="arabic">
-<li><p>Write a new routine that solves the harmonic oscilator using <a class="reference external" href="#eq_heuns">Heun’s method</a> along the lines of the routines in <a class="reference external" href="https://github.com/phaustin/numeric/blob/master/numlabs/lab4/lab4_functions.py">lab4_functions.py</a></p>
-<p>Hand in a notebook with the code and a plot.</p>
+<li><p>Write a new routine that solves the harmonic oscilator using <a class="reference external" href="#eq:heuns">Heun’s method</a> along the lines of the routines in <a class="reference external" href="https://github.com/phaustin/numeric/blob/master/numlabs/lab4/lab4_functions.py">lab4_functions.py</a></p>
+<p>Hand in a fresh notebook with the code and a plot.</p>
 </li>
 </ol>
 </div>
@@ -1040,16 +1051,16 @@ i &amp; a_i &amp; {b_{ij}} &amp; &amp; &amp; &amp; &amp;  &amp; c_i &amp; c^*_i 
 <li><p>Now solve the following test equation by both the midpoint and Heun’s method and compare.</p>
 <div class="math notranslate nohighlight">
 \[f(y,t) = t - y  + 1.0\]</div>
-<p>Choose two sets of initial conditions and investigate the behaviour.</p>
+<p>Choose two sets of initial conditions and determine if there is any difference between the two methods when applied to either problem. Should there be? Explain by analyzing the steps that each method is taking.</p>
 </li>
-<li><p>Is there any difference between the two methods when applied to either problem? Should there be? Explain by analyzing the steps that each method is taking.</p></li>
+<li><p>Add your answer as new cells to the problem A notebook</p></li>
 </ol>
 </div>
 <div class="section" id="problem-coding-C">
 <h4>problem coding C<a class="headerlink" href="#problem-coding-C" title="Permalink to this headline">¶</a></h4>
-<ol class="arabic simple" start="6">
+<ol class="arabic simple">
 <li><p>Solve the Newtonian cooling equation of lab 1 by any of the above methods.</p></li>
-<li><p>Hand in some sample plots along with the parameter values and initial conditions used.</p></li>
+<li><p>Add cells that do this and also generate some plots, showing your along with the parameter values and initial conditions.</p></li>
 </ol>
 </div>
 </div>
@@ -1105,7 +1116,7 @@ c_1 + c_2 = 1\\
 a c_2 = \frac{1}{2}
  \end{array}\end{split}\]</div>
 <p>for the Runge-Kutta method to be second-order.</p>
-<p>If we choose <span class="math notranslate nohighlight">\(a = 1/2\)</span>, this implies <span class="math notranslate nohighlight">\(c_2 = 1\)</span> and <span class="math notranslate nohighlight">\(c_1=0\)</span>. This gives us the midpoint method.</p>
+<div id="app_midpoint"></div><p>If we choose <span class="math notranslate nohighlight">\(a = 1/2\)</span>, this implies <span class="math notranslate nohighlight">\(c_2 = 1\)</span> and <span class="math notranslate nohighlight">\(c_1=0\)</span>. This gives us the midpoint method.</p>
 <p>However, note that other choices are possible. In fact, we have a <em>one-parameter family</em> of second-order methods. For example if we choose, <span class="math notranslate nohighlight">\(a=1\)</span> and <span class="math notranslate nohighlight">\(c_1=c_2=\frac{1}{2}\)</span>, we get the <em>modified Euler method</em>,</p>
 <!-- \label{lab4:eq:modifiedeuler} --><div class="math notranslate nohighlight">
 \[\begin{split}  \begin{array}{l}
@@ -1113,11 +1124,9 @@ a c_2 = \frac{1}{2}
   k_2 = h f(y_n+k_1, t_n+h)\\
   y_{n+1} = y_n + \frac{1}{2}(k_1 +k_2)
 \end{array}\end{split}\]</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">the</span> <span class="n">choice</span>
-</pre></div>
-</div>
-<p><span class="math notranslate nohighlight">\(a=\frac{2}{3}\)</span>, <span class="math notranslate nohighlight">\(c_1=\frac{1}{4}\)</span> and <span class="math notranslate nohighlight">\(c_2=\frac{3}{4}\)</span>, gives us <em>Heun’s method</em>,</p>
-<!-- \label{lab4:eq:heuns} --><div class="math notranslate nohighlight">
+<p>while the choice <span class="math notranslate nohighlight">\(a=\frac{2}{3}\)</span>, <span class="math notranslate nohighlight">\(c_1=\frac{1}{4}\)</span> and <span class="math notranslate nohighlight">\(c_2=\frac{3}{4}\)</span>, gives us</p>
+<div id="eq:heuns"><p>Heun’s Method</p>
+</div><div class="math notranslate nohighlight">
 \[\begin{split}\begin{array}{l}
   k_1 =  h f(y_n,t_n)\\
   k_2 = h f(y_n+\frac{2}{3}k_1, t_n+\frac{2}{3}h)\\
@@ -1137,24 +1146,6 @@ a c_2 = \frac{1}{2}
 <li><p><strong>stages</strong>: The approximations to the derivative made in a Runge-Kutta method between the start and end of a step.</p></li>
 <li><p><strong>tableau</strong> The tableau for a Runge-Kutta method organizes the coefficients for the method in tabular form.</p></li>
 </ul>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>
-</pre></div>
-</div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 

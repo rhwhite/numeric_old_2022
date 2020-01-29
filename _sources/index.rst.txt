@@ -1,4 +1,4 @@
-.. phil's project documentation master file, created by
+s.. phil's project documentation master file, created by
    sphinx-quickstart on Tue Mar 10 17:12:52 2009.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.

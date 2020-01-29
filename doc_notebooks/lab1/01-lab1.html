@@ -93,7 +93,6 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Lab 1</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#List-of-Problems">List of Problems</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Objectives">Objectives</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Assignment">Assignment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Readings">Readings</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#Running-Code-Cells">Running Code Cells</a></li>
 </ul>
@@ -127,8 +126,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../lab2/01-lab2.html">Lab 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lab3/01-lab3.html">Lab 3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lab4/01-lab4.html">Table of Contents</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lab4/01-lab4.html#Solving-Ordinary-Differential-Equations-with-the-Runge-Kutta-Methods">Solving Ordinary Differential Equations with the Runge-Kutta Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab4/01-lab4.html">Lab 4</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lab5/01-lab5.html">Lab 5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lab6/lab6.html">Contents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lab6/lab6.html#List-of-Problems">List of Problems</a></li>
@@ -425,7 +423,30 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<div class="section" id="Laboratory-1:-An-Introduction-to-the-Numerical-Solution-of-Differential-Equations:-Discretization-(2020/Jan/6)">
+<h1><p>Table of Contents</p>
+</h1><div class="toc"><ul class="toc-item"><li><p>1  Laboratory 1: An Introduction to the Numerical Solution of Differential Equations: Discretization (2020/Jan/6)</p>
+<ul class="toc-item"><li><p>1.1  List of Problems</p>
+</li><li><p>1.2  Objectives</p>
+</li><li><p>1.3  Readings</p>
+<ul class="toc-item"><li><p>1.3.1  Running Code Cells</p>
+</li></ul></li><li><p>1.4  Introduction: Why bother with numerical methods?</p>
+<ul class="toc-item"><li><p>1.4.1  Ordinary Differential Equations</p>
+</li><li><p>1.4.2  Partial Differential Equations</p>
+</li></ul></li><li><p>1.5  Discretization</p>
+</li><li><p>1.6  Difference Approximations to the First Derivative</p>
+<ul class="toc-item"><li><p>1.6.1  Investigation</p>
+</li><li><p>1.6.2  Forward Euler Method</p>
+</li><li><p>1.6.3  Other Approximations</p>
+</li></ul></li><li><p>1.7  Generalizations</p>
+<ul class="toc-item"><li><p>1.7.1  Higher Derivatives</p>
+</li><li><p>1.7.2  Systems of First-order ODE’s</p>
+</li><li><p>1.7.3  Boundary Value Problem</p>
+</li><li><p>1.7.4  Partial Differential Equations</p>
+</li></ul></li><li><p>1.8  Mathematical Notes</p>
+<ul class="toc-item"><li><p>1.8.1  Solution to the Heat Conduction Equation</p>
+</li></ul></li><li><p>1.9  References</p>
+</li><li><p>1.10  Glossary</p>
+</li></ul></li></ul></div><div class="section" id="Laboratory-1:-An-Introduction-to-the-Numerical-Solution-of-Differential-Equations:-Discretization-(2020/Jan/6)">
 <h1>Laboratory 1: An Introduction to the Numerical Solution of Differential Equations: Discretization (2020/Jan/6)<a class="headerlink" href="#Laboratory-1:-An-Introduction-to-the-Numerical-Solution-of-Differential-Equations:-Discretization-(2020/Jan/6)" title="Permalink to this headline">¶</a></h1>
 <p>John M. Stockie</p>
 <div class="section" id="List-of-Problems">
@@ -446,10 +467,6 @@ div.rendered_html tbody tr:hover {
 <li><p>Define the term: Interpolation, Convergence, and Instability.</p></li>
 <li><p>Define the term or perform: Linear interpolation.</p></li>
 </ul>
-</div>
-<div class="section" id="Assignment">
-<h2>Assignment<a class="headerlink" href="#Assignment" title="Permalink to this headline">¶</a></h2>
-<p>This lab has written assignment. Hand in the hard copy with your answers to Susan by xxx. Here is the link to the <a class="reference external" href="pdfs/assignment1.pdf">Assignment 1 pdf</a></p>
 </div>
 <div class="section" id="Readings">
 <h2>Readings<a class="headerlink" href="#Readings" title="Permalink to this headline">¶</a></h2>
@@ -1402,10 +1419,13 @@ a Problem in the Linear Algebra Lab.</p>
 \[U_i^n \approx u(x_i,t_n).\]</div>
 <p>The boundary and initial values for the discrete temperatures can then be written in terms of the given information.</p>
 </li>
-<li><p>Approximate all of the derivatives appearing in the problem with finite difference approximations. If we use the centered difference approximation (<a class="reference external" href="#lab1:eq:centered-diff2">Centered Second Derivative</a>) for the second derivative in <span class="math notranslate nohighlight">\(x\)</span>, and the forward difference formula (<a class="reference external" href="#lab1:eq:forward-diff'">Forward Difference Formula</a>) for the time derivative (while evaluating the terms on the right hand side at the previous time level), we obtain the following numerical scheme:</p>
-<div class="math notranslate nohighlight">
-\[U_i^{n+1} = U_i^n + \frac{\alpha^2 \Delta t}{(\Delta x)^2} \left(
-      U_{i+1}^n - 2 U_i^n + U_{i-1}^n \right).\]</div>
+<li><p>Approximate all of the derivatives appearing in the problem with finite difference approximations. If we use the centered difference approximation (<a class="reference external" href="#lab1:eq:centered-diff2">Centered Second Derivative</a>) for the second derivative in <span class="math notranslate nohighlight">\(x\)</span>, and the forward difference formula (<a class="reference external" href="#lab1:eq:forward-diff'">Forward Difference Formula</a>) for the time derivative (while evaluating the terms on the right hand side at the previous time level), we obtain the following numerical scheme:
+:nbsphinx-math:<a href="#id3"><span class="problematic" id="id4">`</span></a>begin{equation}
+U_i^{n+1} = U_i^n + frac{alpha^2 Delta t}{(Delta x)^2} left(</p>
+<blockquote>
+<div><p>U_{i+1}^n - 2 U_i^n + U_{i-1}^n right)</p>
+</div></blockquote>
+<p>end{equation}`</p>
 </li>
 </ol>
 <p>Given the initial values, <span class="math notranslate nohighlight">\(U_i^0=u_0(x_i)\)</span>, and boundary values <span class="math notranslate nohighlight">\(U_0^n=U_M^n=0\)</span>, this difference formula allows us to compute values of temperature at any time, based on values at the previous time.</p>
