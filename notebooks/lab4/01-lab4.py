@@ -216,13 +216,13 @@
 #
 # <div id="eq:linexp"><b>eq:linexp</b></div>
 # \begin{equation}
-#  \frac{dy}{dt} = -y +t +1,  \;\;\;\; y(0) =1
+# \frac{dy}{dt} = -y +t +1,  \;\;\;\; y(0) =1
 # \end{equation}
 #
 # which has the exact
 # solution 
 # \begin{equation}
-#   y(t) = t + e^{-t}
+# y(t) = t + e^{-t}
 # \end{equation}
 
 # %% [markdown]

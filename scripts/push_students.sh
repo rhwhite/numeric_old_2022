@@ -6,6 +6,7 @@
 rsync -avz notebooks/lab1 students/numeric_notebooks/
 rsync -avz notebooks/lab2 students/numeric_notebooks/
 rsync -avz notebooks/lab3 students/numeric_notebooks/
+rsync -avz notebooks/lab4 students/numeric_notebooks/
 rsync -avz utils students/
 rsync -avz numlabs students/
 rsync -avz Readme_students.md students/Readme.md
