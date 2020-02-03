@@ -9,3 +9,5 @@ Assignment details
 
 * Miniproject 1 `miniproject1.pdf <pdfs/miniproject1.pdf>`_
 
+* Lab 4 `assignment4 hand in <https://phaustin.github.io/numeric/doc_notebooks/lab4/01-lab4.html#Assignment-handin-%E2%80%93-upload-a-single,-fresh-notebook-that-contains-your-answers>`_
+
