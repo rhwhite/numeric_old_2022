@@ -2,28 +2,25 @@
 # ---
 # jupyter:
 #   jupytext:
+#     cell_metadata_filter: all
 #     formats: ipynb,py:percent
 #     notebook_metadata_filter: all,-language_info,-toc,-latex_envs
 #     text_representation:
 #       extension: .py
 #       format_name: percent
 #       format_version: '1.3'
-#       jupytext_version: 1.3.1
+#       jupytext_version: 1.3.3
 #   kernelspec:
 #     display_name: Python 3
 #     language: python
 #     name: python3
 # ---
 
-# %% [markdown] toc="true"
-# <h1>Table of Contents<span class="tocSkip"></span></h1>
-# <div class="toc" style="margin-top: 1em;"><ul class="toc-item"><li><span><a href="#Lab-5:-Daisyworld" data-toc-modified-id="Lab-5:-Daisyworld-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Lab 5: Daisyworld</a></span><ul class="toc-item"><li><span><a href="#List-of-Problems" data-toc-modified-id="List-of-Problems-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>List of Problems</a></span></li><li><span><a href="#Objectives" data-toc-modified-id="Objectives-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Objectives</a></span></li><li><span><a href="#Readings" data-toc-modified-id="Readings-1.3"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Readings</a></span></li><li><span><a href="#Introduction" data-toc-modified-id="Introduction-1.4"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>Introduction</a></span></li><li><span><a href="#Using-solve_ivp-as-a-black-box-integrator" data-toc-modified-id="Using-solve_ivp-as-a-black-box-integrator-1.5"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>Using solve_ivp as a black box integrator</a></span></li><li><span><a href="#The-Daisyworld-Model" data-toc-modified-id="The-Daisyworld-Model-1.6"><span class="toc-item-num">1.6&nbsp;&nbsp;</span>The Daisyworld Model</a></span><ul class="toc-item"><li><span><a href="#The-Daisy-Population" data-toc-modified-id="The-Daisy-Population-1.6.1"><span class="toc-item-num">1.6.1&nbsp;&nbsp;</span>The Daisy Population</a></span></li><li><span><a href="#Running-the-constant-growth-rate-demo" data-toc-modified-id="Running-the-constant-growth-rate-demo-1.6.2"><span class="toc-item-num">1.6.2&nbsp;&nbsp;</span>Running the constant growth rate demo</a></span></li><li><span><a href="#The-Daisy-Growth-Rate---Coupling-to-the-Environment" data-toc-modified-id="The-Daisy-Growth-Rate---Coupling-to-the-Environment-1.6.3"><span class="toc-item-num">1.6.3&nbsp;&nbsp;</span>The Daisy Growth Rate - Coupling to the Environment</a></span></li></ul></li><li><span><a href="#The-Local-Temperature---Dependence-on-Surface-Heat-Conductivity" data-toc-modified-id="The-Local-Temperature---Dependence-on-Surface-Heat-Conductivity-1.7"><span class="toc-item-num">1.7&nbsp;&nbsp;</span>The Local Temperature - Dependence on Surface Heat Conductivity</a></span></li><li><span><a href="#The-Feedback-Loop---Feedback-Through-the-Planetary-Albedo" data-toc-modified-id="The-Feedback-Loop---Feedback-Through-the-Planetary-Albedo-1.8"><span class="toc-item-num">1.8&nbsp;&nbsp;</span>The Feedback Loop - Feedback Through the Planetary Albedo</a></span></li><li><span><a href="#Adaptive-Stepsize-in-Runge-Kutta" data-toc-modified-id="Adaptive-Stepsize-in-Runge-Kutta-1.9"><span class="toc-item-num">1.9&nbsp;&nbsp;</span>Adaptive Stepsize in Runge-Kutta</a></span><ul class="toc-item"><li><span><a href="#Why-Adaptive-Stepsize?" data-toc-modified-id="Why-Adaptive-Stepsize?-1.9.1"><span class="toc-item-num">1.9.1&nbsp;&nbsp;</span>Why Adaptive Stepsize?</a></span></li><li><span><a href="#Designing-Adaptive-Stepsize-Control" data-toc-modified-id="Designing-Adaptive-Stepsize-Control-1.9.2"><span class="toc-item-num">1.9.2&nbsp;&nbsp;</span>Designing Adaptive Stepsize Control</a></span></li><li><span><a href="#Error-Estimate-by-Step-Doubling" data-toc-modified-id="Error-Estimate-by-Step-Doubling-1.9.3"><span class="toc-item-num">1.9.3&nbsp;&nbsp;</span>Error Estimate by Step Doubling</a></span></li><li><span><a href="#Error-Estimate-using-Embedded-Runge-Kutta" data-toc-modified-id="Error-Estimate-using-Embedded-Runge-Kutta-1.9.4"><span class="toc-item-num">1.9.4&nbsp;&nbsp;</span>Error Estimate using Embedded Runge-Kutta</a></span></li><li><span><a href="#Using-Error-to-Adjust-the-Stepsize" data-toc-modified-id="Using-Error-to-Adjust-the-Stepsize-1.9.5"><span class="toc-item-num">1.9.5&nbsp;&nbsp;</span>Using Error to Adjust the Stepsize</a></span></li></ul></li><li><span><a href="#Coding-Runge-Kutta-Adaptive-Stepsize-Control" data-toc-modified-id="Coding-Runge-Kutta-Adaptive-Stepsize-Control-1.10"><span class="toc-item-num">1.10&nbsp;&nbsp;</span>Coding Runge-Kutta Adaptive Stepsize Control</a></span><ul class="toc-item"><li><span><a href="#Daisyworld-Steady-States" data-toc-modified-id="Daisyworld-Steady-States-1.10.1"><span class="toc-item-num">1.10.1&nbsp;&nbsp;</span>Daisyworld Steady States</a></span></li><li><span><a href="#Neutral-Daisies" data-toc-modified-id="Neutral-Daisies-1.10.2"><span class="toc-item-num">1.10.2&nbsp;&nbsp;</span>Neutral Daisies</a></span></li><li><span><a href="#Black-Daisies" data-toc-modified-id="Black-Daisies-1.10.3"><span class="toc-item-num">1.10.3&nbsp;&nbsp;</span>Black Daisies</a></span></li><li><span><a href="#White-Daisies" data-toc-modified-id="White-Daisies-1.10.4"><span class="toc-item-num">1.10.4&nbsp;&nbsp;</span>White Daisies</a></span></li><li><span><a href="#Black-and-White-Daisies" data-toc-modified-id="Black-and-White-Daisies-1.10.5"><span class="toc-item-num">1.10.5&nbsp;&nbsp;</span>Black and White Daisies</a></span></li></ul></li><li><span><a href="#Conclusion" data-toc-modified-id="Conclusion-1.11"><span class="toc-item-num">1.11&nbsp;&nbsp;</span>Conclusion</a></span></li><li><span><a href="#Appendix:-Note-on-Global-Energy-Balance" data-toc-modified-id="Appendix:-Note-on-Global-Energy-Balance-1.12"><span class="toc-item-num">1.12&nbsp;&nbsp;</span>Appendix: Note on Global Energy Balance</a></span></li><li><span><a href="#Summary:-Daisy-World-Equations" data-toc-modified-id="Summary:-Daisy-World-Equations-1.13"><span class="toc-item-num">1.13&nbsp;&nbsp;</span>Summary: Daisy World Equations</a></span></li><li><span><a href="#Appendix:--Organization-of-the-adaptive-Runge-Kutta-routines" data-toc-modified-id="Appendix:--Organization-of-the-adaptive-Runge-Kutta-routines-1.14"><span class="toc-item-num">1.14&nbsp;&nbsp;</span>Appendix:  Organization of the adaptive Runge Kutta routines</a></span></li><li><span><a href="#Appendix:--2-minute-intro-to-object-oriented-programming" data-toc-modified-id="Appendix:--2-minute-intro-to-object-oriented-programming-1.15"><span class="toc-item-num">1.15&nbsp;&nbsp;</span>Appendix:  2 minute intro to object oriented programming</a></span><ul class="toc-item"><li><span><a href="#Classes-and-constructors" data-toc-modified-id="Classes-and-constructors-1.15.1"><span class="toc-item-num">1.15.1&nbsp;&nbsp;</span>Classes and constructors</a></span></li><li><span><a href="#finding-the-attributes-and-methods-of-a-class-instance" data-toc-modified-id="finding-the-attributes-and-methods-of-a-class-instance-1.15.2"><span class="toc-item-num">1.15.2&nbsp;&nbsp;</span>finding the attributes and methods of a class instance</a></span></li><li><span><a href="#Inheritance" data-toc-modified-id="Inheritance-1.15.3"><span class="toc-item-num">1.15.3&nbsp;&nbsp;</span>Inheritance</a></span></li><li><span><a href="#Initializing-using-yaml" data-toc-modified-id="Initializing-using-yaml-1.15.4"><span class="toc-item-num">1.15.4&nbsp;&nbsp;</span>Initializing using yaml</a></span></li><li><span><a href="#Overriding-initial-values-in-a-derived-class" data-toc-modified-id="Overriding-initial-values-in-a-derived-class-1.15.5"><span class="toc-item-num">1.15.5&nbsp;&nbsp;</span>Overriding initial values in a derived class</a></span></li></ul></li></ul></li></ul></div>
-
 # %% [markdown]
 # # Lab 5: Daisyworld
 
 # %% [markdown]
-# ## List of Problems 
+# ## List of Problems
 #
 #
 # [Problem Constant](#prob_constant): Daisyworld with a constant growth rate
@@ -37,8 +34,8 @@
 # [Problem Initial](#prob_initial): Daisyworld steady states and initial
 # conditions
 #
-# [Problem Temperature](#prob_temperature): Add temperature retrieval code    
-#     
+# [Problem Temperature](#prob_temperature): Add temperature retrieval code
+#
 # [Problem Estimate](#prob_estimate): Compare the error estimate to the true
 # error
 #
@@ -53,7 +50,7 @@
 # %% [markdown]
 # <a name="sec_objectives"></a>
 #
-# ## Objectives 
+# ## Objectives
 #
 # In this lab, you will explore a simple environmental model,
 # <span>*Daisyworld*</span>, with the help of a Runge-Kutta method with
@@ -105,7 +102,7 @@
 # %% [markdown]
 # <a name="sec_daisyworld"></a>
 #
-# ## Introduction
+# # Introduction
 #
 # It is obvious that life on earth is highly sensitive to the planet’s
 # atmospheric and climatic conditions. What is less obvious, but of great
@@ -147,14 +144,9 @@
 # life on the real earth may lead to a stable climate.
 
 # %% [markdown]
-# ## Using solve_ivp as a black box integrator
-#
-# In Lab 4 we solved 
-
-# %% [markdown]
 # <a name="sec_model"></a>
 #
-# ## The Daisyworld Model 
+# # The Daisyworld Model
 #
 # Daisyworld is populated by two types of daisies, one darker and the
 # other lighter than the bare ground. As with life on earth, the daisies
@@ -174,25 +166,25 @@
 #  temperature reach equilibrium?**
 
 # %% [markdown]
-#  
+#
 # <a name="sec_population"></a>
 #
-# ### The Daisy Population 
+# ## The Daisy Population
 #
 # The daisy population will be modeled along the lines of standard
 # population ecology models where the net growth depends upon the current
 # population. For example, the simplest model assumes the rate of growth
-# is proportional to the population, i.e. 
+# is proportional to the population, i.e.
 #
 # <!-- \label{lab5:eq:exp} -->
 #
 # $$
 # \frac{dA_w}{dt} = k_w A_w
-# $$ 
+# $$
 #
 # $$
 # \frac{dA_b}{dt} = k_b A_b
-# $$ 
+# $$
 #
 # where $A_w$
 # and $A_b$ are fractions of the total planetary area covered by the white
@@ -206,11 +198,12 @@
 # $\beta_i$ are the white and black daisy growth rates per unit time and
 # area, respectively, and $x$ is the fractional area of free fertile
 # ground not colonized by either species. We can also add a daisy death
-# rate per unit time, $\chi$, to get 
+# rate per unit time, $\chi$, to get
 #
 # <!-- \label{lab5:eq:model} -->
+# \textbf{eq: constantgrowth}
 # $$
-# \frac{dA_w}{dt} = A_w ( \beta_w x - \chi) \ \textbf{eq: constantgrowth}
+# \frac{dA_w}{dt} = A_w ( \beta_w x - \chi)
 # $$
 #
 #
@@ -219,10 +212,10 @@
 # $$
 #
 # However, even these small modifications are non-trivial mathematically
-# as the available fertile land is given by, 
+# as the available fertile land is given by,
 # $$
 #   x = 1 - A_w - A_b
-# $$ 
+# $$
 #
 # (assuming all the land mass is fertile) which
 # makes the equations non-linear.
@@ -236,7 +229,7 @@
 # Note that though the daisy growth rate per unit
 # time depends on the amount of available fertile land, it is not
 # otherwise coupled to the environment (i.e. $\beta_i$ is note a function
-# of temperature. Making the growth a function of bare ground, however, 
+# of temperature. Making the growth a function of bare ground, however,
 # keeps the daisy population bounded and the daisy population will
 # eventually reach some steady state.  The next python cell has a script
 # that runs a fixed timestep Runge Kutte routine that calculates area
@@ -258,7 +251,7 @@
 # %% [markdown]
 # <a name="sec_growth"></a>
 #
-# ### Running the constant growth rate demo
+# ## Running the constant growth rate demo
 #
 # In the appendix we discuss the design of the integrator class and the adaptive Runge-Kutta
 # routine.  For this demo, we need to be able to change variables in the configuration
@@ -266,38 +259,35 @@
 #
 # 1.  Change the inital white and black daisy concentrations by changing these lines in the
 #     [fixed_growth.yaml](https://github.com/phaustin/numeric/blob/lab5/lab5/fixed_growth.yaml#L13-L15) input file:
-#     
+#
 #     ```yaml
-#        
+#
 #        initvars:
 #           whiteconc: 0.2
 #           blackconc: 0.7
 #     ```
-#     
+#
 # 2.  Change the white and black daisy growth rates by editing the variables
 #     beta_w and beta_b in the derivs5 routine in the next cell
-#     
+#
 # The Integrator class contains two different timeloops, both of which use embedded Runge Kutta Cash Carp
 # code given in Lab 4 and code here as [rkckODE5](https://github.com/phaustin/numeric/blob/lab5/numlabs/lab5/lab5_funs.py#L71).  The simplest way to loop through the timesteps is just to call the
 # integrator with a specified set of times.  This is done in [timeloop5fixed](https://github.com/phaustin/numeric/blob/lab5/numlabs/lab5/lab5_funs.py#L245).  Below we will describe how to use the error extimates returned
 # by [rkckODE5](https://github.com/phaustin/numeric/blob/lab5/numlabs/lab5/lab5_funs.py#L71) to tune the size of the timesteps,
-# which is done in [timeloop5Err](https://github.com/phaustin/numeric/blob/lab5/numlabs/lab5/lab5_funs.py#L116) 
+# which is done in [timeloop5Err](https://github.com/phaustin/numeric/blob/lab5/numlabs/lab5/lab5_funs.py#L116)
 
 # %%
 #
-## 4.1  integrate constant growth rates with fixed timesteps
+# 4.1  integrate constant growth rates with fixed timesteps
 #
-# %matplotlib inline
-import numlabs.lab5.lab5_funs
-from importlib import reload
-reload(numlabs.lab5.lab5_funs)
+import context
 from numlabs.lab5.lab5_funs import Integrator
 from collections import namedtuple
 import numpy as np
 import matplotlib.pyplot as plt
 
-class Integ51(Integrator):
 
+class Integ51(Integrator):
     def set_yinit(self):
         #
         # read in 'albedo_white chi S0 L albedo_black R albedo_ground'
@@ -313,6 +303,7 @@ class Integ51(Integrator):
             [self.initvars.whiteconc, self.initvars.blackconc])
         self.nvars = len(self.yinit)
         return None
+
     #
     # Construct an Integ51 class by inheriting first intializing
     # the parent Integrator class (called super).  Then do the extra
@@ -346,14 +337,13 @@ class Integ51(Integrator):
         f[0] = y[0] * (beta_w * x - user.chi)
         f[1] = y[1] * (beta_b * x - user.chi)
         return f
-    
-    
+
 
 theSolver = Integ51('fixed_growth.yaml')
 timeVals, yVals, errorList = theSolver.timeloop5fixed()
 
 plt.close('all')
-thefig, theAx = plt.subplots(1,1)
+thefig, theAx = plt.subplots(1, 1)
 theLines = theAx.plot(timeVals, yVals)
 theLines[0].set_marker('+')
 theLines[1].set_linestyle('--')
@@ -364,7 +354,7 @@ theAx.set_xlabel('time')
 theAx.set_ylabel('fractional coverage')
 theAx.legend(theLines, ('white daisies', 'black daisies'), loc='best')
 
-thefig, theAx = plt.subplots(1,1)
+thefig, theAx = plt.subplots(1, 1)
 theLines = theAx.plot(timeVals, errorList)
 theLines[0].set_marker('+')
 theLines[1].set_linestyle('--')
@@ -373,14 +363,12 @@ theLines[1].set_marker('*')
 theAx.set_title('lab 5 interactive 1 errors')
 theAx.set_xlabel('time')
 theAx.set_ylabel('error')
-out=theAx.legend(theLines, ('white errors', 'black errors'), loc='best')
-
-
+out = theAx.legend(theLines, ('white errors', 'black errors'), loc='best')
 
 # %% [markdown]
 # <a name="sec_coupling"></a>
 #
-# ### The Daisy Growth Rate - Coupling to the Environment 
+# ## The Daisy Growth Rate - Coupling to the Environment
 #
 # We now want to couple the Daisy growth rate to the climate, which we do
 # by making the growth rate a function of the local temperature $T_i$,
@@ -389,7 +377,7 @@ out=theAx.legend(theLines, ('white errors', 'black errors'), loc='best')
 # Daisyworld this means the daisy population ceases to grow if the
 # temperature drops below $5^o$C or goes above $40^o $C. The simplest
 # model for the growth rate would then be parabolic function of
-# temperature, lpeaking at $22.5^o$C: 
+# temperature, lpeaking at $22.5^o$C:
 #
 # <!-- \label{lab5:eq:beta_i} -->
 # $$
@@ -398,18 +386,17 @@ out=theAx.legend(theLines, ('white errors', 'black errors'), loc='best')
 # where the $i$ subscript denotes the type of daisy: grey (i=y), whithe (i=w) or black (i=b).
 # (We're reserving $\alpha_g$ for the bare ground albedo)
 
-# %%
-from IPython.display import Image
-Image(filename="images/beta.png")
+# %% [markdown] trusted=true
+# <img src="images/beta.png" width="40%">
 
 # %% [markdown]
 # Before specifying the local temperature, and its dependence on the daisy
 # population, first consider the emission temperature $T_e$, which is the
-# mean temperature of the planet, 
+# mean temperature of the planet,
 #
 # <!-- \label{lab5:eq:tempe} -->
 #
-# $$   T^4_e = L \frac{S_0}{4\sigma}(1-\alpha_p)$$ 
+# $$   T^4_e = L \frac{S_0}{4\sigma}(1-\alpha_p)$$
 #
 # where $S_0$ is a solar
 # flux density constant, $L$ is the fraction of $S_0$ received at
@@ -426,9 +413,9 @@ Image(filename="images/beta.png")
 #
 # **Problem Coupling**  Consider daisies with the same albedo as the
 # planet, i.e. ’grey’ or neutral daisies, as specified in derivs5 routine
-# below.  
+# below.
 #
-# 1.  For the current value of L (0.2) in the file coupling.yaml, 
+# 1.  For the current value of L (0.2) in the file coupling.yaml,
 #     the final daisy steady state is zero.
 #     Why is it zero?
 #
@@ -436,15 +423,15 @@ Image(filename="images/beta.png")
 #
 # 3.  What happens to the emission temperature as L is varied?  Make a plot of
 #     $L$ vs. $T_E$ for 10-15 values of $L$.  To do this, I  overrode
-#     the value of L from the init file by passing a new value into 
-#     the IntegCoupling constructor (see [Appendix A.4.4](<a name=sec_override></a>)).  
+#     the value of L from the init file by passing a new value into
+#     the IntegCoupling constructor (see [Appendix A.4.4](<a name=sec_override></a>)).
 #     This allowed me to put
-#     
+#
 #     ```
 #     theSolver = IntegCoupling("coupling.yaml",newL)
 #     timeVals, yVals, errorList = theSolver.timeloop5fixed()
 #     ```
-#     
+#
 #     inside a loop that varied the L value and saved the steady state concentration
 #     for plotting
 #
@@ -457,25 +444,19 @@ Image(filename="images/beta.png")
 #     of the simulation.  You could also override timeloop5fixed to do the same
 #     thing at each timestep.)
 #
-# 5.  How (i.e. thorugh what mechanism) does the makeup of the  global daisy population 
+# 5.  How (i.e. thorugh what mechanism) does the makeup of the  global daisy population
 #     affect the local temperature?
-#     
+#
 # Hand in -- notebook cells with the code, plots and your answers.
 
 # %%
-import numlabs.lab5.lab5_funs
-from numlabs.lab5.lab5_funs import Integrator
-from importlib import reload
-reload(numlabs.lab5.lab5_funs)
-from collections import namedtuple
-import numpy as np
 import matplotlib.pyplot as plt
+
 
 class IntegCoupling(Integrator):
     """rewrite the init and derivs5 methods to
        work with a single (grey) daisy
     """
-
     def set_yinit(self):
         #
         # read in 'albedo_grey chi S0 L  R albedo_ground'
@@ -509,9 +490,9 @@ class IntegCoupling(Integrator):
         x = 1.0 - y[0]
         albedo_p = x * user.albedo_ground + y[0] * user.albedo_grey
         Te_4 = user.S0 / 4.0 * user.L * (1.0 - albedo_p) / sigma
-        eta = user.R *user.L * user.S0 / (4.0 * sigma)
+        eta = user.R * user.L * user.S0 / (4.0 * sigma)
         temp_y = (eta * (albedo_p - user.albedo_grey) + Te_4)**0.25
-        if(temp_y >= 277.5 and temp_y <= 312.5):
+        if (temp_y >= 277.5 and temp_y <= 312.5):
             beta_y = 1.0 - 0.003265 * (295.0 - temp_y)**2.0
         else:
             beta_y = 0.0
@@ -522,10 +503,7 @@ class IntegCoupling(Integrator):
         return f
 
 
-
 # %%
-# %matplotlib inline
-import numpy as np
 import matplotlib.pyplot as plt
 
 theSolver = IntegCoupling('coupling.yaml')
@@ -536,14 +514,12 @@ theLines = theAx.plot(timeVals, yVals)
 theAx.set_title('lab 5: interactive 2 Coupling with grey daisies')
 theAx.set_xlabel('time')
 theAx.set_ylabel('fractional coverage')
-out=theAx.legend(theLines, ('grey daisies',), loc='best')
-
-
+out = theAx.legend(theLines, ('grey daisies', ), loc='best')
 
 # %% [markdown]
 # <a name="sec_conductivity"></a>
 #
-# ## The Local Temperature - Dependence on Surface Heat Conductivity
+# # The Local Temperature - Dependence on Surface Heat Conductivity
 #
 # If we now allow for black and white daisies, the local temperature will
 # differ according to the albedo of the region. The regions with white
@@ -556,7 +532,7 @@ out=theAx.legend(theLines, ('grey daisies',), loc='best')
 # -   If there is perfect heat ‘conduction’ between the different regions
 #     of the planet then the local temperature will equal the mean
 #     temperature given by the emission temperature $T_e$.
-#     
+#
 #     <!-- \label{lab5:eq:temp0} -->
 #     $$
 #        T^4_i \equiv T^4_e = L \frac{S_0}{4\sigma}(1-\alpha_p)
@@ -564,8 +540,8 @@ out=theAx.legend(theLines, ('grey daisies',), loc='best')
 #
 # -   If there is no conduction, or perfect ‘insulation’, between regions
 #     then the temperature will be the emission temperature due to the
-#     albedo of the local region. 
-#     
+#     albedo of the local region.
+#
 #     <!-- \label{lab5:eq:temp1} -->
 #     $$
 #        T^4_i= L \frac{S_0}{4\sigma}(1-\alpha_i)
@@ -578,12 +554,12 @@ out=theAx.legend(theLines, ('grey daisies',), loc='best')
 #
 # $$
 #   T^4_i = R L \frac{S_0}{4\sigma}(\alpha_p-\alpha_i) + T^4_e
-# $$ 
-#   
+# $$
+#
 # where $R$
 # is a parameter that interpolates between the two extreme cases i.e.
 # $R=0$ means perfect conduction and $R=1$ implies perfect insulation
-# between regions.    
+# between regions.
 #
 # <a name="prob_conduction"></a>
 #
@@ -601,18 +577,12 @@ out=theAx.legend(theLines, ('grey daisies',), loc='best')
 
 # %%
 #
-## 5.2  keep the albedo constant at alpha_p and vary the conductivity R
+# 5.2  keep the albedo constant at alpha_p and vary the conductivity R
 #
-import numlabs.lab5.lab5_funs
-from importlib import reload
-reload(numlabs.lab5.lab5_funs)
 from numlabs.lab5.lab5_funs import Integrator
-from collections import namedtuple
-import numpy as np
 
 
 class Integ53(Integrator):
-
     def set_yinit(self):
         #
         # read in 'albedo_white chi S0 L albedo_black R albedo_ground'
@@ -647,16 +617,16 @@ class Integ53(Integrator):
         #
         albedo_p = user.albedo_ground
         Te_4 = user.S0 / 4.0 * user.L * (1.0 - albedo_p) / sigma
-        eta = user.R * user.L* user.S0 / (4.0 * sigma)
+        eta = user.R * user.L * user.S0 / (4.0 * sigma)
         temp_b = (eta * (albedo_p - user.albedo_black) + Te_4)**0.25
         temp_w = (eta * (albedo_p - user.albedo_white) + Te_4)**0.25
 
-        if(temp_b >= 277.5 and temp_b <= 312.5):
+        if (temp_b >= 277.5 and temp_b <= 312.5):
             beta_b = 1.0 - 0.003265 * (295.0 - temp_b)**2.0
         else:
             beta_b = 0.0
 
-        if(temp_w >= 277.5 and temp_w <= 312.5):
+        if (temp_w >= 277.5 and temp_w <= 312.5):
             beta_w = 1.0 - 0.003265 * (295.0 - temp_w)**2.0
         else:
             beta_w = 0.0
@@ -666,7 +636,6 @@ class Integ53(Integrator):
         f[0] = y[0] * (beta_w * x - user.chi)
         f[1] = y[1] * (beta_b * x - user.chi)
         return f
-
 
 
 # %%
@@ -683,13 +652,13 @@ theLines[1].set_color('k')
 theAx.set_title('lab 5 interactive 3 -- conduction problem')
 theAx.set_xlabel('time')
 theAx.set_ylabel('fractional coverage')
-out=theAx.legend(theLines, ('white daisies', 'black daisies'),
-             loc='center right')
+out = theAx.legend(theLines, ('white daisies', 'black daisies'),
+                   loc='center right')
 
 # %% [markdown]
 # <a name="sec_feedback"></a>
 #
-# ## The Feedback Loop - Feedback Through the Planetary Albedo 
+# # The Feedback Loop - Feedback Through the Planetary Albedo
 #
 # The amount of solar radiation the planet reflects will depend on the
 # daisy population since the white daisies will reflect more radiation
@@ -702,8 +671,8 @@ out=theAx.legend(theLines, ('white daisies', 'black daisies'),
 #
 # $$
 #   \alpha_p = A_w\alpha_w + A_b\alpha_b + A_g\alpha_g
-# $$ 
-#   
+# $$
+#
 # A greater
 # population of white daisies will tend to increase planetary albedo and
 # decrease the emission temperature, as is apparent from equation
@@ -713,11 +682,11 @@ out=theAx.legend(theLines, ('white daisies', 'black daisies'),
 # $\beta_i$  which is a function of the local
 # temperature $T_i$ $$\beta_i = 1.0 - 0.003265(295.5 K -T_i)^2$$ If the
 # conductivity $R$ is nonzero, the local temperature is a function of
-# planetary albedo $\alpha_p$ 
+# planetary albedo $\alpha_p$
 #
-# $$T_i = \left[ R L \frac{S_0}{4\sigma}(\alpha_p-\alpha_i) 
-#   + T^4_e \right]^{\frac{1}{4}}$$ 
-#   
+# $$T_i = \left[ R L \frac{S_0}{4\sigma}(\alpha_p-\alpha_i)
+#   + T^4_e \right]^{\frac{1}{4}}$$
+#
 # which is determined by the daisy
 # population.
 #
@@ -737,7 +706,7 @@ out=theAx.legend(theLines, ('white daisies', 'black daisies'),
 # balance. The code below produces a steady state which arises from a given initial daisy
 # population,
 #
-# 1.  Add a small initial fraction of black daisies (say, 0.01) to the 
+# 1.  Add a small initial fraction of black daisies (say, 0.01) to the
 #     value in initial.yaml and see
 #     what effect this has on the temperature and final daisy populations.
 #     Do you still have a final non-zero daisy population?
@@ -750,16 +719,10 @@ out=theAx.legend(theLines, ('white daisies', 'black daisies'),
 #     non-zero steady states.
 
 # %%
-import numlabs.lab5.lab5_funs
-from importlib import reload
-reload(numlabs.lab5.lab5_funs)
 from numlabs.lab5.lab5_funs import Integrator
-from collections import namedtuple
-import numpy as np
 
 
 class Integ54(Integrator):
-
     def set_yinit(self):
         #
         # read in 'albedo_white chi S0 L albedo_black R albedo_ground'
@@ -796,7 +759,7 @@ class Integ54(Integrator):
             yvals[0] * user.albedo_white + yvals[1] * user.albedo_black
         Te_4 = user.S0 / 4.0 * user.L * (1.0 - albedo_p) / sigma
         temp_e = Te_4**0.25
-        eta = user.R * user.L* user.S0 / (4.0 * sigma)
+        eta = user.R * user.L * user.S0 / (4.0 * sigma)
         temp_b = (eta * (albedo_p - user.albedo_black) + Te_4)**0.25
         temp_w = (eta * (albedo_p - user.albedo_white) + Te_4)**0.25
         return (temp_w, temp_b, temp_e)
@@ -809,12 +772,12 @@ class Integ54(Integrator):
         """
         temp_w, temp_b, temp_e = self.find_temp(y)
 
-        if(temp_b >= 277.5 and temp_b <= 312.5):
+        if (temp_b >= 277.5 and temp_b <= 312.5):
             beta_b = 1.0 - 0.003265 * (295.0 - temp_b)**2.0
         else:
             beta_b = 0.0
 
-        if(temp_w >= 277.5 and temp_w <= 312.5):
+        if (temp_w >= 277.5 and temp_w <= 312.5):
             beta_w = 1.0 - 0.003265 * (295.0 - temp_w)**2.0
         else:
             beta_w = 0.0
@@ -827,9 +790,7 @@ class Integ54(Integrator):
         return f
 
 
-
 # %%
-# %matplotlib inline
 import matplotlib.pyplot as plt
 import pandas as pd
 
@@ -845,8 +806,7 @@ line2.set(linestyle='--', color='k', label='black')
 theAx.set_title('lab 5 interactive 4, initial conditions')
 theAx.set_xlabel('time')
 theAx.set_ylabel('fractional coverage')
-out=theAx.legend(loc='center right')
-
+out = theAx.legend(loc='center right')
 
 # %% [markdown]
 # <a name="prob_temperature"></a>
@@ -855,18 +815,18 @@ out=theAx.legend(loc='center right')
 #
 # 1. override ```timeloop5fixed``` so that it saves these three temperatures, plus the daisy growth rates
 #    to new variables in the Integ54 instance
-#    
+#
 # 2. Make plots of (temp_w, temp_b) and (beta_w, beta_b) vs. time for a case with non-zero equilibrium
 #    concentrations of both black and white daisies
 
 # %% [markdown]
 # <a name="sec_adaptive"></a>
 #
-# ## Adaptive Stepsize in Runge-Kutta 
+# # Adaptive Stepsize in Runge-Kutta
 #
 # <a name="sec_adaptivewhy"></a>
 #
-# ### Why Adaptive Stepsize? 
+# ## Why Adaptive Stepsize?
 #
 # As a rule of thumb, accuracy increases in Runge-Kutta methods as
 # stepsize decreases. At the same time, the number of function evaluations
@@ -895,7 +855,7 @@ out=theAx.legend(loc='center right')
 #
 # <a name="sec_design"></a>
 #
-# ### Designing Adaptive Stepsize Control
+# ## Designing Adaptive Stepsize Control
 #
 # Now that the goal is clear, the question remains of how to close in on
 # it. As mentioned above, an adaptive algorithm is usually asked to solve
@@ -913,7 +873,7 @@ out=theAx.legend(loc='center right')
 #
 # <a name="sec_doubling"></a>
 #
-# ### Error Estimate by Step Doubling 
+# ## Error Estimate by Step Doubling
 #
 # The first and simple approach to arriving at an error estimate is to
 # simply take every step twice. The second time the step is divided up
@@ -938,7 +898,7 @@ out=theAx.legend(loc='center right')
 #
 # <a name="sec_embedded"></a>
 #
-# ### Error Estimate using Embedded Runge-Kutta 
+# ## Error Estimate using Embedded Runge-Kutta
 #
 # Another way of estimating the truncation error of a step is due to the
 # existence of the special fifth-order Runge-Kutta methods discussed
@@ -957,10 +917,10 @@ out=theAx.legend(loc='center right')
 # **Problem Estimate**: In the demo below, compare the error estimate to
 # the true error, on the initial value problem from ,
 #
-# $$\frac{dy}{dt} = -y +t +1,  \;\;\;\; y(0) =1$$ 
+# $$\frac{dy}{dt} = -y +t +1,  \;\;\;\; y(0) =1$$
 #
 # which has the exact
-# solution 
+# solution
 #
 # $$y(t) = t + e^{-t}$$
 #
@@ -974,16 +934,10 @@ out=theAx.legend(loc='center right')
 #     is happening with the numerical solution?
 
 # %%
-import numlabs.lab5.lab5_funs
-from importlib import reload
-reload(numlabs.lab5.lab5_funs)
 from numlabs.lab5.lab5_funs import Integrator
-from collections import namedtuple
-import numpy as np
 
 
 class Integ55(Integrator):
-
     def set_yinit(self):
         #
         # read in 'c1 c2 c3'
@@ -1007,31 +961,27 @@ class Integ55(Integrator):
         """
            y[0]=fraction white daisies
         """
-        user=self.uservars
-        f=np.empty_like(self.yinit)
-        f[0]=user.c1*y[0] + user.c2*theTime + user.c3;
+        user = self.uservars
+        f = np.empty_like(self.yinit)
+        f[0] = user.c1 * y[0] + user.c2 * theTime + user.c3
         return f
 
 
-
-
 # %%
-# %matplotlib inline
-import numpy as np
 import matplotlib.pyplot as plt
 
-theSolver=Integ55('expon.yaml')
+theSolver = Integ55('expon.yaml')
 
-timeVals,yVals,yErrors =theSolver.timeloop5Err()
-timeVals=np.array(timeVals)
-exact=timeVals + np.exp(-timeVals)
-yVals=np.array(yVals)
-yVals=yVals.squeeze()
-yErrors=np.array(yErrors)
+timeVals, yVals, yErrors = theSolver.timeloop5Err()
+timeVals = np.array(timeVals)
+exact = timeVals + np.exp(-timeVals)
+yVals = np.array(yVals)
+yVals = yVals.squeeze()
+yErrors = np.array(yErrors)
 
-thefig,theAx=plt.subplots(1,1)
-line1=theAx.plot(timeVals,yVals,label='adapt')
-line2=theAx.plot(timeVals,exact,'r+',label='exact')
+thefig, theAx = plt.subplots(1, 1)
+line1 = theAx.plot(timeVals, yVals, label='adapt')
+line2 = theAx.plot(timeVals, exact, 'r+', label='exact')
 theAx.set_title('lab 5 interactive 5')
 theAx.set_xlabel('time')
 theAx.set_ylabel('y value')
@@ -1042,56 +992,53 @@ theAx.legend(loc='center right')
 # into an array of numbers using a list comprehension
 #
 
-thefig,theAx=plt.subplots(1,1)
+thefig, theAx = plt.subplots(1, 1)
 realestError = yVals - exact
-actualErrorLine=theAx.plot(timeVals,realestError,label='actual error')
-estimatedErrorLine=theAx.plot(timeVals,yErrors,label='estimated error')
+actualErrorLine = theAx.plot(timeVals, realestError, label='actual error')
+estimatedErrorLine = theAx.plot(timeVals, yErrors, label='estimated error')
 theAx.legend(loc='best')
 
+timeVals, yVals, yErrors = theSolver.timeloop5fixed()
 
-timeVals,yVals,yErrors =theSolver.timeloop5fixed()
+np_yVals = np.array(yVals).squeeze()
+yErrors = np.array(yErrors)
+np_exact = timeVals + np.exp(-timeVals)
 
-np_yVals=np.array(yVals).squeeze()
-yErrors=np.array(yErrors)
-np_exact=timeVals + np.exp(-timeVals)
-
-
-thefig,theAx=plt.subplots(1,1)
-line1=theAx.plot(timeVals,np_yVals,label='fixed')
-line2=theAx.plot(timeVals,np_exact,'r+',label='exact')
+thefig, theAx = plt.subplots(1, 1)
+line1 = theAx.plot(timeVals, np_yVals, label='fixed')
+line2 = theAx.plot(timeVals, np_exact, 'r+', label='exact')
 theAx.set_title('lab 5 interactive 5 -- fixed')
 theAx.set_xlabel('time')
 theAx.set_ylabel('y value')
 theAx.legend(loc='center right')
 
-thefig,theAx=plt.subplots(1,1)
+thefig, theAx = plt.subplots(1, 1)
 realestError = np_yVals - np_exact
-actualErrorLine=theAx.plot(timeVals,realestError,label='actual error')
-estimatedErrorLine=theAx.plot(timeVals,yErrors,label='estimated error')
+actualErrorLine = theAx.plot(timeVals, realestError, label='actual error')
+estimatedErrorLine = theAx.plot(timeVals, yErrors, label='estimated error')
 theAx.legend(loc='best')
 theAx.set_title('lab 5 interactive 5 -- fixed errors')
-
 
 # %% [markdown]
 # <a name="sec_adjust"></a>
 #
-# ###  Using Error to Adjust the Stepsize
+# ##  Using Error to Adjust the Stepsize
 #
 # Both step doubling and embedded methods leave us with the difference
 # between two different order solutions to the same step. Provided is a
 # desired accuracy, $\Delta_{des}$. The way this accuracy is specified
 # depends on the problem. It can be relative to the solution at step $i$,
 #
-# $$\Delta_{des}(i) = RTOL\cdot |y(i)|$$ 
+# $$\Delta_{des}(i) = RTOL\cdot |y(i)|$$
 #
 # where $RTOL$ is the relative
 # tolerance desired. An absolute part should be added to this so that the
 # desired accuracy does not become zero. There are more ways to adjust the
 # error specification to the problem, but the overall goal of the
 # algorithm always is to make $\Delta_{est}(i)$, the estimated error for a
-# step, satisfy 
+# step, satisfy
 #
-# $$|\Delta_{est}(i)|\leq\Delta_{des}(i)|$$ 
+# $$|\Delta_{est}(i)|\leq\Delta_{des}(i)|$$
 #
 # Note also that
 # for a system of ODEs $\Delta_{des}$ is of course a vector, and it is
@@ -1099,23 +1046,24 @@ theAx.set_title('lab 5 interactive 5 -- fixed errors')
 #
 # Note now that the calculated error term is $O(h^{5})$ as it was found as
 # an error estimate to fourth-order Runge-Kutta methods. This makes it
-# possible to scale the stepsize as 
+# possible to scale the stepsize as
 #
 # <!-- \label{lab5:eq:hnew} -->
 #
-# $$h_{new} = h_{old}[{\Delta_{des}\over \Delta_{est}}]^{1/5}$$ 
+# $$h_{new} = h_{old}[{\Delta_{des}\over \Delta_{est}}]^{1/5}$$
 #
 # or,
 # to give an example of the suggested use of vector norms above, the new
-# stepsize is given by 
+# stepsize is given by
 #
 # <!-- \label{lab5:eq:hnewnormed} -->
 #
 # <a name="eq_hnewnorm"></a>
 #
-# $$h_{new} = S h_{old}\{[{1\over N}\sum_{i=1}^{N}({\Delta_{est}(i)\over 
-#         \Delta_{des}(i)})^{2}]^{1/2}\}^{-1/5}\}\ \textbf{eq: hnewnorm}$$ 
-#         
+# \textbf{eq: hnewnorm}
+# $$h_{new} = S h_{old}\{[{1\over N}\sum_{i=1}^{N}({\Delta_{est}(i)\over
+#         \Delta_{des}(i)})^{2}]^{1/2}\}^{-1/5}\}\ $$
+#
 # using the
 # root-mean-square norm. $S$ appears as a safety factor ($0<S<1$) to
 # counteract the inaccuracy in the use of estimates.
@@ -1137,29 +1085,26 @@ theAx.set_title('lab 5 interactive 5 -- fixed errors')
 # ```
 
 # %%
-# %matplotlib inline
 import matplotlib.pyplot as plt
 import pandas as pd
 
-theSolver=Integ54('adapt.yaml')
-timeVals,yVals,errorList=theSolver.timeloop5Err()
+theSolver = Integ54('adapt.yaml')
+timeVals, yVals, errorList = theSolver.timeloop5Err()
 
-yvals=pd.DataFrame.from_records(yVals,columns=['white','black'])
+yvals = pd.DataFrame.from_records(yVals, columns=['white', 'black'])
 
-thefig,theAx=plt.subplots(1,1)
+thefig, theAx = plt.subplots(1, 1)
 
-points,=theAx.plot(timeVals,yvals['white'],'-b+',label='white daisies')
+points, = theAx.plot(timeVals, yvals['white'], '-b+', label='white daisies')
 points.set_markersize(12)
-theLine1,=theAx.plot(timeVals,yvals['black'],'--ko',label='black daisies')
+theLine1, = theAx.plot(timeVals, yvals['black'], '--ko', label='black daisies')
 theAx.set_title('lab 5 interactive 6')
 theAx.set_xlabel('time')
 theAx.set_ylabel('fractional coverage')
-out=theAx.legend(loc='best')
-
+out = theAx.legend(loc='best')
 
 # timeVals,yVals,errorList=theSolver.timeloop5fixed()
 # whiteDaisies=[frac[0] for frac in yVals]
-
 
 # %% [markdown]
 # <a name="prob_tolerances"></a>
@@ -1186,7 +1131,7 @@ out=theAx.legend(loc='best')
 #
 # <a name="sec_coding"></a>
 #
-# ## Coding Runge-Kutta Adaptive Stepsize Control 
+# # Coding Runge-Kutta Adaptive Stepsize Control
 #
 # The Runge-Kutta code developed in Lab 4 solves the given ODE system in
 # fixed timesteps. It is now necessary to exert adaptive timestep control
@@ -1261,12 +1206,12 @@ out=theAx.legend(loc='best')
 #
 # **Problem adaptive** The demos in the previous section, solved the
 # Daisyworld equations using the embedded Runge-Kutta methods with
-# adaptive timestep control. 
+# adaptive timestep control.
 #
 # 1.  Run the code and find solutions of Daisyworld with the default
 #     settings found in adapt.yaml using the timeloop5Err adaptive
 #     code
-#     
+#
 # 2.  Find the solutions again but this time with fixed stepsizes and
 #     compare the size of the timesteps and number of the timesteps.
 #
@@ -1275,7 +1220,7 @@ out=theAx.legend(loc='best')
 #
 # <a name="sec_steady"></a>
 #
-# ### Daisyworld Steady States
+# ## Daisyworld Steady States
 #
 # We can now use the Runge-Kutta code with adaptive timestep control to
 # find some steady states of Daisyworld by varying the luminosity $LS_0$ in the
@@ -1301,7 +1246,7 @@ out=theAx.legend(loc='best')
 #
 # <a name="sec_neutral"></a>
 #
-# ###  Neutral Daisies 
+# ##  Neutral Daisies
 #
 # The first case we consider is the case investigated in a previous demo
 # where the albedo of the daisies and the ground are set to the same
@@ -1310,18 +1255,18 @@ out=theAx.legend(loc='best')
 #
 # $~$
 
-# %%
-#Daisy fraction -- daisies have ground albedo
-Image(filename="images/steady_g.png")
+# %% [markdown]
+# Daisy fraction -- daisies have ground albedo
+# <img src="images/steady_g.png" width="40%">
 
-# %%
-#Emission temperature
-Image(filename="images/temp_g.png")
+# %% [markdown]
+# Emission temperature
+# <img src="images/temp_g.png" width="40%">
 
 # %% [markdown]
 # <a name="sec_black"></a>
 #
-# ### Black Daisies 
+# ## Black Daisies
 #
 # Now consider a population of black daisies. Note the sharp jump in the
 # graph when the first non-zero daisy steady states appear and the
@@ -1330,18 +1275,19 @@ Image(filename="images/temp_g.png")
 # Note as well that the graph drops back to zero at a lower value of L
 # than in the case of neutral daisies.
 
-# %%
-#Daisies darker than ground
-Image(filename="images/steady_b.png")
+# %% [markdown]
+# Daisies darker than ground
+# <img src="images/steady_b.png" width="40%">
 
-# %%
-#Temperature
-Image(filename="images/temp_b.png")
+# %% [markdown]
+# Temperature
+# <img src="images/temp_b.png" width="40%">
+
 
 # %% [markdown]
 # <a name="sec_white"></a>
 #
-# ### White Daisies
+# ## White Daisies
 #
 # Consider now a population of purely white daisies. In this case there is
 # an abrupt drop in the daisy steady state when it approaches zero with a
@@ -1350,18 +1296,19 @@ Image(filename="images/temp_b.png")
 # steady states is different when solar luminosity is lowered as opposed
 # to being raised incrementally.
 
-# %%
-#Daisies brighter than ground
-Image(filename='images/steady_w.png')
+# %% [markdown]
+# Daisies brighter than ground
+# <img src="images/steady_w.png" width="40%">
 
-# %%
-#Temperature
-Image(filename='images/temp_w.png')
+# %% [markdown]
+# Temperature
+# <img src="images/temp_w.png" width="40%">
+
 
 # %% [markdown]
 # <a name="sec_blackwhite"></a>
 #
-# ### Black and White Daisies 
+# ## Black and White Daisies
 #
 # Finally, consider a population of both black and white daisies. This
 # blends in features from the cases where the daisy population was purely
@@ -1369,19 +1316,19 @@ Image(filename='images/temp_w.png')
 # initially causes the planetary temperature to actually drop even though
 # the solar luminosity has been increased.
 
-# %%
-#fraction of black and white daisies
-Image(filename='images/steady_bw.png')
 
-# %%
-#note extended temperature range with stabilizing feedbacks
-Image(filename='images/temp_bw.png')
+# %% [markdown]
+# fraction of black and white daisies
+# <img src="images/steady_bw.png" width="40%">
 
+# %% [markdown]
+# note extended temperature range with stabilizing feedbacks
+# <img src="images/temp_bw.png" width="40%">
 
 # %% [markdown]
 # <a name="sec_conclusion"></a>
 #
-# ## Conclusion 
+# # Conclusion
 #
 # Black daisies can survive at lower mean temperatures than the white
 # daisies and the reverse is true for white daisies. The end result is
@@ -1415,15 +1362,15 @@ Image(filename='images/temp_bw.png')
 # 3.  A discussion of the steady state’s dependence on these values, i.e.
 #     what happens when they are altered. Include a few plots for
 #     illustration.
-#     
+#
 # 4.  Does adding this feedback extend the range of habital L values  for which
-#     non-zero populations exist?  
+#     non-zero populations exist?
 #
 # **Bonus:**: Now consider foxes that prey on rabbits but
 # leave the daisies alone.
 
 # %% [markdown]
-# ## Appendix: Note on Global Energy Balance 
+# # Appendix: Note on Global Energy Balance
 #
 # The statement that the earth is in energy balance follows from the First
 # Law of Thermodynamics, i.e.
@@ -1443,12 +1390,13 @@ Image(filename='images/temp_bw.png')
 # The emission temperature of a planet is the temperature the planet would
 # be at if it emitted energy like a blackbody. A blackbody, so-called
 # because it is a perfect absorber of radiation, obeys the
-# Stefan-Boltzmann Law: 
+# Stefan-Boltzmann Law:
 #
 # <!-- \label{lab5:stefan-boltzmann-law} -->
 #
-# $$ F_B\ (Wm^{-2}) = \sigma T^4_e\ \textbf{eq: Stefan-Boltzman}$$ 
-#   
+# \textbf{eq: Stefan-Boltzman}
+# $$ F_B\ (Wm^{-2}) = \sigma T^4_e$$
+#
 #   where $\epsilon$ is the energy density and
 # $\sigma = 5.67\times 10^{-8}Wm^{-2}K^{-4}$. Given the energy absorbed,
 # it is easy to calculate the emission temperature $T_e$ with
@@ -1458,18 +1406,18 @@ Image(filename='images/temp_bw.png')
 # with the fraction reflected known as the albedo $\alpha_p$. So the total
 # energy absorbed by the planet is actually flux density received times
 # the fraction absorbed times the perpendicular area to the sun ( the
-# ’shadow area’), i.e. 
+# ’shadow area’), i.e.
 #
 # <!-- \label{lab5:energyabsorbed} -->
 #
 # $$
-#   E_{\rm absorbed}=S_0(1-\alpha_p)\pi r_p^2$$ 
-#   
+#   E_{\rm absorbed}=S_0(1-\alpha_p)\pi r_p^2$$
+#
 # where $r^2_p$ is the
 # planet’s radius.
 #
 # If we still assume the planet emits like a blackbody, we can calculate
-# the corresponding blackbody emission temperature. The total power 
+# the corresponding blackbody emission temperature. The total power
 # emitted would be the flux $F_B$ of the blackbody times its
 # surface area, i.e.
 #
@@ -1479,16 +1427,16 @@ Image(filename='images/temp_bw.png')
 #    E_{\rm blackbody} = \sigma T^4_e 4\pi  r_p^2$$
 #
 # Equating the energy absorbed with the energy emitted by a blackbody we
-# can calculate the emission temperature, 
+# can calculate the emission temperature,
 #
 # <!-- \label{lab5:emissiontemp} -->
 #
 # $$
 #    T^4_e = L \frac{S_0}{4\sigma}(1-\alpha_p)$$
-#    
 #
 #
-# ## Summary: Daisy World Equations 
+#
+# # Summary: Daisy World Equations
 #
 # $$\frac{dA_w}{dt} = A_w ( \beta_w x - \chi)$$
 #
@@ -1505,15 +1453,15 @@ Image(filename='images/temp_bw.png')
 # $$T^4_e = L \frac{S_0}{4\sigma}(1-\alpha_p)$$
 
 # %% [markdown]
-# ## Appendix:  Organization of the adaptive Runge Kutta routines
+# # Appendix:  Organization of the adaptive Runge Kutta routines
 #
-# * The coding follows [Press et al.](pdf_files/adapt_ode.pdf), with the adaptive Runge Kutta defined
-#   in the Integrator base class [here](https://github.com/phaustin/numeric/blob/lab5/numlabs/lab5/lab5_funs.py#L71-L73)
+# * The coding follows [Press et al.](pdfs/adapt_ode.pdf), with the adaptive Runge Kutta defined
+#   in the Integrator base class [here](https://github.com/phaustin/numeric/blob/10117233dc7c440b15c549c8086d76a03b9dcdd0/numlabs/lab5/lab5_funs.py#L43-L59)
 #
-# * The step size choice is made in [timeloop5err](https://github.com/phaustin/numeric/blob/numlabs     /lab5/lab5_funs.py#L116)  in [this section](https://github.com/phaustin/numeric/blob/numlabs/lab5/lab5_funs.py#L156-L193)
+# * The step size choice is made in [timeloop5err](https://github.com/phaustin/numeric/blob/10117233dc7c440b15c549c8086d76a03b9dcdd0/numlabs/lab5/lab5_funs.py#L115-L118)
 #
 # * To set up a specific problem, you need to overide two methods as demonstrated in the example code:
-# the member function that initalizes the concentrations: [yinit](https://github.com/phaustin/numeric/blob/numlabs/lab5/lab5_funs.py#L46-L48) and the derivatives routine [derivs5](https://github.com/phaustin/numeric/blob/numlabs/lab5/lab5_funs.py#L67-L69)
+# the member function that initalizes the concentrations: [yinit](https://github.com/phaustin/numeric/blob/10117233dc7c440b15c549c8086d76a03b9dcdd0/numlabs/lab5/lab5_funs.py#L115-L118) and the derivatives routine [derivs5](https://github.com/phaustin/numeric/blob/10117233dc7c440b15c549c8086d76a03b9dcdd0/numlabs/lab5/lab5_funs.py#L66-L68)
 #
 # * In [Problem Initial](#prob_initial) we define a new member function:
 #
@@ -1523,7 +1471,7 @@ Image(filename='images/temp_bw.png')
 #         """
 #             Calculate the temperatures over the white and black daisies
 #             and the planetary equilibrium temperature given the daisy fractions
-#             
+#
 #             input:  yvals -- array of dimension [2] with the white [0] and black [1]
 #                     daisy fraction
 #             output:  white temperature (K), black temperature (K), equilibrium temperature (K)
@@ -1532,9 +1480,10 @@ Image(filename='images/temp_bw.png')
 # which give an example of how to use the instance variable data (self.uservars) in additional calculations.
 
 # %% [markdown]
-# ## Appendix:  2 minute intro to object oriented programming
+# # Appendix:  2 minute intro to object oriented programming
 #
-# For a very brief introduction to python classes take a look at [these scipy lecture notes](http://www.scipy-lectures.org/intro/language/oop.html) 
+# For a very brief introduction to python classes take a look at [these scipy lecture notes](http://www.scipy-lectures.org/intro/language/oop.html)
+# For perhaps more detail than you want/need to know, see [supercharge your classes with super()](https://realpython.com/python-super/)
 # that define some of the basic concepts.  Briefly, we need a way to store a lot of information, for
 # example the Runge-Kutta coefficients, in an organized way that is accessible to multiple functions,
 # without having to pass all that information through the function arguments. Python solves this problem
@@ -1543,19 +1492,20 @@ Image(filename='images/temp_bw.png')
 #
 
 # %% [markdown]
-# ### Classes and constructors
+# ## Classes and constructors
+
 
 # %%
 class Integrator:
-    def __init__(self,first,second,third):
+    def __init__(self, first, second, third):
         print('Constructing Integrator')
-        self.a=first
-        self.b=second
-        self.c=third
-    def dumpit(self,the_name):
-        printlist=[self.a,self.b,self.c]
-        print('dumping arguments for {}: {}'.format(the_name,printlist))
-    
+        self.a = first
+        self.b = second
+        self.c = third
+
+    def dumpit(self, the_name):
+        printlist = [self.a, self.b, self.c]
+        print(f'dumping arguments for {the_name}: {printlist}')
 
 
 # %% [markdown]
@@ -1568,7 +1518,7 @@ class Integrator:
 # * We construct and instance of the class by passing the required arguments to ```__init__```
 
 # %%
-the_integ=Integrator(1,2,3)
+the_integ = Integrator(1, 2, 3)
 print(dir(the_integ))
 #note that the_integ now has a, b, c, and dumpit
 
@@ -1584,7 +1534,7 @@ the_integ.dumpit('Demo object')
 # part of the function call.
 
 # %% [markdown]
-# ###  finding the attributes and methods of a class instance
+# ##  finding the attributes and methods of a class instance
 #
 # Python has a couple of functions that allow you to see the methods and
 # attributes of objects
@@ -1617,41 +1567,46 @@ vars(the_integ)
 # %%
 import inspect
 all_info_the_integ = inspect.getmembers(the_integ)
-only_methods=[item[0] for item in all_info_the_integ if inspect.ismethod(item[1])]
-print('methods for the_integ: ',only_methods)
-
+only_methods = [
+    item[0] for item in all_info_the_integ if inspect.ismethod(item[1])
+]
+print('methods for the_integ: ', only_methods)
 
 # %% [markdown]
-# ### Inheritance
+# ## Inheritance
 
 # %% [markdown]
 # We can also specialize a class by driving from a base and then adding more data or members,
 # or overriding existing values.  For example:
 
+
 # %%
+import numpy as np
 class Trig(Integrator):
-    import numpy as np
-    def __init__(self,one,two,three,four):
+    
+    def __init__(self, one, two, three, four):
         print('constructing Trig')
         #
         # first construct the base class
         #
-        super().__init__(one,two,three)
-        self.d=four
+        super().__init__(one, two, three)
+        self.d = four
+
     def calc_trig(self):
-        self.trigval=np.sin(self.c*self.d)
-    def print_trig(self,the_date):
-        print('on {} the value of sin(a*b)=: {:5.3f}'.format(the_date,self.trigval))
-        
+        self.trigval = np.sin(self.c * self.d)
+
+    def print_trig(self, the_date):
+        print(f'on {the_date} the value of sin(a*b)=: {self.trigval:5.3f}')
+
 
 
 # %%
-sample=Trig(1,2,3,4)
+sample = Trig(1, 2, 3, 4)
 sample.calc_trig()
 sample.print_trig('July 5')
 
 # %% [markdown]
-# ### Initializing using yaml
+# ## Initializing using yaml
 #
 # To specify the intial values for the class, we use a plain text
 # format called [yaml](http://www.yaml.org/spec/1.2/spec.html).  To write a yaml
@@ -1659,47 +1614,49 @@ sample.print_trig('July 5')
 
 # %%
 import yaml
-out_dict=dict()
-out_dict['vegetables']=dict(carrots=5,eggplant=7,corn=2)
-out_dict['fruit']=dict(apples='Out of season',strawberries=8)
-with open('groceries.yaml','w') as f:
-    yaml.dump(out_dict,f)
+out_dict = dict()
+out_dict['vegetables'] = dict(carrots=5, eggplant=7, corn=2)
+out_dict['fruit'] = dict(apples='Out of season', strawberries=8)
+with open('groceries.yaml', 'w') as f:
+    yaml.dump(out_dict, f)
 
 # %%
 #what's in the yaml file?
 #each toplevel dictionary key became a category
 import sys  #output to sys.stdout because print adds blank lines
-with open('groceries.yaml','r') as f:
+with open('groceries.yaml', 'r') as f:
     for line in f.readlines():
         sys.stdout.write(line)
 
 # %%
 #read into a dictionary
-with open('groceries.yaml','r') as f:
-    init_dict=yaml.load(f)
+with open('groceries.yaml', 'r') as f:
+    init_dict = yaml.load(f, Loader=yaml.FullLoader)
 print(init_dict)
 
 # %% [markdown]
 # <a name=sec_override></a>
 #
-# ### Overriding initial values in a derived class
+# ## Overriding initial values in a derived class
 
 # %% [markdown]
 # Suppose we want to change a value like the strength of the sun, $L$, after it's been
 # read in from the initail yaml file?  Since a derived class can override the yinit function
-# in the Integrator class, we are free to change it to overwrite any variable by reassigning 
+# in the Integrator class, we are free to change it to overwrite any variable by reassigning
 # the new value to self in the child constructor.
 #
 # Here's a simple example showing this kind of reinitialization:
 
 # %%
 import numpy as np
+
+
 class Base:
     #
     # this constructor is called first
     #
-    def __init__(self,basevar):
-        self.L=basevar
+    def __init__(self, basevar):
+        self.L = basevar
 
 
 class Child(Base):
@@ -1707,27 +1664,27 @@ class Child(Base):
     # this class changes the initialization
     # to add a new variable
     #
-    def __init__(self,a,L):
+    def __init__(self, a, L):
         super().__init__(a)
         #
         # change the L in the child class
         #
-        self.L=L
+        self.L = L
 
 
 # %% [markdown]
 # Now we can use Child(a,Lval) to construct instances with any value of L we want:
 
 # %%
-Lvals=np.linspace(0,100,11)
+Lvals = np.linspace(0, 100, 11)
 
 #
 # now make 10 children, each with a different value of L
 #
-a=5
+a = 5
 for theL in Lvals:
-   newItem=Child(a,theL)
-   print('set L value in child class to {:3.0f}'.format(newItem.L))
+    newItem = Child(a, theL)
+    print(f'set L value in child class to {newItem.L:3.0f}')
 
 # %% [markdown]
 # To change L in the IntegCoupling class in [Problem Conduction](#prob_conduction) look at
