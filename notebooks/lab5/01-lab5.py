@@ -95,7 +95,7 @@
 #     -   Newman, Section 8.4
 #
 #     -   Press, et al. Section 16.2: these are equations we implemented in Python,
-#         [scanned pdf here](pdf_files/adapt_ode.pdf)
+#         [scanned pdf here](pdfs/adapt_ode.pdf)
 #
 #     -   Burden & Faires Section 5.5
 
@@ -258,7 +258,7 @@
 # file.  For this demonstration you are asked to
 #
 # 1.  Change the inital white and black daisy concentrations by changing these lines in the
-#     [fixed_growth.yaml](https://github.com/phaustin/numeric/blob/lab5/lab5/fixed_growth.yaml#L13-L15) input file:
+#     [fixed_growth.yaml](https://github.com/phaustin/numeric/blob/10117233dc7c440b15c549c8086d76a03b9dcdd0/notebooks/lab5/fixed_growth.yaml#L13-L15) input file:
 #
 #     ```yaml
 #
@@ -271,10 +271,10 @@
 #     beta_w and beta_b in the derivs5 routine in the next cell
 #
 # The Integrator class contains two different timeloops, both of which use embedded Runge Kutta Cash Carp
-# code given in Lab 4 and code here as [rkckODE5](https://github.com/phaustin/numeric/blob/lab5/numlabs/lab5/lab5_funs.py#L71).  The simplest way to loop through the timesteps is just to call the
-# integrator with a specified set of times.  This is done in [timeloop5fixed](https://github.com/phaustin/numeric/blob/lab5/numlabs/lab5/lab5_funs.py#L245).  Below we will describe how to use the error extimates returned
-# by [rkckODE5](https://github.com/phaustin/numeric/blob/lab5/numlabs/lab5/lab5_funs.py#L71) to tune the size of the timesteps,
-# which is done in [timeloop5Err](https://github.com/phaustin/numeric/blob/lab5/numlabs/lab5/lab5_funs.py#L116)
+# code given in Lab 4 and code here as [rkckODE5](https://github.com/phaustin/numeric/blob/10117233dc7c440b15c549c8086d76a03b9dcdd0/numlabs/lab5/lab5_funs.py#L70).  The simplest way to loop through the timesteps is just to call the
+# integrator with a specified set of times.  This is done in [timeloop5fixed](https://github.com/phaustin/numeric/blob/10117233dc7c440b15c549c8086d76a03b9dcdd0/numlabs/lab5/lab5_funs.py#L244).  Below we will describe how to use the error extimates returned
+# by rkckODE5 to tune the size of the timesteps,
+# which is done in [timeloop5Err](https://github.com/phaustin/numeric/blob/10117233dc7c440b15c549c8086d76a03b9dcdd0/numlabs/lab5/lab5_funs.py#L244).
 
 # %%
 #
@@ -1136,10 +1136,11 @@ out = theAx.legend(loc='best')
 # The Runge-Kutta code developed in Lab 4 solves the given ODE system in
 # fixed timesteps. It is now necessary to exert adaptive timestep control
 # over the solution.  The python code for this is at given in
-# [these lines](https://github.com/phaustin/numeric/blob/lab5/numlabs/lab5/lab5_funs.py#L159-L193)
+# [these lines](https://github.com/phaustin/numeric/blob/10117233dc7c440b15c549c8086d76a03b9dcdd0/numlabs/lab5/lab5_funs.py#L145-L197)
 #
 #
-# In principle, this is quite simple:
+#
+# In principle, this is pretty simple:
 #
 # 1.  As before, take a step specified by the Runge-Kutta algorithm.
 #
@@ -1149,9 +1150,9 @@ out = theAx.legend(loc='best')
 # 3.  If the error is too large, calculate the new stepsize with
 #     ([eq: hnewnorm])(#eq_hnewnorm) and retake the step.
 #
-# This can be accomplished by writing a new [timeloop](https://github.com/phaustin/numeric/blob/lab5/numlabs/lab5/lab5_funs.py#L116)
-# method which evaluates each Runge-Kutta step. The routine,
-# step() that actually takes the step must now also return
+# This can be accomplished by writing a new [timeloop5Err](https://github.com/phaustin/numeric/blob/10117233dc7c440b15c549c8086d76a03b9dcdd0/numlabs/lab5/lab5_funs.py#L115-L117)
+# method which evaluates each Runge-Kutta step. This routine
+# must now also return
 # the estimate of the truncation error.
 #
 # In practice, it is prudent to take a number of safeguards. This involves
