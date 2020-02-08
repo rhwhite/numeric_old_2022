@@ -48,6 +48,18 @@
 #
 
 # %% [markdown]
+# ## Assignment
+#
+# Upload a jupyter notebook  that solves the following problems -- if you
+# want to import your own module code, include that with the notebook
+# in a zipfile
+#
+#
+# Undergrads:  Upload a notebook (and, if you modify library files, include that)
+# * A409: do Problems 1 (constant), 2 (coupling), 4 (initial), 5 (temperature), 6 (estimate)
+# * E511: do Problems 1 (constant), 2 (coupling), 4 (initial), 5 (temperature), 6 (estimate),  8 (adaptive), 9 (predators)
+#
+# %% [markdown]
 # <a name="sec_objectives"></a>
 #
 # ## Objectives
@@ -424,7 +436,7 @@ out = theAx.legend(theLines, ('white errors', 'black errors'), loc='best')
 # 3.  What happens to the emission temperature as L is varied?  Make a plot of
 #     $L$ vs. $T_E$ for 10-15 values of $L$.  To do this, I  overrode
 #     the value of L from the init file by passing a new value into
-#     the IntegCoupling constructor (see [Appendix A.4.4](<a name=sec_override></a>)).
+#     the IntegCoupling constructor (see [Appendix A](#sec_override)).
 #     This allowed me to put
 #
 #     ```
@@ -1056,13 +1068,13 @@ theAx.set_title('lab 5 interactive 5 -- fixed errors')
 # to give an example of the suggested use of vector norms above, the new
 # stepsize is given by
 #
-# <!-- \label{lab5:eq:hnewnormed} -->
 #
-# <a name="eq_hnewnorm"></a>
 #
-# \textbf{eq: hnewnorm}
-# $$h_{new} = S h_{old}\{[{1\over N}\sum_{i=1}^{N}({\Delta_{est}(i)\over
-#         \Delta_{des}(i)})^{2}]^{1/2}\}^{-1/5}\}\ $$
+# \begin{equation}
+# \label{eq:hnewnorm}
+# h_{new} = S h_{old}\{[{1\over N}\sum_{i=1}^{N}({\Delta_{est}(i)\over
+# \Delta_{des}(i)})^{2}]^{1/2}\}^{-1/5}\}
+# \end{equation}
 #
 # using the
 # root-mean-square norm. $S$ appears as a safety factor ($0<S<1$) to
@@ -1148,7 +1160,7 @@ out = theAx.legend(loc='best')
 #     tolerance
 #
 # 3.  If the error is too large, calculate the new stepsize with
-#     ([eq: hnewnorm])(#eq_hnewnorm) and retake the step.
+#     (\ref{eq:hnewnorm}) and retake the step.
 #
 # This can be accomplished by writing a new [timeloop5Err](https://github.com/phaustin/numeric/blob/10117233dc7c440b15c549c8086d76a03b9dcdd0/numlabs/lab5/lab5_funs.py#L115-L117)
 # method which evaluates each Runge-Kutta step. This routine
@@ -1176,7 +1188,7 @@ out = theAx.legend(loc='best')
 #     -   A check must be made to ensure that the new step is larger than
 #         machine roundoff. (Check if $t+dt == t$.)
 #
-# -   When a step passes, i.e. equation [Eq: hnewnorm](#eq_hnewnorm) is
+# -   When a step passes, i.e. equation (\ref{eq:hnewnorm}) is
 #     satisfied,
 #
 #     -   *dtpassmin*: The step is not changed unless it is by
@@ -1200,7 +1212,7 @@ out = theAx.legend(loc='best')
 #     taken.
 #
 # The Python code for the the adaptive stepsize control is discussed
-# further in Appendix [Adaptive](#app_adaptive).
+# further in Appendix [Adaptive](#code_org).
 
 # %% [markdown]
 # <a name="prob_adaptive"></a>
@@ -1454,6 +1466,8 @@ out = theAx.legend(loc='best')
 # $$T^4_e = L \frac{S_0}{4\sigma}(1-\alpha_p)$$
 
 # %% [markdown]
+# <div id="code_org">
+# %% [markdown]
 # # Appendix:  Organization of the adaptive Runge Kutta routines
 #
 # * The coding follows [Press et al.](pdfs/adapt_ode.pdf), with the adaptive Runge Kutta defined
@@ -1484,11 +1498,11 @@ out = theAx.legend(loc='best')
 # # Appendix:  2 minute intro to object oriented programming
 #
 # For a very brief introduction to python classes take a look at [these scipy lecture notes](http://www.scipy-lectures.org/intro/language/oop.html)
-# For perhaps more detail than you want/need to know, see [supercharge your classes with super()](https://realpython.com/python-super/)
-# that define some of the basic concepts.  Briefly, we need a way to store a lot of information, for
+# that define some of the basic concepts. For perhaps more detail than you want/need to know, see [supercharge your classes with super()](https://realpython.com/python-super/)
+# Briefly, we need a way to store a lot of information, for
 # example the Runge-Kutta coefficients, in an organized way that is accessible to multiple functions,
 # without having to pass all that information through the function arguments. Python solves this problem
-# by putting both the data and the functions together into an class, like this:
+# by putting both the data and the functions together into an class, as in the Integrator class below.
 #
 #
 
@@ -1636,7 +1650,7 @@ with open('groceries.yaml', 'r') as f:
 print(init_dict)
 
 # %% [markdown]
-# <a name=sec_override></a>
+# <div id="sec_override">
 #
 # ## Overriding initial values in a derived class
 
@@ -1696,3 +1710,13 @@ for theL in Lvals:
 # initvars = namedtuple('initvars', self.config['initvars'].keys())
 # self.initvars = initvars(**self.config['initvars'])
 # ```
+
+# %% [markdown]
+# ## Why bother?
+#
+# What does object oriented programming buy us?  The dream was that companies/coders could ship
+# standard base classes, thoroughly tested and documented, and then users could adapt those
+# classes to their special needs using inheritence.  This turned out to be too ambitous,
+# but a dialed-back version of this is definitely now part of many major programming languages.
+
+# %%
