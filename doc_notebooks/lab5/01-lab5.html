@@ -95,12 +95,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../lab3/01-lab3.html">Lab 3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lab4/01-lab4.html">Lab 4</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Lab 5: Daisyworld</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#List-of-Problems">List of Problems</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Assignment">Assignment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Objectives">Objectives</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Readings">Readings</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#List-of-Problems">List of Problems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#The-Daisyworld-Model">The Daisyworld Model</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#The-Daisy-Population">The Daisy Population</a></li>
@@ -436,18 +436,6 @@ div.rendered_html tbody tr:hover {
 </style>
 <div class="section" id="Lab-5:-Daisyworld">
 <h1>Lab 5: Daisyworld<a class="headerlink" href="#Lab-5:-Daisyworld" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="List-of-Problems">
-<h2>List of Problems<a class="headerlink" href="#List-of-Problems" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="#prob_constant">Problem Constant</a>: Daisyworld with a constant growth rate</p>
-<p><a class="reference external" href="#prob_coupling">Problem Coupling</a>: Daisyworld of neutral daisies coupled to the temperature</p>
-<p><a class="reference external" href="#prob_conduction">Problem Conduction</a>: Daisyworld steady states and the effect of the conduction parameter R</p>
-<p><a class="reference external" href="#prob_initial">Problem Initial</a>: Daisyworld steady states and initial conditions</p>
-<p><a class="reference external" href="#prob_temperature">Problem Temperature</a>: Add temperature retrieval code</p>
-<p><a class="reference external" href="#prob_estimate">Problem Estimate</a>: Compare the error estimate to the true error</p>
-<p><a class="reference external" href="#prob_tolerances">Problem tolerances</a> User specified error tolerances in stepsize control</p>
-<p><a class="reference external" href="#prob_adaptive">Problem Adaptive</a>: Adaptive Timestep Code</p>
-<p><a class="reference external" href="#prob_predator">Problem Predators</a>: Adding predators to Daisyworld</p>
-</div>
 <div class="section" id="Assignment">
 <h2>Assignment<a class="headerlink" href="#Assignment" title="Permalink to this headline">¶</a></h2>
 <p>Upload a jupyter notebook that solves the following problems – if you want to import your own module code, include that with the notebook in a zipfile</p>
@@ -486,6 +474,18 @@ div.rendered_html tbody tr:hover {
 </ul>
 </div>
 </div>
+<div class="section" id="List-of-Problems">
+<h1>List of Problems<a class="headerlink" href="#List-of-Problems" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="#prob_constant">Problem Constant</a>: Daisyworld with a constant growth rate</p>
+<p><a class="reference external" href="#prob_coupling">Problem Coupling</a>: Daisyworld of neutral daisies coupled to the temperature</p>
+<p><a class="reference external" href="#prob_conduction">Problem Conduction</a>: Daisyworld steady states and the effect of the conduction parameter R</p>
+<p><a class="reference external" href="#prob_initial">Problem Initial</a>: Daisyworld steady states and initial conditions</p>
+<p><a class="reference external" href="#prob_temperature">Problem Temperature</a>: Add temperature retrieval code</p>
+<p><a class="reference external" href="#prob_estimate">Problem Estimate</a>: Compare the error estimate to the true error</p>
+<p><a class="reference external" href="#prob_tolerances">Problem tolerances</a> User specified error tolerances in stepsize control</p>
+<p><a class="reference external" href="#prob_adaptive">Problem Adaptive</a>: Adaptive Timestep Code</p>
+<p><a class="reference external" href="#prob_predator">Problem Predators</a>: Adding predators to Daisyworld</p>
+</div>
 <div class="section" id="Introduction">
 <h1>Introduction<a class="headerlink" href="#Introduction" title="Permalink to this headline">¶</a></h1>
 <p>It is obvious that life on earth is highly sensitive to the planet’s atmospheric and climatic conditions. What is less obvious, but of great interest, is the role biology plays in the sensitivity of the climate. This is dramatically illustrated by the concern over the possible contribution to global warming by the loss of the rain forests in Brazil.</p>
@@ -513,7 +513,6 @@ div.rendered_html tbody tr:hover {
 <div class="math notranslate nohighlight">
 \[k_i = \beta_i x\]</div>
 <p>where <span class="math notranslate nohighlight">\(\beta_i\)</span> are the white and black daisy growth rates per unit time and area, respectively, and <span class="math notranslate nohighlight">\(x\)</span> is the fractional area of free fertile ground not colonized by either species. We can also add a daisy death rate per unit time, <span class="math notranslate nohighlight">\(\chi\)</span>, to get</p>
-<!-- \label{lab5:eq:model} --><p><span class="math">\textbf{eq: constantgrowth}</span></p>
 <div class="math notranslate nohighlight">
 \[\frac{dA_w}{dt} = A_w ( \beta_w x - \chi)\]</div>
 <div class="math notranslate nohighlight">
@@ -522,8 +521,8 @@ div.rendered_html tbody tr:hover {
 <div class="math notranslate nohighlight">
 \[x = 1 - A_w - A_b\]</div>
 <p>(assuming all the land mass is fertile) which makes the equations non-linear.</p>
-<p>** Problem constant growth**:</p>
-<p>Note that though the daisy growth rate per unit time depends on the amount of available fertile land, it is not otherwise coupled to the environment (i.e. <span class="math notranslate nohighlight">\(\beta_i\)</span> is note a function of temperature. Making the growth a function of bare ground, however, keeps the daisy population bounded and the daisy population will eventually reach some steady state. The next python cell has a script that runs a fixed timestep Runge Kutte routine that calculates area coverage of white and black daisies
+<div id="prob_constant"><p><strong>Problem constant growth</strong></p>
+</div><p>Note that though the daisy growth rate per unit time depends on the amount of available fertile land, it is not otherwise coupled to the environment (i.e. <span class="math notranslate nohighlight">\(\beta_i\)</span> is note a function of temperature. Making the growth a function of bare ground, however, keeps the daisy population bounded and the daisy population will eventually reach some steady state. The next python cell has a script that runs a fixed timestep Runge Kutte routine that calculates area coverage of white and black daisies
 for fixed growth rates <span class="math notranslate nohighlight">\(\beta_w\)</span> and <span class="math notranslate nohighlight">\(\beta_b\)</span>. Try changing these growth rates (specified in the derivs5 routine) and the initial white and black concentrations (specified in the fixed_growth.yaml file discussed next).</p>
 <ol class="arabic simple">
 <li><p>For a given set of growth rates try various (non-zero) initial daisy populations.</p></li>
@@ -659,14 +658,14 @@ through /Users/phil/repos/numeric/notebooks/lab5/context.py
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/doc_notebooks_lab5_01-lab5_10_1.png" src="../../_images/doc_notebooks_lab5_01-lab5_10_1.png" />
+<img alt="../../_images/doc_notebooks_lab5_01-lab5_9_1.png" src="../../_images/doc_notebooks_lab5_01-lab5_9_1.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/doc_notebooks_lab5_01-lab5_10_2.png" src="../../_images/doc_notebooks_lab5_01-lab5_10_2.png" />
+<img alt="../../_images/doc_notebooks_lab5_01-lab5_9_2.png" src="../../_images/doc_notebooks_lab5_01-lab5_9_2.png" />
 </div>
 </div>
 </div>
@@ -684,7 +683,8 @@ through /Users/phil/repos/numeric/notebooks/lab5/context.py
 \[T^4_e = L \frac{S_0}{4\sigma}(1-\alpha_p)\]</div>
 <p>where <span class="math notranslate nohighlight">\(S_0\)</span> is a solar flux density constant, <span class="math notranslate nohighlight">\(L\)</span> is the fraction of <span class="math notranslate nohighlight">\(S_0\)</span> received at Daisyworld, and <span class="math notranslate nohighlight">\(\alpha_p\)</span> is the planetary albedo. The greater the planetary albedo <span class="math notranslate nohighlight">\(\alpha_p\)</span>, i.e. the more solar radiation the planet reflects, the lower the emission temperature.</p>
 <p><strong>Mathematical note</strong>: The emission temperature is derived on the assumption that the planet is in global energy balance and is behaving as a blackbody radiator. See the appendix for more information.</p>
-<p><strong>Problem Coupling</strong> Consider daisies with the same albedo as the planet, i.e. ’grey’ or neutral daisies, as specified in derivs5 routine below.</p>
+<div id="prob_coupling"><p><strong>Problem coupling</strong></p>
+</div><p>Consider daisies with the same albedo as the planet, i.e. ’grey’ or neutral daisies, as specified in derivs5 routine below.</p>
 <ol class="arabic">
 <li><p>For the current value of L (0.2) in the file coupling.yaml, the final daisy steady state is zero. Why is it zero?</p></li>
 <li><p>Find a value of L which leads to a non-zero steady state.</p></li>
@@ -784,7 +784,7 @@ through /Users/phil/repos/numeric/notebooks/lab5/context.py
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/doc_notebooks_lab5_01-lab5_16_0.png" src="../../_images/doc_notebooks_lab5_01-lab5_16_0.png" />
+<img alt="../../_images/doc_notebooks_lab5_01-lab5_15_0.png" src="../../_images/doc_notebooks_lab5_01-lab5_15_0.png" />
 </div>
 </div>
 </div>
@@ -807,7 +807,8 @@ through /Users/phil/repos/numeric/notebooks/lab5/context.py
 <!-- \label{lab5:eq:tempi} --><div class="math notranslate nohighlight">
 \[T^4_i = R L \frac{S_0}{4\sigma}(\alpha_p-\alpha_i) + T^4_e\]</div>
 <p>where <span class="math notranslate nohighlight">\(R\)</span> is a parameter that interpolates between the two extreme cases i.e. <span class="math notranslate nohighlight">\(R=0\)</span> means perfect conduction and <span class="math notranslate nohighlight">\(R=1\)</span> implies perfect insulation between regions.</p>
-<p><strong>Problem Conduction</strong> The conduction parameter R will determine the temperature differential between the bare ground and the regions with black or white daisies. The code in the next cell specifies the derivatives for this situation, removing the feedback between the daisies and the planetary albedo but introducint conduction. Use it to investigate these two questions:</p>
+<div id="prob_conduction"><p><strong>Problem conduction</strong></p>
+</div><p>The conduction parameter R will determine the temperature differential between the bare ground and the regions with black or white daisies. The code in the next cell specifies the derivatives for this situation, removing the feedback between the daisies and the planetary albedo but introducint conduction. Use it to investigate these two questions:</p>
 <ol class="arabic simple">
 <li><p>Change the value of R and observe the effects on the daisy and emission temperature.</p></li>
 <li><p>What are the effects on the daisy growth rate and the final steady states?</p></li>
@@ -907,7 +908,7 @@ through /Users/phil/repos/numeric/notebooks/lab5/context.py
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/doc_notebooks_lab5_01-lab5_19_0.png" src="../../_images/doc_notebooks_lab5_01-lab5_19_0.png" />
+<img alt="../../_images/doc_notebooks_lab5_01-lab5_18_0.png" src="../../_images/doc_notebooks_lab5_01-lab5_18_0.png" />
 </div>
 </div>
 </div>
@@ -929,7 +930,8 @@ through /Users/phil/repos/numeric/notebooks/lab5/context.py
 <li><p>Physically, this provides the feedback from the daisy population back to the temperature, completing the loop between the daisies and temperature.</p></li>
 <li><p>Mathematically, this introduces a rather nasty non-linearity into the equations which, as pointed out in the lab 1, usually makes it difficult, if not impossible, to obtain exact analytic solutions.</p></li>
 </ul>
-<p><strong>Problem initial</strong> The feedback means a stable daisy population (a steady state) and the environmental conditions are in a delicate balance. The code below produces a steady state which arises from a given initial daisy population,</p>
+<div id="prob_initial"><p><strong>Problem initial</strong></p>
+</div><p>The feedback means a stable daisy population (a steady state) and the environmental conditions are in a delicate balance. The code below produces a steady state which arises from a given initial daisy population,</p>
 <ol class="arabic simple">
 <li><p>Add a small initial fraction of black daisies (say, 0.01) to the value in initial.yaml and see what effect this has on the temperature and final daisy populations. Do you still have a final non-zero daisy population?</p></li>
 <li><p>Attempt to adjust the initial white daisy population to obtain a non-zero steady state. Do you have to increase or decrease the initial fraction? What is your explanation for this behavior?</p></li>
@@ -1040,10 +1042,11 @@ through /Users/phil/repos/numeric/notebooks/lab5/context.py
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/doc_notebooks_lab5_01-lab5_23_0.png" src="../../_images/doc_notebooks_lab5_01-lab5_23_0.png" />
+<img alt="../../_images/doc_notebooks_lab5_01-lab5_22_0.png" src="../../_images/doc_notebooks_lab5_01-lab5_22_0.png" />
 </div>
 </div>
-<p><strong>Problem Temperature</strong>: The code above adds a new method, <code class="docutils literal notranslate"><span class="pre">find_temp</span></code> that takes the white/black daisy fractions and calculates local and planetary temperatures.</p>
+<div id="prob_temperature"><p><strong>Problem temperature</strong></p>
+</div><p>The code above adds a new method, <code class="docutils literal notranslate"><span class="pre">find_temp</span></code> that takes the white/black daisy fractions and calculates local and planetary temperatures.</p>
 <ol class="arabic simple">
 <li><p>override <code class="docutils literal notranslate"><span class="pre">timeloop5fixed</span></code> so that it saves these three temperatures, plus the daisy growth rates to new variables in the Integ54 instance</p></li>
 <li><p>Make plots of (temp_w, temp_b) and (beta_w, beta_b) vs. time for a case with non-zero equilibrium concentrations of both black and white daisies</p></li>
@@ -1074,7 +1077,8 @@ accuracy achieved. So we are looking at 3 function evaluations more per step, or
 <h2>Error Estimate using Embedded Runge-Kutta<a class="headerlink" href="#Error-Estimate-using-Embedded-Runge-Kutta" title="Permalink to this headline">¶</a></h2>
 <p>Another way of estimating the truncation error of a step is due to the existence of the special fifth-order Runge-Kutta methods discussed earlier. These methods use six function evaluations which can be recombined to produce a fourth-order method . Again, the difference between the fifth and the fourth order solution is used to calculate an estimate of the truncation error. Obviously this method requires fewer function evaluations than step doubling, as the two estimates use the same evaluation
 points. Originally this method was found by Fehlberg, and later Cash and Karp produced the set of constants presented earlier that produce an efficient and accurate error estimate.</p>
-<p><strong>Problem Estimate</strong>: In the demo below, compare the error estimate to the true error, on the initial value problem from ,</p>
+<div id="prob_estimate"><p><strong>Problem Estimate</strong></p>
+</div><p>In the demo below, compare the error estimate to the true error, on the initial value problem from ,</p>
 <div class="math notranslate nohighlight">
 \[\frac{dy}{dt} = -y +t +1,  \;\;\;\; y(0) =1\]</div>
 <p>which has the exact solution</p>
@@ -1195,28 +1199,28 @@ Text(0.5, 1.0, &#39;lab 5 interactive 5 -- fixed errors&#39;)
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/doc_notebooks_lab5_01-lab5_28_1.png" src="../../_images/doc_notebooks_lab5_01-lab5_28_1.png" />
+<img alt="../../_images/doc_notebooks_lab5_01-lab5_27_1.png" src="../../_images/doc_notebooks_lab5_01-lab5_27_1.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/doc_notebooks_lab5_01-lab5_28_2.png" src="../../_images/doc_notebooks_lab5_01-lab5_28_2.png" />
+<img alt="../../_images/doc_notebooks_lab5_01-lab5_27_2.png" src="../../_images/doc_notebooks_lab5_01-lab5_27_2.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/doc_notebooks_lab5_01-lab5_28_3.png" src="../../_images/doc_notebooks_lab5_01-lab5_28_3.png" />
+<img alt="../../_images/doc_notebooks_lab5_01-lab5_27_3.png" src="../../_images/doc_notebooks_lab5_01-lab5_27_3.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/doc_notebooks_lab5_01-lab5_28_4.png" src="../../_images/doc_notebooks_lab5_01-lab5_28_4.png" />
+<img alt="../../_images/doc_notebooks_lab5_01-lab5_27_4.png" src="../../_images/doc_notebooks_lab5_01-lab5_27_4.png" />
 </div>
 </div>
 </div>
@@ -1284,10 +1288,11 @@ h_{new} = S h_{old}\{[{1\over N}\sum_{i=1}^{N}({\Delta_{est}(i)\over
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/doc_notebooks_lab5_01-lab5_31_0.png" src="../../_images/doc_notebooks_lab5_01-lab5_31_0.png" />
+<img alt="../../_images/doc_notebooks_lab5_01-lab5_30_0.png" src="../../_images/doc_notebooks_lab5_01-lab5_30_0.png" />
 </div>
 </div>
-<p><strong>Problem Tolerances</strong>: The Runge-Kutta algorithm with adaptive time steps will, in general, be more efficient and accurate than same algorithm with fixed time steps. In other words, greater accuracy can usually be achieved in fewer time steps. For the given set of Daisyworld parameters and initial conditions,</p>
+<div id="prob_tolerances"><p><strong>Problem tolerances</strong></p>
+</div><p>The Runge-Kutta algorithm with adaptive time steps will, in general, be more efficient and accurate than same algorithm with fixed time steps. In other words, greater accuracy can usually be achieved in fewer time steps. For the given set of Daisyworld parameters and initial conditions,</p>
 <ol class="arabic simple">
 <li><p>Decrease the error tolerances and compare the plots. You will note that as the error tolerances are decreased, the plots approach the one created by the algorithm with fixed time steps. What does this imply?</p></li>
 <li><p>Compare the Daisyworld plot to a plot of the stepsizes. Do you see a correlation between stepsize and the shape of the curve?</p></li>
@@ -1330,7 +1335,8 @@ h_{new} = S h_{old}\{[{1\over N}\sum_{i=1}^{N}({\Delta_{est}(i)\over
 <li><p><em>maxsteps</em>: A limit placed on the total number of steps taken.</p></li>
 </ul>
 <p>The Python code for the the adaptive stepsize control is discussed further in Appendix <a class="reference external" href="#code_org">Organization</a>.</p>
-<p><strong>Problem adaptive</strong> The demos in the previous section, solved the Daisyworld equations using the embedded Runge-Kutta methods with adaptive timestep control.</p>
+<div id="prob_adaptive"><p><strong>Problem adaptive</strong></p>
+</div><p>The demos in the previous section, solved the Daisyworld equations using the embedded Runge-Kutta methods with adaptive timestep control.</p>
 <ol class="arabic simple">
 <li><p>Run the code and find solutions of Daisyworld with the default settings found in adapt.yaml using the timeloop5Err adaptive code</p></li>
 <li><p>Find the solutions again but this time with fixed stepsizes and compare the size of the timesteps and number of the timesteps.</p></li>
@@ -1372,7 +1378,8 @@ non-zero steady states exist. That the feedback does have an effect on the stead
 <div class="section" id="Conclusion">
 <h1>Conclusion<a class="headerlink" href="#Conclusion" title="Permalink to this headline">¶</a></h1>
 <p>Black daisies can survive at lower mean temperatures than the white daisies and the reverse is true for white daisies. The end result is that the range of L for which the non-zero daisy steady states exist is greater than the case of neutral (or no) daisies . In other words, the feedback from the daisies provide a stabilizing effect that extends the set of environmental conditions in which life on Daisyworld can exist.</p>
-<p><strong>Problem Predator</strong>: To make life a little more interesting on Daisyworld, add a population of rabbits that feed upon the daisies. The rabbit birth rate will be proportional to the area covered by the daisies while, conversely, the daisy <em>death rate</em> will be proportional to the rabbit population.</p>
+<div id="prob_predator"><p><strong>Problem predator</strong></p>
+</div><p><strong>Problem Predator</strong>: To make life a little more interesting on Daisyworld, add a population of rabbits that feed upon the daisies. The rabbit birth rate will be proportional to the area covered by the daisies while, conversely, the daisy <em>death rate</em> will be proportional to the rabbit population.</p>
 <p>Add another equation to the Daisyworld model which governs the rabbit population and make the appropriate modifications to the existing daisy equations. Modify the set of equations and solve it with the Runge-Kutta method with adaptive timesteps. Use it to look for steady states and to determine their dependence on the initial conditions and model parameters.</p>
 <p>Hand in notebook cells that:</p>
 <ol class="arabic simple">
