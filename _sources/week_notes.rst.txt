@@ -52,4 +52,16 @@ Weekly notes
       - `stability theory for odes <https://en.wikipedia.org/wiki/Stability_theory>`_
 
       - `An example of the oop language wars <https://stackoverflow.com/questions/56860/what-is-an-example-of-the-liskov-substitution-principle>`_
-  
+
+    - installing new packages
+
+      - make sure they come from the conda-forge channel::
+
+          conda install -c conda-forge pandas
+
+      - to make conda-forge your default channel::
+
+          conda config --prepend channels conda-forge
+          
+
+        
