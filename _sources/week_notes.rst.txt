@@ -22,4 +22,34 @@ Weekly notes
 
   - Start `Lab 3 - Linear algebra <https://phaustin.github.io/numeric/doc_notebooks/lab3/01-lab3.html>`_
 
-    
+  - Demonstration:  moving functions into modules
+
+* Week 4:  Jan. 27
+
+  - Finish lab 3, start lab 4
+
+  - Demonstration: editing with visual studio code
+
+
+* Week 5: Feb.3    
+
+  - lab 4 
+  
+  - Demonstration: `named tuple < https://docs.python.org/3.7/library/collections.html#namedtuple-factory-function-for-tuples-with-named-fields>`_
+  
+* Week 6: Feb.10    
+
+  - lab 5
+
+  - Demonstration: 1) eigenvectors and linear odes  2) object oriented programming
+
+    - Links
+
+      - `Linear ode review <http://tutorial.math.lamar.edu/Classes/DE/SolutionsToSystems.aspx>`_
+
+      - `Link between eigenvectors and linear odes <https://math.stackexchange.com/questions/23312/what-is-the-importance-of-eigenvalues-eigenvectors>`_
+
+      - `stability theory for odes <https://en.wikipedia.org/wiki/Stability_theory>`_
+
+      - `An example of the oop language wars <https://stackoverflow.com/questions/56860/what-is-an-example-of-the-liskov-substitution-principle>`_
+  
