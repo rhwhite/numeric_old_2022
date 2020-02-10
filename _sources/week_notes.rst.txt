@@ -35,7 +35,7 @@ Weekly notes
 
   - lab 4 
   
-  - Demonstration: `named tuple < https://docs.python.org/3.7/library/collections.html#namedtuple-factory-function-for-tuples-with-named-fields>`_
+  - Demonstration: `named tuple  <https://docs.python.org/3.7/library/collections.html#namedtuple-factory-function-for-tuples-with-named-fields>`_
   
 * Week 6: Feb.10    
 
