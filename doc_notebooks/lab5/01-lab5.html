@@ -1812,13 +1812,13 @@ set L value in child class to 100
 <h2>Specific example<a class="headerlink" href="#Specific-example" title="Permalink to this headline">¶</a></h2>
 <p>So to use this technique for <a class="reference external" href="#prob_conduction">Problem Conduction</a>, override <code class="docutils literal notranslate"><span class="pre">set_yinit</span></code> so that it will take a new luminosity value newL, and add it to uservars, like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">IntegCoupling</span><span class="p">(</span><span class="n">Integrator</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;rewrite the init and derivs5 methods to</span>
-<span class="sd">       work with a single (grey) daisy</span>
+    <span class="sd">&quot;&quot;&quot;rewrite the set_yinit method</span>
+<span class="sd">       to work with luminosity</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">set_yinit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">newL</span><span class="p">):</span>
         <span class="c1">#</span>
-        <span class="c1"># read in &#39;albedo_grey chi S0 L  R albedo_ground&#39;</span>
+        <span class="c1"># change the luminocity</span>
         <span class="c1">#</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;uservars&quot;</span><span class="p">][</span><span class="s2">&quot;L&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">newL</span> <span class="c1"># change solar incidence fraction</span>
         <span class="c1">#</span>
