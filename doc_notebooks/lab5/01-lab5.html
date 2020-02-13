@@ -136,7 +136,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#Inheritance">Inheritance</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Initializing-using-yaml">Initializing using yaml</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Overriding-initial-values-in-a-derived-class">Overriding initial values in a derived class</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Specific-example">Specific example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Specific-example">Specific example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Check-your-understanding">Check your understanding</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#Why-bother?">Why bother?</a></li>
 </ul>
 </li>
@@ -521,8 +524,8 @@ div.rendered_html tbody tr:hover {
 <div class="math notranslate nohighlight">
 \[x = 1 - A_w - A_b\]</div>
 <p>(assuming all the land mass is fertile) which makes the equations non-linear.</p>
-<p>** Problem constant growth**:</p>
-<p>Note that though the daisy growth rate per unit time depends on the amount of available fertile land, it is not otherwise coupled to the environment (i.e. <span class="math notranslate nohighlight">\(\beta_i\)</span> is note a function of temperature. Making the growth a function of bare ground, however, keeps the daisy population bounded and the daisy population will eventually reach some steady state. The next python cell has a script that runs a fixed timestep Runge Kutte routine that calculates area coverage of white and black daisies
+<div id="prob_constant"><p>** Problem constant growth**</p>
+</div><!-- [lab5:prob:constant] --><p>Note that though the daisy growth rate per unit time depends on the amount of available fertile land, it is not otherwise coupled to the environment (i.e. <span class="math notranslate nohighlight">\(\beta_i\)</span> is note a function of temperature. Making the growth a function of bare ground, however, keeps the daisy population bounded and the daisy population will eventually reach some steady state. The next python cell has a script that runs a fixed timestep Runge Kutte routine that calculates area coverage of white and black daisies
 for fixed growth rates <span class="math notranslate nohighlight">\(\beta_w\)</span> and <span class="math notranslate nohighlight">\(\beta_b\)</span>. Try changing these growth rates (specified in the derivs5 routine) and the initial white and black concentrations (specified in the fixed_growth.yaml file discussed next).</p>
 <ol class="arabic simple">
 <li><p>For a given set of growth rates try various (non-zero) initial daisy populations.</p></li>
@@ -683,7 +686,8 @@ through /Users/phil/repos/numeric/notebooks/lab5/context.py
 \[T^4_e = L \frac{S_0}{4\sigma}(1-\alpha_p)\]</div>
 <p>where <span class="math notranslate nohighlight">\(S_0\)</span> is a solar flux density constant, <span class="math notranslate nohighlight">\(L\)</span> is the fraction of <span class="math notranslate nohighlight">\(S_0\)</span> received at Daisyworld, and <span class="math notranslate nohighlight">\(\alpha_p\)</span> is the planetary albedo. The greater the planetary albedo <span class="math notranslate nohighlight">\(\alpha_p\)</span>, i.e. the more solar radiation the planet reflects, the lower the emission temperature.</p>
 <p><strong>Mathematical note</strong>: The emission temperature is derived on the assumption that the planet is in global energy balance and is behaving as a blackbody radiator. See the appendix for more information.</p>
-<p><strong>Problem Coupling</strong> Consider daisies with the same albedo as the planet, i.e. ’grey’ or neutral daisies, as specified in derivs5 routine below.</p>
+<div id="prob_coupling"><p><strong>Problem Coupling</strong></p>
+</div><p>Consider daisies with the same albedo as the planet, i.e. ’grey’ or neutral daisies, as specified in derivs5 routine below.</p>
 <ol class="arabic">
 <li><p>For the current value of L (0.2) in the file coupling.yaml, the final daisy steady state is zero. Why is it zero?</p></li>
 <li><p>Find a value of L which leads to a non-zero steady state.</p></li>
@@ -806,7 +810,8 @@ through /Users/phil/repos/numeric/notebooks/lab5/context.py
 <!-- \label{lab5:eq:tempi} --><div class="math notranslate nohighlight">
 \[T^4_i = R L \frac{S_0}{4\sigma}(\alpha_p-\alpha_i) + T^4_e\]</div>
 <p>where <span class="math notranslate nohighlight">\(R\)</span> is a parameter that interpolates between the two extreme cases i.e. <span class="math notranslate nohighlight">\(R=0\)</span> means perfect conduction and <span class="math notranslate nohighlight">\(R=1\)</span> implies perfect insulation between regions.</p>
-<p><strong>Problem Conduction</strong> The conduction parameter R will determine the temperature differential between the bare ground and the regions with black or white daisies. The code in the next cell specifies the derivatives for this situation, removing the feedback between the daisies and the planetary albedo but introducint conduction. Use it to investigate these two questions:</p>
+<div id="prob_conduction"><p><strong>Problem Conduction</strong></p>
+<p>The conduction parameter R will determine the temperature differential between the bare ground and the regions with black or white daisies. The code in the next cell specifies the derivatives for this situation, removing the feedback between the daisies and the planetary albedo but introducint conduction. Use it to investigate these two questions:</p>
 <ol class="arabic simple">
 <li><p>Change the value of R and observe the effects on the daisy and emission temperature.</p></li>
 <li><p>What are the effects on the daisy growth rate and the final steady states?</p></li>
@@ -928,7 +933,8 @@ through /Users/phil/repos/numeric/notebooks/lab5/context.py
 <li><p>Physically, this provides the feedback from the daisy population back to the temperature, completing the loop between the daisies and temperature.</p></li>
 <li><p>Mathematically, this introduces a rather nasty non-linearity into the equations which, as pointed out in the lab 1, usually makes it difficult, if not impossible, to obtain exact analytic solutions.</p></li>
 </ul>
-<p><strong>Problem initial</strong> The feedback means a stable daisy population (a steady state) and the environmental conditions are in a delicate balance. The code below produces a steady state which arises from a given initial daisy population,</p>
+<div id="prob_initial"><p><strong>Problem initial</strong></p>
+</div><p>The feedback means a stable daisy population (a steady state) and the environmental conditions are in a delicate balance. The code below produces a steady state which arises from a given initial daisy population,</p>
 <ol class="arabic simple">
 <li><p>Add a small initial fraction of black daisies (say, 0.01) to the value in initial.yaml and see what effect this has on the temperature and final daisy populations. Do you still have a final non-zero daisy population?</p></li>
 <li><p>Attempt to adjust the initial white daisy population to obtain a non-zero steady state. Do you have to increase or decrease the initial fraction? What is your explanation for this behavior?</p></li>
@@ -1042,7 +1048,8 @@ through /Users/phil/repos/numeric/notebooks/lab5/context.py
 <img alt="../../_images/doc_notebooks_lab5_01-lab5_23_0.png" src="../../_images/doc_notebooks_lab5_01-lab5_23_0.png" />
 </div>
 </div>
-<p><strong>Problem Temperature</strong>: The code above adds a new method, <code class="docutils literal notranslate"><span class="pre">find_temp</span></code> that takes the white/black daisy fractions and calculates local and planetary temperatures.</p>
+<div id="prob_temperature"><p><strong>Problem Temperature</strong></p>
+</div><p>The code above adds a new method, <code class="docutils literal notranslate"><span class="pre">find_temp</span></code> that takes the white/black daisy fractions and calculates local and planetary temperatures.</p>
 <ol class="arabic simple">
 <li><p>override <code class="docutils literal notranslate"><span class="pre">timeloop5fixed</span></code> so that it saves these three temperatures, plus the daisy growth rates to new variables in the Integ54 instance</p></li>
 <li><p>Make plots of (temp_w, temp_b) and (beta_w, beta_b) vs. time for a case with non-zero equilibrium concentrations of both black and white daisies</p></li>
@@ -1073,7 +1080,8 @@ accuracy achieved. So we are looking at 3 function evaluations more per step, or
 <h2>Error Estimate using Embedded Runge-Kutta<a class="headerlink" href="#Error-Estimate-using-Embedded-Runge-Kutta" title="Permalink to this headline">¶</a></h2>
 <p>Another way of estimating the truncation error of a step is due to the existence of the special fifth-order Runge-Kutta methods discussed earlier. These methods use six function evaluations which can be recombined to produce a fourth-order method . Again, the difference between the fifth and the fourth order solution is used to calculate an estimate of the truncation error. Obviously this method requires fewer function evaluations than step doubling, as the two estimates use the same evaluation
 points. Originally this method was found by Fehlberg, and later Cash and Karp produced the set of constants presented earlier that produce an efficient and accurate error estimate.</p>
-<p><strong>Problem Estimate</strong>: In the demo below, compare the error estimate to the true error, on the initial value problem from ,</p>
+<div id="prob_estimate"><p><strong>Problem Estimate</strong></p>
+</div><p>In the demo below, compare the error estimate to the true error, on the initial value problem from ,</p>
 <div class="math notranslate nohighlight">
 \[\frac{dy}{dt} = -y +t +1,  \;\;\;\; y(0) =1\]</div>
 <p>which has the exact solution</p>
@@ -1286,7 +1294,8 @@ h_{new} = S h_{old}\{[{1\over N}\sum_{i=1}^{N}({\Delta_{est}(i)\over
 <img alt="../../_images/doc_notebooks_lab5_01-lab5_31_0.png" src="../../_images/doc_notebooks_lab5_01-lab5_31_0.png" />
 </div>
 </div>
-<p><strong>Problem Tolerances</strong>: The Runge-Kutta algorithm with adaptive time steps will, in general, be more efficient and accurate than same algorithm with fixed time steps. In other words, greater accuracy can usually be achieved in fewer time steps. For the given set of Daisyworld parameters and initial conditions,</p>
+<div id="prob_tolerances"><p><strong>Problem Tolerances</strong></p>
+</div><p>The Runge-Kutta algorithm with adaptive time steps will, in general, be more efficient and accurate than same algorithm with fixed time steps. In other words, greater accuracy can usually be achieved in fewer time steps. For the given set of Daisyworld parameters and initial conditions,</p>
 <ol class="arabic simple">
 <li><p>Decrease the error tolerances and compare the plots. You will note that as the error tolerances are decreased, the plots approach the one created by the algorithm with fixed time steps. What does this imply?</p></li>
 <li><p>Compare the Daisyworld plot to a plot of the stepsizes. Do you see a correlation between stepsize and the shape of the curve?</p></li>
@@ -1329,7 +1338,8 @@ h_{new} = S h_{old}\{[{1\over N}\sum_{i=1}^{N}({\Delta_{est}(i)\over
 <li><p><em>maxsteps</em>: A limit placed on the total number of steps taken.</p></li>
 </ul>
 <p>The Python code for the the adaptive stepsize control is discussed further in Appendix <a class="reference external" href="#code_org">Organization</a>.</p>
-<p><strong>Problem adaptive</strong> The demos in the previous section, solved the Daisyworld equations using the embedded Runge-Kutta methods with adaptive timestep control.</p>
+<div id="prob_adaptive"><p><strong>Problem adaptive</strong></p>
+</div><p>The demos in the previous section, solved the Daisyworld equations using the embedded Runge-Kutta methods with adaptive timestep control.</p>
 <ol class="arabic simple">
 <li><p>Run the code and find solutions of Daisyworld with the default settings found in adapt.yaml using the timeloop5Err adaptive code</p></li>
 <li><p>Find the solutions again but this time with fixed stepsizes and compare the size of the timesteps and number of the timesteps.</p></li>
@@ -1830,7 +1840,40 @@ set L value in child class to 100
         <span class="c1">#</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">uservars</span> <span class="o">=</span> <span class="n">uservars_fac</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;uservars&#39;</span><span class="p">])</span>
         <span class="c1">#</span>
+
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coeffFileName</span><span class="p">,</span> <span class="n">newL</span><span class="p">):</span>
+       <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">coeffFileName</span><span class="p">)</span>
+       <span class="bp">self</span><span class="o">.</span><span class="n">set_yinit</span><span class="p">(</span><span class="n">newL</span><span class="p">)</span>
+
+    <span class="o">...</span>
 </pre></div>
+</div>
+<p>then construct a new instance with a value of newL like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">theSolver</span> <span class="o">=</span> <span class="n">IntegCoupling</span><span class="p">(</span><span class="s2">&quot;coupling.yaml&quot;</span><span class="p">,</span> <span class="n">newL</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The IntegCoupling constructor first constructs an instance of the Integrator class by calling <code class="docutils literal notranslate"><span class="pre">super()</span></code> and passing it the name of the yaml file. Once this is done then it calls the <code class="docutils literal notranslate"><span class="pre">IntegCoupling.set_yinit</span></code> method which takes the Integrator class instance (called “self” by convention) and modifies it by adding newL to the usersvars attribute.</p>
+<p>Try executing</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">newL</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">theSolver</span> <span class="o">=</span> <span class="n">IntegCoupling</span><span class="p">(</span><span class="s2">&quot;coupling.yaml&quot;</span><span class="p">,</span> <span class="n">newL</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>and verify that:</p>
+<p><code class="docutils literal notranslate"><span class="pre">theSolver.uservars.L</span></code> is indeed 50</p>
+<div class="section" id="Check-your-understanding">
+<h3>Check your understanding<a class="headerlink" href="#Check-your-understanding" title="Permalink to this headline">¶</a></h3>
+<p>To see if you’re really getting the zeitgeist, try an alternative design where you leave the constructor as is, and instead add a new method called:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">reset_L</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">newL</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>so that you could do this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">newL</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">theSolver</span> <span class="o">=</span> <span class="n">IntegCoupling</span><span class="p">(</span><span class="s2">&quot;coupling.yaml&quot;</span><span class="p">)</span>
+<span class="n">theSolver</span><span class="o">.</span><span class="n">reset_L</span><span class="p">(</span><span class="n">newL</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>and get <code class="docutils literal notranslate"><span class="pre">theSolver.uservars.L</span></code> set to 50.</p>
 </div>
 </div>
 <div class="section" id="Why-bother?">
