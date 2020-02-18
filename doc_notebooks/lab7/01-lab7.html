@@ -380,47 +380,7 @@ div.rendered_html tbody tr:hover {
 <div class="section" id="Laboratory-7:-Solving-partial-differential-equations-using-an-explicit,-finite-difference-method.">
 <h1>Laboratory 7: Solving partial differential equations using an explicit, finite difference method.<a class="headerlink" href="#Laboratory-7:-Solving-partial-differential-equations-using-an-explicit,-finite-difference-method." title="Permalink to this headline">¶</a></h1>
 <p>Lin Yang &amp; Susan Allen &amp; Carmen Guo</p>
-<h1><p>Table of Contents</p>
-</h1><div class="toc" style="margin-top: 1em;"><ul class="toc-item"><li><p>1  Laboratory 7: Solving partial differential equations using an explicit, finite difference method.</p>
-<ul class="toc-item"><li><p>1.1  List of Problems</p>
-</li><li><p>1.2  Objectives</p>
-<ul class="toc-item"><li><p>1.2.1  Sections 4 through 7</p>
-</li></ul></li><li><p>1.3  Readings</p>
-</li><li><p>1.4  Physical Example, Poincaré Waves</p>
-<ul class="toc-item"><li><p>1.4.1  Introduce Full Equations</p>
-</li><li><p>1.4.2  No variation in y</p>
-</li><li><p>1.4.3  Introduce Simple Equations</p>
-</li><li><p>1.4.4  No variation in y</p>
-</li><li><p>1.4.5  Quiz: Find the Dispersion Relation</p>
-</li></ul></li><li><p>1.5  Numerical Solution</p>
-<ul class="toc-item"><li><p>1.5.1  Simple Equations</p>
-</li><li><p>1.5.2  Predictor-Corrector to Start</p>
-</li><li><p>1.5.3  Boundary Conditions</p>
-</li><li><p>1.5.4  Simple Equations on a Non-staggered Grid</p>
-</li><li><p>1.5.5  Staggered Grids</p>
-</li><li><p>1.5.6  Problem One</p>
-</li></ul></li><li><p>1.6  Stability: the CFL condition</p>
-<ul class="toc-item"><li><p>1.6.1  Problem Two</p>
-</li></ul></li><li><p>1.7  Accuracy</p>
-<ul class="toc-item"><li><p>1.7.1  Choosing a Grid</p>
-</li><li><p>1.7.2  Problem Three</p>
-</li><li><p>1.7.3  Problem Four</p>
-</li><li><p>1.7.4  Problem Five</p>
-</li></ul></li><li><p>1.8  Full Equations</p>
-<ul class="toc-item"><li><p>1.8.1  Stability</p>
-</li><li><p>1.8.2  Problem Six</p>
-</li><li><p>1.8.3  Accuracy</p>
-</li><li><p>1.8.4  Problem Seven</p>
-</li><li><p>1.8.5  Problem Eight</p>
-</li><li><p>1.8.6  Problem Nine</p>
-</li></ul></li><li><p>1.9  Details</p>
-<ul class="toc-item"><li><p>1.9.1  Starting the Simulation Full Equations</p>
-</li><li><p>1.9.2  Initialization</p>
-</li><li><p>1.9.3  Boundary Conditions</p>
-</li><li><p>1.9.4  Computational Mode</p>
-</li></ul></li><li><p>1.10  Glossary</p>
-</li><li><p>1.11  References</p>
-</li></ul></li></ul></div><div class="section" id="List-of-Problems">
+<div class="section" id="List-of-Problems">
 <h2>List of Problems<a class="headerlink" href="#List-of-Problems" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="#Problem-One">Problem 1</a>: Numerical solution on a staggered grid.</p></li>
@@ -488,12 +448,13 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<span></span><span class="kn">import</span> <span class="nn">context</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
 <span class="kn">import</span> <span class="nn">IPython.display</span> <span class="k">as</span> <span class="nn">display</span>
 <span class="c1"># import plotting package and numerical python package for use in examples later</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="c1"># make the plots happen inline</span>
-<span class="o">%</span> <span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="c1"># import the numpy array handling library</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="c1"># import the quiz script</span>
@@ -512,9 +473,15 @@ div.rendered_html tbody tr:hover {
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
-<div class="output_area stderr docutils container">
+<div class="output_area docutils container">
 <div class="highlight"><pre>
-UsageError: Line magic function `%` not found.
+******************************
+context imported. Front of path:
+/Users/phil/repos/numeric
+back of path: /Users/phil/.ipython
+******************************
+
+through /Users/phil/repos/numeric/notebooks/lab7/context.py
 </pre></div></div>
 </div>
 </div>
@@ -612,7 +579,7 @@ where, in addition, we assume that the Coriolis force is negligible (<a class="r
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="nb">print</span> <span class="p">(</span><span class="n">quiz</span><span class="o">.</span><span class="n">dispersion_quiz</span><span class="p">(</span><span class="n">answer</span> <span class="o">=</span> <span class="s1">&#39;x&#39;</span><span class="p">))</span>
+<span></span><span class="nb">print</span> <span class="p">(</span><span class="n">quiz</span><span class="o">.</span><span class="n">dispersion_quiz</span><span class="p">(</span><span class="n">answer</span> <span class="o">=</span> <span class="s1">&#39;A&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -621,12 +588,7 @@ where, in addition, we assume that the Coriolis force is negligible (<a class="r
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-2-e3c77251884a&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>print <span class="ansi-blue-fg">(</span>quiz<span class="ansi-blue-fg">.</span>dispersion_quiz<span class="ansi-blue-fg">(</span>answer <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">&#39;x&#39;</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">NameError</span>: name &#39;quiz&#39; is not defined
+Wrong. These are 1-dimensional waves - there is no l (ell).
 </pre></div></div>
 </div>
 </div>
@@ -650,10 +612,10 @@ where, in addition, we assume that the Coriolis force is negligible (<a class="r
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab7_01-lab7_14_0.png"><img alt="../../_images/doc_notebooks_lab7_01-lab7_14_0.png" src="../../_images/doc_notebooks_lab7_01-lab7_14_0.png" style="width: 40%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab7_01-lab7_13_0.png"><img alt="../../_images/doc_notebooks_lab7_01-lab7_13_0.png" src="../../_images/doc_notebooks_lab7_01-lab7_13_0.png" style="width: 40%;" /></a>
 </div>
 </div>
-<div id="lab7:fig:nonstagger"><p><strong>Figure Unstaggered Grid.</strong></p>
+<div id="lab7:fig:nonstagger"><p>Figure Unstaggered Grid.</p>
 </div><p>We will use centred difference schemes in both <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(t\)</span>. The equations become:</p>
 <div id="lab7:eq:nonstaggerGrid1"><p>(Non-staggered, Eqn One)</p>
 <div class="math notranslate nohighlight">
@@ -757,14 +719,8 @@ h_{0} - \left({gHdt^2 h_{0}}\right)/\left({4dx^2}\right) &amp; { x = 3dx}
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-4-6beac51e0b14&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>rain<span class="ansi-blue-fg">.</span>rain<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">6</span><span class="ansi-blue-fg">,</span> <span class="ansi-cyan-fg">5</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">NameError</span>: name &#39;rain&#39; is not defined
-</pre></div></div>
+<img alt="../../_images/doc_notebooks_lab7_01-lab7_18_0.png" src="../../_images/doc_notebooks_lab7_01-lab7_18_0.png" />
+</div>
 </div>
 <p>If you want to change something in the script (say the colormap I’ve chosen, viridis, doesn’t work for you), you can edit rain.py in an editor or spyder. To make it take effect here though, you have to reload rain. See next cell for how to. You will also need to do this if you do problem one or other tests changing rain.py but running in a notebook.</p>
 <div class="nbinput docutils container">
@@ -778,17 +734,12 @@ h_{0} - \left({gHdt^2 h_{0}}\right)/\left({4dx^2}\right) &amp; { x = 3dx}
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-5-28e5ed42f3f4&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-green-fg">import</span> importlib
-<span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg"> </span>importlib<span class="ansi-blue-fg">.</span>reload<span class="ansi-blue-fg">(</span>rain<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">NameError</span>: name &#39;rain&#39; is not defined
+&lt;module &#39;numlabs.lab7.rain&#39; from &#39;/Users/phil/repos/numeric/numlabs/lab7/rain.py&#39;&gt;
 </pre></div></div>
 </div>
 </div>
@@ -815,10 +766,10 @@ h_{0} - \left({gHdt^2 h_{0}}\right)/\left({4dx^2}\right) &amp; { x = 3dx}
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab7_01-lab7_23_0.png"><img alt="../../_images/doc_notebooks_lab7_01-lab7_23_0.png" src="../../_images/doc_notebooks_lab7_01-lab7_23_0.png" style="width: 50%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab7_01-lab7_22_0.png"><img alt="../../_images/doc_notebooks_lab7_01-lab7_22_0.png" src="../../_images/doc_notebooks_lab7_01-lab7_22_0.png" style="width: 50%;" /></a>
 </div>
 </div>
-<div id="lab7:fig:dependency"><p><strong>Figure Unstaggered Dependency</strong></p>
+<div id="lab7:fig:dependency"><p>Figure Unstaggered Dependency</p>
 </div><p>In either problem, only the variable that is relevant to that problem will be considered at each point. So for one problem, if at point <span class="math notranslate nohighlight">\(x\)</span> we consider the <span class="math notranslate nohighlight">\(u\)</span> variable, at <span class="math notranslate nohighlight">\(x + dx\)</span> and <span class="math notranslate nohighlight">\(x -dx\)</span> we consider <span class="math notranslate nohighlight">\(h\)</span>. In the other problem, at the same point <span class="math notranslate nohighlight">\(x\)</span>, we consider the variable <span class="math notranslate nohighlight">\(h\)</span>.</p>
 <p>Now we can see why every second <span class="math notranslate nohighlight">\(u\)</span> point and <span class="math notranslate nohighlight">\(h\)</span> point are zero for <em>rain</em>. We start with all of <span class="math notranslate nohighlight">\(u(dx), h(2dx), u(3dx), h(4dx), u(5dx) = 0\)</span>, which means they remain at zero.</p>
 <p>Since the original problem can be decoupled, we can solve for <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(h\)</span> on each decoupled grid separately. But why solve two problems? Instead, we solve for <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(h\)</span> on a single staggered grid; whereas before we solved for <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(h\)</span> on the complete, non-staggered grid. Figure <a class="reference external" href="#lab7:fig:decoupling">Decoupling</a> shows the decoupling of the grids.</p>
@@ -836,10 +787,10 @@ h_{0} - \left({gHdt^2 h_{0}}\right)/\left({4dx^2}\right) &amp; { x = 3dx}
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab7_01-lab7_25_0.png"><img alt="../../_images/doc_notebooks_lab7_01-lab7_25_0.png" src="../../_images/doc_notebooks_lab7_01-lab7_25_0.png" style="width: 50%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab7_01-lab7_24_0.png"><img alt="../../_images/doc_notebooks_lab7_01-lab7_24_0.png" src="../../_images/doc_notebooks_lab7_01-lab7_24_0.png" style="width: 50%;" /></a>
 </div>
 </div>
-<div id="lab7:fig:decoupling"><p><strong>Figure Decoupling</strong>: The two staggered grids and the unstaggered grid. Note that the unstaggered grid has two variables at each grid/time point whereas the staggered grids only have one.</p>
+<div id="lab7:fig:decoupling"><p>Figure Decoupling: The two staggered grids and the unstaggered grid. Note that the unstaggered grid has two variables at each grid/time point whereas the staggered grids only have one.</p>
 </div><p>Now consider the solution of the same problem on a staggered grid. The set-up of the problem is slightly different this time; we are considering 4 spatial points in our discussion instead of 5, shown in Figure <a class="reference external" href="#lab7:fig:stagger">Staggered Grid</a>. We will also be using <span class="math notranslate nohighlight">\(h_{i}\)</span> and <span class="math notranslate nohighlight">\(u_{i}\)</span> to denote the spatial points instead of <span class="math notranslate nohighlight">\(x = dx * i\)</span>.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
@@ -855,10 +806,10 @@ h_{0} - \left({gHdt^2 h_{0}}\right)/\left({4dx^2}\right) &amp; { x = 3dx}
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab7_01-lab7_28_0.png"><img alt="../../_images/doc_notebooks_lab7_01-lab7_28_0.png" src="../../_images/doc_notebooks_lab7_01-lab7_28_0.png" style="width: 50%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab7_01-lab7_27_0.png"><img alt="../../_images/doc_notebooks_lab7_01-lab7_27_0.png" src="../../_images/doc_notebooks_lab7_01-lab7_27_0.png" style="width: 50%;" /></a>
 </div>
 </div>
-<div id="lab7:fig:stagger"><p><strong>Figure Staggered Grid</strong>: The staggered grid for the drop in the pond problem.</p>
+<div id="lab7:fig:stagger"><p>Figure Staggered Grid: The staggered grid for the drop in the pond problem.</p>
 </div><p>The original equations, boundary and initial conditions are changed to reflect the staggered case. The equations are changed to the following:</p>
 <div id="lab7:eq:staggerGrid1"><p>(Staggered, Eqn 1)</p>
 <div class="math notranslate nohighlight">
@@ -908,10 +859,10 @@ large values of <span class="math notranslate nohighlight">\(dt\)</span>.</p>
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab7_01-lab7_31_0.png"><img alt="../../_images/doc_notebooks_lab7_01-lab7_31_0.png" src="../../_images/doc_notebooks_lab7_01-lab7_31_0.png" style="width: 35%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab7_01-lab7_30_0.png"><img alt="../../_images/doc_notebooks_lab7_01-lab7_30_0.png" src="../../_images/doc_notebooks_lab7_01-lab7_30_0.png" style="width: 35%;" /></a>
 </div>
 </div>
-<div id="lab7:fig:wheel-static"><p><strong>Figure Wheel</strong>: A spoked wagon wheel.</p>
+<div id="lab7:fig:wheel-static"><p>Figure Wheel: A spoked wagon wheel.</p>
 </div><p>Sometimes the wheels appear to be going backwards. Both TV and movies come in frames and are shown at something like 30 frames a second. So a movie discretizes time. If the wheel moves just a little in the time step between frames, your eye connects the old position with the new position and the wheel moves forward <span class="math notranslate nohighlight">\(-\)</span> a single frame is shown in Figure <a class="reference external" href="#lab7:fig:wheel-left">Wheel Left</a>.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
@@ -927,10 +878,10 @@ large values of <span class="math notranslate nohighlight">\(dt\)</span>.</p>
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab7_01-lab7_33_0.png"><img alt="../../_images/doc_notebooks_lab7_01-lab7_33_0.png" src="../../_images/doc_notebooks_lab7_01-lab7_33_0.png" style="width: 35%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab7_01-lab7_32_0.png"><img alt="../../_images/doc_notebooks_lab7_01-lab7_32_0.png" src="../../_images/doc_notebooks_lab7_01-lab7_32_0.png" style="width: 35%;" /></a>
 </div>
 </div>
-<div id="lab7:fig:wheel-left"><p><strong>Figure Wheel Left:</strong> The wheel appears to rotate counter-clockwise if its speed is slow enough.</p>
+<div id="lab7:fig:wheel-left"><p>Figure Wheel Left: The wheel appears to rotate counter-clockwise if its speed is slow enough.</p>
 </div><div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
@@ -968,10 +919,10 @@ large values of <span class="math notranslate nohighlight">\(dt\)</span>.</p>
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab7_01-lab7_37_0.png"><img alt="../../_images/doc_notebooks_lab7_01-lab7_37_0.png" src="../../_images/doc_notebooks_lab7_01-lab7_37_0.png" style="width: 35%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab7_01-lab7_36_0.png"><img alt="../../_images/doc_notebooks_lab7_01-lab7_36_0.png" src="../../_images/doc_notebooks_lab7_01-lab7_36_0.png" style="width: 35%;" /></a>
 </div>
 </div>
-<div id="lab7:fig:wheel-right"><p><strong>Figure Wheel Right</strong>: When the wheel spins quickly enough, it appears to rotate clockwise!</p>
+<div id="lab7:fig:wheel-right"><p>Figure Wheel Right: When the wheel spins quickly enough, it appears to rotate clockwise!</p>
 </div><div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
@@ -1009,10 +960,10 @@ large values of <span class="math notranslate nohighlight">\(dt\)</span>.</p>
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab7_01-lab7_41_0.png"><img alt="../../_images/doc_notebooks_lab7_01-lab7_41_0.png" src="../../_images/doc_notebooks_lab7_01-lab7_41_0.png" style="width: 65%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab7_01-lab7_40_0.png"><img alt="../../_images/doc_notebooks_lab7_01-lab7_40_0.png" src="../../_images/doc_notebooks_lab7_01-lab7_40_0.png" style="width: 65%;" /></a>
 </div>
 </div>
-<div id="lab7:fig:wave-static"><p><strong>Figure Wave</strong>: A single frame of the wave.</p>
+<div id="lab7:fig:wave-static"><p>Figure Wave: A single frame of the wave.</p>
 </div><p>If the wave moves slowly, it seems to move in the correct direction (i.e. to the left), as shown in Figure <a class="reference external" href="#lab7:fig:wave-left">Wave Left</a>.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
@@ -1028,10 +979,10 @@ large values of <span class="math notranslate nohighlight">\(dt\)</span>.</p>
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab7_01-lab7_43_0.png"><img alt="../../_images/doc_notebooks_lab7_01-lab7_43_0.png" src="../../_images/doc_notebooks_lab7_01-lab7_43_0.png" style="width: 65%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab7_01-lab7_42_0.png"><img alt="../../_images/doc_notebooks_lab7_01-lab7_42_0.png" src="../../_images/doc_notebooks_lab7_01-lab7_42_0.png" style="width: 65%;" /></a>
 </div>
 </div>
-<div id="lab7:fig:wave-left"><p><strong>Figure Wave Left</strong>: The wave moving to the left also appears to be moving to the left if it’s speed is slow enough.</p>
+<div id="lab7:fig:wave-left"><p>Figure Wave Left: The wave moving to the left also appears to be moving to the left if it’s speed is slow enough.</p>
 </div><div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
@@ -1069,10 +1020,10 @@ large values of <span class="math notranslate nohighlight">\(dt\)</span>.</p>
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab7_01-lab7_47_0.png"><img alt="../../_images/doc_notebooks_lab7_01-lab7_47_0.png" src="../../_images/doc_notebooks_lab7_01-lab7_47_0.png" style="width: 65%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab7_01-lab7_46_0.png"><img alt="../../_images/doc_notebooks_lab7_01-lab7_46_0.png" src="../../_images/doc_notebooks_lab7_01-lab7_46_0.png" style="width: 65%;" /></a>
 </div>
 </div>
-<p><strong>Figure Wave Right</strong>: If the wave moves too rapidly, then it appears to be moving in the opposite direction.</p>
+<p>Figure Wave Right: If the wave moves too rapidly, then it appears to be moving in the opposite direction.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
@@ -1160,10 +1111,10 @@ h_{mp} &amp;=&amp; {\cal R}e \{ {\cal H} \exp [i(k[x - dx/2] - \omega t)] \}\\
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab7_01-lab7_52_0.png"><img alt="../../_images/doc_notebooks_lab7_01-lab7_52_0.png" src="../../_images/doc_notebooks_lab7_01-lab7_52_0.png" style="width: 45%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab7_01-lab7_51_0.png"><img alt="../../_images/doc_notebooks_lab7_01-lab7_51_0.png" src="../../_images/doc_notebooks_lab7_01-lab7_51_0.png" style="width: 45%;" /></a>
 </div>
 </div>
-<div id="lab7:fig:allmag"><p><strong>Figure Roots</strong>: Magnitude of the four roots of <span class="math notranslate nohighlight">\(\lambda\)</span> as a function of <span class="math notranslate nohighlight">\(q dt\)</span> (not <span class="math notranslate nohighlight">\(\omega dt\)</span>).</p>
+<div id="lab7:fig:allmag"><p>Figure Roots: Magnitude of the four roots of <span class="math notranslate nohighlight">\(\lambda\)</span> as a function of <span class="math notranslate nohighlight">\(q dt\)</span> (not <span class="math notranslate nohighlight">\(\omega dt\)</span>).</p>
 </div><p>The four roots correspond to the “real” waves travelling to the right and left, as well two <em>computational modes</em> (see Section <a class="reference external" href="#Computational-Mode">Computational Mode</a> for more information). The plots for the four roots overlap, so it is most helpful to view <a class="reference external" href="#lab7:fig:sepmag">separate plots for each of the roots</a>.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
@@ -1179,10 +1130,10 @@ h_{mp} &amp;=&amp; {\cal R}e \{ {\cal H} \exp [i(k[x - dx/2] - \omega t)] \}\\
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab7_01-lab7_54_0.png"><img alt="../../_images/doc_notebooks_lab7_01-lab7_54_0.png" src="../../_images/doc_notebooks_lab7_01-lab7_54_0.png" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab7_01-lab7_53_0.png"><img alt="../../_images/doc_notebooks_lab7_01-lab7_53_0.png" src="../../_images/doc_notebooks_lab7_01-lab7_53_0.png" style="width: 60%;" /></a>
 </div>
 </div>
-<div id="lab7:fig:sepmag"><p><strong>Figure Separate Roots</strong>: Magnitude of the four roots of <span class="math notranslate nohighlight">\(\lambda\)</span> as a function of <span class="math notranslate nohighlight">\(q dt\)</span> (not <span class="math notranslate nohighlight">\(\omega dt\)</span>).</p>
+<div id="lab7:fig:sepmag"><p>Figure Separate Roots: Magnitude of the four roots of <span class="math notranslate nohighlight">\(\lambda\)</span> as a function of <span class="math notranslate nohighlight">\(q dt\)</span> (not <span class="math notranslate nohighlight">\(\omega dt\)</span>).</p>
 </div><p>Now for stability <span class="math notranslate nohighlight">\(\lambda\)</span> must have a magnitude less than or equal to one. From Figure <a class="reference external" href="#lab7:fig:sepmag">Separate Roots</a>, it is easy to see that this is the same as requiring that <span class="math notranslate nohighlight">\(|q dt|\)</span> be less than 1.0.</p>
 <p>Substituting for <span class="math notranslate nohighlight">\(q\)</span></p>
 <div class="math notranslate nohighlight">
@@ -1237,10 +1188,10 @@ only consider the effect of the space step. So, consider the numerical dispersio
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab7_01-lab7_58_0.png"><img alt="../../_images/doc_notebooks_lab7_01-lab7_58_0.png" src="../../_images/doc_notebooks_lab7_01-lab7_58_0.png" style="width: 50%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab7_01-lab7_57_0.png"><img alt="../../_images/doc_notebooks_lab7_01-lab7_57_0.png" src="../../_images/doc_notebooks_lab7_01-lab7_57_0.png" style="width: 50%;" /></a>
 </div>
 </div>
-<div id="lab7:fig:simpleaccuracy"><p><strong>Figure Simple Accuracy</strong></p>
+<div id="lab7:fig:simpleaccuracy"><p>Figure Simple Accuracy</p>
 </div><p>We can see that the accuracy is good for long waves (<span class="math notranslate nohighlight">\(k\)</span> small) but for short waves, near the limit of the grid resolutions, the discrete frequency is too small. As the phase speed is <span class="math notranslate nohighlight">\({\omega}/{k}\)</span>, the phase speed is also too small and most worrying, the group speed <span class="math notranslate nohighlight">\({\partial \omega}/ {\partial k}\)</span> goes to zero!</p>
 <div class="section" id="Choosing-a-Grid">
 <h3>Choosing a Grid<a class="headerlink" href="#Choosing-a-Grid" title="Permalink to this headline">¶</a></h3>
@@ -1261,7 +1212,7 @@ only consider the effect of the space step. So, consider the numerical dispersio
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab7_01-lab7_61_0.png"><img alt="../../_images/doc_notebooks_lab7_01-lab7_61_0.png" src="../../_images/doc_notebooks_lab7_01-lab7_61_0.png" style="width: 50%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab7_01-lab7_60_0.png"><img alt="../../_images/doc_notebooks_lab7_01-lab7_60_0.png" src="../../_images/doc_notebooks_lab7_01-lab7_60_0.png" style="width: 50%;" /></a>
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -1278,10 +1229,10 @@ only consider the effect of the space step. So, consider the numerical dispersio
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab7_01-lab7_62_0.png"><img alt="../../_images/doc_notebooks_lab7_01-lab7_62_0.png" src="../../_images/doc_notebooks_lab7_01-lab7_62_0.png" style="width: 50%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab7_01-lab7_61_0.png"><img alt="../../_images/doc_notebooks_lab7_01-lab7_61_0.png" src="../../_images/doc_notebooks_lab7_01-lab7_61_0.png" style="width: 50%;" /></a>
 </div>
 </div>
-<div id="lab7:fig:simplegrids"><p><strong>Figure Two Simple Grids</strong></p>
+<div id="lab7:fig:simplegrids"><p>Figure Two Simple Grids</p>
 </div><p>For each of these, we can calculate the discrete dispersion relation discussed above.</p>
 <p>For grid 1</p>
 <div class="math notranslate nohighlight">
@@ -1311,14 +1262,8 @@ only consider the effect of the space step. So, consider the numerical dispersio
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-24-88a869102686&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>accuracy2d<span class="ansi-blue-fg">.</span>main<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">0.5</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">NameError</span>: name &#39;accuracy2d&#39; is not defined
-</pre></div></div>
+<img alt="../../_images/doc_notebooks_lab7_01-lab7_63_0.png" src="../../_images/doc_notebooks_lab7_01-lab7_63_0.png" />
+</div>
 </div>
 </div>
 <div class="section" id="Problem-Four">
@@ -1352,10 +1297,10 @@ only consider the effect of the space step. So, consider the numerical dispersio
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab7_01-lab7_67_0.png"><img alt="../../_images/doc_notebooks_lab7_01-lab7_67_0.png" src="../../_images/doc_notebooks_lab7_01-lab7_67_0.png" style="width: 50%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab7_01-lab7_66_0.png"><img alt="../../_images/doc_notebooks_lab7_01-lab7_66_0.png" src="../../_images/doc_notebooks_lab7_01-lab7_66_0.png" style="width: 50%;" /></a>
 </div>
 </div>
-<div id="lab7:fig:gridA"><p><strong>Figure Arakawa A Grid.</strong></p>
+<div id="lab7:fig:gridA"><p>Figure Arakawa A Grid.</p>
 </div><p>As the problem becomes more complicated, we need to simplify the notation; hence define a discretization operator:</p>
 <div class="math notranslate nohighlight">
 \[(\delta_x \alpha)_{(m,n)} \equiv \frac 1 {2d} ( \alpha_{m+1,n} - \alpha_{m-1,n} )\]</div>
@@ -1430,10 +1375,10 @@ i H \sin(kd)/d &amp;  i H \sin(\ell d)/d &amp;  -i \sin(\omega \, dt)/ dt \\
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab7_01-lab7_70_0.png"><img alt="../../_images/doc_notebooks_lab7_01-lab7_70_0.png" src="../../_images/doc_notebooks_lab7_01-lab7_70_0.png" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab7_01-lab7_69_0.png"><img alt="../../_images/doc_notebooks_lab7_01-lab7_69_0.png" src="../../_images/doc_notebooks_lab7_01-lab7_69_0.png" style="width: 80%;" /></a>
 </div>
 </div>
-<p><strong>Figure Four More Grids.</strong> Note that E is simply a rotation of grid B by <span class="math notranslate nohighlight">\(45^\circ\)</span>.</p>
+<p>Figure Four More Grids. Note that E is simply a rotation of grid B by <span class="math notranslate nohighlight">\(45^\circ\)</span>.</p>
 </div>
 <div class="section" id="Problem-Six">
 <h3>Problem Six<a class="headerlink" href="#Problem-Six" title="Permalink to this headline">¶</a></h3>
@@ -1441,7 +1386,7 @@ i H \sin(kd)/d &amp;  i H \sin(\ell d)/d &amp;  -i \sin(\omega \, dt)/ dt \\
 <div><p>Use the interactive example below to investigate stability of the various grids. Calculate the stability for each grids A, B, and C. Find the dt for stability (to one significant figure) given <span class="math notranslate nohighlight">\(f = 1 \times 10^{-4}\)</span>s<span class="math notranslate nohighlight">\(^{-1}\)</span>, <span class="math notranslate nohighlight">\(g = 10\)</span> m s<span class="math notranslate nohighlight">\(^{-2}\)</span>, <span class="math notranslate nohighlight">\(H = 4000\)</span> m and <span class="math notranslate nohighlight">\(dx = 20\)</span> km. Is it the same for all four grids? Why not?</p>
 </div></blockquote>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1453,20 +1398,24 @@ i H \sin(kd)/d &amp;  i H \sin(\ell d)/d &amp;  -i \sin(\omega \, dt)/ dt \\
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
+<div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-27-8ad5b22ad386&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">      3</span> <span class="ansi-red-fg"># dt is the time step in seconds</span>
-<span class="ansi-green-intense-fg ansi-bold">      4</span> <span class="ansi-red-fg"># T is the time plotted is seconds to 4*3600 is 4 hours</span>
-<span class="ansi-green-fg">----&gt; 5</span><span class="ansi-red-fg"> </span>interactive1<span class="ansi-blue-fg">.</span>interactive1<span class="ansi-blue-fg">(</span>grid<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">3</span><span class="ansi-blue-fg">,</span> ngrid<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">11</span><span class="ansi-blue-fg">,</span> dt<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">150</span><span class="ansi-blue-fg">,</span> T<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">4</span><span class="ansi-blue-fg">*</span><span class="ansi-cyan-fg">3600</span><span class="ansi-blue-fg">)</span>
+dx/dt 666.667
 
-<span class="ansi-red-fg">NameError</span>: name &#39;interactive1&#39; is not defined
+sqrt(g*H0) 100.000
+
+Flat Bottom
 </pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/doc_notebooks_lab7_01-lab7_71_1.png" src="../../_images/doc_notebooks_lab7_01-lab7_71_1.png" />
+</div>
 </div>
 </div>
 <div class="section" id="Accuracy">
@@ -1494,10 +1443,10 @@ gH \frac {\sin^2 (\ell d)}{d^2}\]</div>
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab7_01-lab7_74_0.png"><img alt="../../_images/doc_notebooks_lab7_01-lab7_74_0.png" src="../../_images/doc_notebooks_lab7_01-lab7_74_0.png" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab7_01-lab7_73_0.png"><img alt="../../_images/doc_notebooks_lab7_01-lab7_73_0.png" src="../../_images/doc_notebooks_lab7_01-lab7_73_0.png" style="width: 60%;" /></a>
 </div>
 </div>
-<div id="lab7:fig:accuracy-demo"><p><strong>Figure Accuracy Comparison:</strong> A comparison of the exact <span class="math notranslate nohighlight">\(\omega\)</span> and the discrete approximation using Grid A and with <span class="math notranslate nohighlight">\(d/R=1/2\)</span>.</p>
+<div id="lab7:fig:accuracy-demo"><p>Figure Accuracy Comparison: A comparison of the exact <span class="math notranslate nohighlight">\(\omega\)</span> and the discrete approximation using Grid A and with <span class="math notranslate nohighlight">\(d/R=1/2\)</span>.</p>
 </div><p>It is easy to see that the Grid A approximation is not accurate enough. There are a number of other possibilities for grids, all of which <em>stagger</em> the unknowns; that is, different variables are placed at different spatial positions as discussed in section <a class="reference external" href="#Staggered-Grids">Staggered Grids</a>.</p>
 <p>Four other grids, which are known as <a class="reference external" href="#Ref:MesingerArakawa">Mesinger and Arakawa</a> B, C, D and E grids as shown above <a class="reference external" href="#FigureFourGrids">Figure Four More Grids</a>.</p>
 <p>To work with these grids, we must introduce an averaging operator, defined in terms of <em>half-points</em> on the grid:</p>
@@ -1564,15 +1513,8 @@ gH \frac {\sin^2 (\ell d)}{d^2}\]</div>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-30-0fe51d2f9a75&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-red-fg"># replace the second disp_analytic with one of your numerical dispersion functions, e.g. disp_A</span>
-<span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg"> </span>dispersion_2d<span class="ansi-blue-fg">.</span>dispersion_2d<span class="ansi-blue-fg">(</span>disp_analytic<span class="ansi-blue-fg">,</span> disp_analytic<span class="ansi-blue-fg">,</span> Rod<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">0.5</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">NameError</span>: name &#39;dispersion_2d&#39; is not defined
-</pre></div></div>
+<img alt="../../_images/doc_notebooks_lab7_01-lab7_78_0.png" src="../../_images/doc_notebooks_lab7_01-lab7_78_0.png" />
+</div>
 </div>
 </div>
 <div class="section" id="Problem-Nine">
