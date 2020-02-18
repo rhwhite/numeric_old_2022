@@ -15,6 +15,17 @@
 * to copy change in a py file automatically to the ipynb
   partner while editing in jupyter:
 
+  - generate a config file if you don't have one:
+
+    `jupyter notebook --generate-config`
+
+  - overwrite or extract the uncommented lines from
+
+    [jupyter_notebook_config.py](https://github.com/phaustin/numeric/blob/master/utils/jupytext/jupyter_notebook_config.py)
+
+    and restart jupyter server.  After this, edit py files only, treat ipynb
+    files as output.
+
 
 
   
