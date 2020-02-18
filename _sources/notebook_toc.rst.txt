@@ -2,6 +2,7 @@ Numeric notebooks
 =================
 
 .. toctree::
+   :maxdepth: 1
 
      Lab 1 <doc_notebooks/lab1/01-lab1.ipynb>
      Lab 2 <doc_notebooks/lab2/01-lab2.ipynb>
