@@ -12,4 +12,6 @@ Assignment details
 * Lab 4 `assignment4 hand in <https://phaustin.github.io/numeric/doc_notebooks/lab4/01-lab4.html#Assignment-handin-%E2%80%93-upload-a-single,-fresh-notebook-that-contains-your-answers>`_
 
 * Lab 5 `assignment5 hand in <https://phaustin.github.io/numeric/doc_notebooks/lab5/01-lab5.html#Assignment>`_
+
+* Lab 7a `Lab 7a <./lab7.rst>`_
   

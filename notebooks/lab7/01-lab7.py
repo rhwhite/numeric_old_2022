@@ -2,13 +2,14 @@
 # ---
 # jupyter:
 #   jupytext:
+#     cell_metadata_filter: all
 #     formats: ipynb,py:percent
 #     notebook_metadata_filter: all,-language_info,-toc,-latex_envs
 #     text_representation:
 #       extension: .py
 #       format_name: percent
 #       format_version: '1.3'
-#       jupytext_version: 1.3.1
+#       jupytext_version: 1.3.3
 #   kernelspec:
 #     display_name: Python 3
 #     language: python
@@ -22,7 +23,7 @@
 
 # %% [markdown] toc="true"
 # <h1>Table of Contents<span class="tocSkip"></span></h1>
-# <div class="toc" style="margin-top: 1em;"><ul class="toc-item"><li><span><a href="#Laboratory-7:-Solving-partial-differential-equations-using-an-explicit,-finite-difference-method." data-toc-modified-id="Laboratory-7:-Solving-partial-differential-equations-using-an-explicit,-finite-difference-method.-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Laboratory 7: Solving partial differential equations using an explicit, finite difference method.</a></span><ul class="toc-item"><li><span><a href="#List-of-Problems" data-toc-modified-id="List-of-Problems-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>List of Problems</a></span></li><li><span><a href="#Objectives" data-toc-modified-id="Objectives-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Objectives</a></span><ul class="toc-item"><li><span><a href="#Sections-4-through-7" data-toc-modified-id="Sections-4-through-7-1.2.1"><span class="toc-item-num">1.2.1&nbsp;&nbsp;</span>Sections 4 through 7</a></span></li></ul></li><li><span><a href="#Readings" data-toc-modified-id="Readings-1.3"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Readings</a></span></li><li><span><a href="#Physical-Example,-Poincaré-Waves" data-toc-modified-id="Physical-Example,-Poincaré-Waves-1.4"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>Physical Example, Poincaré Waves</a></span><ul class="toc-item"><li><span><a href="#Introduce-Full-Equations" data-toc-modified-id="Introduce-Full-Equations-1.4.1"><span class="toc-item-num">1.4.1&nbsp;&nbsp;</span>Introduce Full Equations</a></span></li><li><span><a href="#No-variation-in-y" data-toc-modified-id="No-variation-in-y-1.4.2"><span class="toc-item-num">1.4.2&nbsp;&nbsp;</span>No variation in y</a></span></li><li><span><a href="#Introduce-Simple-Equations" data-toc-modified-id="Introduce-Simple-Equations-1.4.3"><span class="toc-item-num">1.4.3&nbsp;&nbsp;</span>Introduce Simple Equations</a></span></li><li><span><a href="#No-variation-in-y" data-toc-modified-id="No-variation-in-y-1.4.4"><span class="toc-item-num">1.4.4&nbsp;&nbsp;</span>No variation in y</a></span></li><li><span><a href="#Quiz:-Find-the-Dispersion-Relation" data-toc-modified-id="Quiz:-Find-the-Dispersion-Relation-1.4.5"><span class="toc-item-num">1.4.5&nbsp;&nbsp;</span>Quiz: Find the Dispersion Relation</a></span></li></ul></li><li><span><a href="#Numerical-Solution" data-toc-modified-id="Numerical-Solution-1.5"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>Numerical Solution</a></span><ul class="toc-item"><li><span><a href="#Simple-Equations" data-toc-modified-id="Simple-Equations-1.5.1"><span class="toc-item-num">1.5.1&nbsp;&nbsp;</span>Simple Equations</a></span></li><li><span><a href="#Predictor-Corrector-to-Start" data-toc-modified-id="Predictor-Corrector-to-Start-1.5.2"><span class="toc-item-num">1.5.2&nbsp;&nbsp;</span>Predictor-Corrector to Start</a></span></li><li><span><a href="#Boundary-Conditions" data-toc-modified-id="Boundary-Conditions-1.5.3"><span class="toc-item-num">1.5.3&nbsp;&nbsp;</span>Boundary Conditions</a></span></li><li><span><a href="#Simple-Equations-on-a-Non-staggered-Grid" data-toc-modified-id="Simple-Equations-on-a-Non-staggered-Grid-1.5.4"><span class="toc-item-num">1.5.4&nbsp;&nbsp;</span>Simple Equations on a Non-staggered Grid</a></span></li><li><span><a href="#Staggered-Grids" data-toc-modified-id="Staggered-Grids-1.5.5"><span class="toc-item-num">1.5.5&nbsp;&nbsp;</span>Staggered Grids</a></span></li><li><span><a href="#Problem-One" data-toc-modified-id="Problem-One-1.5.6"><span class="toc-item-num">1.5.6&nbsp;&nbsp;</span>Problem One</a></span></li></ul></li><li><span><a href="#Stability:-the-CFL-condition" data-toc-modified-id="Stability:-the-CFL-condition-1.6"><span class="toc-item-num">1.6&nbsp;&nbsp;</span>Stability: the CFL condition</a></span><ul class="toc-item"><li><span><a href="#Problem-Two" data-toc-modified-id="Problem-Two-1.6.1"><span class="toc-item-num">1.6.1&nbsp;&nbsp;</span>Problem Two</a></span></li></ul></li><li><span><a href="#Accuracy" data-toc-modified-id="Accuracy-1.7"><span class="toc-item-num">1.7&nbsp;&nbsp;</span>Accuracy</a></span><ul class="toc-item"><li><span><a href="#Choosing-a-Grid" data-toc-modified-id="Choosing-a-Grid-1.7.1"><span class="toc-item-num">1.7.1&nbsp;&nbsp;</span>Choosing a Grid</a></span></li><li><span><a href="#Problem-Three" data-toc-modified-id="Problem-Three-1.7.2"><span class="toc-item-num">1.7.2&nbsp;&nbsp;</span>Problem Three</a></span></li><li><span><a href="#Problem-Four" data-toc-modified-id="Problem-Four-1.7.3"><span class="toc-item-num">1.7.3&nbsp;&nbsp;</span>Problem Four</a></span></li><li><span><a href="#Problem-Five" data-toc-modified-id="Problem-Five-1.7.4"><span class="toc-item-num">1.7.4&nbsp;&nbsp;</span>Problem Five</a></span></li></ul></li><li><span><a href="#Full-Equations" data-toc-modified-id="Full-Equations-1.8"><span class="toc-item-num">1.8&nbsp;&nbsp;</span>Full Equations</a></span><ul class="toc-item"><li><span><a href="#Stability" data-toc-modified-id="Stability-1.8.1"><span class="toc-item-num">1.8.1&nbsp;&nbsp;</span>Stability</a></span></li><li><span><a href="#Problem-Six" data-toc-modified-id="Problem-Six-1.8.2"><span class="toc-item-num">1.8.2&nbsp;&nbsp;</span>Problem Six</a></span></li><li><span><a href="#Accuracy" data-toc-modified-id="Accuracy-1.8.3"><span class="toc-item-num">1.8.3&nbsp;&nbsp;</span>Accuracy</a></span></li><li><span><a href="#Problem-Seven" data-toc-modified-id="Problem-Seven-1.8.4"><span class="toc-item-num">1.8.4&nbsp;&nbsp;</span>Problem Seven</a></span></li><li><span><a href="#Problem-Eight" data-toc-modified-id="Problem-Eight-1.8.5"><span class="toc-item-num">1.8.5&nbsp;&nbsp;</span>Problem Eight</a></span></li><li><span><a href="#Problem-Nine" data-toc-modified-id="Problem-Nine-1.8.6"><span class="toc-item-num">1.8.6&nbsp;&nbsp;</span>Problem Nine</a></span></li></ul></li><li><span><a href="#Details" data-toc-modified-id="Details-1.9"><span class="toc-item-num">1.9&nbsp;&nbsp;</span>Details</a></span><ul class="toc-item"><li><span><a href="#Starting-the-Simulation-Full-Equations" data-toc-modified-id="Starting-the-Simulation-Full-Equations-1.9.1"><span class="toc-item-num">1.9.1&nbsp;&nbsp;</span>Starting the Simulation Full Equations</a></span></li><li><span><a href="#Initialization" data-toc-modified-id="Initialization-1.9.2"><span class="toc-item-num">1.9.2&nbsp;&nbsp;</span>Initialization</a></span></li><li><span><a href="#Boundary-Conditions" data-toc-modified-id="Boundary-Conditions-1.9.3"><span class="toc-item-num">1.9.3&nbsp;&nbsp;</span>Boundary Conditions</a></span></li><li><span><a href="#Computational-Mode" data-toc-modified-id="Computational-Mode-1.9.4"><span class="toc-item-num">1.9.4&nbsp;&nbsp;</span>Computational Mode</a></span></li></ul></li><li><span><a href="#Glossary" data-toc-modified-id="Glossary-1.10"><span class="toc-item-num">1.10&nbsp;&nbsp;</span>Glossary</a></span></li><li><span><a href="#References" data-toc-modified-id="References-1.11"><span class="toc-item-num">1.11&nbsp;&nbsp;</span>References</a></span></li></ul></li></ul></div>
+# <div class="toc"><ul class="toc-item"><li><span><a href="#Laboratory-7:-Solving-partial-differential-equations-using-an-explicit,-finite-difference-method." data-toc-modified-id="Laboratory-7:-Solving-partial-differential-equations-using-an-explicit,-finite-difference-method.-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Laboratory 7: Solving partial differential equations using an explicit, finite difference method.</a></span><ul class="toc-item"><li><span><a href="#List-of-Problems" data-toc-modified-id="List-of-Problems-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>List of Problems</a></span></li><li><span><a href="#Objectives" data-toc-modified-id="Objectives-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Objectives</a></span><ul class="toc-item"><li><span><a href="#Sections-4-through-7" data-toc-modified-id="Sections-4-through-7-1.2.1"><span class="toc-item-num">1.2.1&nbsp;&nbsp;</span>Sections 4 through 7</a></span></li></ul></li><li><span><a href="#Readings" data-toc-modified-id="Readings-1.3"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Readings</a></span></li><li><span><a href="#Physical-Example,-Poincaré-Waves" data-toc-modified-id="Physical-Example,-Poincaré-Waves-1.4"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>Physical Example, Poincaré Waves</a></span><ul class="toc-item"><li><span><a href="#Introduce-Full-Equations" data-toc-modified-id="Introduce-Full-Equations-1.4.1"><span class="toc-item-num">1.4.1&nbsp;&nbsp;</span>Introduce Full Equations</a></span></li><li><span><a href="#No-variation-in-y" data-toc-modified-id="No-variation-in-y-1.4.2"><span class="toc-item-num">1.4.2&nbsp;&nbsp;</span>No variation in y</a></span></li><li><span><a href="#Introduce-Simple-Equations" data-toc-modified-id="Introduce-Simple-Equations-1.4.3"><span class="toc-item-num">1.4.3&nbsp;&nbsp;</span>Introduce Simple Equations</a></span></li><li><span><a href="#No-variation-in-y" data-toc-modified-id="No-variation-in-y-1.4.4"><span class="toc-item-num">1.4.4&nbsp;&nbsp;</span>No variation in y</a></span></li><li><span><a href="#Quiz:-Find-the-Dispersion-Relation" data-toc-modified-id="Quiz:-Find-the-Dispersion-Relation-1.4.5"><span class="toc-item-num">1.4.5&nbsp;&nbsp;</span>Quiz: Find the Dispersion Relation</a></span></li></ul></li><li><span><a href="#Numerical-Solution" data-toc-modified-id="Numerical-Solution-1.5"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>Numerical Solution</a></span><ul class="toc-item"><li><span><a href="#Simple-Equations" data-toc-modified-id="Simple-Equations-1.5.1"><span class="toc-item-num">1.5.1&nbsp;&nbsp;</span>Simple Equations</a></span></li><li><span><a href="#Predictor-Corrector-to-Start" data-toc-modified-id="Predictor-Corrector-to-Start-1.5.2"><span class="toc-item-num">1.5.2&nbsp;&nbsp;</span>Predictor-Corrector to Start</a></span></li><li><span><a href="#Boundary-Conditions" data-toc-modified-id="Boundary-Conditions-1.5.3"><span class="toc-item-num">1.5.3&nbsp;&nbsp;</span>Boundary Conditions</a></span></li><li><span><a href="#Simple-Equations-on-a-Non-staggered-Grid" data-toc-modified-id="Simple-Equations-on-a-Non-staggered-Grid-1.5.4"><span class="toc-item-num">1.5.4&nbsp;&nbsp;</span>Simple Equations on a Non-staggered Grid</a></span></li><li><span><a href="#Staggered-Grids" data-toc-modified-id="Staggered-Grids-1.5.5"><span class="toc-item-num">1.5.5&nbsp;&nbsp;</span>Staggered Grids</a></span></li><li><span><a href="#Problem-One" data-toc-modified-id="Problem-One-1.5.6"><span class="toc-item-num">1.5.6&nbsp;&nbsp;</span>Problem One</a></span></li></ul></li><li><span><a href="#Stability:-the-CFL-condition" data-toc-modified-id="Stability:-the-CFL-condition-1.6"><span class="toc-item-num">1.6&nbsp;&nbsp;</span>Stability: the CFL condition</a></span><ul class="toc-item"><li><span><a href="#Problem-Two" data-toc-modified-id="Problem-Two-1.6.1"><span class="toc-item-num">1.6.1&nbsp;&nbsp;</span>Problem Two</a></span></li></ul></li><li><span><a href="#Accuracy" data-toc-modified-id="Accuracy-1.7"><span class="toc-item-num">1.7&nbsp;&nbsp;</span>Accuracy</a></span><ul class="toc-item"><li><span><a href="#Choosing-a-Grid" data-toc-modified-id="Choosing-a-Grid-1.7.1"><span class="toc-item-num">1.7.1&nbsp;&nbsp;</span>Choosing a Grid</a></span><ul class="toc-item"><li><span><a href="#No-variation-in-y" data-toc-modified-id="No-variation-in-y-1.7.1.1"><span class="toc-item-num">1.7.1.1&nbsp;&nbsp;</span>No variation in y</a></span></li></ul></li><li><span><a href="#Problem-Three" data-toc-modified-id="Problem-Three-1.7.2"><span class="toc-item-num">1.7.2&nbsp;&nbsp;</span>Problem Three</a></span></li><li><span><a href="#Problem-Four" data-toc-modified-id="Problem-Four-1.7.3"><span class="toc-item-num">1.7.3&nbsp;&nbsp;</span>Problem Four</a></span></li><li><span><a href="#Problem-Five" data-toc-modified-id="Problem-Five-1.7.4"><span class="toc-item-num">1.7.4&nbsp;&nbsp;</span>Problem Five</a></span></li></ul></li><li><span><a href="#Full-Equations" data-toc-modified-id="Full-Equations-1.8"><span class="toc-item-num">1.8&nbsp;&nbsp;</span>Full Equations</a></span><ul class="toc-item"><li><span><a href="#Stability" data-toc-modified-id="Stability-1.8.1"><span class="toc-item-num">1.8.1&nbsp;&nbsp;</span>Stability</a></span></li><li><span><a href="#Problem-Six" data-toc-modified-id="Problem-Six-1.8.2"><span class="toc-item-num">1.8.2&nbsp;&nbsp;</span>Problem Six</a></span></li><li><span><a href="#Accuracy" data-toc-modified-id="Accuracy-1.8.3"><span class="toc-item-num">1.8.3&nbsp;&nbsp;</span>Accuracy</a></span></li><li><span><a href="#Problem-Seven" data-toc-modified-id="Problem-Seven-1.8.4"><span class="toc-item-num">1.8.4&nbsp;&nbsp;</span>Problem Seven</a></span></li><li><span><a href="#Problem-Eight" data-toc-modified-id="Problem-Eight-1.8.5"><span class="toc-item-num">1.8.5&nbsp;&nbsp;</span>Problem Eight</a></span></li><li><span><a href="#Problem-Nine" data-toc-modified-id="Problem-Nine-1.8.6"><span class="toc-item-num">1.8.6&nbsp;&nbsp;</span>Problem Nine</a></span></li></ul></li><li><span><a href="#Details" data-toc-modified-id="Details-1.9"><span class="toc-item-num">1.9&nbsp;&nbsp;</span>Details</a></span><ul class="toc-item"><li><span><a href="#Starting-the-Simulation-Full-Equations" data-toc-modified-id="Starting-the-Simulation-Full-Equations-1.9.1"><span class="toc-item-num">1.9.1&nbsp;&nbsp;</span>Starting the Simulation Full Equations</a></span></li><li><span><a href="#Initialization" data-toc-modified-id="Initialization-1.9.2"><span class="toc-item-num">1.9.2&nbsp;&nbsp;</span>Initialization</a></span></li><li><span><a href="#Boundary-Conditions" data-toc-modified-id="Boundary-Conditions-1.9.3"><span class="toc-item-num">1.9.3&nbsp;&nbsp;</span>Boundary Conditions</a></span></li><li><span><a href="#Computational-Mode" data-toc-modified-id="Computational-Mode-1.9.4"><span class="toc-item-num">1.9.4&nbsp;&nbsp;</span>Computational Mode</a></span></li></ul></li><li><span><a href="#Glossary" data-toc-modified-id="Glossary-1.10"><span class="toc-item-num">1.10&nbsp;&nbsp;</span>Glossary</a></span></li><li><span><a href="#References" data-toc-modified-id="References-1.11"><span class="toc-item-num">1.11&nbsp;&nbsp;</span>References</a></span></li></ul></li></ul></div>
 
 # %% [markdown]
 # ## List of Problems ##
@@ -95,12 +96,13 @@
 #     -    [Cushman-Roision, 1994](#Ref:Cushman-Roisin), Appendix A
 
 # %%
+import context
 from IPython.display import Image
 import IPython.display as display
 # import plotting package and numerical python package for use in examples later
 import matplotlib.pyplot as plt
 # make the plots happen inline
-% matplotlib inline  
+# %matplotlib inline  
 # import the numpy array handling library
 import numpy as np
 # import the quiz script
@@ -259,7 +261,7 @@ from numlabs.lab7 import dispersion_2d
 # In the following, replace 'x' by 'A', 'B', 'C' or 'D' and run the cell.
 
 # %%
-print (quiz.dispersion_quiz(answer = 'x'))
+print (quiz.dispersion_quiz(answer = 'A'))
 
 # %% [markdown]
 # ## Numerical Solution
@@ -277,7 +279,7 @@ Image(filename='images/nonstagger.png',width='40%')
 
 # %% [markdown]
 # <div id='lab7:fig:nonstagger'>
-# **Figure Unstaggered Grid.**
+# <b>Figure Unstaggered Grid.</b>
 # </div>
 #
 # We will use centred difference schemes in both $x$ and $t$. The
@@ -454,7 +456,7 @@ Image(filename='images/dependency.png',width='50%')
 
 # %% [markdown]
 # <div id='lab7:fig:dependency'>
-# **Figure Unstaggered Dependency**
+# <b>Figure Unstaggered Dependency</b>
 # </div>
 #
 # In either problem, only the variable that is relevant to that problem
@@ -478,7 +480,7 @@ Image(filename='images/decoupling.png',width='50%')
 
 # %% [markdown]
 # <div id='lab7:fig:decoupling'>
-# **Figure Decoupling**: The two staggered grids and the unstaggered grid. Note that the
+# <b>Figure Decoupling</b>: The two staggered grids and the unstaggered grid. Note that the
 # unstaggered grid has two variables at each grid/time point whereas the
 # staggered grids only have one.
 # </div>
@@ -495,7 +497,7 @@ Image(filename='images/stagger.png',width='50%')
 
 # %% [markdown]
 # <div id='lab7:fig:stagger'>
-# **Figure Staggered Grid**: The staggered grid for the drop in the pond problem.
+# <b>Figure Staggered Grid</b>: The staggered grid for the drop in the pond problem.
 # </div>
 #
 # The original equations, boundary and initial conditions are changed to
@@ -545,7 +547,7 @@ Image(filename='images/wheel_static.png',width='35%')
 
 # %% [markdown]
 # <div id='lab7:fig:wheel-static'>
-# **Figure Wheel**: A spoked wagon wheel.
+# <b>Figure Wheel</b>: A spoked wagon wheel.
 # </div>
 #
 # Sometimes the wheels appear to be going backwards. Both TV and
@@ -560,11 +562,11 @@ Image(filename='images/wheel_left.png',width='35%')
 
 # %% [markdown]
 # <div id='lab7:fig:wheel-left'>
-# **Figure Wheel Left:** The wheel appears to rotate counter-clockwise if its speed is slow
+# <b>Figure Wheel Left:</b> The wheel appears to rotate counter-clockwise if its speed is slow
 # enough.
 # </div>
 
-# %%
+# %% scrolled=true
 vid = display.YouTubeVideo("hgQ66frbBEs", modestbranding=1, rel=0, width=500)
 display.display(vid)
 
@@ -578,7 +580,7 @@ Image(filename='images/wheel_right.png',width='35%')
 
 # %% [markdown]
 # <div id='lab7:fig:wheel-right'>
-# **Figure Wheel Right**: When the wheel spins quickly enough, it appears to rotate
+# <b>Figure Wheel Right</b>: When the wheel spins quickly enough, it appears to rotate
 # clockwise!
 # </div>
 
@@ -596,7 +598,7 @@ Image(filename='images/wave_static.png',width='65%')
 
 # %% [markdown]
 # <div id='lab7:fig:wave-static'>
-# **Figure Wave**: A single frame of the wave.
+# <b>Figure Wave</b>: A single frame of the wave.
 # </div>
 #
 # If the wave moves slowly, it seems to move in the correct direction
@@ -607,7 +609,7 @@ Image(filename='images/wave_left.png',width='65%')
 
 # %% [markdown]
 # <div id='lab7:fig:wave-left'>
-# **Figure Wave Left**: The wave moving to the left also appears to be moving to the left if
+# <b>Figure Wave Left</b>: The wave moving to the left also appears to be moving to the left if
 # it’s speed is slow enough.
 # </div>
 
@@ -624,7 +626,7 @@ Image(filename='images/wave_right.png',width='65%')
 
 # %% [markdown]
 # <a name='lab7:fig:wave-right'></a>
-# **Figure Wave Right**: If the wave moves too rapidly, then it appears to be moving in the
+# <b>Figure Wave Right</b>: If the wave moves too rapidly, then it appears to be moving in the
 # opposite direction.
 
 # %%
@@ -728,7 +730,7 @@ Image(filename='images/allmag.png',width='45%')
 
 # %% [markdown]
 # <div id='lab7:fig:allmag'>
-# **Figure Roots**: Magnitude of the four roots of $\lambda$ as a function of $q dt$ (not
+# <b>Figure Roots</b>: Magnitude of the four roots of $\lambda$ as a function of $q dt$ (not
 # $\omega dt$).
 # </div>
 #
@@ -742,7 +744,7 @@ Image(filename='images/multimag.png',width='60%')
 
 # %% [markdown]
 # <div id='lab7:fig:sepmag'>
-# **Figure Separate Roots**: Magnitude of the four roots of $\lambda$ as a function of $q dt$ (not $\omega dt$).
+# <b>Figure Separate Roots</b>: Magnitude of the four roots of $\lambda$ as a function of $q dt$ (not $\omega dt$).
 # </div>
 #
 # Now for stability
@@ -811,7 +813,7 @@ Image(filename='images/simple_accuracy.png',width='50%')
 
 # %% [markdown]
 # <div id='lab7:fig:simpleaccuracy'>
-# **Figure Simple Accuracy**
+# <b>Figure Simple Accuracy</b>
 # </div>
 #
 # We can see that the accuracy is good for long waves ($k$ small) but for
@@ -840,7 +842,7 @@ Image(filename='images/simple_grid2.png',width='50%')
 
 # %% [markdown]
 # <div id='lab7:fig:simplegrids'>
-# **Figure Two Simple Grids**
+# <b>Figure Two Simple Grids</b>
 # </div>
 #
 # For each of these, we can calculate the discrete dispersion relation
@@ -897,7 +899,7 @@ Image(filename='images/grid1.png',width='50%')
 
 # %% [markdown]
 # <div id='lab7:fig:gridA'>
-# **Figure Arakawa A Grid.**
+# <b>Figure Arakawa A Grid.</b>
 # </div>
 #
 # As the problem becomes more complicated, we need to simplify the
@@ -981,7 +983,7 @@ Image(filename='images/fourgrids.png', width='80%')
 
 # %% [markdown]
 # <a name="FigureFourGrids"></a>
-# **Figure Four More Grids.** Note that E is simply a rotation of grid B by $45^\circ$.
+# <b>Figure Four More Grids.</b> Note that E is simply a rotation of grid B by $45^\circ$.
 #
 #
 # ### Problem Six
@@ -1024,7 +1026,7 @@ Image(filename='images/accuracy_demo.png',width='60%')
 
 # %% [markdown]
 # <div id='lab7:fig:accuracy-demo'>
-# **Figure Accuracy Comparison:** A comparison of the exact $\omega$ and the discrete approximation
+# <b>Figure Accuracy Comparison:</b> A comparison of the exact $\omega$ and the discrete approximation
 # using Grid A and with $d/R=1/2$.
 # </div>
 #
