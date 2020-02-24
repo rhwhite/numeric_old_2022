@@ -1,9 +1,0 @@
-.. _hint-quiz2:
-
-Hint
-____
-
-Which derivative multiplies the fifth order terms in the Taylor series
-of a function T(t)?
-
- 

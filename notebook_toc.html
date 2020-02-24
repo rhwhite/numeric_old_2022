@@ -21,12 +21,12 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
@@ -38,7 +38,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Laboratory 1: An Introduction to the Numerical Solution of Differential Equations: Discretization (2020/Jan/6)" href="doc_notebooks/lab1/01-lab1.html" />
+    <link rel="next" title="Laboratory 7: Solving partial differential equations using an explicit, finite difference method." href="doc_notebooks/lab7/01-lab7.html" />
     <link rel="prev" title="Optional textbooks" href="texts.html" /> 
 </head>
 
@@ -90,12 +90,7 @@
 <li class="toctree-l1"><a class="reference internal" href="schedule20.html">Detailed Schedule</a></li>
 <li class="toctree-l1"><a class="reference internal" href="texts.html">Optional texts</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Course/lab descriptions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab1/01-lab1.html">  Lab 1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab2/01-lab2.html">  Lab 2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html">  Lab 3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab4/01-lab4.html">  Lab 4</a></li>
-<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab5/01-lab5.html">  Lab 5</a></li>
-<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html">  Lab 7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html">Lab 7</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="week_notes.html">Weekly notes</a></li>
@@ -193,12 +188,64 @@
 <h1>Numeric notebooks<a class="headerlink" href="#numeric-notebooks" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="doc_notebooks/lab1/01-lab1.html">  Lab 1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="doc_notebooks/lab2/01-lab2.html">  Lab 2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html">  Lab 3</a></li>
-<li class="toctree-l1"><a class="reference internal" href="doc_notebooks/lab4/01-lab4.html">  Lab 4</a></li>
-<li class="toctree-l1"><a class="reference internal" href="doc_notebooks/lab5/01-lab5.html">  Lab 5</a></li>
-<li class="toctree-l1"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html">  Lab 7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html">Lab 7</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html#List-of-Problems">List of Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html#Objectives">Objectives</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html#Sections-4-through-7">Sections 4 through 7</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html#Readings">Readings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html#Physical-Example,-Poincaré-Waves">Physical Example, Poincaré Waves</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html#Introduce-Full-Equations">Introduce Full Equations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html#No-variation-in-y">No variation in y</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html#Introduce-Simple-Equations">Introduce Simple Equations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html#id1">No variation in y</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html#Quiz:-Find-the-Dispersion-Relation">Quiz: Find the Dispersion Relation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html#Numerical-Solution">Numerical Solution</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html#Simple-Equations">Simple Equations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html#Predictor-Corrector-to-Start">Predictor-Corrector to Start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html#Boundary-Conditions">Boundary Conditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html#Simple-Equations-on-a-Non-staggered-Grid">Simple Equations on a Non-staggered Grid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html#Staggered-Grids">Staggered Grids</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html#Problem-One">Problem One</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html#Stability:-the-CFL-condition">Stability: the CFL condition</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html#Problem-Two">Problem Two</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html#Accuracy">Accuracy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html#Choosing-a-Grid">Choosing a Grid</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html#id2">No variation in y</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html#Problem-Three">Problem Three</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html#Problem-Four">Problem Four</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html#Problem-Five">Problem Five</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html#Full-Equations">Full Equations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html#Stability">Stability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html#Problem-Six">Problem Six</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html#id3">Accuracy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html#Problem-Seven">Problem Seven</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html#Problem-Eight">Problem Eight</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html#Problem-Nine">Problem Nine</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html#Details">Details</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html#Starting-the-Simulation-Full-Equations">Starting the Simulation Full Equations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html#Initialization">Initialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html#id4">Boundary Conditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html#Computational-Mode">Computational Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html#Glossary">Glossary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html#References">References</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -211,7 +258,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="doc_notebooks/lab1/01-lab1.html" class="btn btn-neutral float-right" title="Laboratory 1: An Introduction to the Numerical Solution of Differential Equations: Discretization (2020/Jan/6)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="doc_notebooks/lab7/01-lab7.html" class="btn btn-neutral float-right" title="Laboratory 7: Solving partial differential equations using an explicit, finite difference method." accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="texts.html" class="btn btn-neutral float-left" title="Optional textbooks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
