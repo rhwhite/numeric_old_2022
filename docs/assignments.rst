@@ -14,4 +14,6 @@ Assignment details
 * Lab 5 `assignment5 hand in <https://phaustin.github.io/numeric/doc_notebooks/lab5/01-lab5.html#Assignment>`_
 
 * Lab 7a `Lab 7a <./lab7.rst>`_
-  
+
+* Projects `projects.pdf <pdfs/projects.pdf>`_
+
