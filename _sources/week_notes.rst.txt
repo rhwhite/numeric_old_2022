@@ -63,5 +63,13 @@ Weekly notes
 
           conda config --prepend channels conda-forge
           
+* Week 7: Feb. 24
 
+  - `Numba demonstration notebook <https://github.com/phaustin/numeric_students/blob/downloads/demonstrations/numba_demo.ipynb>`_
+
+  - Some links on object oriented programming:
+
+    - `Corey Schafer Python tutorials <https://www.youtube.com/channel/UCCezIgC97PvUuR4_gbFUs5g>`_ (scroll down for object oriented programming)
+
+    - `Side by side comparison of program design in Python and Julia <https://medium.com/@Jernfrost/defining-custom-units-in-julia-and-python-513c34a4c971>`_
         
