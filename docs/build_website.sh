@@ -6,6 +6,7 @@ rm -rf _build/pdfs
 rsync -avz ./pdfs _build/pdfs
 rsync -avz ../notebooks/* doc_notebooks/
 rsync -avz ../notebooks/miniproject1/pdfs/miniproject1.pdf _build/pdfs/
+rsync -avz ../demonstrations/
 #
 # build the website
 #

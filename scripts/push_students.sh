@@ -11,6 +11,9 @@ rsync -avz notebooks/lab5 students/numeric_notebooks/
 rsync -avz notebooks/lab7 students/numeric_notebooks/
 mkdir -p students/demonstrations
 rsync -avz demonstrations/numba_demo.ipynb students/demonstrations/.
+rsync -avz demonstrations/parallel_python.ipynb students/demonstrations/.
+rsync -avz demonstrations/images students/demonstrations/.
+rsync -avz demonstrations/testing_functions.py students/demonstrations/.
 rsync -avz utils students/
 rsync -avz numlabs students/
 rsync -avz Readme_students.md students/Readme.md
