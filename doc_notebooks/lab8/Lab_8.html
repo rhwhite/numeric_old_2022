@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Laboratory 8: Solution of the Quasi-geostrophic Equations using an Implicit Scheme &mdash; Numeric course 0.1 documentation</title>
+  <title>Laboratory 8: Quasi-geostrophic Equations &mdash; Numeric course 0.1 documentation</title>
   
 
   
@@ -37,7 +37,9 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lab 9: FFTS" href="../../fft_lab.html" />
+    <link rel="prev" title="Laboratory 7: Solving partial differential equations using an explicit, finite difference method." href="../lab7/01-lab7.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -81,13 +83,65 @@
               
             
             
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../course_bootstrap.html">Getting started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ugradsyllabus20.html">Undergrad Syllabus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../gradsyllabus20.html">Grad Syllabus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../schedule20.html">Detailed Schedule</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../texts.html">Optional texts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../notebook_toc.html">Course/lab descriptions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../notebook_toc.html">Course/lab descriptions</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../lab1/01-lab1.html">  Lab 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab2/01-lab2.html">  Lab 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab3/01-lab3.html">  Lab 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab4/01-lab4.html">  Lab 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab5/01-lab5.html">  Lab 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab6/lab6.html">  Lab 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab7/01-lab7.html">  Lab 7</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">  Lab 8</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Contents">Contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#List-of-Problems">List of Problems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#1.-Objectives">1. Objectives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#2.-Readings">2. Readings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#3.-Introduction">3. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#4.-The-Quasi-Geostrophic-Model">4. The Quasi-Geostrophic Model</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#4.1-Scaling-the-Equations-of-Motion">4.1 Scaling the Equations of Motion</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#5.-Discretization-of-the-QG-equations">5. Discretization of the QG equations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#5.1-Spatial-Discretization">5.1 Spatial Discretization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#5.1.1-Right-Hand-Side">5.1.1 Right Hand Side</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Problem-One"><em>Problem One</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Quiz-on-Jacobian-Expansion-#2">Quiz on Jacobian Expansion #2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Quiz-on-Jacobian-Expansion-#3">Quiz on Jacobian Expansion #3</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#5.1.2-Boundary-Conditions">5.1.2 Boundary Conditions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#5.1.3-Matrix-Form-of-the-Discrete-Equations">5.1.3 Matrix Form of the Discrete Equations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#5.2-Solution-of-the-Poisson-Equation-by-Relaxation">5.2 Solution of the Poisson Equation by Relaxation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#5.3-Temporal-Discretization">5.3 Temporal Discretization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#5.4-Outline-of-Solution-Procedure">5.4 Outline of Solution Procedure</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Problem-Two"><em>Problem Two</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Problem-Three"><em>Problem Three</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Problem-Four"><em>Problem Four</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Problem-Five"><em>Problem Five</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#6.-Aliasing-Error-and-Nonlinear-Instability">6. Aliasing Error and Nonlinear Instability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Example-One"><em>Example One</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#7.-Classical-Solutions">7. Classical Solutions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Problem-Six"><em>Problem Six</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#A.-Mathematical-Notes">A. Mathematical Notes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#A.1-Definition-of-the-Beta-plane">A.1 Definition of the Beta-plane</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#A.2-Simplification-of-the-QG-Model-Equations">A.2 Simplification of the QG Model Equations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Glossary">Glossary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#References">References</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../fft_lab.html">  Lab 9</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../week_notes.html">Weekly notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../assignments.html">Weekly assignments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../quizzes.html">Quizzes</a></li>
@@ -136,7 +190,9 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-      <li>Laboratory 8: Solution of the Quasi-geostrophic Equations using an Implicit Scheme</li>
+          <li><a href="../../notebook_toc.html">Numeric notebooks</a> &raquo;</li>
+        
+      <li>Laboratory 8: Quasi-geostrophic Equations</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -377,11 +433,9 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<div class="section" id="Laboratory-8:-Solution-of-the-Quasi-geostrophic-Equations-using-an-Implicit-Scheme">
-<h1>Laboratory 8: Solution of the Quasi-geostrophic Equations using an Implicit Scheme<a class="headerlink" href="#Laboratory-8:-Solution-of-the-Quasi-geostrophic-Equations-using-an-Implicit-Scheme" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="Lin-Yang-&amp;-John-M.-Stockie">
-<h2>Lin Yang &amp; John M. Stockie<a class="headerlink" href="#Lin-Yang-&-John-M.-Stockie" title="Permalink to this headline">¶</a></h2>
-</div>
+<div class="section" id="Laboratory-8:-Quasi-geostrophic-Equations">
+<h1>Laboratory 8: Quasi-geostrophic Equations<a class="headerlink" href="#Laboratory-8:-Quasi-geostrophic-Equations" title="Permalink to this headline">¶</a></h1>
+<p>Lin Yang &amp; John M. Stockie</p>
 <div class="section" id="Contents">
 <h2>Contents<a class="headerlink" href="#Contents" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -469,7 +523,8 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<span></span><span class="kn">import</span> <span class="nn">context</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
 <span class="c1"># import the quiz script</span>
 <span class="kn">from</span> <span class="nn">numlabs.lab8</span> <span class="kn">import</span> <span class="n">quiz8</span> <span class="k">as</span> <span class="n">quiz</span>
 </pre></div>
@@ -480,14 +535,13 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-1-2dedd0769336&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-green-fg">from</span> IPython<span class="ansi-blue-fg">.</span>display <span class="ansi-green-fg">import</span> Image
-<span class="ansi-green-intense-fg ansi-bold">      2</span> <span class="ansi-red-fg"># import the quiz script</span>
-<span class="ansi-green-fg">----&gt; 3</span><span class="ansi-red-fg"> </span><span class="ansi-green-fg">from</span> numlabs<span class="ansi-blue-fg">.</span>lab8 <span class="ansi-green-fg">import</span> quiz8 <span class="ansi-green-fg">as</span> quiz
+******************************
+context imported. Front of path:
+/Users/phil/repos/numeric
+back of path: /Users/phil/.ipython
+******************************
 
-<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;numlabs&#39;
+through /Users/phil/repos/numeric/notebooks/lab8/context.py
 </pre></div></div>
 </div>
 </div>
@@ -791,10 +845,8 @@ based on this form of the equations.</p>
 \[\frac{\partial\psi}{\partial t} = \chi\]</div>
 </div><p>may be used to evolve the stream function in time.</p>
 <p>The next two sections discuss the spatial and temporal discretization, including some details related to the right hand side, the boundary conditions, and the iterative scheme for solving the large sparse system of equations that arises from the Poisson equation for <span class="math notranslate nohighlight">\(\chi\)</span>. Following that is an summary of the steps in the solution procedure.</p>
-</div>
-</div>
 <div class="section" id="5.1-Spatial-Discretization">
-<h1>5.1 Spatial Discretization<a class="headerlink" href="#5.1-Spatial-Discretization" title="Permalink to this headline">¶</a></h1>
+<h3>5.1 Spatial Discretization<a class="headerlink" href="#5.1-Spatial-Discretization" title="Permalink to this headline">¶</a></h3>
 <p>Assume that we are dealing with a square ocean, with dimensions <span class="math notranslate nohighlight">\(1\times 1\)</span> (in non-dimensional coordinates) and begin by dividing the domain into a grid of discrete points</p>
 <div class="math notranslate nohighlight">
 \[x_i = i \Delta x, \;\;i = 0, 1, 2, \dots, M\]</div>
@@ -885,6 +937,9 @@ values, as described by the <em>5-point difference stencil</em> pictured in <a c
 </div>
 <div id="fig:overlay"><p><strong>Figure Overlay:</strong> The 5-point difference stencil overlaid on the grid.</p>
 </div><p>Before going any further with the discretization, we need to provide a few more details for the discretization of the right hand side function, <span class="math notranslate nohighlight">\(F(x,y,t)\)</span>, and the boundary conditions. If you’d rather skip these for now, and move on to the time discretization (<a class="reference external" href="#5.3-Temporal-Discretization">Section 5.3 Temporal Discretization</a>) or the outline of the solution procedure (<a class="reference external" href="#5.4-Outline-of-Solution-Procedure">Section 5.4 Outline of Solution Procedure</a>), then you may do so now.</p>
+</div>
+<div class="section" id="5.1.1-Right-Hand-Side">
+<h3>5.1.1 Right Hand Side<a class="headerlink" href="#5.1.1-Right-Hand-Side" title="Permalink to this headline">¶</a></h3>
 <p>The right hand side function for the (<a class="reference external" href="#eq:poisson">Poisson equation</a>) is reproduced here in scaled form (with the “primes” dropped):</p>
 <div class="math notranslate nohighlight">
 \[F(x,y,t) = - \, \frac{\partial \psi}{\partial x} - \epsilon {\cal J}(\psi,\nabla_h^{2}\psi) + \frac{\tau_{max}}{\epsilon \beta^2 \rho H B^3} \nabla_h \times \vec{\tau} - \frac{\kappa}{\beta B} \nabla_h^{2} \psi + \frac{A_h}{\beta B^3} \nabla_h^{4} \psi\]</div>
@@ -942,6 +997,8 @@ the previous section:</p>
 <div class="math notranslate nohighlight">
 \[{\cal J}(a,b) = \frac{\partial a}{\partial x} \, \frac{\partial b}{\partial y} -
   \frac{\partial a}{\partial y} \, \frac{\partial b}{\partial x}\]</div>
+</div>
+</div>
 <div class="section" id="Problem-One">
 <h2><em>Problem One</em><a class="headerlink" href="#Problem-One" title="Permalink to this headline">¶</a></h2>
 <blockquote>
@@ -1009,12 +1066,7 @@ the previous section:</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-7-d668670ba9e9&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>print <span class="ansi-blue-fg">(</span>quiz<span class="ansi-blue-fg">.</span>jacobian_2<span class="ansi-blue-fg">(</span>answer <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">&#39;x&#39;</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">NameError</span>: name &#39;quiz&#39; is not defined
+Acceptable answers are &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;, &#39;E&#39;, &#39;F&#39;, &#39;G&#39;, &#39;Hint&#39;
 </pre></div></div>
 </div>
 </div>
@@ -1069,12 +1121,7 @@ the previous section:</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-8-f14eb5fd8531&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>print <span class="ansi-blue-fg">(</span>quiz<span class="ansi-blue-fg">.</span>jacobian_3<span class="ansi-blue-fg">(</span>answer <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">&#39;x&#39;</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">NameError</span>: name &#39;quiz&#39; is not defined
+Acceptable answers are &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;, &#39;E&#39;, &#39;F&#39;, &#39;G&#39;, &#39;Hint&#39;
 </pre></div></div>
 </div>
 <div class="section" id="5.1.2-Boundary-Conditions">
@@ -1696,6 +1743,15 @@ A_v \, \frac{\partial^2 \zeta}{\partial z^2} + A_h \, \nabla_h^2 \zeta,\]</div>
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../fft_lab.html" class="btn btn-neutral float-right" title="Lab 9: FFTS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../lab7/01-lab7.html" class="btn btn-neutral float-left" title="Laboratory 7: Solving partial differential equations using an explicit, finite difference method." accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

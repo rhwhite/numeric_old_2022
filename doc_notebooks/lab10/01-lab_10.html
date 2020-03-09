@@ -37,7 +37,9 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Weekly notes" href="../../week_notes.html" />
+    <link rel="prev" title="Lab 9 – 2d fft" href="../lab9/fft_2d.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -81,13 +83,37 @@
               
             
             
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../course_bootstrap.html">Getting started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ugradsyllabus20.html">Undergrad Syllabus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../gradsyllabus20.html">Grad Syllabus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../schedule20.html">Detailed Schedule</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../texts.html">Optional texts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../notebook_toc.html">Course/lab descriptions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../notebook_toc.html">Course/lab descriptions</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../lab1/01-lab1.html">  Lab 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab2/01-lab2.html">  Lab 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab3/01-lab3.html">  Lab 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab4/01-lab4.html">  Lab 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab5/01-lab5.html">  Lab 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab6/lab6.html">  Lab 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab7/01-lab7.html">  Lab 7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab8/Lab_8.html">  Lab 8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fft_lab.html">  Lab 9</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">  Lab 10</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#List-of-Problems">List of Problems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Advection-Process">Advection Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Simple-Solution-Using-Centred-Differencing-Scheme">Simple Solution Using Centred Differencing Scheme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Numerical-Solution-Using-Upstream-Method">Numerical Solution Using Upstream Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#A-Better-Solution">A Better Solution</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Problem-One">Problem One</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Conclusion">Conclusion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#References">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../week_notes.html">Weekly notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../assignments.html">Weekly assignments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../quizzes.html">Quizzes</a></li>
@@ -135,6 +161,8 @@
   <ul class="wy-breadcrumbs">
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../notebook_toc.html">Numeric notebooks</a> &raquo;</li>
         
       <li>Laboratory 10: Numerical Advection Schemes</li>
     
@@ -380,17 +408,7 @@ div.rendered_html tbody tr:hover {
 <div class="section" id="Laboratory-10:-Numerical-Advection-Schemes">
 <h1>Laboratory 10: Numerical Advection Schemes<a class="headerlink" href="#Laboratory-10:-Numerical-Advection-Schemes" title="Permalink to this headline">¶</a></h1>
 <p>Carmen Guo</p>
-<p># Table of Contents</p>
-<div class="toc" style="margin-top: 1em;"><ul class="toc-item" id="toc-level0"><li><p>1  Laboratory 10: Numerical Advection Schemes</p>
-<ul class="toc-item"><li><p>1.1  List of Problems</p>
-</li><li><p>1.2  Advection Process</p>
-</li><li><p>1.3  Simple Solution Using Centred Differencing Scheme</p>
-</li><li><p>1.4  Numerical Solution Using Upstream Method</p>
-</li><li><p>1.5  A Better Solution</p>
-<ul class="toc-item"><li><p>1.5.1  Problem One</p>
-</li></ul></li><li><p>1.6  Conclusion</p>
-</li><li><p>1.7  References</p>
-</li></ul></li></ul></div><div class="section" id="List-of-Problems">
+<div class="section" id="List-of-Problems">
 <h2>List of Problems<a class="headerlink" href="#List-of-Problems" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="#Problem-One">Problem One</a></p></li>
@@ -427,7 +445,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab10_01-lab_10_5_0.png"><img alt="../../_images/doc_notebooks_lab10_01-lab_10_5_0.png" src="../../_images/doc_notebooks_lab10_01-lab_10_5_0.png" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab10_01-lab_10_4_0.png"><img alt="../../_images/doc_notebooks_lab10_01-lab_10_4_0.png" src="../../_images/doc_notebooks_lab10_01-lab_10_4_0.png" style="width: 60%;" /></a>
 </div>
 </div>
 <p><strong>Figure Initial Distribution:</strong> This is the initial distribution of water vapour concentration.</p>
@@ -460,7 +478,7 @@ div.rendered_html tbody tr:hover {
 <div class="math notranslate nohighlight">
 \[c(m, 1) = c(m, 0) - u \frac{dt}{2 dx}(c(m+1, 0) - c(m-1, 0))\]</div>
 <p>where <span class="math notranslate nohighlight">\(m=2, \ldots, 79\)</span>. The end points at <span class="math notranslate nohighlight">\(t= 1 dt\)</span> can be found using the boundary conditions.</p>
-<p>The function that computes the numerical solution using this scheme is in <em>advection_funs.py</em>. It is a python function <em>advection(timesteps)</em>, which takes in the number of time steps as input and plots the distribution curve at 20 time steps.</p>
+<p>The function that computes the numerical solution using this scheme is in <em>numlabs.lab10.advection_funs.py</em>. It is a python function <em>advection(timesteps)</em>, which takes in the number of time steps as input and plots the distribution curve at 20 time steps.</p>
 <p>We can see the problem with this scheme just by running the function with 10 time steps (<a class="reference external" href="#fig:centered">Figure Distribution with Centered Scheme</a>). Following is a plot of the distribution curve at the last time step.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
@@ -476,7 +494,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab10_01-lab_10_9_0.png"><img alt="../../_images/doc_notebooks_lab10_01-lab_10_9_0.png" src="../../_images/doc_notebooks_lab10_01-lab_10_9_0.png" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab10_01-lab_10_8_0.png"><img alt="../../_images/doc_notebooks_lab10_01-lab_10_8_0.png" src="../../_images/doc_notebooks_lab10_01-lab_10_8_0.png" style="width: 60%;" /></a>
 </div>
 </div>
 <p><strong>Figure Distribution with Centered Scheme:</strong> This is the distribution after 10 time steps approximated using the centred differencing scheme.</p>
@@ -496,7 +514,7 @@ Therefore, we will change the centred differencing scheme to backward differenci
 <div class="math notranslate nohighlight">
 \[c(m, n+1)=c(m, n)- u \frac{dt}{dx} (c(m, n) - c(m-1, n))\]</div>
 <p>The boundary conditions and the initial conditions are the same as in the centred differencing scheme. This time we compute <span class="math notranslate nohighlight">\(c\)</span> at <span class="math notranslate nohighlight">\(t= 1 dt\)</span> using backward differences just as with all subsequent time steps.</p>
-<p>The function that computes the solution using this scheme is in <em>advection_funs.py</em>. It is a python function <em>advection2(timesteps)</em>, which takes in the number of time steps as input and plots the distribution curve at 20 time steps.</p>
+<p>The function that computes the solution using this scheme is in <em>numlabs.lab10.advection_funs.py</em>. It is a python function <em>advection2(timesteps)</em>, which takes in the number of time steps as input and plots the distribution curve at 20 time steps.</p>
 <p>Although this scheme is positive definite and conservative (the area under the curve is the same as in the initial state), it introduces a new problem — diffusion. As the time step increases, you can see that the curve becomes wider and lower, <em>i.e.</em>, it diffuses quickly (<a class="reference external" href="#fig:upstream">Figure Upstream Distribution</a>).</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
@@ -512,7 +530,7 @@ Therefore, we will change the centred differencing scheme to backward differenci
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab10_01-lab_10_12_0.png"><img alt="../../_images/doc_notebooks_lab10_01-lab_10_12_0.png" src="../../_images/doc_notebooks_lab10_01-lab_10_12_0.png" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab10_01-lab_10_11_0.png"><img alt="../../_images/doc_notebooks_lab10_01-lab_10_11_0.png" src="../../_images/doc_notebooks_lab10_01-lab_10_11_0.png" style="width: 60%;" /></a>
 </div>
 </div>
 <p><strong>Figure Upstream Distribution:</strong> This is the distribution after 60 time steps approximated using the upstream method.</p>
@@ -548,7 +566,7 @@ Therefore, we will change the centred differencing scheme to backward differenci
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab10_01-lab_10_15_0.png"><img alt="../../_images/doc_notebooks_lab10_01-lab_10_15_0.png" src="../../_images/doc_notebooks_lab10_01-lab_10_15_0.png" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab10_01-lab_10_14_0.png"><img alt="../../_images/doc_notebooks_lab10_01-lab_10_14_0.png" src="../../_images/doc_notebooks_lab10_01-lab_10_14_0.png" style="width: 60%;" /></a>
 </div>
 </div>
 <p><strong>Figure Amount Leaving Grid:</strong> After <span class="math notranslate nohighlight">\(dt\)</span>, the shaded area will be past the right boundary of the grid box <span class="math notranslate nohighlight">\(j\)</span>.</p>
@@ -750,7 +768,7 @@ are 2 sets of <span class="math notranslate nohighlight">\(a_{j, k}\)</span> for
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab10_01-lab_10_22_0.png"><img alt="../../_images/doc_notebooks_lab10_01-lab_10_22_0.png" src="../../_images/doc_notebooks_lab10_01-lab_10_22_0.png" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab10_01-lab_10_21_0.png"><img alt="../../_images/doc_notebooks_lab10_01-lab_10_21_0.png" src="../../_images/doc_notebooks_lab10_01-lab_10_21_0.png" style="width: 60%;" /></a>
 </div>
 </div>
 <p><strong>Figure Total in Cell:</strong> The shaded area is equal to <span class="math notranslate nohighlight">\(c_j dx\)</span>, and it is already greater than the total amount of vapour (the area under the curve) in grid box <span class="math notranslate nohighlight">\(j\)</span>. If <span class="math notranslate nohighlight">\(I_{j+1/2} dx &gt; c_j dx\)</span>, then the total outflow <span class="math notranslate nohighlight">\(I_{j+1/2} dx\)</span> would be greater than the amount of vapour in the grid box, and the amount of vapour will be negative at the next time step, thus violating the positive definiteness requirement.</p>
@@ -780,7 +798,7 @@ are 2 sets of <span class="math notranslate nohighlight">\(a_{j, k}\)</span> for
 <div class="math notranslate nohighlight">
 \[i_{l, j} = \hbox{max}(I_{l, j}, i_{l, j+1/2} + \epsilon)\]</div>
 <p>where <span class="math notranslate nohighlight">\(l\)</span> is the order of the polynomial we use to interpolate <span class="math notranslate nohighlight">\(c\)</span> in each grid box.</p>
-<p>An example function for this scheme is in <em>advection_funs.py</em>. The python function <em>advection3(timesteps, order)</em> takes in 2 arguments, the first is the number of time steps to be computed, the second is the order of the polynomial for the approximation of <span class="math notranslate nohighlight">\(c\)</span> within each grid box. It plots the curve at 20 time steps. Students should try it out and compare this scheme with the previous two.</p>
+<p>An example function for this scheme is in <em>numlabs.lab10.advection_funs.py</em>. The python function <em>advection3(timesteps, order)</em> takes in 2 arguments, the first is the number of time steps to be computed, the second is the order of the polynomial for the approximation of <span class="math notranslate nohighlight">\(c\)</span> within each grid box. It plots the curve at 20 time steps. Students should try it out and compare this scheme with the previous two.</p>
 <div class="section" id="Problem-One">
 <h3>Problem One<a class="headerlink" href="#Problem-One" title="Permalink to this headline">¶</a></h3>
 <p>Using the scheme presented in this section, modify <em>advection3.py</em> to solve the following advection problem: The wind is moving along the x-axis with speed <span class="math notranslate nohighlight">\(u=20 \hbox{ m/s}\)</span>. The initial distribution curve is <span class="math notranslate nohighlight">\(290 \hbox{ km}\)</span> in width. Use your program to approximate the curve during 24 hours.</p>
@@ -818,6 +836,15 @@ scheme presented here solves this problem by using higher order polynomials to a
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../week_notes.html" class="btn btn-neutral float-right" title="Weekly notes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../lab9/fft_2d.html" class="btn btn-neutral float-left" title="Lab 9 – 2d fft" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

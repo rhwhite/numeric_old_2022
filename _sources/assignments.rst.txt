@@ -29,3 +29,34 @@ Assignment details
   
 * Projects `projects.pdf <pdfs/projects.pdf>`_
 
+Optional lab summary for grad students
+======================================
+
+ODE’s and FFT’s
+~~~~~~~~~~~~~~~
+
+-  Rest of Lab 5
+
+-  Lab 6
+
+-  Lab 9 (FFT’s)
+
+PDE’s
+~~~~~
+
+-  End of Lab 7
+
+-  Lab 8
+
+-  Lab 10
+
+Smattering of ODE's and PDE's
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Rest of Lab 5
+
+-  Lab 6
+
+- Rest of Lab 7
+
+-  Lab 10

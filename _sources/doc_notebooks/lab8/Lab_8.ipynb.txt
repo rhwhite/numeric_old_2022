@@ -4,8 +4,8 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# Laboratory 8:  Solution of the Quasi-geostrophic Equations using an Implicit Scheme #\n",
-    "## Lin Yang & John M. Stockie ##\n"
+    "# Laboratory 8:  Quasi-geostrophic Equations \n",
+    "Lin Yang & John M. Stockie \n"
    ]
   },
   {
@@ -108,23 +108,24 @@
   {
    "cell_type": "code",
    "execution_count": 1,
-   "metadata": {
-    "collapsed": false
-   },
+   "metadata": {},
    "outputs": [
     {
-     "ename": "ModuleNotFoundError",
-     "evalue": "No module named 'numlabs'",
-     "output_type": "error",
-     "traceback": [
-      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
-      "\u001b[0;31mModuleNotFoundError\u001b[0m                       Traceback (most recent call last)",
-      "\u001b[0;32m<ipython-input-1-2dedd0769336>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[1;32m      1\u001b[0m \u001b[0;32mfrom\u001b[0m \u001b[0mIPython\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mdisplay\u001b[0m \u001b[0;32mimport\u001b[0m \u001b[0mImage\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      2\u001b[0m \u001b[0;31m# import the quiz script\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 3\u001b[0;31m \u001b[0;32mfrom\u001b[0m \u001b[0mnumlabs\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mlab8\u001b[0m \u001b[0;32mimport\u001b[0m \u001b[0mquiz8\u001b[0m \u001b[0;32mas\u001b[0m \u001b[0mquiz\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
-      "\u001b[0;31mModuleNotFoundError\u001b[0m: No module named 'numlabs'"
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "******************************\n",
+      "context imported. Front of path:\n",
+      "/Users/phil/repos/numeric\n",
+      "back of path: /Users/phil/.ipython\n",
+      "******************************\n",
+      "\n",
+      "through /Users/phil/repos/numeric/notebooks/lab8/context.py\n"
      ]
     }
    ],
    "source": [
+    "import context\n",
     "from IPython.display import Image\n",
     "# import the quiz script\n",
     "from numlabs.lab8 import quiz8 as quiz"
@@ -179,9 +180,7 @@
   {
    "cell_type": "code",
    "execution_count": 2,
-   "metadata": {
-    "collapsed": false
-   },
+   "metadata": {},
    "outputs": [
     {
      "data": {
@@ -544,7 +543,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# 5.1 Spatial Discretization #\n",
+    "### 5.1 Spatial Discretization #\n",
     "\n",
     "Assume that we are dealing with a square ocean, with dimensions\n",
     "$1\\times 1$ (in non-dimensional coordinates) and begin by dividing the\n",
@@ -563,9 +562,7 @@
   {
    "cell_type": "code",
    "execution_count": 3,
-   "metadata": {
-    "collapsed": false
-   },
+   "metadata": {},
    "outputs": [
     {
      "data": {
@@ -630,9 +627,7 @@
   {
    "cell_type": "code",
    "execution_count": 4,
-   "metadata": {
-    "collapsed": false
-   },
+   "metadata": {},
    "outputs": [
     {
      "data": {
@@ -682,9 +677,7 @@
   {
    "cell_type": "code",
    "execution_count": 5,
-   "metadata": {
-    "collapsed": false
-   },
+   "metadata": {},
    "outputs": [
     {
      "data": {
@@ -777,9 +770,7 @@
   {
    "cell_type": "code",
    "execution_count": 6,
-   "metadata": {
-    "collapsed": false
-   },
+   "metadata": {},
    "outputs": [
     {
      "data": {
@@ -901,19 +892,13 @@
   {
    "cell_type": "code",
    "execution_count": 7,
-   "metadata": {
-    "collapsed": false
-   },
+   "metadata": {},
    "outputs": [
     {
-     "ename": "NameError",
-     "evalue": "name 'quiz' is not defined",
-     "output_type": "error",
-     "traceback": [
-      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
-      "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
-      "\u001b[0;32m<ipython-input-7-d668670ba9e9>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mprint\u001b[0m \u001b[0;34m(\u001b[0m\u001b[0mquiz\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mjacobian_2\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0manswer\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0;34m'x'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
-      "\u001b[0;31mNameError\u001b[0m: name 'quiz' is not defined"
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Acceptable answers are 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'Hint'\n"
      ]
     }
    ],
@@ -954,19 +939,13 @@
   {
    "cell_type": "code",
    "execution_count": 8,
-   "metadata": {
-    "collapsed": false
-   },
+   "metadata": {},
    "outputs": [
     {
-     "ename": "NameError",
-     "evalue": "name 'quiz' is not defined",
-     "output_type": "error",
-     "traceback": [
-      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
-      "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
-      "\u001b[0;32m<ipython-input-8-f14eb5fd8531>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mprint\u001b[0m \u001b[0;34m(\u001b[0m\u001b[0mquiz\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mjacobian_3\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0manswer\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0;34m'x'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
-      "\u001b[0;31mNameError\u001b[0m: name 'quiz' is not defined"
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Acceptable answers are 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'Hint'\n"
      ]
     }
    ],
@@ -1012,9 +991,7 @@
   {
    "cell_type": "code",
    "execution_count": 9,
-   "metadata": {
-    "collapsed": false
-   },
+   "metadata": {},
    "outputs": [
     {
      "data": {
@@ -1094,9 +1071,7 @@
   {
    "cell_type": "code",
    "execution_count": 10,
-   "metadata": {
-    "collapsed": false
-   },
+   "metadata": {},
    "outputs": [
     {
      "data": {
@@ -1176,9 +1151,7 @@
   {
    "cell_type": "code",
    "execution_count": 11,
-   "metadata": {
-    "collapsed": false
-   },
+   "metadata": {},
    "outputs": [
     {
      "data": {
@@ -1436,9 +1409,7 @@
   {
    "cell_type": "code",
    "execution_count": 12,
-   "metadata": {
-    "collapsed": false
-   },
+   "metadata": {},
    "outputs": [
     {
      "data": {
@@ -1819,9 +1790,7 @@
   {
    "cell_type": "code",
    "execution_count": 13,
-   "metadata": {
-    "collapsed": false
-   },
+   "metadata": {},
    "outputs": [
     {
      "data": {
@@ -1876,9 +1845,7 @@
   {
    "cell_type": "code",
    "execution_count": 14,
-   "metadata": {
-    "collapsed": false
-   },
+   "metadata": {},
    "outputs": [
     {
      "data": {
@@ -2161,15 +2128,14 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
+   "metadata": {},
    "outputs": [],
    "source": []
   }
  ],
  "metadata": {
   "jupytext": {
+   "cell_metadata_filter": "all",
    "encoding": "# -*- coding: utf-8 -*-",
    "formats": "ipynb,py:percent",
    "notebook_metadata_filter": "all,-language_info,-toc,-latex_envs"
@@ -2190,6 +2156,36 @@
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
    "version": "3.7.6"
+  },
+  "latex_envs": {
+   "LaTeX_envs_menu_present": true,
+   "autoclose": false,
+   "autocomplete": true,
+   "bibliofile": "biblio.bib",
+   "cite_by": "apalike",
+   "current_citInitial": 1,
+   "eqLabelWithNumbers": true,
+   "eqNumInitial": 1,
+   "hotkeys": {
+    "equation": "meta-9"
+   },
+   "labels_anchors": false,
+   "latex_user_defs": false,
+   "report_style_numbering": false,
+   "user_envs_cfg": false
+  },
+  "toc": {
+   "base_numbering": 1,
+   "nav_menu": {},
+   "number_sections": false,
+   "sideBar": true,
+   "skip_h1_title": true,
+   "title_cell": "Table of Contents",
+   "title_sidebar": "Contents",
+   "toc_cell": false,
+   "toc_position": {},
+   "toc_section_display": true,
+   "toc_window_display": true
   }
  },
  "nbformat": 4,
