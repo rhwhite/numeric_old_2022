@@ -1,3 +1,5 @@
+.. _weeknotes:
+
 Weekly notes
 ++++++++++++
 

@@ -16,4 +16,6 @@ Assignment details
 * :ref:`mini2`
   
 * Lab 7a `Lab 7a <./lab7.rst>`_
-  
+
+* Projects `projects.pdf <pdfs/projects.pdf>`_
+

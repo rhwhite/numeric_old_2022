@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Contents &mdash; Numeric course 0.1 documentation</title>
+  <title>Lab 6: The Lorentz equations &mdash; Numeric course 0.1 documentation</title>
   
 
   
@@ -37,7 +37,9 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Laboratory 7: Solving partial differential equations using an explicit, finite difference method." href="../lab7/01-lab7.html" />
+    <link rel="prev" title="Lab 5: Daisyworld" href="../lab5/01-lab5.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -81,13 +83,44 @@
               
             
             
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../course_bootstrap.html">Getting started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ugradsyllabus20.html">Undergrad Syllabus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../gradsyllabus20.html">Grad Syllabus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../schedule20.html">Detailed Schedule</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../texts.html">Optional texts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../notebook_toc.html">Course/lab descriptions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../notebook_toc.html">Course/lab descriptions</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../lab1/01-lab1.html">  Lab 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab2/01-lab2.html">  Lab 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab3/01-lab3.html">  Lab 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab4/01-lab4.html">  Lab 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab5/01-lab5.html">  Lab 5</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">  Lab 6</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#List-of-Problems">List of Problems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Objectives">Objectives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Readings">Readings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Using-the-Integrator-class">Using the Integrator class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#The-Lorenz-Equations">The Lorenz Equations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Boundedness-of-the-Solution">Boundedness of the Solution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Steady-States">Steady States</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Linearization-about-the-Steady-States">Linearization about the Steady States</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Stability-of-the-Linearized-Problem">Stability of the Linearized Problem</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Numerical-Integration">Numerical Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Other-Chaotic-Systems">Other Chaotic Systems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Summary">Summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#A.-Mathematical-Notes">A. Mathematical Notes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#A.1-The-Lorenzian-Water-Wheel-Model">A.1 The Lorenzian Water Wheel Model</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#B.-References">B. References</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lab7/01-lab7.html">  Lab 7</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../week_notes.html">Weekly notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../assignments.html">Weekly assignments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../quizzes.html">Quizzes</a></li>
@@ -136,7 +169,9 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-      <li>Contents</li>
+          <li><a href="../../notebook_toc.html">Numeric notebooks</a> &raquo;</li>
+        
+      <li>Lab 6: The Lorentz equations</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -377,67 +412,23 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<h1><p>Table of Contents</p>
-</h1><div class="toc" style="margin-top: 1em;"><ul class="toc-item"><li><p>1  Contents</p>
-</li><li><p>2  List of Problems</p>
-</li><li><p>3  1. Objectives</p>
-</li><li><p>4  2. Readings</p>
-</li><li><p>5  3. Introduction</p>
-<ul class="toc-item"><li><p>5.1  3.1 Using the Integrator class</p>
-</li></ul></li><li><p>6  4. The Lorenz Equations</p>
-<ul class="toc-item"><li><p>6.1  4.1 Boundedness of the Solution</p>
-</li><li><p>6.2  4.2 Steady States</p>
-</li><li><p>6.3  4.3 Linearization about the Steady States</p>
-</li><li><p>6.4  4.4 Stability of the Linearized Problem</p>
-</li></ul></li><li><p>7  5. Numerical Integration</p>
-<ul class="toc-item"><li><p>7.1  5.1 Other Chaotic Systems</p>
-</li></ul></li><li><p>8  6. Summary</p>
-</li><li><p>9  A. Mathematical Notes</p>
-<ul class="toc-item"><li><p>9.1  A.1 The Lorenzian Water Wheel Model</p>
-</li></ul></li><li><p>10  B. References</p>
-</li></ul></div><div class="section" id="Contents">
-<h1>Contents<a class="headerlink" href="#Contents" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><p><a class="reference external" href="#sec_objectives">1. Objectives</a></p></li>
-<li><p><a class="reference external" href="#sec_readings">2. Readings</a></p></li>
-<li><p><a class="reference external" href="#sec_introduction">3. Introduction</a></p>
-<ul>
-<li><p><a class="reference external" href="#sec_using">3.1 Using the integrator class</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="#sec_lorenz">4. The Lorenz Equations</a></p>
-<ul>
-<li><p><a class="reference external" href="#sec_boundedness">4.1 Boundedness of the Solutions</a></p></li>
-<li><p><a class="reference external" href="#sec_steady">4.2 Steady States</a></p></li>
-<li><p><a class="reference external" href="#sec_linearization">4.3 Linearization of the steady states</a></p></li>
-<li><p><a class="reference external" href="#sec_stability">4.4 Stability of the linearized problem</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="#sec_numerical">5. Numerical Integration</a></p>
-<ul>
-<li><p><a class="reference external" href="#sec_other">5.1 Other chaotic systems</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="#sec_summary">6. Summary</a></p></li>
-<li><p><a class="reference external" href="#sec_mathematical">A. Mathematical Notes</a></p>
-<ul>
-<li><p><a class="reference external" href="#sec_lorenzian">A.1 The Lorenzian water wheel model</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="#sec_references">B. References</a></p></li>
-</ul>
-</div>
+<div class="section" id="Lab-6:-The-Lorentz-equations">
+<h1>Lab 6: The Lorentz equations<a class="headerlink" href="#Lab-6:-The-Lorentz-equations" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="List-of-Problems">
-<h1>List of Problems<a class="headerlink" href="#List-of-Problems" title="Permalink to this headline">¶</a></h1>
+<h2>List of Problems<a class="headerlink" href="#List-of-Problems" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="#prob_experiment">Problem Experiment: Investigation of the behaviour of solutions</a></p>
 <p><a class="reference external" href="#prob_steady-states">Problem Steady-states: Find the stationary points of the Lorenz system</a></p>
 <p><a class="reference external" href="#prob_eigenvalues">Problem Eigenvalues: Find the eigenvalues of the stationary point (0,0,0)</a></p>
 <p><a class="reference external" href="#prob_stability">Problem Stability: Discuss the effect of r on the stability of the solution</a></p>
 <p><a class="reference external" href="#prob_adaptive">Problem Adaptive: Adaptive time-stepping for the Lorenz equations</a></p>
 <p><a class="reference external" href="#prob_sensitivity">Problem Sensitivity: Sensitivity to initial conditions</a></p>
-<!-- {#lab6:sec:objectives} --><p># 1. Objectives</p>
+<!-- {#lab6:sec:objectives} --><div id="sec_objectives"></div></div>
+<div class="section" id="Objectives">
+<h2>Objectives<a class="headerlink" href="#Objectives" title="Permalink to this headline">¶</a></h2>
 <p>In this lab, you will investigate the transition to chaos in the Lorenz equations – a system of non-linear ordinary differential equations. Using interactive examples, and analytical and numerical techniques, you will determine the stability of the solutions to the system, and discover a rich variety in their behaviour. You will program both an adaptive and non-adaptive Runge-Kuttan code for the problem, and determine the relative merits of each.</p>
-<p># 2. Readings</p>
+<div id="sec_readings"></div></div>
+<div class="section" id="Readings">
+<h2>Readings<a class="headerlink" href="#Readings" title="Permalink to this headline">¶</a></h2>
 <p>There is no required reading for this lab, beyond the contents of the lab itself. Nevertheless, the original 1963 paper by Lorenz  is worthwhile reading from a historical standpoint.</p>
 <p>If you would like additional background on any of the following topics, then refer to Appendix B for the following:</p>
 <ul class="simple">
@@ -454,7 +445,9 @@ div.rendered_html tbody tr:hover {
 </ul>
 </li>
 </ul>
-<!-- {#lab6:sec:intro} --><p># 3. Introduction</p>
+<!-- {#lab6:sec:intro} --><div id="sec_introduction"></div></div>
+<div class="section" id="Introduction">
+<h2>Introduction<a class="headerlink" href="#Introduction" title="Permalink to this headline">¶</a></h2>
 <p>For many people working in the physical sciences, the <em>butterfly effect</em> is a well-known phrase. But even if you are unacquainted with the term, its consequences are something you are intimately familiar with. Edward Lorenz investigated the feasibility of performing accurate, long-term weather forecasts, and came to the conclusion that <em>even something as seemingly insignificant as the flap of a butterfly’s wings can have an influence on the weather on the other side of the globe</em>. This implies
 that global climate modelers must take into account even the tiniest of variations in weather conditions in order to have even a hope of being accurate. Some of the models used today in weather forecasting have up to <em>a million unknown variables!</em></p>
 <p>With the advent of modern computers, many people believed that accurate predictions of systems as complicated as the global weather were possible. Lorenz’ studies (Lorenz, 1963), both analytical and numerical, were concerned with simplified models for the flow of air in the atmosphere. He found that even for systems with considerably fewer variables than the weather, the long-term behaviour of solutions is intrinsically unpredictable. He found that this type of non-periodic, or <em>chaotic</em>
@@ -491,17 +484,20 @@ evolution of a system described by three time-dependent state variables, <span c
     allowfullscreen
 ></iframe></div>
 </div>
-<div class="section" id="3.1-Using-the-Integrator-class">
-<h2>3.1 Using the Integrator class<a class="headerlink" href="#3.1-Using-the-Integrator-class" title="Permalink to this headline">¶</a></h2>
+<div id="sec_using"></div></div>
+<div class="section" id="Using-the-Integrator-class">
+<h2>Using the Integrator class<a class="headerlink" href="#Using-the-Integrator-class" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/phaustin/numeric/blob/lab6/lab6/lorenz_ode.py">lorenz_ode.py</a> uses the odeint package from scipy. That’s fine if we are happy with a black box, but we can also use the Integrator class from lab 5. Here is the sub-class Integrator61 that is specified for the Lorenz equations:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">numlabs.lab5.lab5_funs</span> <span class="kn">import</span> <span class="n">Integrator</span>
+<span></span><span class="kn">import</span> <span class="nn">context</span>
+<span class="kn">from</span> <span class="nn">numlabs.lab5.lab5_funs</span> <span class="kn">import</span> <span class="n">Integrator</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
 
 
 <span class="k">class</span> <span class="nc">Integ61</span><span class="p">(</span><span class="n">Integrator</span><span class="p">):</span>
@@ -553,19 +549,16 @@ evolution of a system described by three time-dependent state variables, <span c
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-2-9f455f5a3df1&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span><span class="ansi-green-fg">from</span> numlabs<span class="ansi-blue-fg">.</span>lab5<span class="ansi-blue-fg">.</span>lab5_funs <span class="ansi-green-fg">import</span> Integrator
-<span class="ansi-green-intense-fg ansi-bold">      2</span> <span class="ansi-green-fg">from</span> collections <span class="ansi-green-fg">import</span> namedtuple
-<span class="ansi-green-intense-fg ansi-bold">      3</span> <span class="ansi-green-fg">import</span> numpy <span class="ansi-green-fg">as</span> np
-<span class="ansi-green-intense-fg ansi-bold">      4</span>
-<span class="ansi-green-intense-fg ansi-bold">      5</span>
+******************************
+context imported. Front of path:
+/Users/phil/repos/numeric
+back of path: /Users/phil/.ipython
+******************************
 
-<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;numlabs&#39;
+through /Users/phil/repos/numeric/notebooks/lab6/context.py
 </pre></div></div>
 </div>
-<p>The main difference with daisyworld is that I’ve changed the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> function to take optional arguments to take initvars, uservars and timevars, to give us more flexibility in overriding the default configuration specified in <a class="reference external" href="https://github.com/phaustin/numeric/blob/lab6/lab6/lorenz.yaml">lorenz.yaml</a></p>
+<p>The main difference with daisyworld is that I’ve changed the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> function to take optional arguments to take initvars, uservars and timevars, to give us more flexibility in overriding the default configuration specified in <a class="reference external" href="./lorenz.yaml">lorenz.yaml</a></p>
 <p>I also want to be able to plot the trajectories in 3d, which means that I need the Axes3D class from matplotlib. I’ve written a convenience function called plot_3d that sets start and stop points and the viewing angle:</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
@@ -639,21 +632,11 @@ and for the fact that it is a visualization of solutions that exhibit the “but
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-4-f595c88e93c9&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">     10</span> <span class="ansi-red-fg"># the Integ61 constructor using dictionary expansion</span>
-<span class="ansi-green-intense-fg ansi-bold">     11</span> <span class="ansi-red-fg">#</span>
-<span class="ansi-green-fg">---&gt; 12</span><span class="ansi-red-fg"> </span>theSolver <span class="ansi-blue-fg">=</span> Integ61<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;lorenz.yaml&#39;</span><span class="ansi-blue-fg">,</span><span class="ansi-blue-fg">**</span>params<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">     13</span> timevals<span class="ansi-blue-fg">,</span> coords<span class="ansi-blue-fg">,</span> errorlist <span class="ansi-blue-fg">=</span> theSolver<span class="ansi-blue-fg">.</span>timeloop5fixed<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">     14</span> xvals<span class="ansi-blue-fg">,</span>yvals<span class="ansi-blue-fg">,</span>zvals<span class="ansi-blue-fg">=</span>coords<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">:</span><span class="ansi-blue-fg">,</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">,</span>coords<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">:</span><span class="ansi-blue-fg">,</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">,</span>coords<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">:</span><span class="ansi-blue-fg">,</span><span class="ansi-cyan-fg">2</span><span class="ansi-blue-fg">]</span>
-
-<span class="ansi-red-fg">NameError</span>: name &#39;Integ61&#39; is not defined
-</pre></div></div>
+<img alt="../../_images/doc_notebooks_lab6_lab6_11_0.png" src="../../_images/doc_notebooks_lab6_lab6_11_0.png" />
+</div>
 </div>
 <!-- ="lab6:fig:fixed-plot" --><p>A plot of the solution to the Lorenz equations as an orbit in phase space. Parameters: <span class="math notranslate nohighlight">\(\sigma=10\)</span>, <span class="math notranslate nohighlight">\(\beta=\frac{8}{3}\)</span>, <span class="math notranslate nohighlight">\(\rho=28\)</span>; initial values: <span class="math notranslate nohighlight">\((x,y,z)=(5,5,5)\)</span>.</p>
-<div class="nbinput docutils container">
+<div id="fig_xyz-vs-t"></div><div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
@@ -667,28 +650,11 @@ and for the fact that it is a visualization of solutions that exhibit the “but
 </pre></div>
 </div>
 </div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-5-1255c585f695&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> fig<span class="ansi-blue-fg">,</span>ax <span class="ansi-blue-fg">=</span> plt<span class="ansi-blue-fg">.</span>subplots<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">,</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">,</span>figsize<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">8</span><span class="ansi-blue-fg">,</span><span class="ansi-cyan-fg">6</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg"> </span>ax<span class="ansi-blue-fg">.</span>plot<span class="ansi-blue-fg">(</span>timevals<span class="ansi-blue-fg">,</span>xvals<span class="ansi-blue-fg">,</span>label<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#39;x&#39;</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      3</span> ax<span class="ansi-blue-fg">.</span>plot<span class="ansi-blue-fg">(</span>timevals<span class="ansi-blue-fg">,</span>yvals<span class="ansi-blue-fg">,</span>label<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#39;y&#39;</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      4</span> ax<span class="ansi-blue-fg">.</span>plot<span class="ansi-blue-fg">(</span>timevals<span class="ansi-blue-fg">,</span>zvals<span class="ansi-blue-fg">,</span>label<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#39;z&#39;</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      5</span> ax<span class="ansi-blue-fg">.</span>set<span class="ansi-blue-fg">(</span>title<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#39;x, y, z for trajectory&#39;</span><span class="ansi-blue-fg">,</span>xlabel<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#39;time&#39;</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">NameError</span>: name &#39;timevals&#39; is not defined
-</pre></div></div>
-</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/doc_notebooks_lab6_lab6_14_1.png" src="../../_images/doc_notebooks_lab6_lab6_14_1.png" />
+<img alt="../../_images/doc_notebooks_lab6_lab6_14_0.png" src="../../_images/doc_notebooks_lab6_lab6_14_0.png" />
 </div>
 </div>
 <!-- data-label="lab6:fig:xyz-vs-t"> --><p><strong>Figure xyz-vs-t</strong>: A plot of the solution to the Lorenz equations versus time. Parameters: <span class="math notranslate nohighlight">\(\sigma=10\)</span>, <span class="math notranslate nohighlight">\(\beta=\frac{8}{3}\)</span>, <span class="math notranslate nohighlight">\(\rho=28\)</span>; initial values: <span class="math notranslate nohighlight">\((x,y,z)=(5,5,5)\)</span>.</p>
@@ -700,9 +666,11 @@ In fact, there are several very important characteristics of the solution to the
 <li><p>The resulting solution depends very heavily on the given initial conditions. Even a very tiny change in one of the initial values can lead to a solution which follows a totally different trajectory, if the system is integrated over a long enough time interval.</p></li>
 <li><p>The solution is irregular or <em>chaotic</em>, meaning that it is impossible, based on parameter values and initial conditions (which may contain small measurement errors), to predict the solution at any future time.</p></li>
 </ol>
-<!-- {#lab6:sec:equations} --><p># 4. The Lorenz Equations</p>
+<!-- {#lab6:sec:equations} --><div id="sec_lorenz"></div></div>
+<div class="section" id="The-Lorenz-Equations">
+<h2>The Lorenz Equations<a class="headerlink" href="#The-Lorenz-Equations" title="Permalink to this headline">¶</a></h2>
 <p>As mentioned in the previous section, the equations we will be considering in this lab model an idealized hydrodynamical system: two-dimensional convection in a tank of water which is heated at the bottom (as pictured in <a class="reference external" href="#fig_convection">Figure Convection</a> below).</p>
-<div class="nbinput docutils container">
+<div id="fig_convection"></div><div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
@@ -722,7 +690,7 @@ In fact, there are several very important characteristics of the solution to the
 </div>
 <p><strong>Figure Convection</strong> Lorenz studied the flow of fluid in a tank heated at the bottom, which results in “convection rolls”, where the warm fluid rises, and the cold fluid is drops to the bottom.</p>
 <p>Lorenz wrote the equations in the form</p>
-<!-- \label{lab6:eq:lorenz} --><div class="math notranslate nohighlight">
+<!-- \label{lab6:eq:lorenz} --><div id="eq_lorenz"></div><div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
   \frac{dx}{dt} &amp;=&amp; \sigma(y-x)  \\
   \frac{dy}{dt} &amp;=&amp; \rho x-y-xz  \\
@@ -742,7 +710,7 @@ In fact, there are several very important characteristics of the solution to the
 <p><strong>Mathematical Note</strong>: This system of equations is derived by Saltzman (1962) for the thermal convection problem. However, the same equations (<a class="reference external" href="#eq_lorenz">eq:lorenz</a>) arise in other physical systems as well. One example is the whose advantage over the original derivation by Saltzman (which is also used in Lorenz’ 1963 paper ) is that the system of ODEs is obtained <em>directly from the physics</em>, rather than as an approximation to a partial differential equation.</p>
 <p>Remember from Section [lab6:sec:intro] that the Lorenz equations exhibit nonperiodic solutions which behave in a chaotic manner. Using analytical techniques, it is actually possible to make some qualitative predictions about the behaviour of the solution before doing any computations. However, before we move on to a discussion of the stability of the problem in Section [lab6:sec:stability], you should do the following exercise, which will give you a hands-on introduction to the behaviour of
 solutions to the Lorenz equations.</p>
-<p><a class="reference external" href="#prob_experiment">Problem Experiment</a> Lorenz’ results are based on the following values of the physical parameters taken from Saltzman’s paper (Saltzman, 1962):</p>
+<div id="prob_experiment"></div><p><a class="reference external" href="#prob_experiment">Problem Experiment</a> Lorenz’ results are based on the following values of the physical parameters taken from Saltzman’s paper (Saltzman, 1962):</p>
 <div class="math notranslate nohighlight">
 \[\sigma=10 \quad \mathrm{and} \quad b=\frac{8}{3}.\]</div>
 <p>As you will see in <a class="reference external" href="#sec_stability">Section stability</a>, there is a <em>critical value of the parameter :math:`rho`</em>, <span class="math notranslate nohighlight">\(\rho^\ast=470/19\approx 24.74\)</span> (for these values of <span class="math notranslate nohighlight">\(\sigma\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span>); it is <em>critical</em> in the sense that for any value of <span class="math notranslate nohighlight">\(\rho&gt;\rho^\ast\)</span>, the flow is unstable.</p>
@@ -759,9 +727,9 @@ solutions to the Lorenz equations.</p>
 </ol>
 <p>Now, we’re ready to find out why the solution behaves as it does. In <a class="reference external" href="#sec_introduction">Section Intro</a>, you were told about four properties of solutions to the Lorenz equations that are also exhibited by the atmosphere, and in the problem you just worked though, you saw that these were also exhibited by solutions to the Lorenz equations. In the remainder of this section, you will see mathematical reasons for two of those characteristics, namely the boundedness and stability (or instability)
 of solutions.</p>
-</div>
-<div class="section" id="4.1-Boundedness-of-the-Solution">
-<h2>4.1 Boundedness of the Solution<a class="headerlink" href="#4.1-Boundedness-of-the-Solution" title="Permalink to this headline">¶</a></h2>
+<div id="sec_boundedness"></div></div>
+<div class="section" id="Boundedness-of-the-Solution">
+<h2>Boundedness of the Solution<a class="headerlink" href="#Boundedness-of-the-Solution" title="Permalink to this headline">¶</a></h2>
 <p>The easiest way to see that the solution is bounded in time is by looking at the motion of the solution in phase space, <span class="math notranslate nohighlight">\((x,y,z)\)</span>, as the flow of a fluid, with velocity <span class="math notranslate nohighlight">\((\dot{x}, \dot{y}, \dot{z})\)</span> (the “dot” is used to represent a time derivative, in order to simplify notation in what follows). The <em>divergence of this flow</em> is given by</p>
 <div class="math notranslate nohighlight">
 \[\frac{\partial \dot{x}}{\partial x} +
@@ -775,13 +743,15 @@ of solutions.</p>
 <p>Since <span class="math notranslate nohighlight">\(\sigma\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are both positive, real constants, the divergence is a negative number, which is always less than <span class="math notranslate nohighlight">\(-1\)</span>. Therefore, each small volume shrinks to zero as the time <span class="math notranslate nohighlight">\(t\rightarrow\infty\)</span>, at a rate which is independent of <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(z\)</span>. The consequence for the solution, <span class="math notranslate nohighlight">\((x,y,z)\)</span>, is that every trajectory in phase space is eventually confined to a region of zero volume. As you saw in <a class="reference external" href="#prob_experiment">Problem experiment</a>,
 this region, or <em>attractor</em>, need not be a point – in fact, the two wings of the “butterfly diagram” are a surface with zero volume.</p>
 <p>The most important consequence of the solution being bounded is that none of the physical variables, <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span>, or <span class="math notranslate nohighlight">\(z\)</span> “blows up.” Consequently, we can expect that the solution will remain with physically reasonable limits.</p>
-<!-- {#lab6:sec:steady-states} --><p>## 4.2 Steady States</p>
+<!-- {#lab6:sec:steady-states} --><div id="sec_steady"></div></div>
+<div class="section" id="Steady-States">
+<h2>Steady States<a class="headerlink" href="#Steady-States" title="Permalink to this headline">¶</a></h2>
 <p>A <em>steady state</em> of a system is a point in phase space from which the system will not change in time, once that state has been reached. In other words, it is a point, <span class="math notranslate nohighlight">\((x,y,z)\)</span>, such that the solution does not change, or where</p>
 <div class="math notranslate nohighlight">
-\[\frac{dx}{dt} = 0  \quad \mathrm{and} \quad \frac{dy}{dt} = 0 \quad
-  \mathrm{and} \quad \frac{dz}{dt} = 0.\]</div>
+\[\frac{dx}{dt} = 0  \quad\  \mathrm{and}\ \quad \frac{dy}{dt} = 0 \quad
+  \ \mathrm{and}\ \quad \frac{dz}{dt} = 0.\]</div>
 <p>This point is usually referred to as a <em>stationary point</em> of the system.</p>
-<p><a class="reference external" href="#prob_steady-states">Problem steady-states</a> Set the time derivatives equal to zero in the Lorenz equations (<a class="reference external" href="#eq_lorenz">eq:lorenz</a>), and solve the resulting system to show that there are three possible steady states, namely the points</p>
+<div id="prob_steady-states"></div><p><a class="reference external" href="#prob_steady-states">Problem steady-states</a> Set the time derivatives equal to zero in the Lorenz equations (<a class="reference external" href="#eq_lorenz">eq:lorenz</a>), and solve the resulting system to show that there are three possible steady states, namely the points</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\((0,0,0)\)</span>,</p></li>
 <li><p><span class="math notranslate nohighlight">\((\sqrt{\beta(\rho-1)},\sqrt{\beta(\rho -1)},\rho -1)\)</span>, and</p></li>
@@ -791,7 +761,9 @@ this region, or <em>attractor</em>, need not be a point – in fact, the two win
 <p>While working through <a class="reference external" href="#prob_experiment">Problem experiment</a>, did you notice the change in behaviour of the solution as <span class="math notranslate nohighlight">\(\rho\)</span> passes through the value 1? If not, then go back to the interactive example and try out some values of <span class="math notranslate nohighlight">\(\rho\)</span> both less than and greater than 1 to see how the solution changes.</p>
 <p>A steady state tells us the behaviour of the solution only at a single point. <em>But what happens to the solution if it is perturbed slightly away from a stationary point? Will it return to the stationary point; or will it tend to move away from the point; or will it oscillate about the steady state; or something else … ?</em> All of these questions are related to the long-term, <em>asymptotic</em> behaviour or <em>stability</em> of the solution near a given point. You already should have seen some examples of
 different asymptotic solution behaviour in the Lorenz equations for different parameter values. The next section describes a general method for determining the stability of a solution near a given stationary point.</p>
-<!-- {#lab6:sec:linearization} --><p>## 4.3 Linearization about the Steady States</p>
+<!-- {#lab6:sec:linearization} --><div id="sec_linearization"></div></div>
+<div class="section" id="Linearization-about-the-Steady-States">
+<h2>Linearization about the Steady States<a class="headerlink" href="#Linearization-about-the-Steady-States" title="Permalink to this headline">¶</a></h2>
 <p>The difficult part of doing any theoretical analysis of the Lorenz equations is that they are <em>non-linear</em>. <em>So, why not approximate the non-linear problem by a linear one?</em></p>
 <p>This idea should remind you of what you read about Taylor series in Lab #2. There, we were approximating a function, <span class="math notranslate nohighlight">\(f(x)\)</span>, around a point by expanding the function in a Taylor series, and the first order Taylor approximation was simply a linear function in <span class="math notranslate nohighlight">\(x\)</span>. The approach we will take here is similar, but will get into Taylor series of functions of more than one variable: <span class="math notranslate nohighlight">\(f(x,y,z,\dots)\)</span>.</p>
 <p>The basic idea is to replace the right hand side functions in (<a class="reference external" href="#eq_lorenz">eq:lorenz</a>) with a linear approximation about a stationary point, and then solve the resulting system of <em>linear ODE’s</em>. Hopefully, we can then say something about the non-linear system at values of the solution <em>close to the stationary point</em> (remember that the Taylor series is only accurate close to the point we’re expanding about).</p>
@@ -800,38 +772,26 @@ different asymptotic solution behaviour in the Lorenz equations for different pa
 \[f(x,y,z) \approx f(0,0,0) + f_x(0,0,0) \cdot (x-0) +
 f_y(0,0,0) \cdot (y-0) + f_z(0,0,0) \cdot (z-0).\]</div>
 <p>If we apply this formula to the right hand side function for each of the ODE’s in (<a class="reference external" href="#eq_lorenz">eq: lorenz</a>), then we obtain the following linearized system about <span class="math notranslate nohighlight">\((0,0,0)\)</span>:</p>
-<!-- \label{lab6:eq:lorenz-linear0} --><div class="math notranslate nohighlight">
-\[\begin{split}\begin{aligned}
-  \frac{dx}{dt} &amp;= -\sigma x + \sigma y \\
-  \frac{dy}{dt} &amp;= \rho x-y \ \mathbf{eq:lorenz-linear}  \\
-  \frac{dz}{dt} &amp;= -\beta z
-\end{aligned}\end{split}\]</div>
-<p>(note that each right hand side is now a linear function of <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(z\)</span>). It is helpful to write this system in matrix form as</p>
-<!--   \label{lab6:eq:lorenz-linear0-matrix} --><div class="math notranslate nohighlight">
-\[\begin{split}\begin{aligned}
-  \frac{d}{dt} \left(
-  \begin{array}{c} x \\ y \\ z \end{array} \right)  =
-  \left( \begin{array}{ccc}
-    -\sigma &amp; \sigma &amp; 0 \\
-    \rho &amp; -1 &amp; 0 \\
-    0 &amp; 0 &amp; -\beta
-  \end{array} \right) \;
-      \left(\begin{array}{c} x \\ y \\ z \end{array} \right) \ \mathbf{eq: lorenz-linear-matrix}
-\end{aligned}\end{split}\]</div>
-<p>the reason for this being that the <em>eigenvalues</em> of the matrix give us valuable information about the solution to the linear system. In fact, it is a well-known result from the study of dynamical systems is that if the matrix in (<a class="reference external" href="#eq_lorenz_linear_matrix">eq: lorenz-linear-matrix</a>) has <em>distinct</em> eigenvalues <span class="math notranslate nohighlight">\(\lambda_1\)</span>, <span class="math notranslate nohighlight">\(\lambda_2\)</span> and <span class="math notranslate nohighlight">\(\lambda_3\)</span>, then the solution to this equation is given by</p>
+<!-- \label{lab6:eq:lorenz-linear0} --><div id="eq_lorenz_linear"></div><p>(note that each right hand side is now a linear function of <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(z\)</span>). It is helpful to write this system in matrix form as</p>
+<!--   \label{lab6:eq:lorenz-linear0-matrix} --><div id="eq_lorenz_linear_matrix"></div><p>the reason for this being that the <em>eigenvalues</em> of the matrix give us valuable information about the solution to the linear system. In fact, it is a well-known result from the study of dynamical systems is that if the matrix in (<span class="math">\ref{eq:lorenz_linear_matrix}</span>) has <em>distinct</em> eigenvalues <span class="math notranslate nohighlight">\(\lambda_1\)</span>, <span class="math notranslate nohighlight">\(\lambda_2\)</span> and <span class="math notranslate nohighlight">\(\lambda_3\)</span>, then the solution to this equation is given by</p>
 <!-- \label{lab6:eq:xsolution}$$  --><div class="math notranslate nohighlight">
 \[x(t) = c_1 e^{\lambda_1 t} + c_2 e^{\lambda_2 t} + c_3 e^{\lambda_3 t},\]</div>
 <p>and similarly for the other two solution components, <span class="math notranslate nohighlight">\(y(t)\)</span> and <span class="math notranslate nohighlight">\(z(t)\)</span> (the <span class="math notranslate nohighlight">\(c_i\)</span>’s are constants that are determined by the initial conditions of the problem). This should not seem too surprising, if you think that the solution to the scalar equation <span class="math notranslate nohighlight">\(dx/dt=\lambda x\)</span> is <span class="math notranslate nohighlight">\(x(t) = e^{\lambda t}\)</span>.</p>
-<p><strong>Problem eigenvalues:</strong> Remember from Lab #3 that the eigenvalues of a matrix, <span class="math notranslate nohighlight">\(A\)</span>, are given by the roots of the characteristic equation, <span class="math notranslate nohighlight">\(det(A-\lambda I)=0\)</span>. Determine the characteristic equation of the matrix in (<a class="reference external" href="#eq_lorenz_linear_matrix">eq: lorenz-linear-matrix</a>), and show that the eigenvalues of the linearized problem are</p>
-<!--  \label{lab6:eq:eig0} --><div class="math notranslate nohighlight">
-\[\lambda_1 = -\beta, \quad \mathrm{and} \quad \lambda_2, \lambda_3 =
-    \frac{1}{2} \left( -\sigma - 1 \pm  \sqrt{(\sigma-1)^2 + 4 \sigma \rho}
-    \right).  \ \mathbf{eq: eigen0}\]</div>
+<div id="prob_eigenvalues"></div><p><strong>Problem eigenvalues:</strong> Remember from Lab #3 that the eigenvalues of a matrix, <span class="math notranslate nohighlight">\(A\)</span>, are given by the roots of the characteristic equation, <span class="math notranslate nohighlight">\(det(A-\lambda I)=0\)</span>. Determine the characteristic equation of the matrix in (<span class="math">\ref{eq:lorenz_linear_matrix}</span>), and show that the eigenvalues of the linearized problem are</p>
+<div id="eq_eigen0"></div><p><span class="math">\begin{equation}
+\label{eq:eig0}
+\lambda_1 = -\beta, \quad \mathrm{and} \quad \lambda_2, \lambda_3 =
+\frac{1}{2} \left( -\sigma - 1 \pm  \sqrt{(\sigma-1)^2 + 4 \sigma \rho}
+\right).
+\end{equation}</span></p>
 <p>When <span class="math notranslate nohighlight">\(\rho&gt;1\)</span>, the same linearization process can be applied at the remaining two stationary points, which have eigenvalues that satisfy another characteristic equation:</p>
-<!-- \label{lab6:eq:char12} --><div class="math notranslate nohighlight">
-\[\lambda^3+(\sigma+\beta +1)\lambda^2+(\rho+\sigma)\beta \lambda+2\sigma  \beta(\rho-1)=0.
-\ \mathbf{eq:eigen12}\]</div>
-<!--  {#lab6:sec:stability} --><p>## 4.4 Stability of the Linearized Problem</p>
+<!-- \label{lab6:eq:char12} --><p><span class="math">\begin{equation}
+\label{eq:eig12}
+\lambda^3+(\sigma+\beta +1)\lambda^2+(\rho+\sigma)\beta \lambda+2\sigma  \beta(\rho-1)=0.
+\end{equation}</span></p>
+<p>A reminder that we talked about odes and eigenvalues in the <a class="reference external" href="https://phaustin.github.io/numeric/week_notes.html">Week6 section here</a></p>
+<!--  {#lab6:sec:stability} --><div id="sec_stability"></div><div class="section" id="Stability-of-the-Linearized-Problem">
+<h3>Stability of the Linearized Problem<a class="headerlink" href="#Stability-of-the-Linearized-Problem" title="Permalink to this headline">¶</a></h3>
 <p>Now that we know the eigenvalues of the system around each stationary point, we can write down the solution to the linearized problem. However, it is not the exact form of the linearized solution that we’re interested in, but rather its <em>stability</em>. In fact, the eigenvalues give us all the information we need to know about how the linearized solution behaves in time, and so we’ll only talk about the eigenvalues from now on.</p>
 <p>It is possible that two of the eigenvalues in the characteristic equations above can be complex numbers – <em>what does this mean for the solution?</em> The details are a bit involved, but the important thing to realize is that if <span class="math notranslate nohighlight">\(\lambda_2,\lambda_3=a\pm i\beta\)</span> are complex (remember that complex roots always occur in conjugate pairs) then the solutions can be rearranged so that they are of the form</p>
 <!-- \label{lab6:eq:xsolution2} --><div class="math notranslate nohighlight">
@@ -850,11 +810,11 @@ decay nor increase in time – the resulting linearized problem is periodic, and
 <p>The discussion of stability of the stationary points for the Lorenz equations will be divided up based on values of the parameter <span class="math notranslate nohighlight">\(\rho\)</span> (assuming <span class="math notranslate nohighlight">\(\sigma=10\)</span> and <span class="math notranslate nohighlight">\(\beta=\frac{8}{3}\)</span>). You’ve already seen that the behaviour of the solution changes significantly, by the appearance of two additional stationary points, when <span class="math notranslate nohighlight">\(r\)</span> passes through the value 1. You’ll also see an explanation for the rest of the behaviour you observed:</p>
 <p><span class="math notranslate nohighlight">\(0&lt;\rho&lt;1\)</span>:</p>
 <ul class="simple">
-<li><p>there is only one stationary state, namely the point <span class="math notranslate nohighlight">\((0,0,0)\)</span>. You can see from (<a class="reference external" href="#eq_eigen0">eq:eigen0</a> that for these values of <span class="math notranslate nohighlight">\(\rho\)</span>, there are three, real, negative roots. The origin is a <em>stable</em> stationary point; that is, it attracts nearby solutions to itself.</p></li>
+<li><p>there is only one stationary state, namely the point <span class="math notranslate nohighlight">\((0,0,0)\)</span>. You can see from (<span class="math">\ref{eq:eig0}</span>) that for these values of <span class="math notranslate nohighlight">\(\rho\)</span>, there are three, real, negative roots. The origin is a <em>stable</em> stationary point; that is, it attracts nearby solutions to itself.</p></li>
 </ul>
 <p><span class="math notranslate nohighlight">\(\rho&gt;1\)</span>:</p>
 <ul class="simple">
-<li><p>The origin has one positive, and two negative, real eigenvalues. Hence, the origin is <em>unstable</em>. Now, we need only look at the other two stationary points, whose behaviour is governed by the roots of ([eq: eigen12(#eq_eigen12])</p></li>
+<li><p>The origin has one positive, and two negative, real eigenvalues. Hence, the origin is <em>unstable</em>. Now, we need only look at the other two stationary points, whose behaviour is governed by the roots of (<span class="math">\ref{eq:eig12}</span>)</p></li>
 </ul>
 <p><span class="math notranslate nohighlight">\(1&lt;\rho&lt;\frac{470}{19}\)</span>:</p>
 <ul>
@@ -907,27 +867,32 @@ decay nor increase in time – the resulting linearized problem is periodic, and
 <li><p><span class="math notranslate nohighlight">\(\rho=\rho^\ast\)</span>, where the remaining two stationary points switch from being stable to unstable.</p></li>
 </ul>
 <p>Remember that the linear results apply only near the stationary points, and do not apply to all of the phase space. Nevertheless, the behaviour of the orbits near these points can still say quite a lot about the behaviour of the solutions.</p>
-<p>[lab6:prob:stability] Based on the analytical results from this section, you can now go back to your results from Problem [lab6:prob:experiment] and look at them in a new light. Write a short summary of your results (including a few plots or sketches), describing how the solution changes with <span class="math notranslate nohighlight">\(\rho\)</span> in terms of the existence and stability of the stationary points.</p>
+<div id="prob_stability"></div><p><strong>Problem Stability</strong> Based on the analytical results from this section, you can now go back to your results from <a class="reference external" href="#prob_experiment">Problem Experiment</a> and look at them in a new light. Write a short summary of your results (including a few plots or sketches), describing how the solution changes with <span class="math notranslate nohighlight">\(\rho\)</span> in terms of the existence and stability of the stationary points.</p>
 <p>There have already been hints at problems with the linear stability analysis. One difficulty that hasn’t been mentioned yet is that for values of <span class="math notranslate nohighlight">\(\rho&gt;\rho^\ast\)</span>, the problem has oscillatory solutions, which are unstable. <em>Linear theory does not reveal what happens when these oscillations become large!</em> In order to study more closely the long-time behaviour of the solution, we must turn to numerical integration (in fact, all of the plots you produced in Problem [lab6:prob:experiment] were
 generated using a numerical code).</p>
-<!-- {#lab6:sec:numeric} --><p># 5. Numerical Integration</p>
+<!-- {#lab6:sec:numeric} --><div id="sec_numerical"></div></div>
+</div>
+<div class="section" id="Numerical-Integration">
+<h2>Numerical Integration<a class="headerlink" href="#Numerical-Integration" title="Permalink to this headline">¶</a></h2>
 <p>In Lorenz’ original paper, he discusses the application of the forward Euler and leap frog time-stepping schemes, but his actual computations are done using the second order <em>Heun’s method</em> (you were introduced to this method in Lab #4. Since we already have a lot of experience with Runge-Kutta methods for systems of ODE’s from earlier labs, you’ll be using this approach to solve the Lorenz equations as well. You already have a code from that solves the Daisy World equations, so you can jump
 right into the programming for the Lorenz equations with the following exercises …</p>
-<p><strong>Problem Adaptive:</strong> You saw in that adaptive time-stepping saved a considerable amount of computing time for the Daisy World problem. In this problem, you will be investigating whether or not an adaptive Runge-Kutta code is the best choice for the Lorenz equations.</p>
+<div id="prob_adaptive"></div><p><strong>Problem Adaptive:</strong> You saw in that adaptive time-stepping saved a considerable amount of computing time for the Daisy World problem. In this problem, you will be investigating whether or not an adaptive Runge-Kutta code is the best choice for the Lorenz equations.</p>
 <p>Use the Integrator61 object to compute in both adaptive and fixed timeloop solutions for an extended integration. Compare the number of time steps taken (plot the time step vs. the integration time for both methods). Which method is more efficient? Which is fastest? A simple way to time a portion of a script is to use the <code class="docutils literal notranslate"><span class="pre">time</span></code> module to calculate the elapsed time:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
 <span class="n">tic</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-<span class="c1">#program here</span>
+<span class="c1">##program here</span>
 <span class="n">elapsed</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">tic</span>
 </pre></div>
 </div>
 <p>To answer this last question, you will have to consider the cost of the adaptive scheme, compared to the non-adaptive one. The adaptive scheme is obviously more expensive, but by how much? You should think in terms of the number of multiplicative operations that are required in every time step for each method. You don’t have to give an exact operation count, round figures will do.</p>
 <p>Finally, we mentioned that the code that produced the animation uses a C module called odeint. It is called <a class="reference external" href="https://github.com/phaustin/numeric/blob/lab6/lab6/lorenz_ode.py#L22-L23">here</a> using derivatives defined in <a class="reference external" href="https://github.com/phaustin/numeric/blob/lab6/lab6/lorenz_ode.py#L11-L14">lorenz_deriv</a>. Use odeint to solve the same problem you did for the fixed and adaptive timeloops. What is the speed increase you see by using the compiled module?</p>
-<p><strong>Problem Sensitivity</strong>: One property of chaotic systems such as the Lorenz equations is their <em>sensitivity to initial conditions</em> – a consequence of the “butterfly effect.” Modify your code from <a class="reference external" href="#prob_adaptive">Problem adaptive</a> to compute two trajectories (in the chaotic regime <span class="math notranslate nohighlight">\(r&gt;r^\ast\)</span>) with different initial conditions <em>simultaneously</em>. Use two initial conditions that are very close to each other, say <span class="math notranslate nohighlight">\((1,1,20)\)</span> and <span class="math notranslate nohighlight">\((1,1,20.001)\)</span>. Use your “method of choice”
+<div id="prob_sensitivity"></div><p><strong>Problem Sensitivity</strong>: One property of chaotic systems such as the Lorenz equations is their <em>sensitivity to initial conditions</em> – a consequence of the “butterfly effect.” Modify your code from <a class="reference external" href="#prob_adaptive">Problem adaptive</a> to compute two trajectories (in the chaotic regime <span class="math notranslate nohighlight">\(r&gt;r^\ast\)</span>) with different initial conditions <em>simultaneously</em>. Use two initial conditions that are very close to each other, say <span class="math notranslate nohighlight">\((1,1,20)\)</span> and <span class="math notranslate nohighlight">\((1,1,20.001)\)</span>. Use your “method of choice”
 (adaptive/non-adaptive), and plot the distance between the two trajectories as a function of time. What do you see?</p>
 <p>One important limitation of numerical methods is immediately evident when approximating non-periodic dynamical systems such as the Lorenz equations: namely, <em>every computed solution is periodic</em>. That is, when we’re working in floating point arithmetic, there are only finitely many numbers that can be represented, and the solution must eventually repeat itself. When using single precision arithmetic, a typical computer can represent many more floating point numbers than we could ever perform
 integration steps in a numerical scheme. However, it is still possible that round-off error might introduce a periodic orbit in the numerical solution where one does not really exist. In our computations, this will not be a factor, but it is something to keep in mind.</p>
-<p>## 5.1 Other Chaotic Systems</p>
+<div id="sec_other"></div></div>
+<div class="section" id="Other-Chaotic-Systems">
+<h2>Other Chaotic Systems<a class="headerlink" href="#Other-Chaotic-Systems" title="Permalink to this headline">¶</a></h2>
 <p>There are many other ODE systems that exhibit chaos. An example is one studied by Rössler, which obeys a similar-looking system of three ODE’s:</p>
 <!-- \label{lab6:eq:rossler} --><div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
@@ -938,7 +903,9 @@ integration steps in a numerical scheme. However, it is still possible that roun
 <p>Suppose that <span class="math notranslate nohighlight">\(b=2\)</span>, <span class="math notranslate nohighlight">\(c=4\)</span>, and consider the behaviour of the attractor as <span class="math notranslate nohighlight">\(a\)</span> is varied. When <span class="math notranslate nohighlight">\(a\)</span> is small, the attractor is a simple closed curve. As <span class="math notranslate nohighlight">\(a\)</span> is increased, however, this splits into a double loop, then a quadruple loop, and so on. Thus, a type of <em>period-doubling</em> takes place, and when <span class="math notranslate nohighlight">\(a\)</span> reaches about 0.375, there is a fractal attractor in the form of a band, that looks something like what is known in mathematical circles as a <em>Möbius strip</em>.</p>
 <p>If you’re really keen on this topic, you might be interested in using your code to investigate the behaviour of this system of equations, <em>though you are not required to hand anything in for this!</em></p>
 <p>First, you could perform a stability analysis for ([lab6:eq:rossler]), like you saw above for the Lorenz equations. Then, modify your code to study the Rössler attractor. Use the code to compare your analytical stability results to what you actually see in the computations.</p>
-<!-- {#lab6:sec:summary} --><p># 6. Summary</p>
+<!-- {#lab6:sec:summary} --><div id="sec_summary"></div></div>
+<div class="section" id="Summary">
+<h2>Summary<a class="headerlink" href="#Summary" title="Permalink to this headline">¶</a></h2>
 <p>In this lab, you have had the chance to investigate the solutions to the Lorenz equations and their stability in quite some detail. You saw that for certain parameter values, the solution exhibits non-periodic, chaotic behaviour. The question to ask ourselves now is: <em>What does this system tell us about the dynamics of flows in the atmosphere?</em> In fact, this system has been simplified so much that it is no longer an accurate model of the physics in the atmosphere. However, we have seen that the
 four characteristics of flows in the atmosphere (mentioned in <a class="reference external" href="#sec_intro">the Introduction</a> are also present in the Lorenz equations.</p>
 <p>Each state in Lorenz’ idealized “climate” is represented by a single point in phase space. For a given set of initial conditions, the evolution of a trajectory describes how the weather varies in time. The butterfly attractor embodies all possible weather conditions that can be attained in the Lorenzian climate. By changing the value of the parameter <span class="math notranslate nohighlight">\(\rho\)</span> (and, for that matter, <span class="math notranslate nohighlight">\(\sigma\)</span> or <span class="math notranslate nohighlight">\(\beta\)</span>), the shape of the attractor changes. Physically, we can interpret this as a
@@ -946,10 +913,13 @@ change in some global property of the weather system resulting in a modification
 <p>The same methods of analysis can be applied to more complicated models of the weather. One can imagine a model where the depletion of ozone and the increased concentration of greenhouse gases in the atmosphere might be represented by certain parameters. Changes in these parameters result in changes in the shape of the global climate attractor for the system. By studying the attractor, we could determine whether any new, and possibly devastating, weather states are present in this new
 ozone-deficient atmosphere.</p>
 <p>We began by saying in the Introduction that the butterfly effect made accurate long-term forecasting impossible. Nevertheless, it is still possible to derive meaningful qualitative information from such a chaotic dynamical system.</p>
-<!-- {#lab6:ap:mathnote} --><p># A. Mathematical Notes</p>
-<!--  {#lab6:ap:water-wheel} --><p>## A.1 The Lorenzian Water Wheel Model</p>
+<!-- {#lab6:ap:mathnote} --><div id="sec_mathematical"></div></div>
+<div class="section" id="A.-Mathematical-Notes">
+<h2>A. Mathematical Notes<a class="headerlink" href="#A.-Mathematical-Notes" title="Permalink to this headline">¶</a></h2>
+<!--  {#lab6:ap:water-wheel} --><div id="sec_lorenzian"></div><div class="section" id="A.1-The-Lorenzian-Water-Wheel-Model">
+<h3>A.1 The Lorenzian Water Wheel Model<a class="headerlink" href="#A.1-The-Lorenzian-Water-Wheel-Model" title="Permalink to this headline">¶</a></h3>
 <p><em>This derivation is adapted from Sparrow  [Appendix B].</em></p>
-<div class="nbinput docutils container">
+<div id="fig_water-wheel"></div><div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
@@ -997,7 +967,10 @@ system for various parameters.</p>
 \[\frac{d (m \cos\theta)}{dt} = -\Omega m \sin\theta - h m \cos\theta,\]</div>
 <p>(where all variables dependent on the angle have been averaged over <span class="math notranslate nohighlight">\(\theta\)</span>).</p>
 <p>Using a suitable change of variables, these three equations can be written in the same form as the Lorenz equations (with <span class="math notranslate nohighlight">\(\beta=1\)</span>).</p>
-<p># B. References</p>
+<div id="sec_references"></div></div>
+</div>
+<div class="section" id="B.-References">
+<h2>B. References<a class="headerlink" href="#B.-References" title="Permalink to this headline">¶</a></h2>
 <p>Gleick, J., 1987: <em>Chaos: Making a New Science</em>. Penguin Books.</p>
 <p>Lorenz, E. N., 1963: Deterministic nonperiodic flow. <em>Journal of the Atmospheric Sciences</em>, <strong>20</strong>, 130–141.</p>
 <p>Palmer, T., 1993: A weather eye on unpredictability. in N. Hall, editor, <em>Exploring Chaos: A Guide to the New Science of Disorder</em>, chapter 6. W. W. Norton &amp; Co.</p>
@@ -1029,6 +1002,15 @@ system for various parameters.</p>
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../lab7/01-lab7.html" class="btn btn-neutral float-right" title="Laboratory 7: Solving partial differential equations using an explicit, finite difference method." accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../lab5/01-lab5.html" class="btn btn-neutral float-left" title="Lab 5: Daisyworld" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
