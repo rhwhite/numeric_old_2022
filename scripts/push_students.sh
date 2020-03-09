@@ -1,4 +1,4 @@
-#!/bin/bash
+f#!/bin/bash
 #
 # update numeric_students repo master branch
 # with contents of students folder
@@ -8,7 +8,11 @@ rsync -avz notebooks/lab2 students/numeric_notebooks/
 rsync -avz notebooks/lab3 students/numeric_notebooks/
 rsync -avz notebooks/lab4 students/numeric_notebooks/
 rsync -avz notebooks/lab5 students/numeric_notebooks/
+rsync -avz notebooks/lab6 students/numeric_notebooks/
 rsync -avz notebooks/lab7 students/numeric_notebooks/
+rsync -avz notebooks/lab8 students/numeric_notebooks/
+rsync -avz notebooks/lab9 students/numeric_notebooks/
+rsync -avz notebooks/lab10 students/numeric_notebooks/
 mkdir -p students/demonstrations
 rsync -avz demonstrations/numba_demo.ipynb students/demonstrations/.
 rsync -avz demonstrations/parallel_python.ipynb students/demonstrations/.

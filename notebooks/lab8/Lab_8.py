@@ -2,13 +2,14 @@
 # ---
 # jupyter:
 #   jupytext:
+#     cell_metadata_filter: all
 #     formats: ipynb,py:percent
 #     notebook_metadata_filter: all,-language_info,-toc,-latex_envs
 #     text_representation:
 #       extension: .py
 #       format_name: percent
 #       format_version: '1.3'
-#       jupytext_version: 1.3.1
+#       jupytext_version: 1.3.4
 #   kernelspec:
 #     display_name: Python 3
 #     language: python
@@ -16,8 +17,8 @@
 # ---
 
 # %% [markdown]
-# # Laboratory 8:  Solution of the Quasi-geostrophic Equations using an Implicit Scheme #
-# ## Lin Yang & John M. Stockie ##
+# # Laboratory 8:  Quasi-geostrophic Equations 
+# Lin Yang & John M. Stockie 
 #
 
 # %% [markdown]
@@ -103,6 +104,7 @@
 #
 
 # %%
+import context
 from IPython.display import Image
 # import the quiz script
 from numlabs.lab8 import quiz8 as quiz
@@ -453,7 +455,7 @@ Image(filename='images/rect.png',width='45%')
 #
 
 # %% [markdown]
-# # 5.1 Spatial Discretization #
+# ### 5.1 Spatial Discretization #
 #
 # Assume that we are dealing with a square ocean, with dimensions
 # $1\times 1$ (in non-dimensional coordinates) and begin by dividing the

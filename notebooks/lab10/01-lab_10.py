@@ -2,15 +2,16 @@
 # ---
 # jupyter:
 #   jupytext:
+#     cell_metadata_filter: all
 #     formats: ipynb,py:percent
 #     notebook_metadata_filter: all,-language_info,-toc,-latex_envs
 #     text_representation:
 #       extension: .py
 #       format_name: percent
 #       format_version: '1.3'
-#       jupytext_version: 1.3.1
+#       jupytext_version: 1.3.4
 #   kernelspec:
-#     display_name: Python [default]
+#     display_name: Python 3
 #     language: python
 #     name: python3
 # ---
@@ -19,10 +20,6 @@
 # # Laboratory 10: Numerical Advection Schemes #
 #
 # Carmen Guo
-
-# %% [markdown] toc="true"
-#  # Table of Contents
-# <div class="toc" style="margin-top: 1em;"><ul class="toc-item" id="toc-level0"><li><span><a href="http://localhost:8891/notebooks/lab10/01-lab_10.ipynb#Laboratory-10:-Numerical-Advection-Schemes" data-toc-modified-id="Laboratory-10:-Numerical-Advection-Schemes-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Laboratory 10: Numerical Advection Schemes</a></span><ul class="toc-item"><li><span><a href="http://localhost:8891/notebooks/lab10/01-lab_10.ipynb#List-of-Problems" data-toc-modified-id="List-of-Problems-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>List of Problems</a></span></li><li><span><a href="http://localhost:8891/notebooks/lab10/01-lab_10.ipynb#Advection-Process" data-toc-modified-id="Advection-Process-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Advection Process</a></span></li><li><span><a href="http://localhost:8891/notebooks/lab10/01-lab_10.ipynb#Simple-Solution-Using-Centred-Differencing-Scheme" data-toc-modified-id="Simple-Solution-Using-Centred-Differencing-Scheme-1.3"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Simple Solution Using Centred Differencing Scheme</a></span></li><li><span><a href="http://localhost:8891/notebooks/lab10/01-lab_10.ipynb#Numerical-Solution-Using-Upstream-Method" data-toc-modified-id="Numerical-Solution-Using-Upstream-Method-1.4"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>Numerical Solution Using Upstream Method</a></span></li><li><span><a href="http://localhost:8891/notebooks/lab10/01-lab_10.ipynb#A-Better-Solution" data-toc-modified-id="A-Better-Solution-1.5"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>A Better Solution</a></span><ul class="toc-item"><li><span><a href="http://localhost:8891/notebooks/lab10/01-lab_10.ipynb#Problem-One" data-toc-modified-id="Problem-One-1.5.1"><span class="toc-item-num">1.5.1&nbsp;&nbsp;</span>Problem One</a></span></li></ul></li><li><span><a href="http://localhost:8891/notebooks/lab10/01-lab_10.ipynb#Conclusion" data-toc-modified-id="Conclusion-1.6"><span class="toc-item-num">1.6&nbsp;&nbsp;</span>Conclusion</a></span></li><li><span><a href="http://localhost:8891/notebooks/lab10/01-lab_10.ipynb#References" data-toc-modified-id="References-1.7"><span class="toc-item-num">1.7&nbsp;&nbsp;</span>References</a></span></li></ul></li></ul></div>
 
 # %% [markdown]
 # ## List of Problems ##
@@ -101,7 +98,7 @@ Image(filename='images/initial.png',width='60%')
 # boundary conditions.
 #
 # The function that computes the numerical solution using this scheme is in
-# *advection_funs.py*. It is a python function *advection(timesteps)*, which takes in
+# *numlabs.lab10.advection_funs.py*. It is a python function *advection(timesteps)*, which takes in
 # the number of time steps as input and plots the distribution curve at 20 time steps.
 #
 # We can see the problem with this scheme just by running the function
@@ -156,7 +153,7 @@ Image(filename='images/centered.png',width='60%')
 # using backward differences just as with all subsequent time steps.
 #
 # The function that computes the solution using this scheme is in
-# *advection_funs.py*. It is a python function *advection2(timesteps)*, which takes
+# *numlabs.lab10.advection_funs.py*. It is a python function *advection2(timesteps)*, which takes
 # in the number of time steps as input and plots the distribution curve at 20 time steps.
 #
 # Although this scheme is positive definite and conservative (the area
@@ -411,7 +408,7 @@ Image(filename='images/limit.png',width='60%')
 # is the order of the polynomial we use to interpolate $c$ in each grid
 # box.
 #
-# An example function for this scheme is in *advection_funs.py*. The python
+# An example function for this scheme is in *numlabs.lab10.advection_funs.py*. The python
 # function *advection3(timesteps, order)* takes in 2 arguments, the first is
 # the number of time steps to be computed, the second is the order of the
 # polynomial for the approximation of $c$ within each grid box. It plots the curve at 20 time steps.
