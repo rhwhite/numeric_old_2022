@@ -1,25 +1,29 @@
 # ---
 # jupyter:
 #   jupytext:
+#     cell_metadata_filter: all
 #     formats: ipynb,py:percent
 #     notebook_metadata_filter: all,-language_info,-toc,-latex_envs
 #     text_representation:
 #       extension: .py
 #       format_name: percent
 #       format_version: '1.3'
-#       jupytext_version: 1.3.1
+#       jupytext_version: 1.3.4
 #   kernelspec:
 #     display_name: Python 3
 #     language: python
 #     name: python3
 # ---
 
-# %% [markdown] toc=true
-# <h1>Table of Contents<span class="tocSkip"></span></h1>
-# <div class="toc" style="margin-top: 1em;"><ul class="toc-item"><li><span><a href="#2D-histogram-of-the-optical-depth-$\tau$" data-toc-modified-id="2D-histogram-of-the-optical-depth-$\tau$-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>2D histogram of the optical depth $\tau$</a></span><ul class="toc-item"><li><span><a href="#Character-of-the-optical-depth-field" data-toc-modified-id="Character-of-the-optical-depth-field-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>Character of the optical depth field</a></span></li><li><span><a href="#ubc_fft-class" data-toc-modified-id="ubc_fft-class-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>ubc_fft class</a></span></li></ul></li><li><span><a href="#Problem----lowpass-filtering-of-a-2-d-image" data-toc-modified-id="Problem----lowpass-filtering-of-a-2-d-image-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Problem -- lowpass filtering of a 2-d image</a></span></li></ul></div>
+# %% [markdown]
+# # Lab 9 -- 2d fft
+#
+# ## Lab 9 problem
+#
+# Hand in a version of this notebook that solves [Problem lowpass](#problem_lowpass) below
 
 # %% [markdown]
-# # 2D histogram of the optical depth $\tau$
+# ## 2D histogram of the optical depth $\tau$
 #
 # Below I calculate the 2-d and averaged 1-d spectra for the optical depth, which gives the penetration
 # depth of photons through a cloud, and is closely related to cloud thickness
@@ -29,20 +33,15 @@ import warnings
 warnings.filterwarnings("ignore",category=FutureWarning)
 
 # %%
+import context
 from matplotlib import pyplot as plt
-import urllib
-import os
-filelist=['a17.nc']
-data_download=True
-if data_download:
-    for the_file in filelist:
-        url='http://clouds.eos.ubc.ca/~phil/docs/atsc500/data/{}'.format(the_file)
-        urllib.request.urlretrieve(url,the_file)
-print("download {}: size is {:6.2g} Mbytes".format(the_file,os.path.getsize(the_file)*1.e-6))
+from numlabs.data_read import download
+satfile = 'a17.nc'
+download('a17.nc',root="https://clouds.eos.ubc.ca/~phil/docs/atsc500/data")
 
 # %%
 from netCDF4 import Dataset
-with Dataset(filelist[0]) as nc:
+with Dataset(satfile) as nc:
     tau=nc.variables['tau'][...]
 
 # %% [markdown]
@@ -217,7 +216,9 @@ output.annular_avg(avg_binwidth)
 output.graph_spectrum(kol_offset=2000.,title='Landsat {} power spectrum'.format(output.filename))
 
 # %% [markdown]
-# # Problem -- lowpass filtering of a 2-d image
+# <div id="problem_lowpass"></div>
+#
+# ## Problem -- lowpass filtering of a 2-d image
 #
 # For the image above, 
 # we know that the 25 meter pixels correspond to k=1/0.025 = 40 $km^{-1}$.  That means that the Nyquist
@@ -233,5 +234,3 @@ output.graph_spectrum(kol_offset=2000.,title='Landsat {} power spectrum'.format(
 # image.)
 #
 #
-
-# %%

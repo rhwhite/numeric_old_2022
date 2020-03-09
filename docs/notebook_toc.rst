@@ -9,4 +9,7 @@ Numeric notebooks
      Lab 3 <doc_notebooks/lab3/01-lab3.ipynb>
      Lab 4 <doc_notebooks/lab4/01-lab4.ipynb>
      Lab 5 <doc_notebooks/lab5/01-lab5.ipynb>
+     Lab 6 <doc_notebooks/lab6/lab6.ipynb>
      Lab 7 <doc_notebooks/lab7/01-lab7.ipynb>
+     Lab 9 <fft_lab.rst>
+     

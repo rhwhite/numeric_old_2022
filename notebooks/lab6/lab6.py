@@ -17,39 +17,9 @@
 # ---
 
 # %% [markdown]
-# # Contents
-#
-# - [1. Objectives](#sec_objectives)
-#
-# - [2. Readings](#sec_readings)
-#
-# - [3. Introduction](#sec_introduction)
-#
-#   - [3.1 Using the integrator class](#sec_using)
-#
-# - [4. The Lorenz Equations](#sec_lorenz)
-#
-#   - [4.1 Boundedness of the Solutions](#sec_boundedness)
-#   
-#   - [4.2 Steady States](#sec_steady)
-#   
-#   - [4.3 Linearization of the steady states](#sec_linearization)
-#   
-#   - [4.4 Stability of the linearized problem](#sec_stability)
-#   
-# - [5. Numerical Integration](#sec_numerical)
-#
-#   - [5.1 Other chaotic systems](#sec_other)
-#   
-# - [6. Summary](#sec_summary)
-#
-# - [A. Mathematical Notes](#sec_mathematical)
-#
-#   - [A.1 The Lorenzian water wheel model](#sec_lorenzian)
-#   
-# - [B. References](#sec_references)
-#
-# #  List of Problems 
+# # Lab 6: The Lorentz equations
+# %% [markdown]
+# ##  List of Problems 
 #
 # [Problem Experiment:  Investigation of the behaviour of solutions](#prob_experiment)
 #
@@ -65,8 +35,9 @@
 #
 # <!-- {#lab6:sec:objectives} -->
 #
-# <a name="sec_objectives"></a>
-# # 1. Objectives 
+# <div id="sec_objectives"></div>
+#
+# ## Objectives 
 #
 # In this lab, you will investigate the transition to chaos in the Lorenz
 # equations – a system of non-linear ordinary differential equations.
@@ -76,8 +47,9 @@
 # adaptive and non-adaptive Runge-Kuttan code for the problem, and
 # determine the relative merits of each.
 #
-# <a name="sec_readings"></a>
-# # 2. Readings
+# <div id="sec_readings"></div>
+#
+# ## Readings
 #
 # There is no required reading for this lab, beyond the contents of the
 # lab itself. Nevertheless, the original 1963 paper by Lorenz  is
@@ -112,8 +84,9 @@
 #
 # <!-- {#lab6:sec:intro} -->
 #
-# <a name="sec_introduction"></a>
-# # 3. Introduction 
+# <div id="sec_introduction"></div>
+#
+# ##  Introduction 
 #
 #
 # For many people working in the physical sciences, the *butterfly
@@ -184,9 +157,10 @@ from IPython.display import YouTubeVideo
 YouTubeVideo('DDcCiXLAk2U')
 
 # %% [markdown]
-# <a name="sec_using"></a>
+# <div id="sec_using"></div>
 #
-# ## 3.1 Using the Integrator class
+#
+# ## Using the Integrator class
 
 # %% [markdown]
 #  [lorenz_ode.py](https://github.com/phaustin/numeric/blob/lab6/lab6/lorenz_ode.py) uses the
@@ -330,7 +304,7 @@ out=ax.set(title='starting point: {},{},{}'.format(*coords[0,:]))
 # $(x,y,z)=(5,5,5)$.
 
 # %% [markdown]
-# <a name="fig_xyz-vs-t"></a>
+# <div id="fig_xyz-vs-t"></div>
 
 # %%
 fig,ax = plt.subplots(1,1,figsize=(8,6))
@@ -384,8 +358,8 @@ out=ax.legend()
 # %% [markdown]
 # <!-- {#lab6:sec:equations} -->
 #
-# <a name="sec_lorenz"></a>
-# # 4. The Lorenz Equations 
+# <div id="sec_lorenz"></div>
+# ##  The Lorenz Equations 
 #
 #
 # As mentioned in the previous section, the equations we will be
@@ -393,7 +367,7 @@ out=ax.legend()
 # two-dimensional convection in a tank of water which is heated at the
 # bottom (as pictured in [Figure Convection](#fig_convection) below).
 #
-# <a name="fig_convection"></a>
+# <div id="fig_convection"></div>
 
 # %%
 from IPython.display import Image
@@ -408,7 +382,7 @@ Image(filename="images/convection.png")
 #
 # <!-- \label{lab6:eq:lorenz} -->
 #
-# <a name="eq_lorenz"></a>
+# <div id="eq_lorenz"></div>
 # $$
 # \begin{aligned}
 #   \frac{dx}{dt} &=& \sigma(y-x)  \\
@@ -467,8 +441,9 @@ Image(filename="images/convection.png")
 # exercise, which will give you a hands-on introduction to the behaviour
 # of solutions to the Lorenz equations.
 #
-# <a name="prob_experiment"></a>
-# **[Problem Experiment](#prob_experiment)** Lorenz’ results are based on the following values
+# <div id="prob_experiment"></div>
+#
+# [Problem Experiment](#prob_experiment) Lorenz’ results are based on the following values
 # of the physical parameters taken from Saltzman’s paper (Saltzman, 1962):
 # $$\sigma=10 \quad \mathrm{and} \quad b=\frac{8}{3}.$$ As you will see
 # in [Section stability](#sec_stability), there is a *critical value of the
@@ -519,9 +494,10 @@ Image(filename="images/convection.png")
 #
 
 # %% [markdown]
-# <a name="sec_boundedness"></a>
 #
-# ## 4.1 Boundedness of the Solution
+# <div id="sec_boundedness"></div>
+#
+# ##  Boundedness of the Solution
 #
 #
 # The easiest way to see that the solution is bounded in time is by
@@ -566,8 +542,9 @@ Image(filename="images/convection.png")
 # %% [markdown]
 # <!-- {#lab6:sec:steady-states} -->
 #
-# <a name="sec_steady"></a>
-# ## 4.2 Steady States 
+# <div id="sec_steady"></div>
+#
+# ## Steady States 
 #
 #
 # A *steady state* of a system is a point in phase space from
@@ -578,7 +555,7 @@ Image(filename="images/convection.png")
 #   \ \mathrm{and}\ \quad \frac{dz}{dt} = 0.$$ This point is usually
 # referred to as a *stationary point* of the system.
 #
-# <a name="prob_steady-states"></a>
+# <div id="prob_steady-states"></div>
 # **[Problem steady-states](#prob_steady-states)** Set the time derivatives equal to zero in the
 # Lorenz equations ([eq:lorenz](#eq_lorenz)), and solve the
 # resulting system to show that there are three possible steady states,
@@ -618,8 +595,9 @@ Image(filename="images/convection.png")
 #
 # <!-- {#lab6:sec:linearization} -->
 #
-# <a name="sec_linearization"></a>
-# ## 4.3 Linearization about the Steady States 
+# <div id="sec_linearization"></div>
+#
+# ## Linearization about the Steady States 
 #
 #
 # The difficult part of doing any theoretical analysis of the Lorenz
@@ -655,14 +633,15 @@ Image(filename="images/convection.png")
 #
 # <!-- \label{lab6:eq:lorenz-linear0} -->
 #
-# <a name="eq_lorenz_linear"></a>
-# $$
+# <div id="eq_lorenz_linear"></div>
+#
 # \begin{aligned}
+# \label{eq:lorenz_linear}
 #   \frac{dx}{dt} &= -\sigma x + \sigma y \\
-#   \frac{dy}{dt} &= \rho x-y \ \mathbf{eq:lorenz-linear}  \\
+#   \frac{dy}{dt} &= \rho x-y   \\
 #   \frac{dz}{dt} &= -\beta z  
 # \end{aligned}
-# $$ 
+#
 #
 # (note that each right
 # hand side is now a linear function of $x$, $y$ and $z$). It is helpful
@@ -670,9 +649,10 @@ Image(filename="images/convection.png")
 #
 # <!--   \label{lab6:eq:lorenz-linear0-matrix} -->
 #
-# <a name="eq_lorenz_linear_matrix"></a>
-# $$
+# <div id="eq_lorenz_linear_matrix"></div>
+#
 # \begin{aligned}
+# \label{eq:lorenz_linear_matrix}
 #   \frac{d}{dt} \left(
 #   \begin{array}{c} x \\ y \\ z \end{array} \right)  = 
 #   \left( \begin{array}{ccc}
@@ -680,15 +660,15 @@ Image(filename="images/convection.png")
 #     \rho & -1 & 0 \\
 #     0 & 0 & -\beta 
 #   \end{array} \right) \;
-#       \left(\begin{array}{c} x \\ y \\ z \end{array} \right) \ \mathbf{eq: lorenz-linear-matrix}
+#       \left(\begin{array}{c} x \\ y \\ z \end{array} \right)
 # \end{aligned}
-# $$
+#
 #
 # the reason for
 # this being that the *eigenvalues* of the matrix give us
 # valuable information about the solution to the linear system. In fact,
 # it is a well-known result from the study of dynamical systems is that if
-# the matrix in ([eq: lorenz-linear-matrix](#eq_lorenz_linear_matrix)) has
+# the matrix in (\ref{eq:lorenz_linear_matrix}) has
 # *distinct* eigenvalues $\lambda_1$, $\lambda_2$ and
 # $\lambda_3$, then the solution to this equation is given by
 #
@@ -706,21 +686,22 @@ Image(filename="images/convection.png")
 #
 
 # %% [markdown]
-# <a name="prob_eigenvalues"></a>
+# <div id="prob_eigenvalues"></div>
 #
 # **Problem eigenvalues:**  Remember from Lab \#3 that the eigenvalues of a
 # matrix, $A$, are given by the roots of the characteristic equation,
 # $det(A-\lambda I)=0$.  Determine the characteristic equation of the
-# matrix in ([eq: lorenz-linear-matrix](#eq_lorenz_linear_matrix)), and show that
+# matrix in (\ref{eq:lorenz_linear_matrix}), and show that
 # the eigenvalues of the linearized problem are
 #
-# <!--  \label{lab6:eq:eig0} -->
-# <a name="eq_eigen0"></a>
-# $$
+#
+# <div id="eq_eigen0"></div>
+# \begin{equation}
+# \label{eq:eig0}
 # \lambda_1 = -\beta, \quad \mathrm{and} \quad \lambda_2, \lambda_3 =
-#     \frac{1}{2} \left( -\sigma - 1 \pm  \sqrt{(\sigma-1)^2 + 4 \sigma \rho}
-#     \right).  \ \mathbf{eq: eigen0}
-# $$
+# \frac{1}{2} \left( -\sigma - 1 \pm  \sqrt{(\sigma-1)^2 + 4 \sigma \rho}
+# \right).  
+# \end{equation}
 #
 #
 # When $\rho>1$, the same linearization process can be applied at the
@@ -728,18 +709,19 @@ Image(filename="images/convection.png")
 # another characteristic equation:
 #
 # <!-- \label{lab6:eq:char12} -->
-# <a name="eq_eigen12"></a>
-# $$
+# \begin{equation}
+# \label{eq:eig12}
 # \lambda^3+(\sigma+\beta +1)\lambda^2+(\rho+\sigma)\beta \lambda+2\sigma  \beta(\rho-1)=0.
-# \ \mathbf{eq:eigen12}
-# $$
+# \end{equation}
 #
+# A reminder that we talked about odes and eigenvalues in the [Week6 section here](https://phaustin.github.io/numeric/week_notes.html)
 #
 
 # %% [markdown]
 # <!--  {#lab6:sec:stability} -->
-# <a name="sec_stability"></a>
-# ## 4.4 Stability of the Linearized Problem
+# <div id="sec_stability"></div>
+#
+# ###  Stability of the Linearized Problem
 #
 #
 # Now that we know the eigenvalues of the system around each stationary
@@ -809,7 +791,7 @@ Image(filename="images/convection.png")
 # $0<\rho<1$:
 #
 # -   there is only one stationary state, namely the point $(0,0,0)$. You
-#     can see from ([eq:eigen0](#eq_eigen0) that for these values of
+#     can see from (\ref{eq:eig0}) that for these values of
 #     $\rho$, there are three, real, negative roots. The origin is a
 #     *stable* stationary point; that is, it attracts nearby
 #     solutions to itself.
@@ -819,7 +801,7 @@ Image(filename="images/convection.png")
 # -  The origin has one positive, and two negative, real eigenvalues.
 #     Hence, the origin is *unstable*. Now, we need only look
 #     at the other two stationary points, whose behaviour is governed by
-#     the roots of ([eq: eigen12(#eq_eigen12])
+#     the roots of (\ref{eq:eig12})
 #
 # $1<\rho<\frac{470}{19}$:
 #
@@ -876,8 +858,11 @@ Image(filename="images/convection.png")
 # behaviour of the solutions.
 
 # %% [markdown]
-# [lab6:prob:stability] Based on the analytical results from this section,
-# you can now go back to your results from Problem [lab6:prob:experiment]
+#
+# <div id="prob_stability"></div>
+#
+# **Problem Stability** Based on the analytical results from this section,
+# you can now go back to your results from [Problem Experiment](#prob_experiment)
 # and look at them in a new light. Write a short summary of your results
 # (including a few plots or sketches), describing how the solution changes
 # with $\rho$ in terms of the existence and stability of the stationary
@@ -896,8 +881,9 @@ Image(filename="images/convection.png")
 
 # %% [markdown]
 # <!-- {#lab6:sec:numeric} -->
-# <a name="sec_numerical"></a>
-# # 5. Numerical Integration 
+# <div id="sec_numerical"></div>
+#
+# ## Numerical Integration 
 #
 # In Lorenz’ original paper, he discusses the application of the forward
 # Euler and leap frog time-stepping schemes, but his actual computations
@@ -909,7 +895,8 @@ Image(filename="images/convection.png")
 # equations, so you can jump right into the programming for the Lorenz
 # equations with the following exercises …
 #
-# <a name="prob_adaptive"></a>
+# <div id="prob_adaptive"></div>
+#
 # **Problem Adaptive:**  You saw in that adaptive time-stepping saved a
 # considerable amount of computing time for the Daisy World problem. In
 # this problem, you will be investigating whether or not an adaptive
@@ -925,7 +912,7 @@ Image(filename="images/convection.png")
 # ```
 # import time
 # tic = time.time()
-# #program here
+# ##program here
 # elapsed = time.time() - tic
 # ```
 #
@@ -944,7 +931,8 @@ Image(filename="images/convection.png")
 #
 #
 #
-# <a name="prob_sensitivity"></a>
+# <div id="prob_sensitivity"></div>
+#
 # **Problem Sensitivity**: One property of chaotic systems such as the
 # Lorenz equations is their *sensitivity to initial
 # conditions* – a consequence of the “butterfly effect.” Modify
@@ -972,8 +960,9 @@ Image(filename="images/convection.png")
 
 # %% [markdown]
 #
-# <a name="sec_other"></a>
-# ## 5.1 Other Chaotic Systems
+# <div id="sec_other"></div>
+#
+# ## Other Chaotic Systems
 #
 #
 # There are many other ODE systems that exhibit chaos. An example is one
@@ -1011,8 +1000,9 @@ Image(filename="images/convection.png")
 
 # %% [markdown]
 # <!-- {#lab6:sec:summary} -->
-# <a name="sec_summary"></a>
-# # 6. Summary 
+# <div id="sec_summary"></div>
+#
+# ## Summary 
 #
 # In this lab, you have had the chance to investigate the solutions to the
 # Lorenz equations and their stability in quite some detail. You saw that
@@ -1054,19 +1044,21 @@ Image(filename="images/convection.png")
 # %% [markdown]
 # <!-- {#lab6:ap:mathnote} -->
 #  
-#  <a name="sec_mathematical"></a>
-# # A. Mathematical Notes
+#  <div id="sec_mathematical"></div>
+#
+# ## A. Mathematical Notes
 #
 # <!--  {#lab6:ap:water-wheel} -->
 #
-# <a name="sec_lorenzian"></a>
-# ## A.1 The Lorenzian Water Wheel Model
+# <div id="sec_lorenzian"></div>
+#
+# ### A.1 The Lorenzian Water Wheel Model
 #
 #
 # *This derivation is adapted from Sparrow 
 # [Appendix B].*
 #
-# <a name="fig_water-wheel"></a>
+# <div id="fig_water-wheel"></div>
 
 # %%
 Image(filename="images/water-wheel.png")
@@ -1146,8 +1138,9 @@ Image(filename="images/water-wheel.png")
 # Lorenz equations (with $\beta=1$).
 
 # %% [markdown]
-# <a name="sec_references"></a>
-# # B. References
+# <div id="sec_references"></div>
+#
+# ## B. References
 #
 #
 # Gleick, J., 1987: *Chaos: Making a New Science*. Penguin

@@ -2,22 +2,22 @@
 # ---
 # jupyter:
 #   jupytext:
+#     cell_metadata_filter: all
 #     formats: ipynb,py:percent
 #     notebook_metadata_filter: all,-language_info,-toc,-latex_envs
 #     text_representation:
 #       extension: .py
 #       format_name: percent
 #       format_version: '1.3'
-#       jupytext_version: 1.3.1
+#       jupytext_version: 1.3.4
 #   kernelspec:
 #     display_name: Python 3
 #     language: python
 #     name: python3
 # ---
 
-# %% [markdown] toc=true
-# <h1>Table of Contents<span class="tocSkip"></span></h1>
-# <div class="toc" style="margin-top: 1em;"><ul class="toc-item"><li><span><a href="#Introduction" data-toc-modified-id="Introduction-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Introduction</a></span><ul class="toc-item"><li><span><a href="#A-simple-transform" data-toc-modified-id="A-simple-transform-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>A simple transform</a></span></li><li><span><a href="#Power-spectrum-of-turbulent-vertical-velocity" data-toc-modified-id="Power-spectrum-of-turbulent-vertical-velocity-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Power spectrum of turbulent vertical velocity</a></span></li><li><span><a href="#power-spectrum-layout" data-toc-modified-id="power-spectrum-layout-1.3"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>power spectrum layout</a></span><ul class="toc-item"><li><span><a href="#Confirm-that-the-fft-at-negative-f-is-the-complex-conjugate-of-the-fft-at-positive-f" data-toc-modified-id="Confirm-that-the-fft-at-negative-f-is-the-complex-conjugate-of-the-fft-at-positive-f-1.3.1"><span class="toc-item-num">1.3.1&nbsp;&nbsp;</span>Confirm that the fft at negative f is the complex conjugate of the fft at positive f</a></span></li></ul></li><li><span><a href="#Windowing" data-toc-modified-id="Windowing-1.4"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>Windowing</a></span></li><li><span><a href="#Compare-power-spectra-for-wvel,-theta,-sensible-heat-flux" data-toc-modified-id="Compare-power-spectra-for-wvel,-theta,-sensible-heat-flux-1.5"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>Compare power spectra for wvel, theta, sensible heat flux</a></span><ul class="toc-item"><li><span><a href="#start-with-wvel" data-toc-modified-id="start-with-wvel-1.5.1"><span class="toc-item-num">1.5.1&nbsp;&nbsp;</span>start with wvel</a></span></li></ul></li><li><span><a href="#Filtering" data-toc-modified-id="Filtering-1.6"><span class="toc-item-num">1.6&nbsp;&nbsp;</span>Filtering</a></span></li></ul></li></ul></div>
+# %% [markdown]
+# # Lab 9 -- Introduction to FFTs
 
 # %%
 import numpy as np
@@ -25,19 +25,19 @@ import matplotlib.pyplot as plt
 plt.style.use('ggplot')
 
 # %% [markdown]
-# # Introduction 
+# ## Introduction 
 #
 # This lab introduces the use of the fast Fourier transform for estimation
 # of the power spectral density and for simple filtering.  If you need a refresher or
 # are learning about fourier transforms for the first time,  we recommend reading
 # [Newman Chapter 7](http://clouds.eos.ubc.ca/~phil/docs/atsc500/pdf_files/newman_chapter7.pdf).  For a description of the Fast Fourier transform,
-# see [Stull Section 8.4](http://clouds.eos.ubc.ca/~phil/docs/atsc500/pdf_files/stull_section8_4.pdf) and [Jake VanderPlas's blog entry](https://jakevdp.github.io/blog/2013/08/28/understanding-the-fft/).  Another good resources is
+# see [Stull Section 8.4](./stull_section8_4.pdf) and [Jake VanderPlas's blog entry](https://jakevdp.github.io/blog/2013/08/28/understanding-the-fft/).  Another good resources is
 # [Numerical Recipes Chapter 12](http://clouds.eos.ubc.ca/~phil/docs/atsc500/pdf_files/numerical_recipes_fft.pdf)
 # (user: green, password: house)
 #
 #
 #
-# ## A simple transform
+# ### A simple transform
 #
 # To get started assume that there is a pure tone -- a cosine wave oscillating at a frequency of 1 Hz.  Next assume that we sample that 1 Hz wave at a sampling rate of 5 Hz i.e. 5 times a second
 #
@@ -152,7 +152,7 @@ print('simple cosine: Power spectrum sum %10.3f\n' % (np.sum(Power)/totsize**2.)
 # %%
 #load data sampled at 20.8333 Hz
 
-td=numpy.load('miami_tower.npz') #load temp, uvel, vvel, wvel, minutes
+td=np.load('miami_tower.npz') #load temp, uvel, vvel, wvel, minutes
 print('keys: ',td.keys())
 print(td['description'])
 
