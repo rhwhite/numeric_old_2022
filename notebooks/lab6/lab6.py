@@ -2,22 +2,19 @@
 # ---
 # jupyter:
 #   jupytext:
+#     cell_metadata_filter: all
 #     formats: ipynb,py:percent
 #     notebook_metadata_filter: all,-language_info,-toc,-latex_envs
 #     text_representation:
 #       extension: .py
 #       format_name: percent
 #       format_version: '1.3'
-#       jupytext_version: 1.3.1
+#       jupytext_version: 1.3.4
 #   kernelspec:
 #     display_name: Python 3
 #     language: python
 #     name: python3
 # ---
-
-# %% [markdown] toc=true
-# <h1>Table of Contents<span class="tocSkip"></span></h1>
-# <div class="toc" style="margin-top: 1em;"><ul class="toc-item"><li><span><a href="#Contents" data-toc-modified-id="Contents-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Contents</a></span></li><li><span><a href="#List-of-Problems" data-toc-modified-id="List-of-Problems-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>List of Problems</a></span></li><li><span><a href="#1.-Objectives" data-toc-modified-id="1.-Objectives-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>1. Objectives</a></span></li><li><span><a href="#2.-Readings" data-toc-modified-id="2.-Readings-4"><span class="toc-item-num">4&nbsp;&nbsp;</span>2. Readings</a></span></li><li><span><a href="#3.-Introduction" data-toc-modified-id="3.-Introduction-5"><span class="toc-item-num">5&nbsp;&nbsp;</span>3. Introduction</a></span><ul class="toc-item"><li><span><a href="#3.1-Using-the-Integrator-class" data-toc-modified-id="3.1-Using-the-Integrator-class-5.1"><span class="toc-item-num">5.1&nbsp;&nbsp;</span>3.1 Using the Integrator class</a></span></li></ul></li><li><span><a href="#4.-The-Lorenz-Equations" data-toc-modified-id="4.-The-Lorenz-Equations-6"><span class="toc-item-num">6&nbsp;&nbsp;</span>4. The Lorenz Equations</a></span><ul class="toc-item"><li><span><a href="#4.1-Boundedness-of-the-Solution" data-toc-modified-id="4.1-Boundedness-of-the-Solution-6.1"><span class="toc-item-num">6.1&nbsp;&nbsp;</span>4.1 Boundedness of the Solution</a></span></li><li><span><a href="#4.2-Steady-States" data-toc-modified-id="4.2-Steady-States-6.2"><span class="toc-item-num">6.2&nbsp;&nbsp;</span>4.2 Steady States</a></span></li><li><span><a href="#4.3-Linearization-about-the-Steady-States" data-toc-modified-id="4.3-Linearization-about-the-Steady-States-6.3"><span class="toc-item-num">6.3&nbsp;&nbsp;</span>4.3 Linearization about the Steady States</a></span></li><li><span><a href="#4.4-Stability-of-the-Linearized-Problem" data-toc-modified-id="4.4-Stability-of-the-Linearized-Problem-6.4"><span class="toc-item-num">6.4&nbsp;&nbsp;</span>4.4 Stability of the Linearized Problem</a></span></li></ul></li><li><span><a href="#5.-Numerical-Integration" data-toc-modified-id="5.-Numerical-Integration-7"><span class="toc-item-num">7&nbsp;&nbsp;</span>5. Numerical Integration</a></span><ul class="toc-item"><li><span><a href="#5.1-Other-Chaotic-Systems" data-toc-modified-id="5.1-Other-Chaotic-Systems-7.1"><span class="toc-item-num">7.1&nbsp;&nbsp;</span>5.1 Other Chaotic Systems</a></span></li></ul></li><li><span><a href="#6.-Summary" data-toc-modified-id="6.-Summary-8"><span class="toc-item-num">8&nbsp;&nbsp;</span>6. Summary</a></span></li><li><span><a href="#A.-Mathematical-Notes" data-toc-modified-id="A.-Mathematical-Notes-9"><span class="toc-item-num">9&nbsp;&nbsp;</span>A. Mathematical Notes</a></span><ul class="toc-item"><li><span><a href="#A.1-The-Lorenzian-Water-Wheel-Model" data-toc-modified-id="A.1-The-Lorenzian-Water-Wheel-Model-9.1"><span class="toc-item-num">9.1&nbsp;&nbsp;</span>A.1 The Lorenzian Water Wheel Model</a></span></li></ul></li><li><span><a href="#B.-References" data-toc-modified-id="B.-References-10"><span class="toc-item-num">10&nbsp;&nbsp;</span>B. References</a></span></li></ul></div>
 
 # %% [markdown]
 # # Contents
@@ -198,9 +195,11 @@ YouTubeVideo('DDcCiXLAk2U')
 #  that is specified for the Lorenz equations:
 
 # %%
+import context
 from numlabs.lab5.lab5_funs import Integrator
 from collections import namedtuple
 import numpy as np
+
 
 
 class Integ61(Integrator):
@@ -250,7 +249,7 @@ class Integ61(Integrator):
 # The main difference with daisyworld is that I've changed the ```__init__``` function to
 # take optional arguments to take initvars, uservars and timevars, to give us
 # more flexibility in overriding the default configuration specified in
-# [lorenz.yaml](https://github.com/phaustin/numeric/blob/lab6/lab6/lorenz.yaml)
+# [lorenz.yaml](./lorenz.yaml)
 #
 # I also want to be able to plot the trajectories in 3d, which means that I
 # need the Axes3D class from matplotlib.  I've written a convenience function
@@ -575,8 +574,8 @@ Image(filename="images/convection.png")
 # which the system will not change in time, once that state has been
 # reached. In other words, it is a point, $(x,y,z)$, such that the
 # solution does not change, or where
-# $$\frac{dx}{dt} = 0  \quad \mathrm{and} \quad \frac{dy}{dt} = 0 \quad
-#   \mathrm{and} \quad \frac{dz}{dt} = 0.$$ This point is usually
+# $$\frac{dx}{dt} = 0  \quad\  \mathrm{and}\ \quad \frac{dy}{dt} = 0 \quad
+#   \ \mathrm{and}\ \quad \frac{dz}{dt} = 0.$$ This point is usually
 # referred to as a *stationary point* of the system.
 #
 # <a name="prob_steady-states"></a>
