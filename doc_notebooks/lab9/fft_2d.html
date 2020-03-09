@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>2D histogram of the optical depth \(\tau\) &mdash; Numeric course 0.1 documentation</title>
+  <title>Lab 9 – 2d fft &mdash; Numeric course 0.1 documentation</title>
   
 
   
@@ -37,7 +37,9 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Weekly notes" href="../../week_notes.html" />
+    <link rel="prev" title="Lab 9 – Introduction to FFTs" href="fftnotebook.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -81,13 +83,34 @@
               
             
             
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../course_bootstrap.html">Getting started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ugradsyllabus20.html">Undergrad Syllabus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../gradsyllabus20.html">Grad Syllabus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../schedule20.html">Detailed Schedule</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../texts.html">Optional texts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../notebook_toc.html">Course/lab descriptions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../notebook_toc.html">Course/lab descriptions</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../lab1/01-lab1.html">  Lab 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab2/01-lab2.html">  Lab 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab3/01-lab3.html">  Lab 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab4/01-lab4.html">  Lab 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab5/01-lab5.html">  Lab 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab6/lab6.html">  Lab 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab7/01-lab7.html">  Lab 7</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../fft_lab.html">  Lab 9</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="fftnotebook.html">  Lab 9 intro</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">  Lab 9 2d filter problem</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Lab-9-problem">Lab 9 problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#2D-histogram-of-the-optical-depth-\tau">2D histogram of the optical depth <span class="math notranslate nohighlight">\(\tau\)</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Character-of-the-optical-depth-field">Character of the optical depth field</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ubc_fft-class">ubc_fft class</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Problem-–-lowpass-filtering-of-a-2-d-image">Problem – lowpass filtering of a 2-d image</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../week_notes.html">Weekly notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../assignments.html">Weekly assignments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../quizzes.html">Quizzes</a></li>
@@ -136,7 +159,11 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-      <li>2D histogram of the optical depth <span class="math notranslate nohighlight">\(\tau\)</span></li>
+          <li><a href="../../notebook_toc.html">Numeric notebooks</a> &raquo;</li>
+        
+          <li><a href="../../fft_lab.html">Lab 9: FFTS</a> &raquo;</li>
+        
+      <li>Lab 9 – 2d fft</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -377,13 +404,14 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<h1><p>Table of Contents</p>
-</h1><div class="toc" style="margin-top: 1em;"><ul class="toc-item"><li><p>1  2D histogram of the optical depth <span class="math notranslate nohighlight">\(\tau\)</span></p>
-<ul class="toc-item"><li><p>1.1  Character of the optical depth field</p>
-</li><li><p>1.2  ubc_fft class</p>
-</li></ul></li><li><p>2  Problem – lowpass filtering of a 2-d image</p>
-</li></ul></div><div class="section" id="2D-histogram-of-the-optical-depth-\tau">
-<h1>2D histogram of the optical depth <span class="math notranslate nohighlight">\(\tau\)</span><a class="headerlink" href="#2D-histogram-of-the-optical-depth-\tau" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="Lab-9-–-2d-fft">
+<h1>Lab 9 – 2d fft<a class="headerlink" href="#Lab-9-–-2d-fft" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="Lab-9-problem">
+<h2>Lab 9 problem<a class="headerlink" href="#Lab-9-problem" title="Permalink to this headline">¶</a></h2>
+<p>Hand in a version of this notebook that solves <a class="reference external" href="#problem_lowpass">Problem lowpass</a> below</p>
+</div>
+<div class="section" id="2D-histogram-of-the-optical-depth-\tau">
+<h2>2D histogram of the optical depth <span class="math notranslate nohighlight">\(\tau\)</span><a class="headerlink" href="#2D-histogram-of-the-optical-depth-\tau" title="Permalink to this headline">¶</a></h2>
 <p>Below I calculate the 2-d and averaged 1-d spectra for the optical depth, which gives the penetration depth of photons through a cloud, and is closely related to cloud thickness</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
@@ -400,16 +428,11 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="kn">import</span> <span class="nn">urllib</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="n">filelist</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a17.nc&#39;</span><span class="p">]</span>
-<span class="n">data_download</span><span class="o">=</span><span class="kc">True</span>
-<span class="k">if</span> <span class="n">data_download</span><span class="p">:</span>
-    <span class="k">for</span> <span class="n">the_file</span> <span class="ow">in</span> <span class="n">filelist</span><span class="p">:</span>
-        <span class="n">url</span><span class="o">=</span><span class="s1">&#39;http://clouds.eos.ubc.ca/~phil/docs/atsc500/data/</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">the_file</span><span class="p">)</span>
-        <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">the_file</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;download </span><span class="si">{}</span><span class="s2">: size is </span><span class="si">{:6.2g}</span><span class="s2"> Mbytes&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">the_file</span><span class="p">,</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="n">the_file</span><span class="p">)</span><span class="o">*</span><span class="mf">1.e-6</span><span class="p">))</span>
+<span></span><span class="kn">import</span> <span class="nn">context</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">numlabs.data_read</span> <span class="kn">import</span> <span class="n">download</span>
+<span class="n">satfile</span> <span class="o">=</span> <span class="s1">&#39;a17.nc&#39;</span>
+<span class="n">download</span><span class="p">(</span><span class="s1">&#39;a17.nc&#39;</span><span class="p">,</span><span class="n">root</span><span class="o">=</span><span class="s2">&quot;https://clouds.eos.ubc.ca/~phil/docs/atsc500/data&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -418,34 +441,33 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-download a17.nc: size is     17 Mbytes
+******************************
+context imported. Front of path:
+/Users/phil/repos/numeric
+back of path: /Users/phil/.ipython
+******************************
+
+through /Users/phil/repos/numeric/notebooks/lab9/context.py
+trying https://clouds.eos.ubc.ca/~phil/docs/atsc500/data/a17.nc
+writing to: a17.nc
+
+a17.nc already exists
+and is 16777384 bytes
+will not overwrite
+
 </pre></div></div>
 </div>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">netCDF4</span> <span class="kn">import</span> <span class="n">Dataset</span>
-<span class="k">with</span> <span class="n">Dataset</span><span class="p">(</span><span class="n">filelist</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">as</span> <span class="n">nc</span><span class="p">:</span>
+<span class="k">with</span> <span class="n">Dataset</span><span class="p">(</span><span class="n">satfile</span><span class="p">)</span> <span class="k">as</span> <span class="n">nc</span><span class="p">:</span>
     <span class="n">tau</span><span class="o">=</span><span class="n">nc</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;tau&#39;</span><span class="p">][</span><span class="o">...</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-3-de5fe010b18b&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span><span class="ansi-green-fg">from</span> netCDF4 <span class="ansi-green-fg">import</span> Dataset
-<span class="ansi-green-intense-fg ansi-bold">      2</span> <span class="ansi-green-fg">with</span> Dataset<span class="ansi-blue-fg">(</span>filelist<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">as</span> nc<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">      3</span>     tau<span class="ansi-blue-fg">=</span>nc<span class="ansi-blue-fg">.</span>variables<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;tau&#39;</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">...</span><span class="ansi-blue-fg">]</span>
-
-<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;netCDF4&#39;
-</pre></div></div>
 </div>
 <div class="section" id="Character-of-the-optical-depth-field">
 <h2>Character of the optical depth field<a class="headerlink" href="#Character-of-the-optical-depth-field" title="Permalink to this headline">¶</a></h2>
@@ -470,28 +492,11 @@ download a17.nc: size is     17 Mbytes
 </pre></div>
 </div>
 </div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-4-175f0c57cfd9&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">      4</span> fig<span class="ansi-blue-fg">,</span>ax<span class="ansi-blue-fg">=</span>plt<span class="ansi-blue-fg">.</span>subplots<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">,</span><span class="ansi-cyan-fg">2</span><span class="ansi-blue-fg">,</span>figsize<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">13</span><span class="ansi-blue-fg">,</span><span class="ansi-cyan-fg">7</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      5</span> ax<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">.</span>set_title<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;landsat a17&#39;</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg">----&gt; 6</span><span class="ansi-red-fg"> </span>im0<span class="ansi-blue-fg">=</span>ax<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">.</span>imshow<span class="ansi-blue-fg">(</span>tau<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      7</span> im1<span class="ansi-blue-fg">=</span>ax<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">.</span>hist<span class="ansi-blue-fg">(</span>tau<span class="ansi-blue-fg">.</span>ravel<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      8</span> ax<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">.</span>set_title<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;histogram of tau values&#39;</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">NameError</span>: name &#39;tau&#39; is not defined
-</pre></div></div>
-</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/doc_notebooks_lab9_fft_2d_6_1.png" src="../../_images/doc_notebooks_lab9_fft_2d_6_1.png" />
+<img alt="../../_images/doc_notebooks_lab9_fft_2d_6_0.png" src="../../_images/doc_notebooks_lab9_fft_2d_6_0.png" />
 </div>
 </div>
 </div>
@@ -502,7 +507,7 @@ download a17.nc: size is     17 Mbytes
 <div class="math notranslate nohighlight">
 \[\overline{E}(k) = \int_0^{2\pi} E(k, \theta) d\theta\]</div>
 <p>and plot that average with the method <code class="docutils literal notranslate"><span class="pre">graph_spectrum</span></code></p>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
@@ -617,24 +622,7 @@ download a17.nc: size is     17 Mbytes
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-5-1160ff0ea453&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span><span class="ansi-green-fg">from</span> netCDF4 <span class="ansi-green-fg">import</span> Dataset
-<span class="ansi-green-intense-fg ansi-bold">      2</span> <span class="ansi-green-fg">import</span> numpy <span class="ansi-green-fg">as</span> np
-<span class="ansi-green-intense-fg ansi-bold">      3</span> <span class="ansi-green-fg">import</span> math
-<span class="ansi-green-intense-fg ansi-bold">      4</span> <span class="ansi-green-fg">from</span> numpy <span class="ansi-green-fg">import</span> fft
-<span class="ansi-green-intense-fg ansi-bold">      5</span> <span class="ansi-green-fg">from</span> matplotlib <span class="ansi-green-fg">import</span> pyplot <span class="ansi-green-fg">as</span> plt
-
-<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;netCDF4&#39;
-</pre></div></div>
-</div>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
@@ -645,22 +633,6 @@ download a17.nc: size is     17 Mbytes
 <span class="n">output</span><span class="o">.</span><span class="n">power_spectrum</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-6-9db3b82f7726&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> plt<span class="ansi-blue-fg">.</span>close<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;all&#39;</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      2</span> plt<span class="ansi-blue-fg">.</span>style<span class="ansi-blue-fg">.</span>use<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;ggplot&#39;</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg">----&gt; 3</span><span class="ansi-red-fg"> </span>output <span class="ansi-blue-fg">=</span> ubc_fft<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;a17.nc&#39;</span><span class="ansi-blue-fg">,</span><span class="ansi-blue-fg">&#39;tau&#39;</span><span class="ansi-blue-fg">,</span><span class="ansi-cyan-fg">0.025</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      4</span> output<span class="ansi-blue-fg">.</span>power_spectrum<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">NameError</span>: name &#39;ubc_fft&#39; is not defined
-</pre></div></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
@@ -677,28 +649,11 @@ download a17.nc: size is     17 Mbytes
 </pre></div>
 </div>
 </div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-7-1c455b045451&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> fig<span class="ansi-blue-fg">,</span>ax<span class="ansi-blue-fg">=</span>plt<span class="ansi-blue-fg">.</span>subplots<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">,</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">,</span>figsize<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">7</span><span class="ansi-blue-fg">,</span><span class="ansi-cyan-fg">7</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      2</span> ax<span class="ansi-blue-fg">.</span>set_title<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;landsat a17&#39;</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg">----&gt; 3</span><span class="ansi-red-fg"> </span>im0<span class="ansi-blue-fg">=</span>ax<span class="ansi-blue-fg">.</span>imshow<span class="ansi-blue-fg">(</span>np<span class="ansi-blue-fg">.</span>log10<span class="ansi-blue-fg">(</span>output<span class="ansi-blue-fg">.</span>spectral_dens<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      4</span> ax<span class="ansi-blue-fg">.</span>set_title<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;log10 of the 2-d power spectrum&#39;</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      5</span> divider <span class="ansi-blue-fg">=</span> make_axes_locatable<span class="ansi-blue-fg">(</span>ax<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">NameError</span>: name &#39;np&#39; is not defined
-</pre></div></div>
-</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/doc_notebooks_lab9_fft_2d_11_1.png" src="../../_images/doc_notebooks_lab9_fft_2d_11_1.png" />
+<img alt="../../_images/doc_notebooks_lab9_fft_2d_11_0.png" src="../../_images/doc_notebooks_lab9_fft_2d_11_0.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -716,13 +671,28 @@ download a17.nc: size is     17 Mbytes
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-8-195506f4bc01&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> avg_binwidth<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">5</span>  <span class="ansi-red-fg">#make the kradial bins 5 pixels wide</span>
-<span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg"> </span>output<span class="ansi-blue-fg">.</span>annular_avg<span class="ansi-blue-fg">(</span>avg_binwidth<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">NameError</span>: name &#39;output&#39; is not defined
+        - INTEGRATING...
+                row: 0 completed
+                row: 100 completed
+                row: 200 completed
+                row: 300 completed
+                row: 400 completed
+                row: 500 completed
+                row: 600 completed
+                row: 700 completed
+                row: 800 completed
+                row: 900 completed
+                row: 1000 completed
+                row: 1100 completed
+                row: 1200 completed
+                row: 1300 completed
+                row: 1400 completed
+                row: 1500 completed
+                row: 1600 completed
+                row: 1700 completed
+                row: 1800 completed
+                row: 1900 completed
+                row: 2000 completed
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -738,33 +708,18 @@ download a17.nc: size is     17 Mbytes
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-9-7432139d473b&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>output<span class="ansi-blue-fg">.</span>graph_spectrum<span class="ansi-blue-fg">(</span>kol_offset<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">2000.</span><span class="ansi-blue-fg">,</span>title<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#39;Landsat {} power spectrum&#39;</span><span class="ansi-blue-fg">.</span>format<span class="ansi-blue-fg">(</span>output<span class="ansi-blue-fg">.</span>filename<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">NameError</span>: name &#39;output&#39; is not defined
-</pre></div></div>
+<img alt="../../_images/doc_notebooks_lab9_fft_2d_13_0.png" src="../../_images/doc_notebooks_lab9_fft_2d_13_0.png" />
 </div>
 </div>
-</div>
+<div id="problem_lowpass"></div></div>
 <div class="section" id="Problem-–-lowpass-filtering-of-a-2-d-image">
-<h1>Problem – lowpass filtering of a 2-d image<a class="headerlink" href="#Problem-–-lowpass-filtering-of-a-2-d-image" title="Permalink to this headline">¶</a></h1>
+<h2>Problem – lowpass filtering of a 2-d image<a class="headerlink" href="#Problem-–-lowpass-filtering-of-a-2-d-image" title="Permalink to this headline">¶</a></h2>
 <p>For the image above, we know that the 25 meter pixels correspond to k=1/0.025 = 40 <span class="math notranslate nohighlight">\(km^{-1}\)</span>. That means that the Nyquist wavenumber is k=20 <span class="math notranslate nohighlight">\(km^{-1}\)</span>. Using that information, design a filter that removes all wavenumbers higher than 1 <span class="math notranslate nohighlight">\(km^{-1}\)</span>.</p>
 <ol class="arabic simple">
 <li><p>Use that filter to zero those values in the fft, then inverse transform and plot the low-pass filtered image.</p></li>
 <li><p>Take the 1-d fft of the image and repeat the plot of the power spectrum to show that there is no power in wavenumbers higher than 1 <span class="math notranslate nohighlight">\(km^{-1}\)</span>.</p></li>
 </ol>
 <p>(Hint – I used the fftshift function to put the low wavenumber cells in the center of the fft, which made it simpler to zero the outer cells. I then used ifftshift to reverse shift before inverse transforming to get the filtered image.)</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>
-</pre></div>
-</div>
 </div>
 </div>
 
@@ -773,6 +728,15 @@ download a17.nc: size is     17 Mbytes
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../week_notes.html" class="btn btn-neutral float-right" title="Weekly notes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="fftnotebook.html" class="btn btn-neutral float-left" title="Lab 9 – Introduction to FFTs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

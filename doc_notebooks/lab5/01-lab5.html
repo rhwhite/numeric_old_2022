@@ -96,10 +96,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../lab4/01-lab4.html">  Lab 4</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">  Lab 5</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#List-of-Problems">List of Problems</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Assignment">Assignment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Objectives">Objectives</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Readings">Readings</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Using-solve_ivp-as-a-black-box-integrator">Using solve_ivp as a black box integrator</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#The-Daisyworld-Model">The Daisyworld Model</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#The-Daisy-Population">The Daisy Population</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#Running-the-constant-growth-rate-demo">Running the constant growth rate demo</a></li>
@@ -134,14 +134,13 @@
 <li class="toctree-l4"><a class="reference internal" href="#Inheritance">Inheritance</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#Initializing-using-yaml">Initializing using yaml</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#Overriding-initial-values-in-a-derived-class">Overriding initial values in a derived class</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#Specific-example">Specific example</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#Why-bother?">Why bother?</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../lab6/lab6.html">  Lab 6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lab7/01-lab7.html">  Lab 7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fft_lab.html">  Lab 9</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../week_notes.html">Weekly notes</a></li>
@@ -449,11 +448,6 @@ div.rendered_html tbody tr:hover {
 <p><a class="reference external" href="#prob_adaptive">Problem Adaptive</a>: Adaptive Timestep Code</p>
 <p><a class="reference external" href="#prob_predator">Problem Predators</a>: Adding predators to Daisyworld</p>
 </div>
-<div class="section" id="Assignment">
-<h2>Assignment<a class="headerlink" href="#Assignment" title="Permalink to this headline">¶</a></h2>
-<p>Upload a jupyter notebook that solves the following problems – if you want to import your own module code, include that with the notebook in a zipfile</p>
-<p>Undergrads: Upload a notebook (and, if you modify library files, include that) * A409: do Problems 1 (constant), 2 (coupling), 4 (initial), 5 (temperature), 6 (estimate) * E511: do Problems 1 (constant), 2 (coupling), 4 (initial), 5 (temperature), 6 (estimate), 8 (adaptive), 9 (predators)</p>
-</div>
 <div class="section" id="Objectives">
 <h2>Objectives<a class="headerlink" href="#Objectives" title="Permalink to this headline">¶</a></h2>
 <p>In this lab, you will explore a simple environmental model, <em>Daisyworld</em>, with the help of a Runge-Kutta method with adaptive stepsize control.</p>
@@ -480,7 +474,7 @@ div.rendered_html tbody tr:hover {
 <li><p><strong>Runge-Kutta Methods with Adaptive Stepsize Control:</strong></p>
 <ul>
 <li><p>Newman, Section 8.4</p></li>
-<li><p>Press, et al. Section 16.2: these are equations we implemented in Python, <a class="reference external" href="pdfs/adapt_ode.pdf">scanned pdf here</a></p></li>
+<li><p>Press, et al. Section 16.2: these are equations we implemented in Python, <a class="reference external" href="pdf_files/adapt_ode.pdf">scanned pdf here</a></p></li>
 <li><p>Burden &amp; Faires Section 5.5</p></li>
 </ul>
 </li>
@@ -494,6 +488,10 @@ div.rendered_html tbody tr:hover {
 <p>It would be hopeless to attempt to mathematically model such a large, complex system. What can be done instead is to construct a ’toy model’ of the system in which much of the complexity has been stripped away and only some of the relevant characteristics retained. The resulting system will then be tractable but, unfortunately, may bear little connection with the original physical system.</p>
 <p>Daisyworld is such a model. Life on Daisyworld has been reduced to just two species of daisies of different colors. The only environmental condition that affects the daisy growth rate is temperature. The temperature in turn is modified by the varying amounts of radiation absorbed by the daisies.</p>
 <p>Daisyworld is obviously a gross simplification of the real earth. However, it does retain the central feature of interest: a feedback loop between the climate and life on the planet. Since the equations governing the system will be correspondingly simplified, it will allow us to investigate under what conditions, if any, that equilibrium is reached. The hope is that this will then gain us some insight into how life on the real earth may lead to a stable climate.</p>
+</div>
+<div class="section" id="Using-solve_ivp-as-a-black-box-integrator">
+<h2>Using solve_ivp as a black box integrator<a class="headerlink" href="#Using-solve_ivp-as-a-black-box-integrator" title="Permalink to this headline">¶</a></h2>
+<p>In Lab 4 we solved</p>
 </div>
 <div class="section" id="The-Daisyworld-Model">
 <h2>The Daisyworld Model<a class="headerlink" href="#The-Daisyworld-Model" title="Permalink to this headline">¶</a></h2>
@@ -513,17 +511,16 @@ div.rendered_html tbody tr:hover {
 <div class="math notranslate nohighlight">
 \[k_i = \beta_i x\]</div>
 <p>where <span class="math notranslate nohighlight">\(\beta_i\)</span> are the white and black daisy growth rates per unit time and area, respectively, and <span class="math notranslate nohighlight">\(x\)</span> is the fractional area of free fertile ground not colonized by either species. We can also add a daisy death rate per unit time, <span class="math notranslate nohighlight">\(\chi\)</span>, to get</p>
-<!-- \label{lab5:eq:model} --><p><span class="math">\textbf{eq: constantgrowth}</span></p>
-<div class="math notranslate nohighlight">
-\[\frac{dA_w}{dt} = A_w ( \beta_w x - \chi)\]</div>
+<!-- \label{lab5:eq:model} --><div class="math notranslate nohighlight">
+\[\frac{dA_w}{dt} = A_w ( \beta_w x - \chi) \ \textbf{eq: constantgrowth}\]</div>
 <div class="math notranslate nohighlight">
 \[\frac{dA_b}{dt} = A_b ( \beta_b x - \chi)\]</div>
 <p>However, even these small modifications are non-trivial mathematically as the available fertile land is given by,</p>
 <div class="math notranslate nohighlight">
 \[x = 1 - A_w - A_b\]</div>
 <p>(assuming all the land mass is fertile) which makes the equations non-linear.</p>
-<div id="prob_constant"><p>** Problem constant growth**</p>
-</div><!-- [lab5:prob:constant] --><p>Note that though the daisy growth rate per unit time depends on the amount of available fertile land, it is not otherwise coupled to the environment (i.e. <span class="math notranslate nohighlight">\(\beta_i\)</span> is note a function of temperature. Making the growth a function of bare ground, however, keeps the daisy population bounded and the daisy population will eventually reach some steady state. The next python cell has a script that runs a fixed timestep Runge Kutte routine that calculates area coverage of white and black daisies
+<p>** Problem constant growth**:</p>
+<p>Note that though the daisy growth rate per unit time depends on the amount of available fertile land, it is not otherwise coupled to the environment (i.e. <span class="math notranslate nohighlight">\(\beta_i\)</span> is note a function of temperature. Making the growth a function of bare ground, however, keeps the daisy population bounded and the daisy population will eventually reach some steady state. The next python cell has a script that runs a fixed timestep Runge Kutte routine that calculates area coverage of white and black daisies
 for fixed growth rates <span class="math notranslate nohighlight">\(\beta_w\)</span> and <span class="math notranslate nohighlight">\(\beta_b\)</span>. Try changing these growth rates (specified in the derivs5 routine) and the initial white and black concentrations (specified in the fixed_growth.yaml file discussed next).</p>
 <ol class="arabic simple">
 <li><p>For a given set of growth rates try various (non-zero) initial daisy populations.</p></li>
@@ -535,7 +532,7 @@ for fixed growth rates <span class="math notranslate nohighlight">\(\beta_w\)</s
 <h3>Running the constant growth rate demo<a class="headerlink" href="#Running-the-constant-growth-rate-demo" title="Permalink to this headline">¶</a></h3>
 <p>In the appendix we discuss the design of the integrator class and the adaptive Runge-Kutta routine. For this demo, we need to be able to change variables in the configuration file. For this demonstration you are asked to</p>
 <ol class="arabic">
-<li><p>Change the inital white and black daisy concentrations by changing these lines in the <a class="reference external" href="https://github.com/phaustin/numeric/blob/10117233dc7c440b15c549c8086d76a03b9dcdd0/notebooks/lab5/fixed_growth.yaml#L13-L15">fixed_growth.yaml</a> input file:</p>
+<li><p>Change the inital white and black daisy concentrations by changing these lines in the <a class="reference external" href="https://github.com/phaustin/numeric/blob/lab5/lab5/fixed_growth.yaml#L13-L15">fixed_growth.yaml</a> input file:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">initvars</span><span class="p">:</span>
    <span class="nt">whiteconc</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.2</span>
    <span class="nt">blackconc</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.7</span>
@@ -544,24 +541,27 @@ for fixed growth rates <span class="math notranslate nohighlight">\(\beta_w\)</s
 </li>
 <li><p>Change the white and black daisy growth rates by editing the variables beta_w and beta_b in the derivs5 routine in the next cell</p></li>
 </ol>
-<p>The Integrator class contains two different timeloops, both of which use embedded Runge Kutta Cash Carp code given in Lab 4 and code here as <a class="reference external" href="https://github.com/phaustin/numeric/blob/10117233dc7c440b15c549c8086d76a03b9dcdd0/numlabs/lab5/lab5_funs.py#L70">rkckODE5</a>. The simplest way to loop through the timesteps is just to call the integrator with a specified set of times. This is done in
-<a class="reference external" href="https://github.com/phaustin/numeric/blob/10117233dc7c440b15c549c8086d76a03b9dcdd0/numlabs/lab5/lab5_funs.py#L244">timeloop5fixed</a>. Below we will describe how to use the error extimates returned by rkckODE5 to tune the size of the timesteps, which is done in <a class="reference external" href="https://github.com/phaustin/numeric/blob/10117233dc7c440b15c549c8086d76a03b9dcdd0/numlabs/lab5/lab5_funs.py#L244">timeloop5Err</a>.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+<p>The Integrator class contains two different timeloops, both of which use embedded Runge Kutta Cash Carp code given in Lab 4 and code here as <a class="reference external" href="https://github.com/phaustin/numeric/blob/lab5/numlabs/lab5/lab5_funs.py#L71">rkckODE5</a>. The simplest way to loop through the timesteps is just to call the integrator with a specified set of times. This is done in <a class="reference external" href="https://github.com/phaustin/numeric/blob/lab5/numlabs/lab5/lab5_funs.py#L245">timeloop5fixed</a>. Below we will describe how to use the error
+extimates returned by <a class="reference external" href="https://github.com/phaustin/numeric/blob/lab5/numlabs/lab5/lab5_funs.py#L71">rkckODE5</a> to tune the size of the timesteps, which is done in <a class="reference external" href="https://github.com/phaustin/numeric/blob/lab5/numlabs/lab5/lab5_funs.py#L116">timeloop5Err</a></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1">#</span>
-<span class="c1"># 4.1  integrate constant growth rates with fixed timesteps</span>
+<span class="c1">## 4.1  integrate constant growth rates with fixed timesteps</span>
 <span class="c1">#</span>
-<span class="kn">import</span> <span class="nn">context</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numlabs.lab5.lab5_funs</span>
+<span class="kn">from</span> <span class="nn">importlib</span> <span class="kn">import</span> <span class="n">reload</span>
+<span class="n">reload</span><span class="p">(</span><span class="n">numlabs</span><span class="o">.</span><span class="n">lab5</span><span class="o">.</span><span class="n">lab5_funs</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">numlabs.lab5.lab5_funs</span> <span class="kn">import</span> <span class="n">Integrator</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-
 <span class="k">class</span> <span class="nc">Integ51</span><span class="p">(</span><span class="n">Integrator</span><span class="p">):</span>
+
     <span class="k">def</span> <span class="nf">set_yinit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1">#</span>
         <span class="c1"># read in &#39;albedo_white chi S0 L albedo_black R albedo_ground&#39;</span>
@@ -577,7 +577,6 @@ for fixed growth rates <span class="math notranslate nohighlight">\(\beta_w\)</s
             <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">initvars</span><span class="o">.</span><span class="n">whiteconc</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">initvars</span><span class="o">.</span><span class="n">blackconc</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nvars</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">yinit</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">None</span>
-
     <span class="c1">#</span>
     <span class="c1"># Construct an Integ51 class by inheriting first intializing</span>
     <span class="c1"># the parent Integrator class (called super).  Then do the extra</span>
@@ -613,11 +612,12 @@ for fixed growth rates <span class="math notranslate nohighlight">\(\beta_w\)</s
         <span class="k">return</span> <span class="n">f</span>
 
 
+
 <span class="n">theSolver</span> <span class="o">=</span> <span class="n">Integ51</span><span class="p">(</span><span class="s1">&#39;fixed_growth.yaml&#39;</span><span class="p">)</span>
 <span class="n">timeVals</span><span class="p">,</span> <span class="n">yVals</span><span class="p">,</span> <span class="n">errorList</span> <span class="o">=</span> <span class="n">theSolver</span><span class="o">.</span><span class="n">timeloop5fixed</span><span class="p">()</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
-<span class="n">thefig</span><span class="p">,</span> <span class="n">theAx</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">thefig</span><span class="p">,</span> <span class="n">theAx</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">theLines</span> <span class="o">=</span> <span class="n">theAx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeVals</span><span class="p">,</span> <span class="n">yVals</span><span class="p">)</span>
 <span class="n">theLines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_marker</span><span class="p">(</span><span class="s1">&#39;+&#39;</span><span class="p">)</span>
 <span class="n">theLines</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_linestyle</span><span class="p">(</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
@@ -628,7 +628,7 @@ for fixed growth rates <span class="math notranslate nohighlight">\(\beta_w\)</s
 <span class="n">theAx</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;fractional coverage&#39;</span><span class="p">)</span>
 <span class="n">theAx</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">theLines</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;white daisies&#39;</span><span class="p">,</span> <span class="s1">&#39;black daisies&#39;</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
 
-<span class="n">thefig</span><span class="p">,</span> <span class="n">theAx</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">thefig</span><span class="p">,</span> <span class="n">theAx</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">theLines</span> <span class="o">=</span> <span class="n">theAx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeVals</span><span class="p">,</span> <span class="n">errorList</span><span class="p">)</span>
 <span class="n">theLines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_marker</span><span class="p">(</span><span class="s1">&#39;+&#39;</span><span class="p">)</span>
 <span class="n">theLines</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_linestyle</span><span class="p">(</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
@@ -637,36 +637,10 @@ for fixed growth rates <span class="math notranslate nohighlight">\(\beta_w\)</s
 <span class="n">theAx</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;lab 5 interactive 1 errors&#39;</span><span class="p">)</span>
 <span class="n">theAx</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
 <span class="n">theAx</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">)</span>
-<span class="n">out</span> <span class="o">=</span> <span class="n">theAx</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">theLines</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;white errors&#39;</span><span class="p">,</span> <span class="s1">&#39;black errors&#39;</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-******************************
-context imported. Front of path:
-/Users/phil/repos/numeric
-back of path: /Users/phil/.ipython
-******************************
+<span class="n">out</span><span class="o">=</span><span class="n">theAx</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">theLines</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;white errors&#39;</span><span class="p">,</span> <span class="s1">&#39;black errors&#39;</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
 
-through /Users/phil/repos/numeric/notebooks/lab5/context.py
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../../_images/doc_notebooks_lab5_01-lab5_10_1.png" src="../../_images/doc_notebooks_lab5_01-lab5_10_1.png" />
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../../_images/doc_notebooks_lab5_01-lab5_10_2.png" src="../../_images/doc_notebooks_lab5_01-lab5_10_2.png" />
+
+</pre></div>
 </div>
 </div>
 </div>
@@ -679,17 +653,29 @@ through /Users/phil/repos/numeric/notebooks/lab5/context.py
 <!-- \label{lab5:eq:beta_i} --><div class="math notranslate nohighlight">
 \[\beta_i = 1.0 - 0.003265(295.5 K - T_i)^2\]</div>
 <p>where the <span class="math notranslate nohighlight">\(i\)</span> subscript denotes the type of daisy: grey (i=y), whithe (i=w) or black (i=b). (We’re reserving <span class="math notranslate nohighlight">\(\alpha_g\)</span> for the bare ground albedo)</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;images/beta.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 <p>Before specifying the local temperature, and its dependence on the daisy population, first consider the emission temperature <span class="math notranslate nohighlight">\(T_e\)</span>, which is the mean temperature of the planet,</p>
 <!-- \label{lab5:eq:tempe} --><div class="math notranslate nohighlight">
 \[T^4_e = L \frac{S_0}{4\sigma}(1-\alpha_p)\]</div>
 <p>where <span class="math notranslate nohighlight">\(S_0\)</span> is a solar flux density constant, <span class="math notranslate nohighlight">\(L\)</span> is the fraction of <span class="math notranslate nohighlight">\(S_0\)</span> received at Daisyworld, and <span class="math notranslate nohighlight">\(\alpha_p\)</span> is the planetary albedo. The greater the planetary albedo <span class="math notranslate nohighlight">\(\alpha_p\)</span>, i.e. the more solar radiation the planet reflects, the lower the emission temperature.</p>
 <p><strong>Mathematical note</strong>: The emission temperature is derived on the assumption that the planet is in global energy balance and is behaving as a blackbody radiator. See the appendix for more information.</p>
-<div id="prob_coupling"><p><strong>Problem Coupling</strong></p>
-</div><p>Consider daisies with the same albedo as the planet, i.e. ’grey’ or neutral daisies, as specified in derivs5 routine below.</p>
+<p><strong>Problem Coupling</strong> Consider daisies with the same albedo as the planet, i.e. ’grey’ or neutral daisies, as specified in derivs5 routine below.</p>
 <ol class="arabic">
 <li><p>For the current value of L (0.2) in the file coupling.yaml, the final daisy steady state is zero. Why is it zero?</p></li>
 <li><p>Find a value of L which leads to a non-zero steady state.</p></li>
-<li><p>What happens to the emission temperature as L is varied? Make a plot of <span class="math notranslate nohighlight">\(L\)</span> vs. <span class="math notranslate nohighlight">\(T_E\)</span> for 10-15 values of <span class="math notranslate nohighlight">\(L\)</span>. To do this, I overrode the value of L from the init file by passing a new value into the IntegCoupling constructor (see <a class="reference external" href="#sec_override">Appendix A</a>). This allowed me to put</p>
+<li><div class="line-block">
+<div class="line">What happens to the emission temperature as L is varied? Make a plot of <span class="math notranslate nohighlight">\(L\)</span> vs. <span class="math notranslate nohighlight">\(T_E\)</span> for 10-15 values of <span class="math notranslate nohighlight">\(L\)</span>. To do this, I overrode the value of L from the init file by passing a new value into the IntegCoupling constructor (see [Appendix A.4.4]()).</div>
+<div class="line">This allowed me to put</div>
+</div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">theSolver</span> <span class="o">=</span> <span class="n">IntegCoupling</span><span class="p">(</span><span class="s2">&quot;coupling.yaml&quot;</span><span class="p">,</span><span class="n">newL</span><span class="p">)</span>
 <span class="n">timeVals</span><span class="p">,</span> <span class="n">yVals</span><span class="p">,</span> <span class="n">errorList</span> <span class="o">=</span> <span class="n">theSolver</span><span class="o">.</span><span class="n">timeloop5fixed</span><span class="p">()</span>
 </pre></div>
@@ -704,17 +690,23 @@ through /Users/phil/repos/numeric/notebooks/lab5/context.py
 </ol>
 <p>Hand in – notebook cells with the code, plots and your answers.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
+<span></span><span class="kn">import</span> <span class="nn">numlabs.lab5.lab5_funs</span>
+<span class="kn">from</span> <span class="nn">numlabs.lab5.lab5_funs</span> <span class="kn">import</span> <span class="n">Integrator</span>
+<span class="kn">from</span> <span class="nn">importlib</span> <span class="kn">import</span> <span class="n">reload</span>
+<span class="n">reload</span><span class="p">(</span><span class="n">numlabs</span><span class="o">.</span><span class="n">lab5</span><span class="o">.</span><span class="n">lab5_funs</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="k">class</span> <span class="nc">IntegCoupling</span><span class="p">(</span><span class="n">Integrator</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;rewrite the init and derivs5 methods to</span>
 <span class="sd">       work with a single (grey) daisy</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="k">def</span> <span class="nf">set_yinit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1">#</span>
         <span class="c1"># read in &#39;albedo_grey chi S0 L  R albedo_ground&#39;</span>
@@ -748,9 +740,9 @@ through /Users/phil/repos/numeric/notebooks/lab5/context.py
         <span class="n">x</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">albedo_p</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">user</span><span class="o">.</span><span class="n">albedo_ground</span> <span class="o">+</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">user</span><span class="o">.</span><span class="n">albedo_grey</span>
         <span class="n">Te_4</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">S0</span> <span class="o">/</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="n">user</span><span class="o">.</span><span class="n">L</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">albedo_p</span><span class="p">)</span> <span class="o">/</span> <span class="n">sigma</span>
-        <span class="n">eta</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">R</span> <span class="o">*</span> <span class="n">user</span><span class="o">.</span><span class="n">L</span> <span class="o">*</span> <span class="n">user</span><span class="o">.</span><span class="n">S0</span> <span class="o">/</span> <span class="p">(</span><span class="mf">4.0</span> <span class="o">*</span> <span class="n">sigma</span><span class="p">)</span>
+        <span class="n">eta</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">R</span> <span class="o">*</span><span class="n">user</span><span class="o">.</span><span class="n">L</span> <span class="o">*</span> <span class="n">user</span><span class="o">.</span><span class="n">S0</span> <span class="o">/</span> <span class="p">(</span><span class="mf">4.0</span> <span class="o">*</span> <span class="n">sigma</span><span class="p">)</span>
         <span class="n">temp_y</span> <span class="o">=</span> <span class="p">(</span><span class="n">eta</span> <span class="o">*</span> <span class="p">(</span><span class="n">albedo_p</span> <span class="o">-</span> <span class="n">user</span><span class="o">.</span><span class="n">albedo_grey</span><span class="p">)</span> <span class="o">+</span> <span class="n">Te_4</span><span class="p">)</span><span class="o">**</span><span class="mf">0.25</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">temp_y</span> <span class="o">&gt;=</span> <span class="mf">277.5</span> <span class="ow">and</span> <span class="n">temp_y</span> <span class="o">&lt;=</span> <span class="mf">312.5</span><span class="p">):</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">temp_y</span> <span class="o">&gt;=</span> <span class="mf">277.5</span> <span class="ow">and</span> <span class="n">temp_y</span> <span class="o">&lt;=</span> <span class="mf">312.5</span><span class="p">):</span>
             <span class="n">beta_y</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="mf">0.003265</span> <span class="o">*</span> <span class="p">(</span><span class="mf">295.0</span> <span class="o">-</span> <span class="n">temp_y</span><span class="p">)</span><span class="o">**</span><span class="mf">2.0</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">beta_y</span> <span class="o">=</span> <span class="mf">0.0</span>
@@ -759,15 +751,19 @@ through /Users/phil/repos/numeric/notebooks/lab5/context.py
         <span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">nvars</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
         <span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">beta_y</span> <span class="o">*</span> <span class="n">x</span> <span class="o">-</span> <span class="n">user</span><span class="o">.</span><span class="n">chi</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">f</span>
+
+
 </pre></div>
 </div>
 </div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="n">theSolver</span> <span class="o">=</span> <span class="n">IntegCoupling</span><span class="p">(</span><span class="s1">&#39;coupling.yaml&#39;</span><span class="p">)</span>
 <span class="n">timeVals</span><span class="p">,</span> <span class="n">yVals</span><span class="p">,</span> <span class="n">errorList</span> <span class="o">=</span> <span class="n">theSolver</span><span class="o">.</span><span class="n">timeloop5fixed</span><span class="p">()</span>
@@ -777,15 +773,10 @@ through /Users/phil/repos/numeric/notebooks/lab5/context.py
 <span class="n">theAx</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;lab 5: interactive 2 Coupling with grey daisies&#39;</span><span class="p">)</span>
 <span class="n">theAx</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
 <span class="n">theAx</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;fractional coverage&#39;</span><span class="p">)</span>
-<span class="n">out</span> <span class="o">=</span> <span class="n">theAx</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">theLines</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;grey daisies&#39;</span><span class="p">,</span> <span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+<span class="n">out</span><span class="o">=</span><span class="n">theAx</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">theLines</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;grey daisies&#39;</span><span class="p">,),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+
+
 </pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../../_images/doc_notebooks_lab5_01-lab5_16_0.png" src="../../_images/doc_notebooks_lab5_01-lab5_16_0.png" />
 </div>
 </div>
 </div>
@@ -808,24 +799,29 @@ through /Users/phil/repos/numeric/notebooks/lab5/context.py
 <!-- \label{lab5:eq:tempi} --><div class="math notranslate nohighlight">
 \[T^4_i = R L \frac{S_0}{4\sigma}(\alpha_p-\alpha_i) + T^4_e\]</div>
 <p>where <span class="math notranslate nohighlight">\(R\)</span> is a parameter that interpolates between the two extreme cases i.e. <span class="math notranslate nohighlight">\(R=0\)</span> means perfect conduction and <span class="math notranslate nohighlight">\(R=1\)</span> implies perfect insulation between regions.</p>
-<div id="prob_conduction"><p><strong>Problem Conduction</strong></p>
-<p>The conduction parameter R will determine the temperature differential between the bare ground and the regions with black or white daisies. The code in the next cell specifies the derivatives for this situation, removing the feedback between the daisies and the planetary albedo but introducint conduction. Use it to investigate these two questions:</p>
+<p><strong>Problem Conduction</strong> The conduction parameter R will determine the temperature differential between the bare ground and the regions with black or white daisies. The code in the next cell specifies the derivatives for this situation, removing the feedback between the daisies and the planetary albedo but introducint conduction. Use it to investigate these two questions:</p>
 <ol class="arabic simple">
 <li><p>Change the value of R and observe the effects on the daisy and emission temperature.</p></li>
 <li><p>What are the effects on the daisy growth rate and the final steady states?</p></li>
 </ol>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1">#</span>
-<span class="c1"># 5.2  keep the albedo constant at alpha_p and vary the conductivity R</span>
+<span class="c1">## 5.2  keep the albedo constant at alpha_p and vary the conductivity R</span>
 <span class="c1">#</span>
+<span class="kn">import</span> <span class="nn">numlabs.lab5.lab5_funs</span>
+<span class="kn">from</span> <span class="nn">importlib</span> <span class="kn">import</span> <span class="n">reload</span>
+<span class="n">reload</span><span class="p">(</span><span class="n">numlabs</span><span class="o">.</span><span class="n">lab5</span><span class="o">.</span><span class="n">lab5_funs</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">numlabs.lab5.lab5_funs</span> <span class="kn">import</span> <span class="n">Integrator</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 
 <span class="k">class</span> <span class="nc">Integ53</span><span class="p">(</span><span class="n">Integrator</span><span class="p">):</span>
+
     <span class="k">def</span> <span class="nf">set_yinit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1">#</span>
         <span class="c1"># read in &#39;albedo_white chi S0 L albedo_black R albedo_ground&#39;</span>
@@ -860,16 +856,16 @@ through /Users/phil/repos/numeric/notebooks/lab5/context.py
         <span class="c1">#</span>
         <span class="n">albedo_p</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">albedo_ground</span>
         <span class="n">Te_4</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">S0</span> <span class="o">/</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="n">user</span><span class="o">.</span><span class="n">L</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">albedo_p</span><span class="p">)</span> <span class="o">/</span> <span class="n">sigma</span>
-        <span class="n">eta</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">R</span> <span class="o">*</span> <span class="n">user</span><span class="o">.</span><span class="n">L</span> <span class="o">*</span> <span class="n">user</span><span class="o">.</span><span class="n">S0</span> <span class="o">/</span> <span class="p">(</span><span class="mf">4.0</span> <span class="o">*</span> <span class="n">sigma</span><span class="p">)</span>
+        <span class="n">eta</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">R</span> <span class="o">*</span> <span class="n">user</span><span class="o">.</span><span class="n">L</span><span class="o">*</span> <span class="n">user</span><span class="o">.</span><span class="n">S0</span> <span class="o">/</span> <span class="p">(</span><span class="mf">4.0</span> <span class="o">*</span> <span class="n">sigma</span><span class="p">)</span>
         <span class="n">temp_b</span> <span class="o">=</span> <span class="p">(</span><span class="n">eta</span> <span class="o">*</span> <span class="p">(</span><span class="n">albedo_p</span> <span class="o">-</span> <span class="n">user</span><span class="o">.</span><span class="n">albedo_black</span><span class="p">)</span> <span class="o">+</span> <span class="n">Te_4</span><span class="p">)</span><span class="o">**</span><span class="mf">0.25</span>
         <span class="n">temp_w</span> <span class="o">=</span> <span class="p">(</span><span class="n">eta</span> <span class="o">*</span> <span class="p">(</span><span class="n">albedo_p</span> <span class="o">-</span> <span class="n">user</span><span class="o">.</span><span class="n">albedo_white</span><span class="p">)</span> <span class="o">+</span> <span class="n">Te_4</span><span class="p">)</span><span class="o">**</span><span class="mf">0.25</span>
 
-        <span class="k">if</span> <span class="p">(</span><span class="n">temp_b</span> <span class="o">&gt;=</span> <span class="mf">277.5</span> <span class="ow">and</span> <span class="n">temp_b</span> <span class="o">&lt;=</span> <span class="mf">312.5</span><span class="p">):</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">temp_b</span> <span class="o">&gt;=</span> <span class="mf">277.5</span> <span class="ow">and</span> <span class="n">temp_b</span> <span class="o">&lt;=</span> <span class="mf">312.5</span><span class="p">):</span>
             <span class="n">beta_b</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="mf">0.003265</span> <span class="o">*</span> <span class="p">(</span><span class="mf">295.0</span> <span class="o">-</span> <span class="n">temp_b</span><span class="p">)</span><span class="o">**</span><span class="mf">2.0</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">beta_b</span> <span class="o">=</span> <span class="mf">0.0</span>
 
-        <span class="k">if</span> <span class="p">(</span><span class="n">temp_w</span> <span class="o">&gt;=</span> <span class="mf">277.5</span> <span class="ow">and</span> <span class="n">temp_w</span> <span class="o">&lt;=</span> <span class="mf">312.5</span><span class="p">):</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">temp_w</span> <span class="o">&gt;=</span> <span class="mf">277.5</span> <span class="ow">and</span> <span class="n">temp_w</span> <span class="o">&lt;=</span> <span class="mf">312.5</span><span class="p">):</span>
             <span class="n">beta_w</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="mf">0.003265</span> <span class="o">*</span> <span class="p">(</span><span class="mf">295.0</span> <span class="o">-</span> <span class="n">temp_w</span><span class="p">)</span><span class="o">**</span><span class="mf">2.0</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">beta_w</span> <span class="o">=</span> <span class="mf">0.0</span>
@@ -879,6 +875,8 @@ through /Users/phil/repos/numeric/notebooks/lab5/context.py
         <span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">beta_w</span> <span class="o">*</span> <span class="n">x</span> <span class="o">-</span> <span class="n">user</span><span class="o">.</span><span class="n">chi</span><span class="p">)</span>
         <span class="n">f</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">beta_b</span> <span class="o">*</span> <span class="n">x</span> <span class="o">-</span> <span class="n">user</span><span class="o">.</span><span class="n">chi</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">f</span>
+
+
 </pre></div>
 </div>
 </div>
@@ -900,8 +898,8 @@ through /Users/phil/repos/numeric/notebooks/lab5/context.py
 <span class="n">theAx</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;lab 5 interactive 3 -- conduction problem&#39;</span><span class="p">)</span>
 <span class="n">theAx</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
 <span class="n">theAx</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;fractional coverage&#39;</span><span class="p">)</span>
-<span class="n">out</span> <span class="o">=</span> <span class="n">theAx</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">theLines</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;white daisies&#39;</span><span class="p">,</span> <span class="s1">&#39;black daisies&#39;</span><span class="p">),</span>
-                   <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center right&#39;</span><span class="p">)</span>
+<span class="n">out</span><span class="o">=</span><span class="n">theAx</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">theLines</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;white daisies&#39;</span><span class="p">,</span> <span class="s1">&#39;black daisies&#39;</span><span class="p">),</span>
+             <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center right&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -931,22 +929,27 @@ through /Users/phil/repos/numeric/notebooks/lab5/context.py
 <li><p>Physically, this provides the feedback from the daisy population back to the temperature, completing the loop between the daisies and temperature.</p></li>
 <li><p>Mathematically, this introduces a rather nasty non-linearity into the equations which, as pointed out in the lab 1, usually makes it difficult, if not impossible, to obtain exact analytic solutions.</p></li>
 </ul>
-<div id="prob_initial"><p><strong>Problem initial</strong></p>
-</div><p>The feedback means a stable daisy population (a steady state) and the environmental conditions are in a delicate balance. The code below produces a steady state which arises from a given initial daisy population,</p>
+<p><strong>Problem initial</strong> The feedback means a stable daisy population (a steady state) and the environmental conditions are in a delicate balance. The code below produces a steady state which arises from a given initial daisy population,</p>
 <ol class="arabic simple">
 <li><p>Add a small initial fraction of black daisies (say, 0.01) to the value in initial.yaml and see what effect this has on the temperature and final daisy populations. Do you still have a final non-zero daisy population?</p></li>
 <li><p>Attempt to adjust the initial white daisy population to obtain a non-zero steady state. Do you have to increase or decrease the initial fraction? What is your explanation for this behavior?</p></li>
 <li><p>Experiment with other initial fractions of daisies and look for non-zero steady states.</p></li>
 </ol>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">numlabs.lab5.lab5_funs</span> <span class="kn">import</span> <span class="n">Integrator</span>
+<span></span><span class="kn">import</span> <span class="nn">numlabs.lab5.lab5_funs</span>
+<span class="kn">from</span> <span class="nn">importlib</span> <span class="kn">import</span> <span class="n">reload</span>
+<span class="n">reload</span><span class="p">(</span><span class="n">numlabs</span><span class="o">.</span><span class="n">lab5</span><span class="o">.</span><span class="n">lab5_funs</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">numlabs.lab5.lab5_funs</span> <span class="kn">import</span> <span class="n">Integrator</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 
 <span class="k">class</span> <span class="nc">Integ54</span><span class="p">(</span><span class="n">Integrator</span><span class="p">):</span>
+
     <span class="k">def</span> <span class="nf">set_yinit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1">#</span>
         <span class="c1"># read in &#39;albedo_white chi S0 L albedo_black R albedo_ground&#39;</span>
@@ -983,7 +986,7 @@ through /Users/phil/repos/numeric/notebooks/lab5/context.py
             <span class="n">yvals</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">user</span><span class="o">.</span><span class="n">albedo_white</span> <span class="o">+</span> <span class="n">yvals</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">user</span><span class="o">.</span><span class="n">albedo_black</span>
         <span class="n">Te_4</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">S0</span> <span class="o">/</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="n">user</span><span class="o">.</span><span class="n">L</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">albedo_p</span><span class="p">)</span> <span class="o">/</span> <span class="n">sigma</span>
         <span class="n">temp_e</span> <span class="o">=</span> <span class="n">Te_4</span><span class="o">**</span><span class="mf">0.25</span>
-        <span class="n">eta</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">R</span> <span class="o">*</span> <span class="n">user</span><span class="o">.</span><span class="n">L</span> <span class="o">*</span> <span class="n">user</span><span class="o">.</span><span class="n">S0</span> <span class="o">/</span> <span class="p">(</span><span class="mf">4.0</span> <span class="o">*</span> <span class="n">sigma</span><span class="p">)</span>
+        <span class="n">eta</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">R</span> <span class="o">*</span> <span class="n">user</span><span class="o">.</span><span class="n">L</span><span class="o">*</span> <span class="n">user</span><span class="o">.</span><span class="n">S0</span> <span class="o">/</span> <span class="p">(</span><span class="mf">4.0</span> <span class="o">*</span> <span class="n">sigma</span><span class="p">)</span>
         <span class="n">temp_b</span> <span class="o">=</span> <span class="p">(</span><span class="n">eta</span> <span class="o">*</span> <span class="p">(</span><span class="n">albedo_p</span> <span class="o">-</span> <span class="n">user</span><span class="o">.</span><span class="n">albedo_black</span><span class="p">)</span> <span class="o">+</span> <span class="n">Te_4</span><span class="p">)</span><span class="o">**</span><span class="mf">0.25</span>
         <span class="n">temp_w</span> <span class="o">=</span> <span class="p">(</span><span class="n">eta</span> <span class="o">*</span> <span class="p">(</span><span class="n">albedo_p</span> <span class="o">-</span> <span class="n">user</span><span class="o">.</span><span class="n">albedo_white</span><span class="p">)</span> <span class="o">+</span> <span class="n">Te_4</span><span class="p">)</span><span class="o">**</span><span class="mf">0.25</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">temp_w</span><span class="p">,</span> <span class="n">temp_b</span><span class="p">,</span> <span class="n">temp_e</span><span class="p">)</span>
@@ -996,12 +999,12 @@ through /Users/phil/repos/numeric/notebooks/lab5/context.py
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">temp_w</span><span class="p">,</span> <span class="n">temp_b</span><span class="p">,</span> <span class="n">temp_e</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_temp</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="p">(</span><span class="n">temp_b</span> <span class="o">&gt;=</span> <span class="mf">277.5</span> <span class="ow">and</span> <span class="n">temp_b</span> <span class="o">&lt;=</span> <span class="mf">312.5</span><span class="p">):</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">temp_b</span> <span class="o">&gt;=</span> <span class="mf">277.5</span> <span class="ow">and</span> <span class="n">temp_b</span> <span class="o">&lt;=</span> <span class="mf">312.5</span><span class="p">):</span>
             <span class="n">beta_b</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="mf">0.003265</span> <span class="o">*</span> <span class="p">(</span><span class="mf">295.0</span> <span class="o">-</span> <span class="n">temp_b</span><span class="p">)</span><span class="o">**</span><span class="mf">2.0</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">beta_b</span> <span class="o">=</span> <span class="mf">0.0</span>
 
-        <span class="k">if</span> <span class="p">(</span><span class="n">temp_w</span> <span class="o">&gt;=</span> <span class="mf">277.5</span> <span class="ow">and</span> <span class="n">temp_w</span> <span class="o">&lt;=</span> <span class="mf">312.5</span><span class="p">):</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">temp_w</span> <span class="o">&gt;=</span> <span class="mf">277.5</span> <span class="ow">and</span> <span class="n">temp_w</span> <span class="o">&lt;=</span> <span class="mf">312.5</span><span class="p">):</span>
             <span class="n">beta_w</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="mf">0.003265</span> <span class="o">*</span> <span class="p">(</span><span class="mf">295.0</span> <span class="o">-</span> <span class="n">temp_w</span><span class="p">)</span><span class="o">**</span><span class="mf">2.0</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">beta_w</span> <span class="o">=</span> <span class="mf">0.0</span>
@@ -1012,15 +1015,18 @@ through /Users/phil/repos/numeric/notebooks/lab5/context.py
         <span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">beta_w</span> <span class="o">*</span> <span class="n">bare</span> <span class="o">-</span> <span class="n">user</span><span class="o">.</span><span class="n">chi</span><span class="p">)</span>
         <span class="n">f</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">beta_b</span> <span class="o">*</span> <span class="n">bare</span> <span class="o">-</span> <span class="n">user</span><span class="o">.</span><span class="n">chi</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">f</span>
+
+
 </pre></div>
 </div>
 </div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="n">theSolver</span> <span class="o">=</span> <span class="n">Integ54</span><span class="p">(</span><span class="s1">&#39;initial.yaml&#39;</span><span class="p">)</span>
@@ -1035,19 +1041,11 @@ through /Users/phil/repos/numeric/notebooks/lab5/context.py
 <span class="n">theAx</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;lab 5 interactive 4, initial conditions&#39;</span><span class="p">)</span>
 <span class="n">theAx</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
 <span class="n">theAx</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;fractional coverage&#39;</span><span class="p">)</span>
-<span class="n">out</span> <span class="o">=</span> <span class="n">theAx</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center right&#39;</span><span class="p">)</span>
+<span class="n">out</span><span class="o">=</span><span class="n">theAx</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center right&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../../_images/doc_notebooks_lab5_01-lab5_23_0.png" src="../../_images/doc_notebooks_lab5_01-lab5_23_0.png" />
-</div>
-</div>
-<div id="prob_temperature"><p><strong>Problem Temperature</strong></p>
-</div><p>The code above adds a new method, <code class="docutils literal notranslate"><span class="pre">find_temp</span></code> that takes the white/black daisy fractions and calculates local and planetary temperatures.</p>
+<p><strong>Problem Temperature</strong>: The code above adds a new method, <code class="docutils literal notranslate"><span class="pre">find_temp</span></code> that takes the white/black daisy fractions and calculates local and planetary temperatures.</p>
 <ol class="arabic simple">
 <li><p>override <code class="docutils literal notranslate"><span class="pre">timeloop5fixed</span></code> so that it saves these three temperatures, plus the daisy growth rates to new variables in the Integ54 instance</p></li>
 <li><p>Make plots of (temp_w, temp_b) and (beta_w, beta_b) vs. time for a case with non-zero equilibrium concentrations of both black and white daisies</p></li>
@@ -1078,8 +1076,7 @@ accuracy achieved. So we are looking at 3 function evaluations more per step, or
 <h3>Error Estimate using Embedded Runge-Kutta<a class="headerlink" href="#Error-Estimate-using-Embedded-Runge-Kutta" title="Permalink to this headline">¶</a></h3>
 <p>Another way of estimating the truncation error of a step is due to the existence of the special fifth-order Runge-Kutta methods discussed earlier. These methods use six function evaluations which can be recombined to produce a fourth-order method . Again, the difference between the fifth and the fourth order solution is used to calculate an estimate of the truncation error. Obviously this method requires fewer function evaluations than step doubling, as the two estimates use the same evaluation
 points. Originally this method was found by Fehlberg, and later Cash and Karp produced the set of constants presented earlier that produce an efficient and accurate error estimate.</p>
-<div id="prob_estimate"><p><strong>Problem Estimate</strong></p>
-</div><p>In the demo below, compare the error estimate to the true error, on the initial value problem from ,</p>
+<p><strong>Problem Estimate</strong>: In the demo below, compare the error estimate to the true error, on the initial value problem from ,</p>
 <div class="math notranslate nohighlight">
 \[\frac{dy}{dt} = -y +t +1,  \;\;\;\; y(0) =1\]</div>
 <p>which has the exact solution</p>
@@ -1091,14 +1088,20 @@ points. Originally this method was found by Fehlberg, and later Cash and Karp pr
 <li><p>Keep increasing the time step. Does the error estimate diverge? What is happening with the numerical solution?</p></li>
 </ol>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">numlabs.lab5.lab5_funs</span> <span class="kn">import</span> <span class="n">Integrator</span>
+<span></span><span class="kn">import</span> <span class="nn">numlabs.lab5.lab5_funs</span>
+<span class="kn">from</span> <span class="nn">importlib</span> <span class="kn">import</span> <span class="n">reload</span>
+<span class="n">reload</span><span class="p">(</span><span class="n">numlabs</span><span class="o">.</span><span class="n">lab5</span><span class="o">.</span><span class="n">lab5_funs</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">numlabs.lab5.lab5_funs</span> <span class="kn">import</span> <span class="n">Integrator</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 
 <span class="k">class</span> <span class="nc">Integ55</span><span class="p">(</span><span class="n">Integrator</span><span class="p">):</span>
+
     <span class="k">def</span> <span class="nf">set_yinit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1">#</span>
         <span class="c1"># read in &#39;c1 c2 c3&#39;</span>
@@ -1122,32 +1125,37 @@ points. Originally this method was found by Fehlberg, and later Cash and Karp pr
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           y[0]=fraction white daisies</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">uservars</span>
-        <span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">yinit</span><span class="p">)</span>
-        <span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">c1</span> <span class="o">*</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">user</span><span class="o">.</span><span class="n">c2</span> <span class="o">*</span> <span class="n">theTime</span> <span class="o">+</span> <span class="n">user</span><span class="o">.</span><span class="n">c3</span>
+        <span class="n">user</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">uservars</span>
+        <span class="n">f</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">yinit</span><span class="p">)</span>
+        <span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="n">user</span><span class="o">.</span><span class="n">c1</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">user</span><span class="o">.</span><span class="n">c2</span><span class="o">*</span><span class="n">theTime</span> <span class="o">+</span> <span class="n">user</span><span class="o">.</span><span class="n">c3</span><span class="p">;</span>
         <span class="k">return</span> <span class="n">f</span>
+
+
+
 </pre></div>
 </div>
 </div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="n">theSolver</span> <span class="o">=</span> <span class="n">Integ55</span><span class="p">(</span><span class="s1">&#39;expon.yaml&#39;</span><span class="p">)</span>
+<span class="n">theSolver</span><span class="o">=</span><span class="n">Integ55</span><span class="p">(</span><span class="s1">&#39;expon.yaml&#39;</span><span class="p">)</span>
 
-<span class="n">timeVals</span><span class="p">,</span> <span class="n">yVals</span><span class="p">,</span> <span class="n">yErrors</span> <span class="o">=</span> <span class="n">theSolver</span><span class="o">.</span><span class="n">timeloop5Err</span><span class="p">()</span>
-<span class="n">timeVals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">timeVals</span><span class="p">)</span>
-<span class="n">exact</span> <span class="o">=</span> <span class="n">timeVals</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">timeVals</span><span class="p">)</span>
-<span class="n">yVals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">yVals</span><span class="p">)</span>
-<span class="n">yVals</span> <span class="o">=</span> <span class="n">yVals</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
-<span class="n">yErrors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">yErrors</span><span class="p">)</span>
+<span class="n">timeVals</span><span class="p">,</span><span class="n">yVals</span><span class="p">,</span><span class="n">yErrors</span> <span class="o">=</span><span class="n">theSolver</span><span class="o">.</span><span class="n">timeloop5Err</span><span class="p">()</span>
+<span class="n">timeVals</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">timeVals</span><span class="p">)</span>
+<span class="n">exact</span><span class="o">=</span><span class="n">timeVals</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">timeVals</span><span class="p">)</span>
+<span class="n">yVals</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">yVals</span><span class="p">)</span>
+<span class="n">yVals</span><span class="o">=</span><span class="n">yVals</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+<span class="n">yErrors</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">yErrors</span><span class="p">)</span>
 
-<span class="n">thefig</span><span class="p">,</span> <span class="n">theAx</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">line1</span> <span class="o">=</span> <span class="n">theAx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeVals</span><span class="p">,</span> <span class="n">yVals</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;adapt&#39;</span><span class="p">)</span>
-<span class="n">line2</span> <span class="o">=</span> <span class="n">theAx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeVals</span><span class="p">,</span> <span class="n">exact</span><span class="p">,</span> <span class="s1">&#39;r+&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;exact&#39;</span><span class="p">)</span>
+<span class="n">thefig</span><span class="p">,</span><span class="n">theAx</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">line1</span><span class="o">=</span><span class="n">theAx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeVals</span><span class="p">,</span><span class="n">yVals</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;adapt&#39;</span><span class="p">)</span>
+<span class="n">line2</span><span class="o">=</span><span class="n">theAx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeVals</span><span class="p">,</span><span class="n">exact</span><span class="p">,</span><span class="s1">&#39;r+&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;exact&#39;</span><span class="p">)</span>
 <span class="n">theAx</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;lab 5 interactive 5&#39;</span><span class="p">)</span>
 <span class="n">theAx</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
 <span class="n">theAx</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;y value&#39;</span><span class="p">)</span>
@@ -1158,70 +1166,35 @@ points. Originally this method was found by Fehlberg, and later Cash and Karp pr
 <span class="c1"># into an array of numbers using a list comprehension</span>
 <span class="c1">#</span>
 
-<span class="n">thefig</span><span class="p">,</span> <span class="n">theAx</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">thefig</span><span class="p">,</span><span class="n">theAx</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">realestError</span> <span class="o">=</span> <span class="n">yVals</span> <span class="o">-</span> <span class="n">exact</span>
-<span class="n">actualErrorLine</span> <span class="o">=</span> <span class="n">theAx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeVals</span><span class="p">,</span> <span class="n">realestError</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;actual error&#39;</span><span class="p">)</span>
-<span class="n">estimatedErrorLine</span> <span class="o">=</span> <span class="n">theAx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeVals</span><span class="p">,</span> <span class="n">yErrors</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;estimated error&#39;</span><span class="p">)</span>
+<span class="n">actualErrorLine</span><span class="o">=</span><span class="n">theAx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeVals</span><span class="p">,</span><span class="n">realestError</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;actual error&#39;</span><span class="p">)</span>
+<span class="n">estimatedErrorLine</span><span class="o">=</span><span class="n">theAx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeVals</span><span class="p">,</span><span class="n">yErrors</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;estimated error&#39;</span><span class="p">)</span>
 <span class="n">theAx</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
 
-<span class="n">timeVals</span><span class="p">,</span> <span class="n">yVals</span><span class="p">,</span> <span class="n">yErrors</span> <span class="o">=</span> <span class="n">theSolver</span><span class="o">.</span><span class="n">timeloop5fixed</span><span class="p">()</span>
 
-<span class="n">np_yVals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">yVals</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
-<span class="n">yErrors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">yErrors</span><span class="p">)</span>
-<span class="n">np_exact</span> <span class="o">=</span> <span class="n">timeVals</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">timeVals</span><span class="p">)</span>
+<span class="n">timeVals</span><span class="p">,</span><span class="n">yVals</span><span class="p">,</span><span class="n">yErrors</span> <span class="o">=</span><span class="n">theSolver</span><span class="o">.</span><span class="n">timeloop5fixed</span><span class="p">()</span>
 
-<span class="n">thefig</span><span class="p">,</span> <span class="n">theAx</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">line1</span> <span class="o">=</span> <span class="n">theAx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeVals</span><span class="p">,</span> <span class="n">np_yVals</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;fixed&#39;</span><span class="p">)</span>
-<span class="n">line2</span> <span class="o">=</span> <span class="n">theAx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeVals</span><span class="p">,</span> <span class="n">np_exact</span><span class="p">,</span> <span class="s1">&#39;r+&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;exact&#39;</span><span class="p">)</span>
+<span class="n">np_yVals</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">yVals</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+<span class="n">yErrors</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">yErrors</span><span class="p">)</span>
+<span class="n">np_exact</span><span class="o">=</span><span class="n">timeVals</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">timeVals</span><span class="p">)</span>
+
+
+<span class="n">thefig</span><span class="p">,</span><span class="n">theAx</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">line1</span><span class="o">=</span><span class="n">theAx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeVals</span><span class="p">,</span><span class="n">np_yVals</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;fixed&#39;</span><span class="p">)</span>
+<span class="n">line2</span><span class="o">=</span><span class="n">theAx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeVals</span><span class="p">,</span><span class="n">np_exact</span><span class="p">,</span><span class="s1">&#39;r+&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;exact&#39;</span><span class="p">)</span>
 <span class="n">theAx</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;lab 5 interactive 5 -- fixed&#39;</span><span class="p">)</span>
 <span class="n">theAx</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
 <span class="n">theAx</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;y value&#39;</span><span class="p">)</span>
 <span class="n">theAx</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center right&#39;</span><span class="p">)</span>
 
-<span class="n">thefig</span><span class="p">,</span> <span class="n">theAx</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">thefig</span><span class="p">,</span><span class="n">theAx</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">realestError</span> <span class="o">=</span> <span class="n">np_yVals</span> <span class="o">-</span> <span class="n">np_exact</span>
-<span class="n">actualErrorLine</span> <span class="o">=</span> <span class="n">theAx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeVals</span><span class="p">,</span> <span class="n">realestError</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;actual error&#39;</span><span class="p">)</span>
-<span class="n">estimatedErrorLine</span> <span class="o">=</span> <span class="n">theAx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeVals</span><span class="p">,</span> <span class="n">yErrors</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;estimated error&#39;</span><span class="p">)</span>
+<span class="n">actualErrorLine</span><span class="o">=</span><span class="n">theAx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeVals</span><span class="p">,</span><span class="n">realestError</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;actual error&#39;</span><span class="p">)</span>
+<span class="n">estimatedErrorLine</span><span class="o">=</span><span class="n">theAx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeVals</span><span class="p">,</span><span class="n">yErrors</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;estimated error&#39;</span><span class="p">)</span>
 <span class="n">theAx</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
 <span class="n">theAx</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;lab 5 interactive 5 -- fixed errors&#39;</span><span class="p">)</span>
 </pre></div>
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-Text(0.5, 1.0, &#39;lab 5 interactive 5 -- fixed errors&#39;)
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../../_images/doc_notebooks_lab5_01-lab5_28_1.png" src="../../_images/doc_notebooks_lab5_01-lab5_28_1.png" />
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../../_images/doc_notebooks_lab5_01-lab5_28_2.png" src="../../_images/doc_notebooks_lab5_01-lab5_28_2.png" />
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../../_images/doc_notebooks_lab5_01-lab5_28_3.png" src="../../_images/doc_notebooks_lab5_01-lab5_28_3.png" />
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../../_images/doc_notebooks_lab5_01-lab5_28_4.png" src="../../_images/doc_notebooks_lab5_01-lab5_28_4.png" />
 </div>
 </div>
 </div>
@@ -1238,11 +1211,9 @@ Text(0.5, 1.0, &#39;lab 5 interactive 5 -- fixed errors&#39;)
 <!-- \label{lab5:eq:hnew} --><div class="math notranslate nohighlight">
 \[h_{new} = h_{old}[{\Delta_{des}\over \Delta_{est}}]^{1/5}\]</div>
 <p>or, to give an example of the suggested use of vector norms above, the new stepsize is given by</p>
-<p><span class="math">\begin{equation}
-\label{eq:hnewnorm}
-h_{new} = S h_{old}\{[{1\over N}\sum_{i=1}^{N}({\Delta_{est}(i)\over
-\Delta_{des}(i)})^{2}]^{1/2}\}^{-1/5}\}
-\end{equation}</span></p>
+<!-- \label{lab5:eq:hnewnormed} --><div class="math notranslate nohighlight">
+\[h_{new} = S h_{old}\{[{1\over N}\sum_{i=1}^{N}({\Delta_{est}(i)\over
+        \Delta_{des}(i)})^{2}]^{1/2}\}^{-1/5}\}\ \textbf{eq: hnewnorm}\]</div>
 <p>using the root-mean-square norm. <span class="math notranslate nohighlight">\(S\)</span> appears as a safety factor (<span class="math notranslate nohighlight">\(0&lt;S&lt;1\)</span>) to counteract the inaccuracy in the use of estimates.</p>
 <p>The coefficients for the adaptive tolerances are set in adaptvars section of adapt.yaml:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">adaptvars</span><span class="p">:</span>
@@ -1257,43 +1228,37 @@ h_{new} = S h_{old}\{[{1\over N}\sum_{i=1}^{N}({\Delta_{est}(i)\over
   <span class="nt">dtpassmax</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5.0</span>
 </pre></div>
 </div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="n">theSolver</span> <span class="o">=</span> <span class="n">Integ54</span><span class="p">(</span><span class="s1">&#39;adapt.yaml&#39;</span><span class="p">)</span>
-<span class="n">timeVals</span><span class="p">,</span> <span class="n">yVals</span><span class="p">,</span> <span class="n">errorList</span> <span class="o">=</span> <span class="n">theSolver</span><span class="o">.</span><span class="n">timeloop5Err</span><span class="p">()</span>
+<span class="n">theSolver</span><span class="o">=</span><span class="n">Integ54</span><span class="p">(</span><span class="s1">&#39;adapt.yaml&#39;</span><span class="p">)</span>
+<span class="n">timeVals</span><span class="p">,</span><span class="n">yVals</span><span class="p">,</span><span class="n">errorList</span><span class="o">=</span><span class="n">theSolver</span><span class="o">.</span><span class="n">timeloop5Err</span><span class="p">()</span>
 
-<span class="n">yvals</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_records</span><span class="p">(</span><span class="n">yVals</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="s1">&#39;black&#39;</span><span class="p">])</span>
+<span class="n">yvals</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_records</span><span class="p">(</span><span class="n">yVals</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;white&#39;</span><span class="p">,</span><span class="s1">&#39;black&#39;</span><span class="p">])</span>
 
-<span class="n">thefig</span><span class="p">,</span> <span class="n">theAx</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">thefig</span><span class="p">,</span><span class="n">theAx</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="n">points</span><span class="p">,</span> <span class="o">=</span> <span class="n">theAx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeVals</span><span class="p">,</span> <span class="n">yvals</span><span class="p">[</span><span class="s1">&#39;white&#39;</span><span class="p">],</span> <span class="s1">&#39;-b+&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;white daisies&#39;</span><span class="p">)</span>
+<span class="n">points</span><span class="p">,</span><span class="o">=</span><span class="n">theAx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeVals</span><span class="p">,</span><span class="n">yvals</span><span class="p">[</span><span class="s1">&#39;white&#39;</span><span class="p">],</span><span class="s1">&#39;-b+&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;white daisies&#39;</span><span class="p">)</span>
 <span class="n">points</span><span class="o">.</span><span class="n">set_markersize</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
-<span class="n">theLine1</span><span class="p">,</span> <span class="o">=</span> <span class="n">theAx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeVals</span><span class="p">,</span> <span class="n">yvals</span><span class="p">[</span><span class="s1">&#39;black&#39;</span><span class="p">],</span> <span class="s1">&#39;--ko&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;black daisies&#39;</span><span class="p">)</span>
+<span class="n">theLine1</span><span class="p">,</span><span class="o">=</span><span class="n">theAx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeVals</span><span class="p">,</span><span class="n">yvals</span><span class="p">[</span><span class="s1">&#39;black&#39;</span><span class="p">],</span><span class="s1">&#39;--ko&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;black daisies&#39;</span><span class="p">)</span>
 <span class="n">theAx</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;lab 5 interactive 6&#39;</span><span class="p">)</span>
 <span class="n">theAx</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
 <span class="n">theAx</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;fractional coverage&#39;</span><span class="p">)</span>
-<span class="n">out</span> <span class="o">=</span> <span class="n">theAx</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+<span class="n">out</span><span class="o">=</span><span class="n">theAx</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+
 
 <span class="c1"># timeVals,yVals,errorList=theSolver.timeloop5fixed()</span>
 <span class="c1"># whiteDaisies=[frac[0] for frac in yVals]</span>
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../../_images/doc_notebooks_lab5_01-lab5_31_0.png" src="../../_images/doc_notebooks_lab5_01-lab5_31_0.png" />
-</div>
-</div>
-<div id="prob_tolerances"><p><strong>Problem Tolerances</strong></p>
-</div><p>The Runge-Kutta algorithm with adaptive time steps will, in general, be more efficient and accurate than same algorithm with fixed time steps. In other words, greater accuracy can usually be achieved in fewer time steps. For the given set of Daisyworld parameters and initial conditions,</p>
+<p><strong>Problem Tolerances</strong>: The Runge-Kutta algorithm with adaptive time steps will, in general, be more efficient and accurate than same algorithm with fixed time steps. In other words, greater accuracy can usually be achieved in fewer time steps. For the given set of Daisyworld parameters and initial conditions,</p>
 <ol class="arabic simple">
 <li><p>Decrease the error tolerances and compare the plots. You will note that as the error tolerances are decreased, the plots approach the one created by the algorithm with fixed time steps. What does this imply?</p></li>
 <li><p>Compare the Daisyworld plot to a plot of the stepsizes. Do you see a correlation between stepsize and the shape of the curve?</p></li>
@@ -1303,14 +1268,14 @@ h_{new} = S h_{old}\{[{1\over N}\sum_{i=1}^{N}({\Delta_{est}(i)\over
 </div>
 <div class="section" id="Coding-Runge-Kutta-Adaptive-Stepsize-Control">
 <h2>Coding Runge-Kutta Adaptive Stepsize Control<a class="headerlink" href="#Coding-Runge-Kutta-Adaptive-Stepsize-Control" title="Permalink to this headline">¶</a></h2>
-<p>The Runge-Kutta code developed in Lab 4 solves the given ODE system in fixed timesteps. It is now necessary to exert adaptive timestep control over the solution. The python code for this is at given in <a class="reference external" href="https://github.com/phaustin/numeric/blob/10117233dc7c440b15c549c8086d76a03b9dcdd0/numlabs/lab5/lab5_funs.py#L145-L197">these lines</a></p>
-<p>In principle, this is pretty simple:</p>
+<p>The Runge-Kutta code developed in Lab 4 solves the given ODE system in fixed timesteps. It is now necessary to exert adaptive timestep control over the solution. The python code for this is at given in <a class="reference external" href="https://github.com/phaustin/numeric/blob/lab5/numlabs/lab5/lab5_funs.py#L159-L193">these lines</a></p>
+<p>In principle, this is quite simple:</p>
 <ol class="arabic simple">
 <li><p>As before, take a step specified by the Runge-Kutta algorithm.</p></li>
 <li><p>Determine whether the estimated error lies within the user specified tolerance</p></li>
-<li><p>If the error is too large, calculate the new stepsize with (<span class="math">\ref{eq:hnewnorm}</span>) and retake the step.</p></li>
+<li><p>If the error is too large, calculate the new stepsize with ([eq: hnewnorm])(#eq_hnewnorm) and retake the step.</p></li>
 </ol>
-<p>This can be accomplished by writing a new <a class="reference external" href="https://github.com/phaustin/numeric/blob/10117233dc7c440b15c549c8086d76a03b9dcdd0/numlabs/lab5/lab5_funs.py#L115-L117">timeloop5Err</a> method which evaluates each Runge-Kutta step. This routine must now also return the estimate of the truncation error.</p>
+<p>This can be accomplished by writing a new <a class="reference external" href="https://github.com/phaustin/numeric/blob/lab5/numlabs/lab5/lab5_funs.py#L116">timeloop</a> method which evaluates each Runge-Kutta step. The routine, step() that actually takes the step must now also return the estimate of the truncation error.</p>
 <p>In practice, it is prudent to take a number of safeguards. This involves defining a number of variables that place limits on the change in stepsize:</p>
 <ul class="simple">
 <li><p>A safety factor (<span class="math notranslate nohighlight">\(0&lt;S&lt;1\)</span>) is used when a new step is calculated to further ensure that a small enough step is taken.</p></li>
@@ -1322,7 +1287,7 @@ h_{new} = S h_{old}\{[{1\over N}\sum_{i=1}^{N}({\Delta_{est}(i)\over
 <li><p>A check must be made to ensure that the new step is larger than machine roundoff. (Check if <span class="math notranslate nohighlight">\(t+dt == t\)</span>.)</p></li>
 </ul>
 </li>
-<li><p>When a step passes, i.e. equation (<span class="math">\ref{eq:hnewnorm}</span>) is satisfied,</p>
+<li><p>When a step passes, i.e. equation <a class="reference external" href="#eq_hnewnorm">Eq: hnewnorm</a> is satisfied,</p>
 <ul>
 <li><p><em>dtpassmin</em>: The step is not changed unless it is by some minimum factor.</p></li>
 <li><p><em>dtpassmax</em>: The step is not changed by more than some maximum factor.</p></li>
@@ -1335,9 +1300,8 @@ h_{new} = S h_{old}\{[{1\over N}\sum_{i=1}^{N}({\Delta_{est}(i)\over
 <li><p><em>dtmin</em>: A limit placed on the smallest possible stepsize</p></li>
 <li><p><em>maxsteps</em>: A limit placed on the total number of steps taken.</p></li>
 </ul>
-<p>The Python code for the the adaptive stepsize control is discussed further in Appendix <a class="reference external" href="#code_org">Organization</a>.</p>
-<div id="prob_adaptive"><p><strong>Problem adaptive</strong></p>
-</div><p>The demos in the previous section, solved the Daisyworld equations using the embedded Runge-Kutta methods with adaptive timestep control.</p>
+<p>The Python code for the the adaptive stepsize control is discussed further in Appendix <a class="reference external" href="#app_adaptive">Adaptive</a>.</p>
+<p><strong>Problem adaptive</strong> The demos in the previous section, solved the Daisyworld equations using the embedded Runge-Kutta methods with adaptive timestep control.</p>
 <ol class="arabic simple">
 <li><p>Run the code and find solutions of Daisyworld with the default settings found in adapt.yaml using the timeloop5Err adaptive code</p></li>
 <li><p>Find the solutions again but this time with fixed stepsizes and compare the size of the timesteps and number of the timesteps.</p></li>
@@ -1354,26 +1318,98 @@ non-zero steady states exist. That the feedback does have an effect on the stead
 <h3>Neutral Daisies<a class="headerlink" href="#Neutral-Daisies" title="Permalink to this headline">¶</a></h3>
 <p>The first case we consider is the case investigated in a previous demo where the albedo of the daisies and the ground are set to the same value. This means the daisy population has no effect on the planetary temperature, i.e. there is no feedback ([lab5:demo:coupling]).</p>
 <p><span class="math notranslate nohighlight">\(~\)</span></p>
-<p>Daisy fraction – daisies have ground albedo</p>
-<p>Emission temperature</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#Daisy fraction -- daisies have ground albedo</span>
+<span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;images/steady_g.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#Emission temperature</span>
+<span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;images/temp_g.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="Black-Daisies">
 <h3>Black Daisies<a class="headerlink" href="#Black-Daisies" title="Permalink to this headline">¶</a></h3>
 <p>Now consider a population of black daisies. Note the sharp jump in the graph when the first non-zero daisy steady states appear and the corresponding rise in the planetary temperature. The appearance of the black daisies results in a strong positive feedback on the temperature. Note as well that the graph drops back to zero at a lower value of L than in the case of neutral daisies.</p>
-<p>Daisies darker than ground</p>
-<p>Temperature</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#Daisies darker than ground</span>
+<span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;images/steady_b.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#Temperature</span>
+<span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;images/temp_b.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="White-Daisies">
 <h3>White Daisies<a class="headerlink" href="#White-Daisies" title="Permalink to this headline">¶</a></h3>
 <p>Consider now a population of purely white daisies. In this case there is an abrupt drop in the daisy steady state when it approaches zero with a corresponding jump in the emission temperature. Another interesting feature is the appearance of hysteresis. This arises since the plot of steady states is different when solar luminosity is lowered as opposed to being raised incrementally.</p>
-<p>Daisies brighter than ground</p>
-<p>Temperature</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#Daisies brighter than ground</span>
+<span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;images/steady_w.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#Temperature</span>
+<span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;images/temp_w.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="Black-and-White-Daisies">
 <h3>Black and White Daisies<a class="headerlink" href="#Black-and-White-Daisies" title="Permalink to this headline">¶</a></h3>
 <p>Finally, consider a population of both black and white daisies. This blends in features from the cases where the daisy population was purely white or black. Note how the appearance of a white daisy population initially causes the planetary temperature to actually drop even though the solar luminosity has been increased.</p>
-<p>fraction of black and white daisies</p>
-<p>note extended temperature range with stabilizing feedbacks</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#fraction of black and white daisies</span>
+<span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;images/steady_bw.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#note extended temperature range with stabilizing feedbacks</span>
+<span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;images/temp_bw.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="Conclusion">
@@ -1397,9 +1433,8 @@ non-zero steady states exist. That the feedback does have an effect on the stead
 <p>which itself is an expression of the conservation of energy.</p>
 <p>For the earth, the primary source of energy is radiation from the sun. The power emitted by the sun, known as the solar luminosity, is <span class="math notranslate nohighlight">\(L_0=3.9 \times 10^{26}W\)</span> while the energy flux received at the mean distance of the earth from the sun (<span class="math notranslate nohighlight">\(1.5\times 10^{11}m\)</span>) is called the solar constant, <span class="math notranslate nohighlight">\(S_0=1367\ W m^{-2}\)</span>. For Daisy World the solar constant is taken to be <span class="math notranslate nohighlight">\(S_0=3668\ W m^{-2}\)</span>.</p>
 <p>The emission temperature of a planet is the temperature the planet would be at if it emitted energy like a blackbody. A blackbody, so-called because it is a perfect absorber of radiation, obeys the Stefan-Boltzmann Law:</p>
-<!-- \label{lab5:stefan-boltzmann-law} --><p><span class="math">\textbf{eq: Stefan-Boltzman}</span></p>
-<div class="math notranslate nohighlight">
-\[F_B\ (Wm^{-2}) = \sigma T^4_e\]</div>
+<!-- \label{lab5:stefan-boltzmann-law} --><div class="math notranslate nohighlight">
+\[F_B\ (Wm^{-2}) = \sigma T^4_e\ \textbf{eq: Stefan-Boltzman}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\epsilon\)</span> is the energy density and <span class="math notranslate nohighlight">\(\sigma = 5.67\times 10^{-8}Wm^{-2}K^{-4}\)</span>. Given the energy absorbed, it is easy to calculate the emission temperature <span class="math notranslate nohighlight">\(T_e\)</span> with Stefan-Boltzman equation.</p>
 <p>In general, a planet will reflect some of the radiation it receives, with the fraction reflected known as the albedo <span class="math notranslate nohighlight">\(\alpha_p\)</span>. So the total energy absorbed by the planet is actually flux density received times the fraction absorbed times the perpendicular area to the sun ( the ’shadow area’), i.e.</p>
 <!-- \label{lab5:energyabsorbed} --><div class="math notranslate nohighlight">
@@ -1428,13 +1463,13 @@ non-zero steady states exist. That the feedback does have an effect on the stead
 \[\alpha_p = A_w\alpha_w + A_b\alpha_b + A_g\alpha_g\]</div>
 <div class="math notranslate nohighlight">
 \[T^4_e = L \frac{S_0}{4\sigma}(1-\alpha_p)\]</div>
-<div id="code_org"></div>
+</div>
 <div class="section" id="Appendix:-Organization-of-the-adaptive-Runge-Kutta-routines">
 <h2>Appendix: Organization of the adaptive Runge Kutta routines<a class="headerlink" href="#Appendix:-Organization-of-the-adaptive-Runge-Kutta-routines" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>The coding follows <a class="reference external" href="pdfs/adapt_ode.pdf">Press et al.</a>, with the adaptive Runge Kutta defined in the Integrator base class <a class="reference external" href="https://github.com/phaustin/numeric/blob/10117233dc7c440b15c549c8086d76a03b9dcdd0/numlabs/lab5/lab5_funs.py#L43-L59">here</a></p></li>
-<li><p>The step size choice is made in <a class="reference external" href="https://github.com/phaustin/numeric/blob/10117233dc7c440b15c549c8086d76a03b9dcdd0/numlabs/lab5/lab5_funs.py#L115-L118">timeloop5err</a></p></li>
-<li><p>To set up a specific problem, you need to overide two methods as demonstrated in the example code: the member function that initalizes the concentrations: <a class="reference external" href="https://github.com/phaustin/numeric/blob/10117233dc7c440b15c549c8086d76a03b9dcdd0/numlabs/lab5/lab5_funs.py#L115-L118">yinit</a> and the derivatives routine <a class="reference external" href="https://github.com/phaustin/numeric/blob/10117233dc7c440b15c549c8086d76a03b9dcdd0/numlabs/lab5/lab5_funs.py#L66-L68">derivs5</a></p></li>
+<li><p>The coding follows <a class="reference external" href="pdf_files/adapt_ode.pdf">Press et al.</a>, with the adaptive Runge Kutta defined in the Integrator base class <a class="reference external" href="https://github.com/phaustin/numeric/blob/lab5/numlabs/lab5/lab5_funs.py#L71-L73">here</a></p></li>
+<li><p>The step size choice is made in <a class="reference external" href="https://github.com/phaustin/numeric/blob/numlabs%20/lab5/lab5_funs.py#L116">timeloop5err</a> in <a class="reference external" href="https://github.com/phaustin/numeric/blob/numlabs/lab5/lab5_funs.py#L156-L193">this section</a></p></li>
+<li><p>To set up a specific problem, you need to overide two methods as demonstrated in the example code: the member function that initalizes the concentrations: <a class="reference external" href="https://github.com/phaustin/numeric/blob/numlabs/lab5/lab5_funs.py#L46-L48">yinit</a> and the derivatives routine <a class="reference external" href="https://github.com/phaustin/numeric/blob/numlabs/lab5/lab5_funs.py#L67-L69">derivs5</a></p></li>
 <li><p>In <a class="reference external" href="#prob_initial">Problem Initial</a> we define a new member function:</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">find_temp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">yvals</span><span class="p">):</span>
@@ -1452,25 +1487,25 @@ non-zero steady states exist. That the feedback does have an effect on the stead
 </div>
 <div class="section" id="Appendix:-2-minute-intro-to-object-oriented-programming">
 <h2>Appendix: 2 minute intro to object oriented programming<a class="headerlink" href="#Appendix:-2-minute-intro-to-object-oriented-programming" title="Permalink to this headline">¶</a></h2>
-<p>For a very brief introduction to python classes take a look at <a class="reference external" href="http://www.scipy-lectures.org/intro/language/oop.html">these scipy lecture notes</a> that define some of the basic concepts. For perhaps more detail than you want/need to know, see this 2 part series on <a class="reference external" href="https://realpython.com/python3-object-oriented-programming">object oriented programming</a> and inheritence (<a class="reference external" href="https://realpython.com/python-super/">supercharge your classes with super()</a>) Briefly, we need a way to store a lot of
-information, for example the Runge-Kutta coefficients, in an organized way that is accessible to multiple functions, without having to pass all that information through the function arguments. Python solves this problem by putting both the data and the functions together into an class, as in the Integrator class below.</p>
+<p>For a very brief introduction to python classes take a look at <a class="reference external" href="http://www.scipy-lectures.org/intro/language/oop.html">these scipy lecture notes</a> that define some of the basic concepts. Briefly, we need a way to store a lot of information, for example the Runge-Kutta coefficients, in an organized way that is accessible to multiple functions, without having to pass all that information through the function arguments. Python solves this problem by putting both the data and the functions
+together into an class, like this:</p>
 <div class="section" id="Classes-and-constructors">
 <h3>Classes and constructors<a class="headerlink" href="#Classes-and-constructors" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="k">class</span> <span class="nc">Integrator</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">,</span> <span class="n">third</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">first</span><span class="p">,</span><span class="n">second</span><span class="p">,</span><span class="n">third</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Constructing Integrator&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">first</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">second</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">c</span> <span class="o">=</span> <span class="n">third</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="o">=</span><span class="n">first</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="o">=</span><span class="n">second</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">c</span><span class="o">=</span><span class="n">third</span>
+    <span class="k">def</span> <span class="nf">dumpit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">the_name</span><span class="p">):</span>
+        <span class="n">printlist</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">c</span><span class="p">]</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;dumping arguments for </span><span class="si">{}</span><span class="s1">: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">the_name</span><span class="p">,</span><span class="n">printlist</span><span class="p">))</span>
 
-    <span class="k">def</span> <span class="nf">dumpit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">the_name</span><span class="p">):</span>
-        <span class="n">printlist</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">c</span><span class="p">]</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;dumping arguments for </span><span class="si">{the_name}</span><span class="s1">: </span><span class="si">{printlist}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1485,7 +1520,7 @@ information, for example the Runge-Kutta coefficients, in an organized way that 
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">the_integ</span> <span class="o">=</span> <span class="n">Integrator</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span></span><span class="n">the_integ</span><span class="o">=</span><span class="n">Integrator</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">the_integ</span><span class="p">))</span>
 <span class="c1">#note that the_integ now has a, b, c, and dumpit</span>
 </pre></div>
@@ -1607,10 +1642,8 @@ dumping arguments for Demo object: [1, 2, 3]
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">inspect</span>
 <span class="n">all_info_the_integ</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getmembers</span><span class="p">(</span><span class="n">the_integ</span><span class="p">)</span>
-<span class="n">only_methods</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">all_info_the_integ</span> <span class="k">if</span> <span class="n">inspect</span><span class="o">.</span><span class="n">ismethod</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;methods for the_integ: &#39;</span><span class="p">,</span> <span class="n">only_methods</span><span class="p">)</span>
+<span class="n">only_methods</span><span class="o">=</span><span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">all_info_the_integ</span> <span class="k">if</span> <span class="n">inspect</span><span class="o">.</span><span class="n">ismethod</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;methods for the_integ: &#39;</span><span class="p">,</span><span class="n">only_methods</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1627,27 +1660,23 @@ methods for the_integ:  [&#39;__init__&#39;, &#39;dumpit&#39;]
 <h3>Inheritance<a class="headerlink" href="#Inheritance" title="Permalink to this headline">¶</a></h3>
 <p>We can also specialize a class by driving from a base and then adding more data or members, or overriding existing values. For example:</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="k">class</span> <span class="nc">Trig</span><span class="p">(</span><span class="n">Integrator</span><span class="p">):</span>
-
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">one</span><span class="p">,</span> <span class="n">two</span><span class="p">,</span> <span class="n">three</span><span class="p">,</span> <span class="n">four</span><span class="p">):</span>
+<span></span><span class="k">class</span> <span class="nc">Trig</span><span class="p">(</span><span class="n">Integrator</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">one</span><span class="p">,</span><span class="n">two</span><span class="p">,</span><span class="n">three</span><span class="p">,</span><span class="n">four</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;constructing Trig&#39;</span><span class="p">)</span>
         <span class="c1">#</span>
         <span class="c1"># first construct the base class</span>
         <span class="c1">#</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">one</span><span class="p">,</span> <span class="n">two</span><span class="p">,</span> <span class="n">three</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">d</span> <span class="o">=</span> <span class="n">four</span>
-
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">one</span><span class="p">,</span><span class="n">two</span><span class="p">,</span><span class="n">three</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">d</span><span class="o">=</span><span class="n">four</span>
     <span class="k">def</span> <span class="nf">calc_trig</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">trigval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">c</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">d</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">print_trig</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">the_date</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;on </span><span class="si">{the_date}</span><span class="s1"> the value of sin(a*b)=: </span><span class="si">{self.trigval:5.3f}</span><span class="s1">&#39;</span><span class="p">)</span>
-
+        <span class="bp">self</span><span class="o">.</span><span class="n">trigval</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">c</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">d</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">print_trig</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">the_date</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;on </span><span class="si">{}</span><span class="s1"> the value of sin(a*b)=: </span><span class="si">{:5.3f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">the_date</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">trigval</span><span class="p">))</span>
 
 </pre></div>
 </div>
@@ -1657,7 +1686,7 @@ methods for the_integ:  [&#39;__init__&#39;, &#39;dumpit&#39;]
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">sample</span> <span class="o">=</span> <span class="n">Trig</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span></span><span class="n">sample</span><span class="o">=</span><span class="n">Trig</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
 <span class="n">sample</span><span class="o">.</span><span class="n">calc_trig</span><span class="p">()</span>
 <span class="n">sample</span><span class="o">.</span><span class="n">print_trig</span><span class="p">(</span><span class="s1">&#39;July 5&#39;</span><span class="p">)</span>
 </pre></div>
@@ -1683,11 +1712,11 @@ on July 5 the value of sin(a*b)=: -0.537
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">yaml</span>
-<span class="n">out_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
-<span class="n">out_dict</span><span class="p">[</span><span class="s1">&#39;vegetables&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">carrots</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">eggplant</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">corn</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">out_dict</span><span class="p">[</span><span class="s1">&#39;fruit&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">apples</span><span class="o">=</span><span class="s1">&#39;Out of season&#39;</span><span class="p">,</span> <span class="n">strawberries</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;groceries.yaml&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">out_dict</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+<span class="n">out_dict</span><span class="o">=</span><span class="nb">dict</span><span class="p">()</span>
+<span class="n">out_dict</span><span class="p">[</span><span class="s1">&#39;vegetables&#39;</span><span class="p">]</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">carrots</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">eggplant</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span><span class="n">corn</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">out_dict</span><span class="p">[</span><span class="s1">&#39;fruit&#39;</span><span class="p">]</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">apples</span><span class="o">=</span><span class="s1">&#39;Out of season&#39;</span><span class="p">,</span><span class="n">strawberries</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;groceries.yaml&#39;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">out_dict</span><span class="p">,</span><span class="n">f</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1699,7 +1728,7 @@ on July 5 the value of sin(a*b)=: -0.537
 <span></span><span class="c1">#what&#39;s in the yaml file?</span>
 <span class="c1">#each toplevel dictionary key became a category</span>
 <span class="kn">import</span> <span class="nn">sys</span>  <span class="c1">#output to sys.stdout because print adds blank lines</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;groceries.yaml&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;groceries.yaml&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">():</span>
         <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
 </pre></div>
@@ -1719,27 +1748,19 @@ vegetables:
   eggplant: 7
 </pre></div></div>
 </div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1">#read into a dictionary</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;groceries.yaml&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">init_dict</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">Loader</span><span class="o">=</span><span class="n">yaml</span><span class="o">.</span><span class="n">FullLoader</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;groceries.yaml&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">init_dict</span><span class="o">=</span><span class="n">yaml</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">init_dict</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
 </div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-{&#39;fruit&#39;: {&#39;apples&#39;: &#39;Out of season&#39;, &#39;strawberries&#39;: 8}, &#39;vegetables&#39;: {&#39;carrots&#39;: 5, &#39;corn&#39;: 2, &#39;eggplant&#39;: 7}}
-</pre></div></div>
-</div>
-<div id="sec_override"></div>
 <div class="section" id="Overriding-initial-values-in-a-derived-class">
 <h3>Overriding initial values in a derived class<a class="headerlink" href="#Overriding-initial-values-in-a-derived-class" title="Permalink to this headline">¶</a></h3>
 <p>Suppose we want to change a value like the strength of the sun, <span class="math notranslate nohighlight">\(L\)</span>, after it’s been read in from the initail yaml file? Since a derived class can override the yinit function in the Integrator class, we are free to change it to overwrite any variable by reassigning the new value to self in the child constructor.</p>
@@ -1750,14 +1771,12 @@ vegetables:
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-
 <span class="k">class</span> <span class="nc">Base</span><span class="p">:</span>
     <span class="c1">#</span>
     <span class="c1"># this constructor is called first</span>
     <span class="c1">#</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">basevar</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">L</span> <span class="o">=</span> <span class="n">basevar</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">basevar</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">L</span><span class="o">=</span><span class="n">basevar</span>
 
 
 <span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
@@ -1765,126 +1784,37 @@ vegetables:
     <span class="c1"># this class changes the initialization</span>
     <span class="c1"># to add a new variable</span>
     <span class="c1">#</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">L</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">L</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
         <span class="c1">#</span>
         <span class="c1"># change the L in the child class</span>
         <span class="c1">#</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">L</span> <span class="o">=</span> <span class="n">L</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">L</span><span class="o">=</span><span class="n">L</span>
 </pre></div>
 </div>
 </div>
 <p>Now we can use Child(a,Lval) to construct instances with any value of L we want:</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">Lvals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
-
-<span class="c1">#</span>
-<span class="c1"># now make 10 children, each with a different value of L</span>
-<span class="c1">#</span>
-<span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="k">for</span> <span class="n">theL</span> <span class="ow">in</span> <span class="n">Lvals</span><span class="p">:</span>
-    <span class="n">newItem</span> <span class="o">=</span> <span class="n">Child</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">theL</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;set L value in child class to </span><span class="si">{newItem.L:3.0f}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-set L value in child class to   0
-set L value in child class to  10
-set L value in child class to  20
-set L value in child class to  30
-set L value in child class to  40
-set L value in child class to  50
-set L value in child class to  60
-set L value in child class to  70
-set L value in child class to  80
-set L value in child class to  90
-set L value in child class to 100
-</pre></div></div>
-</div>
-<p>To change L in the IntegCoupling class in <a class="reference external" href="#prob_conduction">Problem Conduction</a> look at changing the value above these lines:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">initvars</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;initvars&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;initvars&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">initvars</span> <span class="o">=</span> <span class="n">initvars</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;initvars&#39;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="Specific-example">
-<h3>Specific example<a class="headerlink" href="#Specific-example" title="Permalink to this headline">¶</a></h3>
-<p>So to use this technique for <a class="reference external" href="#prob_conduction">Problem Conduction</a>, override <code class="docutils literal notranslate"><span class="pre">set_yinit</span></code> so that it will take a new luminosity value newL, and add it to uservars, like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">IntegCoupling</span><span class="p">(</span><span class="n">Integrator</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;rewrite the set_yinit method</span>
-<span class="sd">       to work with luminosity</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="k">def</span> <span class="nf">set_yinit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">newL</span><span class="p">):</span>
-        <span class="c1">#</span>
-        <span class="c1"># change the luminocity</span>
-        <span class="c1">#</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;uservars&quot;</span><span class="p">][</span><span class="s2">&quot;L&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">newL</span> <span class="c1"># change solar incidence fraction</span>
-        <span class="c1">#</span>
-        <span class="c1"># make a new namedtuple factory called uservars that includes newL</span>
-        <span class="c1">#</span>
-        <span class="n">uservars_fac</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;uservars&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;uservars&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-        <span class="c1">#</span>
-        <span class="c1"># use the factory to make the augmented uservars named tuple</span>
-        <span class="c1">#</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">uservars</span> <span class="o">=</span> <span class="n">uservars_fac</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;uservars&#39;</span><span class="p">])</span>
-        <span class="c1">#</span>
-
-
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coeffFileName</span><span class="p">,</span> <span class="n">newL</span><span class="p">):</span>
-       <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">coeffFileName</span><span class="p">)</span>
-       <span class="bp">self</span><span class="o">.</span><span class="n">set_yinit</span><span class="p">(</span><span class="n">newL</span><span class="p">)</span>
-
-    <span class="o">...</span>
-</pre></div>
-</div>
-<p>then construct a new instance with a value of newL like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">theSolver</span> <span class="o">=</span> <span class="n">IntegCoupling</span><span class="p">(</span><span class="s2">&quot;coupling.yaml&quot;</span><span class="p">,</span> <span class="n">newL</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>The IntegCoupling constructor first constructs an instance of the Integrator class by calling <code class="docutils literal notranslate"><span class="pre">super()</span></code> and passing it the name of the yaml file. Once this is done then it calls the <code class="docutils literal notranslate"><span class="pre">IntegCoupling.set_yinit</span></code> method which takes the Integrator class instance (called “self” by convention) and modifies it by adding newL to the usersvars attribute.</p>
-<p>Try executing</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">newL</span> <span class="o">=</span> <span class="mi">50</span>
-<span class="n">theSolver</span> <span class="o">=</span> <span class="n">IntegCoupling</span><span class="p">(</span><span class="s2">&quot;coupling.yaml&quot;</span><span class="p">,</span> <span class="n">newL</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>and verify that:</p>
-<p><code class="docutils literal notranslate"><span class="pre">theSolver.uservars.L</span></code> is indeed 50</p>
-<div class="section" id="Check-your-understanding">
-<h4>Check your understanding<a class="headerlink" href="#Check-your-understanding" title="Permalink to this headline">¶</a></h4>
-<p>To see if you’re really getting the zeitgeist, try an alternative design where you leave the constructor as is, and instead add a new method called:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">reset_L</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">newL</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>so that you could do this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">newL</span> <span class="o">=</span> <span class="mi">50</span>
-<span class="n">theSolver</span> <span class="o">=</span> <span class="n">IntegCoupling</span><span class="p">(</span><span class="s2">&quot;coupling.yaml&quot;</span><span class="p">)</span>
-<span class="n">theSolver</span><span class="o">.</span><span class="n">reset_L</span><span class="p">(</span><span class="n">newL</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>and get <code class="docutils literal notranslate"><span class="pre">theSolver.uservars.L</span></code> set to 50.</p>
-</div>
-</div>
-<div class="section" id="Why-bother?">
-<h3>Why bother?<a class="headerlink" href="#Why-bother?" title="Permalink to this headline">¶</a></h3>
-<p>What does object oriented programming buy us? The dream was that companies/coders could ship standard base classes, thoroughly tested and documented, and then users could adapt those classes to their special needs using inheritence. This turned out to be too ambitous, but a dialed-back version of this is definitely now part of many major programming languages.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>
+<span></span><span class="n">Lvals</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">11</span><span class="p">)</span>
+
+<span class="c1">#</span>
+<span class="c1"># now make 10 children, each with a different value of L</span>
+<span class="c1">#</span>
+<span class="n">a</span><span class="o">=</span><span class="mi">5</span>
+<span class="k">for</span> <span class="n">theL</span> <span class="ow">in</span> <span class="n">Lvals</span><span class="p">:</span>
+   <span class="n">newItem</span><span class="o">=</span><span class="n">Child</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">theL</span><span class="p">)</span>
+   <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;set L value in child class to </span><span class="si">{:3.0f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">newItem</span><span class="o">.</span><span class="n">L</span><span class="p">))</span>
 </pre></div>
 </div>
+</div>
+<p>To change L in the IntegCoupling class in <a class="reference external" href="#prob_conduction">Problem Conduction</a> look at changing the value above these lines:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">initvars</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;initvars&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;initvars&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">initvars</span> <span class="o">=</span> <span class="n">initvars</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;initvars&#39;</span><span class="p">])</span>
+</pre></div>
 </div>
 </div>
 </div>

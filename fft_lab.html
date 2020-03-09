@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Numeric notebooks &mdash; Numeric course 0.1 documentation</title>
+  <title>Lab 9: FFTS &mdash; Numeric course 0.1 documentation</title>
   
 
   
@@ -38,8 +38,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Laboratory 1: An Introduction to the Numerical Solution of Differential Equations: Discretization (2020/Jan/6)" href="doc_notebooks/lab1/01-lab1.html" />
-    <link rel="prev" title="Optional textbooks" href="texts.html" /> 
+    <link rel="next" title="Lab 9 – Introduction to FFTs" href="doc_notebooks/lab9/fftnotebook.html" />
+    <link rel="prev" title="Laboratory 7: Solving partial differential equations using an explicit, finite difference method." href="doc_notebooks/lab7/01-lab7.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -89,7 +89,7 @@
 <li class="toctree-l1"><a class="reference internal" href="gradsyllabus20.html">Grad Syllabus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="schedule20.html">Detailed Schedule</a></li>
 <li class="toctree-l1"><a class="reference internal" href="texts.html">Optional texts</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Course/lab descriptions</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="notebook_toc.html">Course/lab descriptions</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab1/01-lab1.html">  Lab 1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab2/01-lab2.html">  Lab 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html">  Lab 3</a></li>
@@ -97,7 +97,11 @@
 <li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab5/01-lab5.html">  Lab 5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab6/lab6.html">  Lab 6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html">  Lab 7</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fft_lab.html">  Lab 9</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">  Lab 9</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab9/fftnotebook.html">  Lab 9 intro</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc_notebooks/lab9/fft_2d.html">  Lab 9 2d filter problem</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="week_notes.html">Weekly notes</a></li>
@@ -148,13 +152,15 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Numeric notebooks</li>
+          <li><a href="notebook_toc.html">Numeric notebooks</a> &raquo;</li>
+        
+      <li>Lab 9: FFTS</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/notebook_toc.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/fft_lab.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -191,18 +197,12 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="numeric-notebooks">
-<h1>Numeric notebooks<a class="headerlink" href="#numeric-notebooks" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="lab-9-ffts">
+<h1>Lab 9: FFTS<a class="headerlink" href="#lab-9-ffts" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="doc_notebooks/lab1/01-lab1.html">  Lab 1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="doc_notebooks/lab2/01-lab2.html">  Lab 2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html">  Lab 3</a></li>
-<li class="toctree-l1"><a class="reference internal" href="doc_notebooks/lab4/01-lab4.html">  Lab 4</a></li>
-<li class="toctree-l1"><a class="reference internal" href="doc_notebooks/lab5/01-lab5.html">  Lab 5</a></li>
-<li class="toctree-l1"><a class="reference internal" href="doc_notebooks/lab6/lab6.html">  Lab 6</a></li>
-<li class="toctree-l1"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html">  Lab 7</a></li>
-<li class="toctree-l1"><a class="reference internal" href="fft_lab.html">  Lab 9</a></li>
+<li class="toctree-l1"><a class="reference internal" href="doc_notebooks/lab9/fftnotebook.html">  Lab 9 intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="doc_notebooks/lab9/fft_2d.html">  Lab 9 2d filter problem</a></li>
 </ul>
 </div>
 </div>
@@ -215,10 +215,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="doc_notebooks/lab1/01-lab1.html" class="btn btn-neutral float-right" title="Laboratory 1: An Introduction to the Numerical Solution of Differential Equations: Discretization (2020/Jan/6)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="doc_notebooks/lab9/fftnotebook.html" class="btn btn-neutral float-right" title="Lab 9 – Introduction to FFTs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="texts.html" class="btn btn-neutral float-left" title="Optional textbooks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="doc_notebooks/lab7/01-lab7.html" class="btn btn-neutral float-left" title="Laboratory 7: Solving partial differential equations using an explicit, finite difference method." accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
