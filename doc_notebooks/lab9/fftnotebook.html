@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Lab 9 – Introduction to FFTs &mdash; Numeric course 0.1 documentation</title>
+  <title>Introduction &mdash; Numeric course 0.1 documentation</title>
   
 
   
@@ -37,9 +37,7 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Lab 9 – 2d fft" href="fft_2d.html" />
-    <link rel="prev" title="Lab 9: FFTS" href="../../fft_lab.html" /> 
+    <link rel="search" title="Search" href="../../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -83,40 +81,17 @@
               
             
             
-              <ul class="current">
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../course_bootstrap.html">Getting started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ugradsyllabus20.html">Undergrad Syllabus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../gradsyllabus20.html">Grad Syllabus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../schedule20.html">Detailed Schedule</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../texts.html">Optional texts</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../../notebook_toc.html">Course/lab descriptions</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../lab1/01-lab1.html">  Lab 1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lab2/01-lab2.html">  Lab 2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lab3/01-lab3.html">  Lab 3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lab4/01-lab4.html">  Lab 4</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lab5/01-lab5.html">  Lab 5</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lab6/lab6.html">  Lab 6</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lab7/01-lab7.html">  Lab 7</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lab8/Lab_8.html">Laboratory 8: Solution of the Quasi-geostrophic Equations using an Implicit Scheme</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lab8/Lab_8.html#5.1-Spatial-Discretization">5.1 Spatial Discretization</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../../fft_lab.html">  Lab 9</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">  Lab 9 intro</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#Introduction">Introduction</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#Power-spectrum-of-turbulent-vertical-velocity">Power spectrum of turbulent vertical velocity</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#power-spectrum-layout">power spectrum layout</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#Windowing">Windowing</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#Compare-power-spectra-for-wvel,-theta,-sensible-heat-flux">Compare power spectra for wvel, theta, sensible heat flux</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#Filtering">Filtering</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="fft_2d.html">  Lab 9 2d filter problem</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebook_toc.html">Course/lab descriptions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../week_notes.html">Weekly notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../assignments.html">Weekly assignments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../quizzes.html">Quizzes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions.html">Solutions</a></li>
 </ul>
 
             
@@ -162,11 +137,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../../notebook_toc.html">Numeric notebooks</a> &raquo;</li>
-        
-          <li><a href="../../fft_lab.html">Lab 9: FFTS</a> &raquo;</li>
-        
-      <li>Lab 9 – Introduction to FFTs</li>
+      <li>Introduction</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -407,9 +378,17 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<div class="section" id="Lab-9-–-Introduction-to-FFTs">
-<h1>Lab 9 – Introduction to FFTs<a class="headerlink" href="#Lab-9-–-Introduction-to-FFTs" title="Permalink to this headline">¶</a></h1>
-<div class="nbinput nblast docutils container">
+<h1><p>Table of Contents</p>
+</h1><div class="toc" style="margin-top: 1em;"><ul class="toc-item"><li><p>1  Introduction</p>
+<ul class="toc-item"><li><p>1.1  A simple transform</p>
+</li><li><p>1.2  Power spectrum of turbulent vertical velocity</p>
+</li><li><p>1.3  power spectrum layout</p>
+<ul class="toc-item"><li><p>1.3.1  Confirm that the fft at negative f is the complex conjugate of the fft at positive f</p>
+</li></ul></li><li><p>1.4  Windowing</p>
+</li><li><p>1.5  Compare power spectra for wvel, theta, sensible heat flux</p>
+<ul class="toc-item"><li><p>1.5.1  start with wvel</p>
+</li></ul></li><li><p>1.6  Filtering</p>
+</li></ul></li></ul></div><div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
@@ -421,11 +400,11 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="section" id="Introduction">
-<h2>Introduction<a class="headerlink" href="#Introduction" title="Permalink to this headline">¶</a></h2>
-<p>This lab introduces the use of the fast Fourier transform for estimation of the power spectral density and for simple filtering. If you need a refresher or are learning about fourier transforms for the first time, we recommend reading <a class="reference external" href="http://clouds.eos.ubc.ca/~phil/docs/atsc500/pdf_files/newman_chapter7.pdf">Newman Chapter 7</a>. For a description of the Fast Fourier transform, see <a class="reference external" href="./stull_section8_4.pdf">Stull Section 8.4</a> and <a class="reference external" href="https://jakevdp.github.io/blog/2013/08/28/understanding-the-fft/">Jake VanderPlas’s blog
-entry</a>. Another good resources is <a class="reference external" href="http://clouds.eos.ubc.ca/~phil/docs/atsc500/pdf_files/numerical_recipes_fft.pdf">Numerical Recipes Chapter 12</a> (user: green, password: house)</p>
+<h1>Introduction<a class="headerlink" href="#Introduction" title="Permalink to this headline">¶</a></h1>
+<p>This lab introduces the use of the fast Fourier transform for estimation of the power spectral density and for simple filtering. If you need a refresher or are learning about fourier transforms for the first time, we recommend reading <a class="reference external" href="http://clouds.eos.ubc.ca/~phil/docs/atsc500/pdf_files/newman_chapter7.pdf">Newman Chapter 7</a>. For a description of the Fast Fourier transform, see <a class="reference external" href="http://clouds.eos.ubc.ca/~phil/docs/atsc500/pdf_files/stull_section8_4.pdf">Stull Section 8.4</a> and <a class="reference external" href="https://jakevdp.github.io/blog/2013/08/28/understanding-the-fft/">Jake
+VanderPlas’s blog entry</a>. Another good resources is <a class="reference external" href="http://clouds.eos.ubc.ca/~phil/docs/atsc500/pdf_files/numerical_recipes_fft.pdf">Numerical Recipes Chapter 12</a> (user: green, password: house)</p>
 <div class="section" id="A-simple-transform">
-<h3>A simple transform<a class="headerlink" href="#A-simple-transform" title="Permalink to this headline">¶</a></h3>
+<h2>A simple transform<a class="headerlink" href="#A-simple-transform" title="Permalink to this headline">¶</a></h2>
 <p>To get started assume that there is a pure tone – a cosine wave oscillating at a frequency of 1 Hz. Next assume that we sample that 1 Hz wave at a sampling rate of 5 Hz i.e. 5 times a second</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
@@ -604,7 +583,6 @@ simple cosine: Power spectrum sum      0.500
 </pre></div></div>
 </div>
 </div>
-</div>
 <div class="section" id="Power-spectrum-of-turbulent-vertical-velocity">
 <h2>Power spectrum of turbulent vertical velocity<a class="headerlink" href="#Power-spectrum-of-turbulent-vertical-velocity" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
@@ -614,7 +592,7 @@ simple cosine: Power spectrum sum      0.500
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1">#load data sampled at 20.8333 Hz</span>
 
-<span class="n">td</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;miami_tower.npz&#39;</span><span class="p">)</span> <span class="c1">#load temp, uvel, vvel, wvel, minutes</span>
+<span class="n">td</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;miami_tower.npz&#39;</span><span class="p">)</span> <span class="c1">#load temp, uvel, vvel, wvel, minutes</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;keys: &#39;</span><span class="p">,</span><span class="n">td</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">td</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">])</span>
 </pre></div>
@@ -625,17 +603,16 @@ simple cosine: Power spectrum sum      0.500
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-keys:  KeysView(&lt;numpy.lib.npyio.NpzFile object at 0x11eacf550&gt;)
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-8-5f80d41902e4&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-red-fg">#load data sampled at 20.8333 Hz</span>
+<span class="ansi-green-intense-fg ansi-bold">      2</span>
+<span class="ansi-green-fg">----&gt; 3</span><span class="ansi-red-fg"> </span>td<span class="ansi-blue-fg">=</span>numpy<span class="ansi-blue-fg">.</span>load<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;miami_tower.npz&#39;</span><span class="ansi-blue-fg">)</span> <span class="ansi-red-fg">#load temp, uvel, vvel, wvel, minutes</span>
+<span class="ansi-green-intense-fg ansi-bold">      4</span> print<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;keys: &#39;</span><span class="ansi-blue-fg">,</span>td<span class="ansi-blue-fg">.</span>keys<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      5</span> print<span class="ansi-blue-fg">(</span>td<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;description&#39;</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span>
 
-These are measurements of atmospheric
-turbulent velocity (wvel, uvel, vvel (m/s) and temperature (temp), taken
-over a 30 minute period at a sampling rate of 20.8333 (125/6)
-Hz. They were measured by a sonic anemometer at a height of 40 m over
-suburban Miami during unstable conditions (12:01-12:31 LAT)
-
-Total length of each timeseries is 37,500 values, so total sample time is
-37000*(6/125) = 1800 seconds = 30 minutes
-
+<span class="ansi-red-fg">NameError</span>: name &#39;numpy&#39; is not defined
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -694,25 +671,22 @@ Total length of each timeseries is 37,500 values, so total sample time is
 </pre></div>
 </div>
 </div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-check Wiener-Khichine theorem for wvel
-
-raw fft sum, full time series:     1.0337
-
-velocity variance:     1.0337
-
-</pre></div></div>
-</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/doc_notebooks_lab9_fftnotebook_16_1.png" src="../../_images/doc_notebooks_lab9_fftnotebook_16_1.png" />
-</div>
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-9-063bfe0d8a7d&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">      4</span>
+<span class="ansi-green-intense-fg ansi-bold">      5</span> totsize<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">36000</span>
+<span class="ansi-green-fg">----&gt; 6</span><span class="ansi-red-fg"> </span>wvel<span class="ansi-blue-fg">=</span>td<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;wvel&#39;</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">:</span>totsize<span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">.</span>flatten<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      7</span> temp<span class="ansi-blue-fg">=</span>td<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;temp&#39;</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">:</span>totsize<span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">.</span>flatten<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      8</span> wvel <span class="ansi-blue-fg">=</span> wvel <span class="ansi-blue-fg">-</span> np<span class="ansi-blue-fg">.</span>mean<span class="ansi-blue-fg">(</span>wvel<span class="ansi-blue-fg">)</span>
+
+<span class="ansi-red-fg">NameError</span>: name &#39;td&#39; is not defined
+</pre></div></div>
 </div>
 </div>
 <div class="section" id="power-spectrum-layout">
@@ -770,21 +744,22 @@ velocity variance:     1.0337
 </pre></div>
 </div>
 </div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-(200.4277107839311-150.32508399544918j)
-(200.42771078393093+150.32508399544923j)
-</pre></div></div>
-</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/doc_notebooks_lab9_fftnotebook_23_1.png" src="../../_images/doc_notebooks_lab9_fftnotebook_23_1.png" />
-</div>
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-12-9609502a6f5b&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>test_fft<span class="ansi-blue-fg">=</span>np<span class="ansi-blue-fg">.</span>fft<span class="ansi-blue-fg">.</span>fft<span class="ansi-blue-fg">(</span>wvel<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      2</span> fig<span class="ansi-blue-fg">,</span>theAx<span class="ansi-blue-fg">=</span>plt<span class="ansi-blue-fg">.</span>subplots<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">2</span><span class="ansi-blue-fg">,</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">,</span>figsize<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">8</span><span class="ansi-blue-fg">,</span><span class="ansi-cyan-fg">10</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      3</span> theAx<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">.</span>semilogy<span class="ansi-blue-fg">(</span>np<span class="ansi-blue-fg">.</span>real<span class="ansi-blue-fg">(</span>test_fft<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      4</span> theAx<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">.</span>semilogy<span class="ansi-blue-fg">(</span>np<span class="ansi-blue-fg">.</span>imag<span class="ansi-blue-fg">(</span>test_fft<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      5</span> print<span class="ansi-blue-fg">(</span>test_fft<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">100</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-red-fg">NameError</span>: name &#39;wvel&#39; is not defined
+</pre></div></div>
 </div>
 </div>
 </div>
@@ -880,7 +855,7 @@ sumw:      0.533
 <h2>Compare power spectra for wvel, theta, sensible heat flux<a class="headerlink" href="#Compare-power-spectra-for-wvel,-theta,-sensible-heat-flux" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="start-with-wvel">
 <h3>start with wvel<a class="headerlink" href="#start-with-wvel" title="Permalink to this headline">¶</a></h3>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
@@ -893,6 +868,23 @@ sumw:      0.533
 <span class="n">winspec</span><span class="o">=</span><span class="n">winspec</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">halfpoint</span><span class="p">]</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-15-c9fa25d2f2bd&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>winspec<span class="ansi-blue-fg">=</span>do_fft<span class="ansi-blue-fg">(</span>wvel<span class="ansi-blue-fg">,</span>window<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      2</span> sampleRate<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">20.833</span>
+<span class="ansi-green-intense-fg ansi-bold">      3</span> nyquistfreq<span class="ansi-blue-fg">=</span>sampleRate<span class="ansi-blue-fg">/</span><span class="ansi-cyan-fg">2.</span>
+<span class="ansi-green-intense-fg ansi-bold">      4</span> halfpoint<span class="ansi-blue-fg">=</span>int<span class="ansi-blue-fg">(</span>len<span class="ansi-blue-fg">(</span>winspec<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">/</span><span class="ansi-cyan-fg">2.</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      5</span> averaged_freq<span class="ansi-blue-fg">=</span>np<span class="ansi-blue-fg">.</span>linspace<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">,</span><span class="ansi-cyan-fg">1.</span><span class="ansi-blue-fg">,</span>halfpoint<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">*</span>nyquistfreq
+
+<span class="ansi-red-fg">NameError</span>: name &#39;wvel&#39; is not defined
+</pre></div></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
@@ -925,8 +917,16 @@ sumw:      0.533
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/doc_notebooks_lab9_fftnotebook_30_0.png" src="../../_images/doc_notebooks_lab9_fftnotebook_30_0.png" />
-</div>
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-16-89de65363de2&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">     17</span>
+<span class="ansi-green-intense-fg ansi-bold">     18</span> labels<span class="ansi-blue-fg">=</span>dict<span class="ansi-blue-fg">(</span>title<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#39;wvel power spectrum&#39;</span><span class="ansi-blue-fg">,</span>ylabel<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#39;$(m^2\,s^{-2}\,Hz^{-1})$&#39;</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">---&gt; 19</span><span class="ansi-red-fg"> </span>ax<span class="ansi-blue-fg">=</span>do_plot<span class="ansi-blue-fg">(</span>averaged_freq<span class="ansi-blue-fg">,</span>winspec<span class="ansi-blue-fg">,</span><span class="ansi-blue-fg">**</span>labels<span class="ansi-blue-fg">)</span>
+
+<span class="ansi-red-fg">NameError</span>: name &#39;averaged_freq&#39; is not defined
+</pre></div></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
@@ -944,8 +944,17 @@ sumw:      0.533
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/doc_notebooks_lab9_fftnotebook_31_0.png" src="../../_images/doc_notebooks_lab9_fftnotebook_31_0.png" />
-</div>
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-17-29f96944eaab&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>winspec<span class="ansi-blue-fg">=</span>do_fft<span class="ansi-blue-fg">(</span>temp<span class="ansi-blue-fg">,</span>window<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      2</span> winspec<span class="ansi-blue-fg">=</span>winspec<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">:</span>halfpoint<span class="ansi-blue-fg">]</span>
+<span class="ansi-green-intense-fg ansi-bold">      3</span> labels<span class="ansi-blue-fg">=</span>dict<span class="ansi-blue-fg">(</span>title<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#39;Temperature power spectrum&#39;</span><span class="ansi-blue-fg">,</span>ylabel<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#39;$K^{2}\,Hz^{-1})$&#39;</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      4</span> ax<span class="ansi-blue-fg">=</span>do_plot<span class="ansi-blue-fg">(</span>averaged_freq<span class="ansi-blue-fg">,</span>winspec<span class="ansi-blue-fg">,</span><span class="ansi-blue-fg">**</span>labels<span class="ansi-blue-fg">)</span>
+
+<span class="ansi-red-fg">NameError</span>: name &#39;temp&#39; is not defined
+</pre></div></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
@@ -963,8 +972,17 @@ sumw:      0.533
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/doc_notebooks_lab9_fftnotebook_32_0.png" src="../../_images/doc_notebooks_lab9_fftnotebook_32_0.png" />
-</div>
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-18-4425da1610b2&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>winspec<span class="ansi-blue-fg">=</span>do_fft<span class="ansi-blue-fg">(</span>flux<span class="ansi-blue-fg">,</span>window<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      2</span> winspec<span class="ansi-blue-fg">=</span>winspec<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">:</span>halfpoint<span class="ansi-blue-fg">]</span>
+<span class="ansi-green-intense-fg ansi-bold">      3</span> labels<span class="ansi-blue-fg">=</span>dict<span class="ansi-blue-fg">(</span>title<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#39;Heat flux power spectrum&#39;</span><span class="ansi-blue-fg">,</span>ylabel<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#39;$K m s^{-1}\,Hz^{-1})$&#39;</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      4</span> ax<span class="ansi-blue-fg">=</span>do_plot<span class="ansi-blue-fg">(</span>averaged_freq<span class="ansi-blue-fg">,</span>winspec<span class="ansi-blue-fg">,</span><span class="ansi-blue-fg">**</span>labels<span class="ansi-blue-fg">)</span>
+
+<span class="ansi-red-fg">NameError</span>: name &#39;flux&#39; is not defined
+</pre></div></div>
 </div>
 </div>
 </div>
@@ -1000,8 +1018,18 @@ sumw:      0.533
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/doc_notebooks_lab9_fftnotebook_35_0.png" src="../../_images/doc_notebooks_lab9_fftnotebook_35_0.png" />
-</div>
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-19-666e2342b1f0&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>wvel<span class="ansi-blue-fg">=</span> wvel <span class="ansi-blue-fg">-</span> np<span class="ansi-blue-fg">.</span>mean<span class="ansi-blue-fg">(</span>wvel<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      2</span> thefft<span class="ansi-blue-fg">=</span>np<span class="ansi-blue-fg">.</span>fft<span class="ansi-blue-fg">.</span>fft<span class="ansi-blue-fg">(</span>wvel<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      3</span> totsize<span class="ansi-blue-fg">=</span>len<span class="ansi-blue-fg">(</span>thefft<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      4</span> samprate<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">20.8333</span> <span class="ansi-red-fg">#Hz</span>
+<span class="ansi-green-intense-fg ansi-bold">      5</span> the_time<span class="ansi-blue-fg">=</span>np<span class="ansi-blue-fg">.</span>arange<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">,</span>totsize<span class="ansi-blue-fg">,</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">/</span><span class="ansi-cyan-fg">20.8333</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-red-fg">NameError</span>: name &#39;wvel&#39; is not defined
+</pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -1020,15 +1048,6 @@ sumw:      0.533
            
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="fft_2d.html" class="btn btn-neutral float-right" title="Lab 9 – 2d fft" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="../../fft_lab.html" class="btn btn-neutral float-left" title="Lab 9: FFTS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>

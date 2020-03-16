@@ -14,8 +14,11 @@ Assignment details
 * Lab 5 `assignment5 hand in <https://phaustin.github.io/numeric/doc_notebooks/lab5/01-lab5.html#Assignment>`_
 
 * :ref:`mini2`
+<<<<<<< HEAD
 
 * Lab 6 do problems Experiment, Steady States, Eigenvalues and Stability
+=======
+>>>>>>> fix assignment
   
 * Lab 7a `Lab 7a <./lab7.rst>`_
 
