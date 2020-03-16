@@ -21,3 +21,5 @@ Numerical Methods
    Weekly assignments <assignments>
    
    Quizzes <quizzes>
+
+   Solutions <solutions.rst>
