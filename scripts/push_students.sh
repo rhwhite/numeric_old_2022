@@ -1,4 +1,4 @@
-f#!/bin/bash
+#!/bin/bash
 #
 # update numeric_students repo master branch
 # with contents of students folder
