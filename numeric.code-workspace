@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "students"
+		},
+		{
+			"path": "numlabs"
+		}
+	],
+	"settings": {
+		"python.pythonPath": "replace",
+		"python.linting.flake8Enabled": true,
+		"python.linting.enabled": true,
+		"editor.renderWhitespace": "boundary",
+		"python.formatting.provider": "black"
+	}
+}
