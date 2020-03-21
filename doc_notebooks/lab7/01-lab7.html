@@ -21,12 +21,12 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
@@ -38,8 +38,8 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Laboratory 8: Solution of the Quasi-geostrophic Equations using an Implicit Scheme" href="../lab8/Lab_8.html" />
-    <link rel="prev" title="Contents" href="../lab6/lab6.html" /> 
+    <link rel="next" title="Laboratory 8: Solution of the Quasi-geostrophic Equations" href="../lab8/01-lab_8.html" />
+    <link rel="prev" title="Lab 6: The Lorentz equations" href="../lab6/lab6.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -95,8 +95,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../lab3/01-lab3.html">  Lab 3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lab4/01-lab4.html">  Lab 4</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lab5/01-lab5.html">  Lab 5</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lab6/lab6.html">Contents</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lab6/lab6.html#List-of-Problems">List of Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab6/lab6.html">  Lab 6</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">  Lab 7</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#List-of-Problems">List of Problems</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Objectives">Objectives</a><ul>
@@ -108,7 +107,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#Introduce-Full-Equations">Introduce Full Equations</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#No-variation-in-y">No variation in y</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#Introduce-Simple-Equations">Introduce Simple Equations</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#No-variation-in-y">No variation in y</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">No variation in y</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#Quiz:-Find-the-Dispersion-Relation">Quiz: Find the Dispersion Relation</a></li>
 </ul>
 </li>
@@ -135,7 +134,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#Full-Equations">Full Equations</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#Stability">Stability</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#Problem-Six">Problem Six</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#Accuracy">Accuracy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Accuracy</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#Problem-Seven">Problem Seven</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#Problem-Eight">Problem Eight</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#Problem-Nine">Problem Nine</a></li>
@@ -144,7 +143,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#Details">Details</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#Starting-the-Simulation-Full-Equations">Starting the Simulation Full Equations</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#Initialization">Initialization</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#Boundary-Conditions">Boundary Conditions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Boundary Conditions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#Computational-Mode">Computational Mode</a></li>
 </ul>
 </li>
@@ -152,8 +151,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#References">References</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../lab8/Lab_8.html">Laboratory 8: Solution of the Quasi-geostrophic Equations using an Implicit Scheme</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lab8/Lab_8.html#5.1-Spatial-Discretization">5.1 Spatial Discretization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab8/01-lab_8.html">  Lab 8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../fft_lab.html">  Lab 9</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lab10/01-lab_10.html">  Lab 10</a></li>
 </ul>
 </li>
@@ -294,8 +293,8 @@ div.nboutput.container div.prompt pre {
 div.nbinput.container div.prompt,
 div.nboutput.container div.prompt {
     min-width: 5ex;
-    padding-top: 0.4em;
-    padding-right: 0.4em;
+    padding-top: 0.3rem;
+    padding-right: 0.3rem;
     text-align: right;
     flex: 0;
 }
@@ -319,7 +318,6 @@ div.nboutput.container div.prompt pre {
 /* input/output area */
 div.nbinput.container div.input_area,
 div.nboutput.container div.output_area {
-    padding: 0.4em;
     -webkit-flex: 1;
     flex: 1;
     overflow: auto;
@@ -392,6 +390,27 @@ div.nboutput.container div.output_area.stderr {
 
 .ansi-bold { font-weight: bold; }
 .ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 0.3rem;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
 
 /* Some additional styling taken form the Jupyter notebook CSS */
 div.rendered_html table {
@@ -621,8 +640,8 @@ where, in addition, we assume that the Coriolis force is negligible (<a class="r
 \[\omega^2 = gHk^2,\]</div>
 </div><p>which is the dispersion relation for these waves.</p>
 </div>
-<div class="section" id="No-variation-in-y">
-<h3>No variation in y<a class="headerlink" href="#No-variation-in-y" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id1">
+<h3>No variation in y<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>Now consider <span class="math notranslate nohighlight">\(f\not = 0\)</span>.</p>
 <p>By assuming</p>
 <div class="math notranslate nohighlight">
@@ -1267,8 +1286,8 @@ only consider the effect of the space step. So, consider the numerical dispersio
 </div><p>We can see that the accuracy is good for long waves (<span class="math notranslate nohighlight">\(k\)</span> small) but for short waves, near the limit of the grid resolutions, the discrete frequency is too small. As the phase speed is <span class="math notranslate nohighlight">\({\omega}/{k}\)</span>, the phase speed is also too small and most worrying, the group speed <span class="math notranslate nohighlight">\({\partial \omega}/ {\partial k}\)</span> goes to zero!</p>
 <div class="section" id="Choosing-a-Grid">
 <h3>Choosing a Grid<a class="headerlink" href="#Choosing-a-Grid" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="No-variation-in-y">
-<h4>No variation in y<a class="headerlink" href="#No-variation-in-y" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id2">
+<h4>No variation in y<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
 <p>For the simple case above, there is little choice in grid. Let’s consider the more complicated case, <span class="math notranslate nohighlight">\(f \not = 0\)</span>. Then <span class="math notranslate nohighlight">\(v \not = 0\)</span> and we have to choose where on the grid we wish to put <span class="math notranslate nohighlight">\(v\)</span>. There are two choices:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
@@ -1490,8 +1509,8 @@ Flat Bottom
 </div>
 </div>
 </div>
-<div class="section" id="Accuracy">
-<h3>Accuracy<a class="headerlink" href="#Accuracy" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id3">
+<h3>Accuracy<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>To determine the accuracy of the spatial discretization, we will compare the <em>numerical dispersion relation</em> (<a class="reference external" href="#lab7:eq:full:numDisp">Full Numerical Dispersion Relation</a>) for <span class="math notranslate nohighlight">\(dt \rightarrow 0\)</span></p>
 <div class="math notranslate nohighlight">
 \[\omega^2 = f^2 + gH \frac {\sin^2(kd)}{d^2} +
@@ -1651,8 +1670,8 @@ section <a class="reference external" href="#Predictor-Corrector-to-Start">Pred
       y)+f k \sin(kx+\ell y)\right) \nonumber \end{aligned}\end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\ell\)</span> and <span class="math notranslate nohighlight">\(k\)</span> are selected by the user. It is assumed <span class="math notranslate nohighlight">\(g = 9.8\)</span>m/s<span class="math notranslate nohighlight">\(^2\)</span>, <span class="math notranslate nohighlight">\(H = 400\)</span>m and <span class="math notranslate nohighlight">\(f = 10^{-4}\)</span>/s. The value of the frequency <span class="math notranslate nohighlight">\(\omega\)</span> is given by the dispersion relation, (<a class="reference external" href="#lab7:eq:full_disp">Full Analytic Dispersion Relation</a>).</p>
 </div>
-<div class="section" id="Boundary-Conditions">
-<h3>Boundary Conditions<a class="headerlink" href="#Boundary-Conditions" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id4">
+<h3>Boundary Conditions<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>The boundary conditions used for the stability demo for the full equations are <em>“periodic”</em> in both x and y. Anything which propagates out the left hand side comes in the right hand side, <em>etc</em>. This condition forces a periodicity on the flow, the wavelengths of the simulated waves must be sized so that an integral number of waves fits in the domain.</p>
 <p>Specifically, for a <span class="math notranslate nohighlight">\(m \times n\)</span> grid, the boundary conditions for the variable <span class="math notranslate nohighlight">\(h\)</span> along the right and left boundaries are</p>
 <div class="math notranslate nohighlight">
@@ -1722,10 +1741,10 @@ corresponding boundary on the other side.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../lab8/Lab_8.html" class="btn btn-neutral float-right" title="Laboratory 8: Solution of the Quasi-geostrophic Equations using an Implicit Scheme" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../lab8/01-lab_8.html" class="btn btn-neutral float-right" title="Laboratory 8: Solution of the Quasi-geostrophic Equations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../lab6/lab6.html" class="btn btn-neutral float-left" title="Contents" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../lab6/lab6.html" class="btn btn-neutral float-left" title="Lab 6: The Lorentz equations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

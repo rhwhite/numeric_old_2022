@@ -21,12 +21,12 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
@@ -38,7 +38,7 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Contents" href="../lab6/lab6.html" />
+    <link rel="next" title="Lab 6: The Lorentz equations" href="../lab6/lab6.html" />
     <link rel="prev" title="Solving Ordinary Differential Equations with the Runge-Kutta Methods" href="../lab4/01-lab4.html" /> 
 </head>
 
@@ -140,8 +140,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../lab6/lab6.html">Contents</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lab6/lab6.html#List-of-Problems">List of Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab6/lab6.html">  Lab 6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lab7/01-lab7.html">  Lab 7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lab8/Lab_8.html">Laboratory 8: Solution of the Quasi-geostrophic Equations using an Implicit Scheme</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lab8/Lab_8.html#5.1-Spatial-Discretization">5.1 Spatial Discretization</a></li>
@@ -285,8 +284,8 @@ div.nboutput.container div.prompt pre {
 div.nbinput.container div.prompt,
 div.nboutput.container div.prompt {
     min-width: 5ex;
-    padding-top: 0.4em;
-    padding-right: 0.4em;
+    padding-top: 0.3rem;
+    padding-right: 0.3rem;
     text-align: right;
     flex: 0;
 }
@@ -310,7 +309,6 @@ div.nboutput.container div.prompt pre {
 /* input/output area */
 div.nbinput.container div.input_area,
 div.nboutput.container div.output_area {
-    padding: 0.4em;
     -webkit-flex: 1;
     flex: 1;
     overflow: auto;
@@ -383,6 +381,27 @@ div.nboutput.container div.output_area.stderr {
 
 .ansi-bold { font-weight: bold; }
 .ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 0.3rem;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
 
 /* Some additional styling taken form the Jupyter notebook CSS */
 div.rendered_html table {
@@ -1475,7 +1494,7 @@ information, for example the Runge-Kutta coefficients, in an organized way that 
 
     <span class="k">def</span> <span class="nf">dumpit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">the_name</span><span class="p">):</span>
         <span class="n">printlist</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">c</span><span class="p">]</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;dumping arguments for </span><span class="si">{the_name}</span><span class="s1">: </span><span class="si">{printlist}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;dumping arguments for </span><span class="si">{</span><span class="n">the_name</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">printlist</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1651,7 +1670,7 @@ methods for the_integ:  [&#39;__init__&#39;, &#39;dumpit&#39;]
         <span class="bp">self</span><span class="o">.</span><span class="n">trigval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">c</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">d</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">print_trig</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">the_date</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;on </span><span class="si">{the_date}</span><span class="s1"> the value of sin(a*b)=: </span><span class="si">{self.trigval:5.3f}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;on </span><span class="si">{</span><span class="n">the_date</span><span class="si">}</span><span class="s1"> the value of sin(a*b)=: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">trigval</span><span class="si">:</span><span class="s1">5.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
 
 </pre></div>
@@ -1793,7 +1812,7 @@ vegetables:
 <span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="k">for</span> <span class="n">theL</span> <span class="ow">in</span> <span class="n">Lvals</span><span class="p">:</span>
     <span class="n">newItem</span> <span class="o">=</span> <span class="n">Child</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">theL</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;set L value in child class to </span><span class="si">{newItem.L:3.0f}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;set L value in child class to </span><span class="si">{</span><span class="n">newItem</span><span class="o">.</span><span class="n">L</span><span class="si">:</span><span class="s1">3.0f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1903,7 +1922,7 @@ set L value in child class to 100
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../lab6/lab6.html" class="btn btn-neutral float-right" title="Contents" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../lab6/lab6.html" class="btn btn-neutral float-right" title="Lab 6: The Lorentz equations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../lab4/01-lab4.html" class="btn btn-neutral float-left" title="Solving Ordinary Differential Equations with the Runge-Kutta Methods" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

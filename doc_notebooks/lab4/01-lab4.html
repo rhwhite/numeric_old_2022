@@ -21,12 +21,12 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
@@ -122,8 +122,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../lab5/01-lab5.html">  Lab 5</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lab6/lab6.html">Contents</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lab6/lab6.html#List-of-Problems">List of Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab6/lab6.html">  Lab 6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lab7/01-lab7.html">  Lab 7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lab8/Lab_8.html">Laboratory 8: Solution of the Quasi-geostrophic Equations using an Implicit Scheme</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lab8/Lab_8.html#5.1-Spatial-Discretization">5.1 Spatial Discretization</a></li>
@@ -267,8 +266,8 @@ div.nboutput.container div.prompt pre {
 div.nbinput.container div.prompt,
 div.nboutput.container div.prompt {
     min-width: 5ex;
-    padding-top: 0.4em;
-    padding-right: 0.4em;
+    padding-top: 0.3rem;
+    padding-right: 0.3rem;
     text-align: right;
     flex: 0;
 }
@@ -292,7 +291,6 @@ div.nboutput.container div.prompt pre {
 /* input/output area */
 div.nbinput.container div.input_area,
 div.nboutput.container div.output_area {
-    padding: 0.4em;
     -webkit-flex: 1;
     flex: 1;
     overflow: auto;
@@ -365,6 +363,27 @@ div.nboutput.container div.output_area.stderr {
 
 .ansi-bold { font-weight: bold; }
 .ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 0.3rem;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
 
 /* Some additional styling taken form the Jupyter notebook CSS */
 div.rendered_html table {
@@ -878,7 +897,7 @@ TypeError: unhashable type: &#39;list&#39;
                     <span class="s1">&#39;dt&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span><span class="s1">&#39;c1&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span><span class="s1">&#39;c2&#39;</span><span class="p">:</span><span class="mf">1.</span><span class="p">,</span><span class="s1">&#39;c3&#39;</span><span class="p">:</span><span class="mf">1.</span><span class="p">}</span>
 <span class="n">inittup</span><span class="o">=</span><span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;inittup&#39;</span><span class="p">,</span><span class="s1">&#39;dt c1 c2 c3 t_beg t_end yinitial&#39;</span><span class="p">)</span>
 <span class="n">initialCond</span><span class="o">=</span><span class="n">inittup</span><span class="p">(</span><span class="o">**</span><span class="n">initialDict</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;values are </span><span class="si">{initialCond.c1}</span><span class="s2"> and </span><span class="si">{initialCond.yinitial}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;values are </span><span class="si">{</span><span class="n">initialCond</span><span class="o">.</span><span class="n">c1</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">initialCond</span><span class="o">.</span><span class="n">yinitial</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -966,7 +985,7 @@ OrderedDict([(&#39;dt&#39;, 0.2), (&#39;c1&#39;, -1.0), (&#39;c2&#39;, 1.0), (&#
 <span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;run1.json&quot;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">jsonin</span><span class="p">:</span>
     <span class="n">inputDict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">jsonin</span><span class="p">)</span>
 <span class="n">initial_conds</span> <span class="o">=</span> <span class="n">inittup</span><span class="p">(</span><span class="o">**</span><span class="n">inputDict</span><span class="p">[</span><span class="s1">&#39;initialconds&#39;</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;values are </span><span class="si">{initial_conds.c1}</span><span class="s2"> and </span><span class="si">{initial_conds.yinitial}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;values are </span><span class="si">{</span><span class="n">initial_conds</span><span class="o">.</span><span class="n">c1</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">initial_conds</span><span class="o">.</span><span class="n">yinitial</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

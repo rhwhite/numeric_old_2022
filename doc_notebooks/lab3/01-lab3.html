@@ -21,12 +21,12 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
@@ -100,7 +100,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#Linear-Systems">Linear Systems</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#Quiz-on-Matrices">Quiz on Matrices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Quiz on Matrices</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Decomposition">Decomposition</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Example-One">Example One</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Example-Two">Example Two</a></li>
@@ -128,7 +128,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#####-Problem-Four">#### Problem Four</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#Summary">Summary</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Summary</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#References">References</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#Numpy-and-Python-with-Matrices">Numpy and Python with Matrices</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#Glossary">Glossary</a></li>
@@ -138,8 +138,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../lab4/01-lab4.html">  Lab 4</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lab5/01-lab5.html">  Lab 5</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lab6/lab6.html">Contents</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lab6/lab6.html#List-of-Problems">List of Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab6/lab6.html">  Lab 6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lab7/01-lab7.html">  Lab 7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lab8/Lab_8.html">Laboratory 8: Solution of the Quasi-geostrophic Equations using an Implicit Scheme</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lab8/Lab_8.html#5.1-Spatial-Discretization">5.1 Spatial Discretization</a></li>
@@ -283,8 +282,8 @@ div.nboutput.container div.prompt pre {
 div.nbinput.container div.prompt,
 div.nboutput.container div.prompt {
     min-width: 5ex;
-    padding-top: 0.4em;
-    padding-right: 0.4em;
+    padding-top: 0.3rem;
+    padding-right: 0.3rem;
     text-align: right;
     flex: 0;
 }
@@ -308,7 +307,6 @@ div.nboutput.container div.prompt pre {
 /* input/output area */
 div.nbinput.container div.input_area,
 div.nboutput.container div.output_area {
-    padding: 0.4em;
     -webkit-flex: 1;
     flex: 1;
     overflow: auto;
@@ -381,6 +379,27 @@ div.nboutput.container div.output_area.stderr {
 
 .ansi-bold { font-weight: bold; }
 .ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 0.3rem;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
 
 /* Some additional styling taken form the Jupyter notebook CSS */
 div.rendered_html table {
@@ -581,8 +600,8 @@ a_{m1}x_{1} &amp; + &amp; \ldots &amp; + &amp; a_{mn}x_{n} &amp; = &amp; b_{m}
 </div>
 </div>
 </div>
-<div class="section" id="Quiz-on-Matrices">
-<h2>Quiz on Matrices<a class="headerlink" href="#Quiz-on-Matrices" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h2>Quiz on Matrices<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>Which matrix matches this system of equations?</p>
 <div id="quiz:sys"><div class="math notranslate nohighlight">
 \[\begin{split}\begin{array}{lcr}
@@ -1697,8 +1716,8 @@ u_{N-1} - 2u_N +u_{N+1} = d^2f_N\]</div>
 </div></blockquote>
 </div>
 </div>
-<div class="section" id="Summary">
-<h2>Summary<a class="headerlink" href="#Summary" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h2>Summary<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>As you will have found in these problems, the boundary conditions can have an influence on the conditioning of a discrete problem. Furthermore, the method of discretizing the boundary conditions may or may not have a large effect on the condition number. Consequently, we must take care when discretizing a problem in order to obtain an efficient numerical scheme.</p>
 <div class="section" id="References">
 <h3>References<a class="headerlink" href="#References" title="Permalink to this headline">¶</a></h3>

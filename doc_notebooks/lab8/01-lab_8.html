@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Laboratory 8: Solution of the Quasi-geostrophic Equations using an Implicit Scheme &mdash; Numeric course 0.1 documentation</title>
+  <title>Laboratory 8: Solution of the Quasi-geostrophic Equations &mdash; Numeric course 0.1 documentation</title>
   
 
   
@@ -21,12 +21,12 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
@@ -137,7 +137,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-      <li>Laboratory 8: Solution of the Quasi-geostrophic Equations using an Implicit Scheme</li>
+      <li>Laboratory 8: Solution of the Quasi-geostrophic Equations</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -223,8 +223,8 @@ div.nboutput.container div.prompt pre {
 div.nbinput.container div.prompt,
 div.nboutput.container div.prompt {
     min-width: 5ex;
-    padding-top: 0.4em;
-    padding-right: 0.4em;
+    padding-top: 0.3rem;
+    padding-right: 0.3rem;
     text-align: right;
     flex: 0;
 }
@@ -248,7 +248,6 @@ div.nboutput.container div.prompt pre {
 /* input/output area */
 div.nbinput.container div.input_area,
 div.nboutput.container div.output_area {
-    padding: 0.4em;
     -webkit-flex: 1;
     flex: 1;
     overflow: auto;
@@ -322,6 +321,27 @@ div.nboutput.container div.output_area.stderr {
 .ansi-bold { font-weight: bold; }
 .ansi-underline { text-decoration: underline; }
 
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 0.3rem;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
 /* Some additional styling taken form the Jupyter notebook CSS */
 div.rendered_html table {
   border: none;
@@ -378,42 +398,10 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<div class="section" id="Laboratory-8:-Solution-of-the-Quasi-geostrophic-Equations-using-an-Implicit-Scheme">
-<h1>Laboratory 8: Solution of the Quasi-geostrophic Equations using an Implicit Scheme<a class="headerlink" href="#Laboratory-8:-Solution-of-the-Quasi-geostrophic-Equations-using-an-Implicit-Scheme" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="Laboratory-8:-Solution-of-the-Quasi-geostrophic-Equations">
+<h1>Laboratory 8: Solution of the Quasi-geostrophic Equations<a class="headerlink" href="#Laboratory-8:-Solution-of-the-Quasi-geostrophic-Equations" title="Permalink to this headline">¶</a></h1>
 <p>Lin Yang &amp; John M. Stockie</p>
-<p># Table of Contents</p>
-<div class="toc" style="margin-top: 1em;"><ul class="toc-item" id="toc-level0"><li><p>1  Laboratory 8: Solution of the Quasi-geostrophic Equations using an Implicit Scheme</p>
-<ul class="toc-item"><li><p>1.1  List of Problems</p>
-</li><li><p>1.2  Objectives</p>
-</li><li><p>1.3  Readings</p>
-</li><li><p>1.4  Introduction</p>
-</li><li><p>1.5  The Quasi-Geostrophic Model</p>
-<ul class="toc-item"><li><p>1.5.1  Scaling the Equations of Motion</p>
-</li></ul></li><li><p>1.6  Discretization of the QG equations</p>
-<ul class="toc-item"><li><p>1.6.1  Spatial Discretization</p>
-<ul class="toc-item"><li><p>1.6.1.1  Right Hand Side</p>
-</li><li><p>1.6.1.2  Problem One</p>
-</li><li><p>1.6.1.3  Quiz on Jacobian Expansion #2</p>
-</li><li><p>1.6.1.4  Quiz on Jacobian Expansion #3</p>
-</li><li><p>1.6.1.5  Boundary Conditions</p>
-</li><li><p>1.6.1.6  Matrix Form of the Discrete Equations</p>
-</li></ul></li><li><p>1.6.2  Solution of the Poisson Equation by Relaxation</p>
-</li><li><p>1.6.3  Temporal Discretization</p>
-</li><li><p>1.6.4  Outline of Solution Procedure</p>
-</li><li><p>1.6.5  Problem Two</p>
-</li><li><p>1.6.6  Problem Three</p>
-</li><li><p>1.6.7  Problem Four</p>
-</li><li><p>1.6.8  Problem Five</p>
-</li></ul></li><li><p>1.7  Aliasing Error and Nonlinear Instability</p>
-<ul class="toc-item"><li><p>1.7.1  Example One</p>
-</li></ul></li><li><p>1.8  Classical Solutions</p>
-<ul class="toc-item"><li><p>1.8.1  Problem Six</p>
-</li></ul></li><li><p>1.9  Mathematical Notes</p>
-<ul class="toc-item"><li><p>1.9.1  Definition of the Beta-plane</p>
-</li><li><p>1.9.2  Simplification of the QG Model Equations</p>
-</li></ul></li><li><p>1.10  Glossary</p>
-</li><li><p>1.11  References</p>
-</li></ul></li></ul></div><div class="section" id="List-of-Problems">
+<div class="section" id="List-of-Problems">
 <h2>List of Problems<a class="headerlink" href="#List-of-Problems" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="#Problem-One">Problem 1:</a> Discretization of the Jacobian term</p></li>
@@ -462,7 +450,8 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<span></span><span class="kn">import</span> <span class="nn">context</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
 <span class="c1"># import the quiz script</span>
 <span class="kn">from</span> <span class="nn">numlabs.lab8</span> <span class="kn">import</span> <span class="n">quiz8</span> <span class="k">as</span> <span class="n">quiz</span>
 </pre></div>
@@ -473,14 +462,13 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-1-2dedd0769336&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-green-fg">from</span> IPython<span class="ansi-blue-fg">.</span>display <span class="ansi-green-fg">import</span> Image
-<span class="ansi-green-intense-fg ansi-bold">      2</span> <span class="ansi-red-fg"># import the quiz script</span>
-<span class="ansi-green-fg">----&gt; 3</span><span class="ansi-red-fg"> </span><span class="ansi-green-fg">from</span> numlabs<span class="ansi-blue-fg">.</span>lab8 <span class="ansi-green-fg">import</span> quiz8 <span class="ansi-green-fg">as</span> quiz
+******************************
+context imported. Front of path:
+/Users/phil/repos/numeric
+back of path: /Users/phil/.ipython
+******************************
 
-<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;numlabs&#39;
+through /Users/phil/repos/numeric/notebooks/lab8/context.py
 </pre></div></div>
 </div>
 </div>
@@ -512,7 +500,7 @@ you should return to them later and understand the material contained in them, s
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab8_01-lab_8_8_0.png"><img alt="../../_images/doc_notebooks_lab8_01-lab_8_8_0.png" src="../../_images/doc_notebooks_lab8_01-lab_8_8_0.png" style="width: 45%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab8_01-lab_8_7_0.png"><img alt="../../_images/doc_notebooks_lab8_01-lab_8_7_0.png" src="../../_images/doc_notebooks_lab8_01-lab_8_7_0.png" style="width: 45%;" /></a>
 </div>
 </div>
 <div id="Figure-Model-Ocean"><p><strong>Figure Model Ocean.</strong> The rectangular ocean with flat bottom, ignoring curvature effects.</p>
@@ -809,7 +797,7 @@ based on this form of the equations.</p>
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab8_01-lab_8_19_0.png"><img alt="../../_images/doc_notebooks_lab8_01-lab_8_19_0.png" src="../../_images/doc_notebooks_lab8_01-lab_8_19_0.png" style="width: 45%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab8_01-lab_8_18_0.png"><img alt="../../_images/doc_notebooks_lab8_01-lab_8_18_0.png" src="../../_images/doc_notebooks_lab8_01-lab_8_18_0.png" style="width: 45%;" /></a>
 </div>
 </div>
 <div id="Spatial-Grid"><p><strong>Figure Spatial Grid</strong></p>
@@ -846,7 +834,7 @@ the <em>5-point difference stencil</em> pictured in <a class="reference external
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab8_01-lab_8_21_0.png"><img alt="../../_images/doc_notebooks_lab8_01-lab_8_21_0.png" src="../../_images/doc_notebooks_lab8_01-lab_8_21_0.png" style="width: 40%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab8_01-lab_8_20_0.png"><img alt="../../_images/doc_notebooks_lab8_01-lab_8_20_0.png" src="../../_images/doc_notebooks_lab8_01-lab_8_20_0.png" style="width: 40%;" /></a>
 </div>
 </div>
 <div id="fig:stencil"><p><strong>Figure Stencil:</strong> The standard 5-point centered difference stencil for the Laplacian (multiply by <span class="math notranslate nohighlight">\(\frac{1}{d^2}\)</span> to get the actual coefficients.</p>
@@ -871,7 +859,7 @@ the <em>5-point difference stencil</em> pictured in <a class="reference external
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab8_01-lab_8_23_0.png"><img alt="../../_images/doc_notebooks_lab8_01-lab_8_23_0.png" src="../../_images/doc_notebooks_lab8_01-lab_8_23_0.png" style="width: 40%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab8_01-lab_8_22_0.png"><img alt="../../_images/doc_notebooks_lab8_01-lab_8_22_0.png" src="../../_images/doc_notebooks_lab8_01-lab_8_22_0.png" style="width: 40%;" /></a>
 </div>
 </div>
 <div id="fig:overlay"><p><strong>Figure Overlay:</strong> The 5-point difference stencil overlaid on the grid.</p>
@@ -925,7 +913,7 @@ the <em>5-point difference stencil</em> pictured in <a class="reference external
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab8_01-lab_8_27_0.png"><img alt="../../_images/doc_notebooks_lab8_01-lab_8_27_0.png" src="../../_images/doc_notebooks_lab8_01-lab_8_27_0.png" style="width: 40%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab8_01-lab_8_26_0.png"><img alt="../../_images/doc_notebooks_lab8_01-lab_8_26_0.png" src="../../_images/doc_notebooks_lab8_01-lab_8_26_0.png" style="width: 40%;" /></a>
 </div>
 </div>
 <div id="fig:d4stencil"><p><strong>Figure Bi-Laplacian Stencil:</strong> 13-point difference stencil for the centered difference formula for <span class="math notranslate nohighlight">\(\nabla_h^4\)</span> (multiply by <span class="math notranslate nohighlight">\(\frac{1}{d^4}\)</span> to get the actual coefficients).</p>
@@ -1003,12 +991,7 @@ the previous section:</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-7-d668670ba9e9&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>print <span class="ansi-blue-fg">(</span>quiz<span class="ansi-blue-fg">.</span>jacobian_2<span class="ansi-blue-fg">(</span>answer <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">&#39;x&#39;</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">NameError</span>: name &#39;quiz&#39; is not defined
+Acceptable answers are &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;, &#39;E&#39;, &#39;F&#39;, &#39;G&#39;, &#39;Hint&#39;
 </pre></div></div>
 </div>
 </div>
@@ -1063,12 +1046,7 @@ the previous section:</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-8-f14eb5fd8531&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>print <span class="ansi-blue-fg">(</span>quiz<span class="ansi-blue-fg">.</span>jacobian_3<span class="ansi-blue-fg">(</span>answer <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">&#39;x&#39;</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">NameError</span>: name &#39;quiz&#39; is not defined
+Acceptable answers are &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;, &#39;E&#39;, &#39;F&#39;, &#39;G&#39;, &#39;Hint&#39;
 </pre></div></div>
 </div>
 </div>
@@ -1103,7 +1081,7 @@ the previous section:</p>
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab8_01-lab_8_36_0.png"><img alt="../../_images/doc_notebooks_lab8_01-lab_8_36_0.png" src="../../_images/doc_notebooks_lab8_01-lab_8_36_0.png" style="width: 50%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab8_01-lab_8_35_0.png"><img alt="../../_images/doc_notebooks_lab8_01-lab_8_35_0.png" src="../../_images/doc_notebooks_lab8_01-lab_8_35_0.png" style="width: 50%;" /></a>
 </div>
 </div>
 <div id="fig:ghost"><p><strong>Figure Ghost Points:</strong> The points on the computational grid, which are classified into interior, real boundary, and ghost boundary points. The 5- and 13-point difference stencils, when overlaid on the grid, demonstrate that only the real boundary values are needed for the free-slip boundary values (when <span class="math notranslate nohighlight">\(A_h=0\)</span>), while ghost points must be introduced for the no-slip conditions (when <span class="math notranslate nohighlight">\(A_h\neq 0\)</span>, and the higher order viscosity term is present).</p>
@@ -1145,7 +1123,7 @@ How can we get around this problem?</em></p>
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab8_01-lab_8_38_0.png"><img alt="../../_images/doc_notebooks_lab8_01-lab_8_38_0.png" src="../../_images/doc_notebooks_lab8_01-lab_8_38_0.png" style="width: 40%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab8_01-lab_8_37_0.png"><img alt="../../_images/doc_notebooks_lab8_01-lab_8_37_0.png" src="../../_images/doc_notebooks_lab8_01-lab_8_37_0.png" style="width: 40%;" /></a>
 </div>
 </div>
 <div id="fig:noslip"><p><strong>Figure No Slip Boundary Condition:</strong> The discrete Neumann boundary conditions are discretized using ghost points. Here, at point <span class="math notranslate nohighlight">\((0,1)\)</span>, the unit outward normal vector is <span class="math notranslate nohighlight">\(\hat{n}=(-1,0)\)</span>, and the discrete points involved are the four points circled in red. The no-slip condition simply states that <span class="math notranslate nohighlight">\(\Psi_{-1,1}\)</span> is equal to the interior value <span class="math notranslate nohighlight">\(\Psi_{1,1}\)</span>.</p>
@@ -1178,7 +1156,7 @@ ghost points in the stencil poses no difficulty, since these values are known in
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab8_01-lab_8_41_0.png"><img alt="../../_images/doc_notebooks_lab8_01-lab_8_41_0.png" src="../../_images/doc_notebooks_lab8_01-lab_8_41_0.png" style="width: 40%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab8_01-lab_8_40_0.png"><img alt="../../_images/doc_notebooks_lab8_01-lab_8_40_0.png" src="../../_images/doc_notebooks_lab8_01-lab_8_40_0.png" style="width: 40%;" /></a>
 </div>
 </div>
 <div id="fig:matrix"><p><strong>Figure Matrix:</strong> The matrix form for the discrete Laplacian. The 5 diagonals (displayed in blue and red) represent the non-zero values in the matrix <span class="math notranslate nohighlight">\(-\)</span> all other values are zero.</p>
@@ -1311,7 +1289,7 @@ iterative methods, called <em>multigrid methods</em>, which converge in a consta
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab8_01-lab_8_48_0.png"><img alt="../../_images/doc_notebooks_lab8_01-lab_8_48_0.png" src="../../_images/doc_notebooks_lab8_01-lab_8_48_0.png" style="width: 40%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab8_01-lab_8_47_0.png"><img alt="../../_images/doc_notebooks_lab8_01-lab_8_47_0.png" src="../../_images/doc_notebooks_lab8_01-lab_8_47_0.png" style="width: 40%;" /></a>
 </div>
 </div>
 <div id="fig:leap-frog"><p><strong>Figure Leap-Frog Scheme:</strong> A pictorial representation of the “leap-frog” character of the time-stepping scheme. The values of <span class="math notranslate nohighlight">\(\chi\)</span> at even time steps are linked together with the odd <span class="math notranslate nohighlight">\(\Psi\)</span> values; likewise, values of <span class="math notranslate nohighlight">\(\chi\)</span> at odd time steps are linked to the even <span class="math notranslate nohighlight">\(\Psi\)</span> values.</p>
@@ -1510,7 +1488,7 @@ Expansion 2)</a> and <a class="reference external" href="#eq:jacob3">(Jacobian: 
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab8_01-lab_8_62_0.png"><img alt="../../_images/doc_notebooks_lab8_01-lab_8_62_0.png" src="../../_images/doc_notebooks_lab8_01-lab_8_62_0.png" style="width: 30%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab8_01-lab_8_61_0.png"><img alt="../../_images/doc_notebooks_lab8_01-lab_8_61_0.png" src="../../_images/doc_notebooks_lab8_01-lab_8_61_0.png" style="width: 30%;" /></a>
 </div>
 </div>
 <div id="fig:globe"><p><strong>Figure Rotating Globe:</strong> A depiction of the earth and its angular frequency of rotation, <span class="math notranslate nohighlight">\(\Omega\)</span>, the local planetary vorticity vector in blue, and the Coriolis parameter, <span class="math notranslate nohighlight">\(f_0\)</span>, at a latitude of <span class="math notranslate nohighlight">\(\theta_0\)</span>.</p>
@@ -1536,7 +1514,7 @@ Expansion 2)</a> and <a class="reference external" href="#eq:jacob3">(Jacobian: 
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab8_01-lab_8_64_0.png"><img alt="../../_images/doc_notebooks_lab8_01-lab_8_64_0.png" src="../../_images/doc_notebooks_lab8_01-lab_8_64_0.png" style="width: 30%;" /></a>
+<a class="reference internal image-reference" href="../../_images/doc_notebooks_lab8_01-lab_8_63_0.png"><img alt="../../_images/doc_notebooks_lab8_01-lab_8_63_0.png" src="../../_images/doc_notebooks_lab8_01-lab_8_63_0.png" style="width: 30%;" /></a>
 </div>
 </div>
 <div id="fig:beta"><p><strong>Figure Beta-plane:</strong> The <span class="math notranslate nohighlight">\(\beta\)</span>-plane approximation, with points on the plane located along the local <span class="math notranslate nohighlight">\(y\)</span>-axis. The Coriolis parameter, <span class="math notranslate nohighlight">\(f\)</span>, at any latitude <span class="math notranslate nohighlight">\(\theta\)</span>, can be written in terms of <span class="math notranslate nohighlight">\(y\)</span> using trigonometric ratios.</p>

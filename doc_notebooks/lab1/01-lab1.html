@@ -21,12 +21,12 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
@@ -113,7 +113,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#Higher-Derivatives">Higher Derivatives</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#Systems-of-First-order-ODE’s">Systems of First-order ODE’s</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#Boundary-Value-Problem">Boundary Value Problem</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#Partial-Differential-Equations">Partial Differential Equations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Partial Differential Equations</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#Mathematical-Notes">Mathematical Notes</a><ul>
@@ -128,8 +128,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../lab3/01-lab3.html">  Lab 3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lab4/01-lab4.html">  Lab 4</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lab5/01-lab5.html">  Lab 5</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lab6/lab6.html">Contents</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lab6/lab6.html#List-of-Problems">List of Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lab6/lab6.html">  Lab 6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lab7/01-lab7.html">  Lab 7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lab8/Lab_8.html">Laboratory 8: Solution of the Quasi-geostrophic Equations using an Implicit Scheme</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lab8/Lab_8.html#5.1-Spatial-Discretization">5.1 Spatial Discretization</a></li>
@@ -273,8 +272,8 @@ div.nboutput.container div.prompt pre {
 div.nbinput.container div.prompt,
 div.nboutput.container div.prompt {
     min-width: 5ex;
-    padding-top: 0.4em;
-    padding-right: 0.4em;
+    padding-top: 0.3rem;
+    padding-right: 0.3rem;
     text-align: right;
     flex: 0;
 }
@@ -298,7 +297,6 @@ div.nboutput.container div.prompt pre {
 /* input/output area */
 div.nbinput.container div.input_area,
 div.nboutput.container div.output_area {
-    padding: 0.4em;
     -webkit-flex: 1;
     flex: 1;
     overflow: auto;
@@ -371,6 +369,27 @@ div.nboutput.container div.output_area.stderr {
 
 .ansi-bold { font-weight: bold; }
 .ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 0.3rem;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
 
 /* Some additional styling taken form the Jupyter notebook CSS */
 div.rendered_html table {
@@ -1254,8 +1273,8 @@ There are two things to notice here, both related to the importance of the choic
 <div class="math notranslate nohighlight">
 \[T^\prime(t_i) \approx \frac{T_{i+1}-T_{i-1}}{2 \Delta t}.\]</div>
 </div><p>The corresponding limit formulas are equivalent from a mathemtaical standpoint, <strong>but the discrete formulas are not!</strong> In particular, teh accuracy and stability of numerical schemes derived from the three difference formulas: (<a class="reference external" href="#lab1:eq:forward-diff'">Forward Difference Formula</a>), (<a class="reference external" href="#lab1:eq:backward-diff'">Backward Difference Formula</a>) and (<a class="reference external" href="#lab1:eq:centered-diff">Centered Difference Formula</a>) are quite different. More will said on this in the next Lab.</p>
-<div class="section" id="Summary">
-<h4>Summary<a class="headerlink" href="#Summary" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id1">
+<h4>Summary<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
 <p>This section introduces the use of the forward difference formula to discretize the derivatives in a first order differential equation. The resulting numerical scheme is called the forward Euler method. We also introduced the backward and centered difference formulas for the first derivative, which were also obtained from the definition of derivative.</p>
 <p>You saw how the choice of grid spacing affected the accuracy of the solution, and were introduced to the concepts of convergence and stability of a numerical scheme. More will be said about these topics in the succeeding lab, as well as other methods for discretizing derivatives.</p>
 </div>
@@ -1374,8 +1393,8 @@ a Problem in the Linear Algebra Lab.</p>
 <p>Compare this to the initial value problems discretized using the forward Euler method, where the resulting numerical scheme is a step-by-step, marching process (that is, the solution at one grid point can be computed using an explicit formula using only the value at the previous grid point).</p>
 </div>
 </div>
-<div class="section" id="Partial-Differential-Equations">
-<h3>Partial Differential Equations<a class="headerlink" href="#Partial-Differential-Equations" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id2">
+<h3>Partial Differential Equations<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>So far, the examples have been confined to ordinary differential equations, but the procedure we’ve set out for ODE’s extends with only minor modifications to problems involving PDE’s.</p>
 <div class="section" id="Example-11">
 <h4>Example 11<a class="headerlink" href="#Example-11" title="Permalink to this headline">¶</a></h4>
