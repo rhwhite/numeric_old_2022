@@ -1,0 +1,1575 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Laboratory 7: Solving partial differential equations using an explicit, finite difference method. &mdash; Numeric course 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/togglebutton.js"></script>
+        <script >var togglebuttonSelector = '.toggle, .tag_hide_input div.cell_input, .tag_hide_output div.cell_output, .tag_hide_cell.cell';</script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/togglebutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/mystnb.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Numeric course
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../course_bootstrap.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ugradsyllabus20.html">Undergrad Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gradsyllabus20.html">Grad Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../schedule20.html">Detailed Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../texts.html">Optional texts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../notebook_toc.html">Course/lab descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../week_notes.html">Weekly notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments.html">Weekly assignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quizzes.html">Quizzes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../solutions.html">Solutions</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Numeric course</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Laboratory 7: Solving partial differential equations using an explicit, finite difference method.</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/jupyter_execute/doc_notebooks/lab7/01-lab7.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="laboratory-7-solving-partial-differential-equations-using-an-explicit-finite-difference-method">
+<h1>Laboratory 7: Solving partial differential equations using an explicit, finite difference method.<a class="headerlink" href="#laboratory-7-solving-partial-differential-equations-using-an-explicit-finite-difference-method" title="Permalink to this headline">¶</a></h1>
+<p>Lin Yang &amp; Susan Allen &amp; Carmen Guo</p>
+<div class="section" id="list-of-problems">
+<h2>List of Problems<a class="headerlink" href="#list-of-problems" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="#Problem-One">Problem 1</a>: Numerical solution on a staggered grid.</p></li>
+<li><p><a class="reference external" href="#Problem-Two">Problem 2</a>: Stability of the difference scheme</p></li>
+<li><p><a class="reference external" href="#Problem-Three">Problem 3</a>: Dispersion relation for grid 2</p></li>
+<li><p><a class="reference external" href="#Problem-Four">Problem 4</a>: Choosing most accurate grid</p></li>
+<li><p><a class="reference external" href="#Problem-Five">Problem 5</a>: Numerical solution for no y variation</p></li>
+<li><p><a class="reference external" href="#Problem-Six">Problem 6</a>: Stability on the 2-dimensional grids</p></li>
+<li><p><a class="reference external" href="#Problem-Seven">Problem 7</a>: Finite difference form of equations</p></li>
+<li><p><a class="reference external" href="#Problem-Eight">Problem 8</a>: Dispersion relation for D-grid</p></li>
+<li><p><a class="reference external" href="#Problem-Nine">Problem 9</a>: Accuracy of the approximation on various grids</p></li>
+</ul>
+</div>
+<div class="section" id="objectives">
+<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="sections-4-through-7">
+<h3>Sections 4 through 7<a class="headerlink" href="#sections-4-through-7" title="Permalink to this headline">¶</a></h3>
+<p>When you have completed these sections you will be able to:</p>
+<ul class="simple">
+<li><p>find the dispersion relation for a set of differential equations
+(the “real” dispersion relation).</p></li>
+<li><p>find the dispersion relation for a set of difference equations (the
+numerical dispersion relation).</p></li>
+<li><p>describe a leap-frog scheme</p></li>
+<li><p>construct a predictor-corrector method</p></li>
+<li><p>use the given differential equations to determine unspecified
+boundary conditions as necessary</p></li>
+<li><p>describe a staggered grid</p></li>
+<li><p>state one reason why staggered grids are used</p></li>
+<li><p>explain the physical principle behind the CFL condition</p></li>
+<li><p>find the CFL condition for a linear, explicit, numerical scheme</p></li>
+<li><p>state one criteria that should be considered when choosing a grid</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="readings">
+<h2>Readings<a class="headerlink" href="#readings" title="Permalink to this headline">¶</a></h2>
+<p>These are the suggested readings for this lab. For more details about
+the books and papers, click on the reference link.</p>
+<ul class="simple">
+<li><p><strong>Rotating Navier Stokes Equations</strong></p>
+<ul>
+<li><p><a class="reference external" href="#Ref:PondPickard">Pond and Pickard, 1983</a>, Chapters 3,4 and 6</p></li>
+</ul>
+</li>
+<li><p><strong>Shallow Water Equations</strong></p>
+<ul>
+<li><p><a class="reference external" href="#Ref:Gill">Gill, 1982</a>, Section 5.6 and 7.2 (not 7.2.1 etc)</p></li>
+</ul>
+</li>
+<li><p><strong>Poincaré Waves</strong></p>
+<ul>
+<li><p><a class="reference external" href="#Ref:Gill">Gill, 1982</a>, Section 7.3 to just after equation (7.3.8), section 8.2
+and 8.3</p></li>
+</ul>
+</li>
+<li><p><strong>Introduction to Numerical Solution of PDE’s</strong></p>
+<ul>
+<li><p><a class="reference external" href="#Ref:Pressetal">Press et al, 1992</a>, Section 17.0</p></li>
+</ul>
+</li>
+<li><p><strong>Waves</strong></p>
+<ul>
+<li><p><a class="reference external" href="#Ref:Cushman-Roisin">Cushman-Roision, 1994</a>, Appendix A</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">context</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">import</span> <span class="nn">IPython.display</span> <span class="k">as</span> <span class="nn">display</span>
+<span class="c1"># import plotting package and numerical python package for use in examples later</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="c1"># make the plots happen inline</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>  
+<span class="c1"># import the numpy array handling library</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="c1"># import the quiz script</span>
+<span class="kn">from</span> <span class="nn">numlabs.lab7</span> <span class="kn">import</span> <span class="n">quiz7</span> <span class="k">as</span> <span class="n">quiz</span>
+<span class="c1"># import the pde solver for a simple 1-d tank of water with a drop of rain</span>
+<span class="kn">from</span> <span class="nn">numlabs.lab7</span> <span class="kn">import</span> <span class="n">rain</span>
+<span class="c1"># import the dispersion code plotter</span>
+<span class="kn">from</span> <span class="nn">numlabs.lab7</span> <span class="kn">import</span> <span class="n">accuracy2d</span>
+<span class="c1"># import the 2-dimensional drop solver</span>
+<span class="kn">from</span> <span class="nn">numlabs.lab7</span> <span class="kn">import</span> <span class="n">interactive1</span>
+<span class="c1"># import the 2-dimensional dispersion relation plotter</span>
+<span class="kn">from</span> <span class="nn">numlabs.lab7</span> <span class="kn">import</span> <span class="n">dispersion_2d</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>******************************
+context imported. Front of path:
+/Users/phil/repos/numeric
+back of path: /Users/phil/.ipython
+******************************
+
+through /Users/phil/repos/numeric/notebooks/lab7/context.py
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="physical-example-poincare-waves">
+<h2>Physical Example, Poincaré Waves<a class="headerlink" href="#physical-example-poincare-waves" title="Permalink to this headline">¶</a></h2>
+<p>One of the obvious examples of a physical phenomena governed by a
+partial differential equation is waves. Consider a shallow layer of
+water and the waves on the surface of that layer. If the depth of the
+water is much smaller than the wavelength of the waves, the velocity of
+the water will be the same throughout the depth. So then we can describe
+the state of the water by three variables: <span class="math notranslate nohighlight">\(u(x,y,t)\)</span>, the east-west
+velocity of the water, <span class="math notranslate nohighlight">\(v(x,y,t)\)</span>, the north-south velocity of the water
+and <span class="math notranslate nohighlight">\(h(x,y,t)\)</span>, the height the surface of the water is deflected. As
+specified, each of these variables are functions of the horizontal
+position, <span class="math notranslate nohighlight">\((x,y)\)</span> and time <span class="math notranslate nohighlight">\(t\)</span> but, under the assumption of shallow
+water, not a function of <span class="math notranslate nohighlight">\(z\)</span>.</p>
+<p>In oceanographic and atmospheric problems, the effect of the earth’s
+rotation is often important. We will first introduce the governing
+equations including the Coriolis force (<a class="reference external" href="#Full-Equations">Full Equations</a>). However,
+most of the numerical concepts can be considered without all the
+complications in these equations. We will also consider two simplier
+sets; one where we assume there is no variation of the variables in the
+y-direction (<a class="reference external" href="#No-variation-in-y">No variation in y</a>) and one where, in addition, we assume
+that the Coriolis force is negligible (<a class="reference external" href="#Simple-Equations">Simple Equations</a>).</p>
+<p>The solution of the equations including the Coriolis force are Poincaré
+waves whereas without the Coriolis force, the resulting waves are called
+shallow water gravity waves.</p>
+<p>The remainder of this section will present the equations and discuss the
+dispersion relation for the two simplier sets of equations. If your wave
+theory is rusty, consider reading Appendix A in <a class="reference external" href="#Ref:Cushman-Roisin">Cushman-Roisin, 1994</a>.</p>
+<div class="section" id="introduce-full-equations">
+<h3>Introduce Full Equations<a class="headerlink" href="#introduce-full-equations" title="Permalink to this headline">¶</a></h3>
+<p>The linear shallow water equations on an f-plane over a flat bottom are</p>
+<div id='lab7:eq:swea'>
+(Full Equations, Eqn 1)
+$$\frac{\partial u}{\partial t} - fv = -g\frac{\partial h}{\partial x}$$
+</div><div id='lab7:eq:sweb'>
+(Full Equations, Eqn 2)
+$$\frac{\partial v}{\partial t} + fu = -g\frac{\partial h}{\partial y} $$
+</div><div id='lab7:eq:swec'>
+(Full Equations, Eqn 3)
+$$\frac{\partial h}{\partial t} + H\frac{\partial u}{\partial x} + H\frac{\partial v}{\partial y} = 0$$ 
+</div>
+where<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\vec{u} = (u,v)\)</span> is the horizontal velocity,</p></li>
+<li><p><span class="math notranslate nohighlight">\(f\)</span> is the Coriolis frequency,</p></li>
+<li><p><span class="math notranslate nohighlight">\(g\)</span> is the acceleration due to gravity,</p></li>
+<li><p><span class="math notranslate nohighlight">\(h\)</span> is the surface elevation, and</p></li>
+<li><p><span class="math notranslate nohighlight">\(H\)</span> is the undisturbed depth of the fluid.</p></li>
+</ul>
+<p>We will return to these equations in section <a class="reference external" href="#Full-Equations">Full Equations</a>.</p>
+</div>
+<div class="section" id="no-variation-in-y">
+<h3>No variation in y<a class="headerlink" href="#no-variation-in-y" title="Permalink to this headline">¶</a></h3>
+<p>To simplify the problem assume there is no variation in y. This
+simplification gives:</p>
+<div id='lab7:sec:firsteq'>
+(No variation in y, first eqn)
+$$\frac{\partial u}{\partial t} - fv = -g\frac{\partial h}{\partial x}$$ 
+</div><div id='lab7:sec:secondeq'>
+(No variation in y, second eqn)
+$$\frac{\partial v}{\partial t} + fu = 0$$
+</div><div id='lab7:sec:thirdeq'>
+(No variation in y, third eqn)
+$$\frac{\partial h}{\partial t} + H\frac{\partial u}{\partial x} = 0$$
+</div></div>
+<div class="section" id="introduce-simple-equations">
+<h3>Introduce Simple Equations<a class="headerlink" href="#introduce-simple-equations" title="Permalink to this headline">¶</a></h3>
+<p>If we consider waves in the absence of the earth’s rotation, <span class="math notranslate nohighlight">\(f=0\)</span>,
+which implies <span class="math notranslate nohighlight">\(v=0\)</span> and we get</p>
+<div id='lab7:sec:simple_eq1'>
+$$\frac{\partial u}{\partial t} = -g\frac{\partial h}{\partial x}$$
+</div><div id='lab7:sec:simple_eq2'>
+$$\frac{\partial h}{\partial t} + H\frac{\partial u}{\partial x} = 0$$
+</div><p>These simplified equations give shallow water gravity waves. For
+example, a solution is a simple sinusoidal wave:</p>
+<div id='lab7:sec:hwave'>
+(wave solution- h)
+$$h = h_{0}\cos{(kx - \omega t)}$$
+</div><div id='lab7:sec:uwave'>
+(wave solution- u)
+$$u = \frac{h_{0}\omega}{kH}\cos{(kx - \omega t)}$$ 
+</div>
+where $h_{0}$ is the amplitude, $k$ is the
+wavenumber and $\omega$ is the frequency (See [Cushman-Roisin, 1994](#Ref:Cushman-Roisin) for a nice
+review of waves in Appendix A).<p>Substitution of (<a class="reference external" href="#lab7:sec:hwave">wave solution- h</a>) and (<a class="reference external" href="#lab7:sec:uwave">wave solution- u</a>) back into
+the differential equations gives a relation between <span class="math notranslate nohighlight">\(\omega\)</span> and k.
+Confirm that</p>
+<div id='lab7:eq:disp'>
+(Analytic Dispersion Relation)
+$$\omega^2 = gHk^2,$$
+</div>
+which is the dispersion relation for these waves.</div>
+<div class="section" id="id1">
+<h3>No variation in y<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Now consider <span class="math notranslate nohighlight">\(f\not = 0\)</span>.</p>
+<p>By assuming <div class="math notranslate nohighlight">
+\[h= h_{0}e^{i(kx - \omega t)}\]</div>
+
+<div class="math notranslate nohighlight">
+\[u= u_{0}e^{i(kx - \omega t)}\]</div>
+ <div class="math notranslate nohighlight">
+\[v= v_{0}e^{i(kx - \omega t)}\]</div>
+</p>
+<p>and substituting into the differential equations, eg, for <a class="reference external" href="#lab7:sec:firsteq">(No variation in y, first eqn)</a>
+<div class="math notranslate nohighlight">
+\[-iwu_{0}e^{i(kx - \omega t)} - fv_{0}e^{i(kx - \omega t)} + ikgh_{0}e^{i(kx - \omega t)} = 0\]</div>
+
+and cancelling the exponential terms gives 3 homogeneous equations for
+<span class="math notranslate nohighlight">\(u_{0}\)</span>, <span class="math notranslate nohighlight">\(v_{0}\)</span> and <span class="math notranslate nohighlight">\(h_{0}\)</span>. If the determinant of the matrix derived
+from these three equations is non-zero, the only solution is
+<span class="math notranslate nohighlight">\(u_{0} = v_{0} = h_{0} = 0\)</span>, NO WAVE! Therefore the determinant must be
+zero.</p>
+</div>
+<div class="section" id="quiz-find-the-dispersion-relation">
+<h3>Quiz: Find the Dispersion Relation<a class="headerlink" href="#quiz-find-the-dispersion-relation" title="Permalink to this headline">¶</a></h3>
+<p>What is the dispersion relation for 1-dimensional Poincare waves?</p>
+<p>A) <span class="math notranslate nohighlight">\(\omega^2 = f^2 + gH (k^2 + \ell^2)\)</span></p>
+<p>B) <span class="math notranslate nohighlight">\(\omega^2 = gH k^2\)</span></p>
+<p>C) <span class="math notranslate nohighlight">\(\omega^2 = f^2 + gH k^2\)</span></p>
+<p>D) <span class="math notranslate nohighlight">\(\omega^2 = -f^2 + gH k^2\)</span></p>
+<p>In the following, replace ‘x’ by ‘A’, ‘B’, ‘C’ or ‘D’ and run the cell.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="n">quiz</span><span class="o">.</span><span class="n">dispersion_quiz</span><span class="p">(</span><span class="n">answer</span> <span class="o">=</span> <span class="s1">&#39;A&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Wrong. These are 1-dimensional waves - there is no l (ell).
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="numerical-solution">
+<h2>Numerical Solution<a class="headerlink" href="#numerical-solution" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="simple-equations">
+<h3>Simple Equations<a class="headerlink" href="#simple-equations" title="Permalink to this headline">¶</a></h3>
+<p>Consider first the simple equations with <span class="math notranslate nohighlight">\(f = 0\)</span>. In order to solve
+these equations numerically, we need to discretize in 2 dimensions, one
+in space and one in time. Consider first the most obvious choice, shown
+in Figure <a class="reference external" href="#lab7:fig:nonstagger">Unstaggered Grid</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;images/nonstagger.png&#39;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;40%&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/01-lab7_13_0.png" src="../../../_images/01-lab7_13_0.png" />
+</div>
+</div>
+<div id='lab7:fig:nonstagger'>
+<b>Figure Unstaggered Grid.</b>
+</div><p>We will use centred difference schemes in both <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(t\)</span>. The
+equations become:</p>
+<div id='lab7:eq:nonstaggerGrid1'>
+(Non-staggered, Eqn One)
+$$\frac {u(t+dt, x)-u(t-dt, x)}{2 dt} + g \frac {h(t, x+dx) - h(t, x-dx)}{2dx} = 0$$
+</div><div id='lab7:eq:nonstaggerGrid2'>
+(Non-staggered, Eqn Two)
+$$\frac {h(t+dt, x)-h(t-dt, x)}{2 dt} + H \frac {u(t, x+dx) - u(t, x-dx)}{2dx} = 0$$
+</div>
+We can rearrange these equations to
+give $u(t+dt, x)$ and $h(t+dt, x)$. For a small number of points, the
+resulting problem is simple enough to solve in a notebook.<p>For a specific example, consider a dish, 40 cm long, of water 1 cm deep.
+Although the numerical code presented later allows you to vary the
+number of grid points, in the discussion here we will use only 5 spatial
+points, a distance of 10 cm apart. The lack of spatial resolution means
+the wave will have a triangular shape. At <span class="math notranslate nohighlight">\(t=0\)</span> a large drop of water
+lands in the centre of the dish. So at <span class="math notranslate nohighlight">\(t=0\)</span>, all points have zero
+velocity and zero elevation except at <span class="math notranslate nohighlight">\(x=3dx\)</span>, where we have
+<div class="math notranslate nohighlight">
+\[h(0, 3dx) = h_{0} = 0.01 cm\]</div>
+</p>
+<p>A centred difference scheme in time, such as defined by equations
+(<a class="reference external" href="#lab7:eq:nonstaggerGrid1">Non-staggered, Eqn One</a>) and (<a class="reference external" href="#lab7:eq:nonstaggerGrid2">Non-staggered, Eqn Two</a>), is
+usually refered to as a <em>Leap frog scheme</em>. The new values, <span class="math notranslate nohighlight">\(h(t+dt)\)</span>
+and <span class="math notranslate nohighlight">\(u(t+dt)\)</span> are equal to values two time steps back <span class="math notranslate nohighlight">\(h(t-dt)\)</span> and
+<span class="math notranslate nohighlight">\(u(t-dt)\)</span> plus a correction based on values calculated one time step
+back. Hence the time scheme “leap-frogs” ahead. More on the consequences
+of this process can be found in section <a class="reference external" href="#Computational-Mode">Computational Mode</a>.</p>
+<p>As a leap-frog scheme requires two previous time steps, the given
+conditions at <span class="math notranslate nohighlight">\(t=0\)</span> are not sufficient to solve
+(<a class="reference external" href="#lab7:eq:nonstaggerGrid1">Non-staggered, Eqn One</a>) and (<a class="reference external" href="#lab7:eq:nonstaggerGrid2">Non-staggered, Eqn Two</a>). We
+need the solutions at two time steps in order to step forward.</p>
+</div>
+<div class="section" id="predictor-corrector-to-start">
+<h3>Predictor-Corrector to Start<a class="headerlink" href="#predictor-corrector-to-start" title="Permalink to this headline">¶</a></h3>
+<p>In section 4.2.2 of Lab 2, predictor-corrector methods were introduced.
+We will use a predictor-corrector based on the forward Euler scheme, to
+find the solution at the first time step, <span class="math notranslate nohighlight">\(t=dt\)</span>. Then the second order
+scheme (<a class="reference external" href="#lab7:eq:nonstaggerGrid1">Non-staggered, Eqn One</a>), (<a class="reference external" href="#lab7:eq:nonstaggerGrid2">Non-staggered, Eqn Two</a>) can be used.</p>
+<p>Using the forward Euler Scheme, the equations become</p>
+<div id='lab7:eq:newnonstaggerGrid1'>
+$$\frac {u(t+dt, x)-u(t, x)}{dt} + g \frac {h(t, x+dx) - h(t, x-dx)}{2dx} = 0$$
+</div><div id='lab7:eq:newnonstaggerGrid2'>
+$$\frac {h(t+dt, x)-h(t, x)}{dt} + H \frac {u(t, x+dx) - u(t, x-dx)}{2dx} = 0$$
+</div><ol>
+<li><p>Use this scheme to predict <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(h\)</span> at <span class="math notranslate nohighlight">\(t=dt\)</span>.</p></li>
+<li><p>Average the solution at <span class="math notranslate nohighlight">\(t=0\)</span> and that predicted for <span class="math notranslate nohighlight">\(t=dt\)</span>, to
+estimate the solution at <span class="math notranslate nohighlight">\(t=\frac{1}{2}dt\)</span>. You should confirm that
+this procedure gives: <div class="math notranslate nohighlight">
+\[\begin{split}u(\frac{dt}{2}) = \left\{ \begin{array}{ll}
+0 &amp; { x = 3dx}\\
+\left({-gh_{0}dt}\right)/\left({4dx}\right) &amp; { x = 2dx}\\
+\left({gh_{0}dt}\right)/\left({4dx}\right) &amp; { x = 4dx}
+\end{array}
+\right.\end{split}\]</div>
+</p>
+<p><div class="math notranslate nohighlight">
+\[\begin{split}h(\frac{dt}{2}) = \left\{ \begin{array}{ll}
+h_{0} &amp; { x = 3dx}\\
+0 &amp; { x \not= 3dx}
+\end{array}
+\right.\end{split}\]</div>
+</p>
+</li>
+<li><p>The corrector step uses the centred difference scheme in time (the
+leap-frog scheme) with a time step of <span class="math notranslate nohighlight">\({dt}/{2}\)</span> rather than dt. You
+should confirm that this procedure gives:
+<div class="math notranslate nohighlight">
+\[\begin{split}u(dt) = \left\{ \begin{array}{ll}
+0 &amp; { x = 3dx}\\
+\left({-gh_{0}dt}\right)/\left({2dx}\right) &amp; { x = 2dx}\\
+\left({gh_{0}dt}\right)/\left({2dx}\right) &amp; { x = 4dx}
+\end{array}
+\right.\end{split}\]</div>
+</p>
+<p><div class="math notranslate nohighlight">
+\[\begin{split}h(dt) = \left\{ \begin{array}{ll}
+0 &amp; { x = 2dx, 4dx}\\
+h_{0} - \left({gHdt^2 h_{0}}\right)/\left({4dx^2}\right) &amp; { x = 3dx}
+\end{array}
+\right.\end{split}\]</div>
+</p>
+</li>
+</ol>
+<p>Note that the values at <span class="math notranslate nohighlight">\(x=dx\)</span> and <span class="math notranslate nohighlight">\(x=5dx\)</span> have not been specified.
+These are boundary points and to determine these values we must consider
+the boundary conditions.</p>
+</div>
+<div class="section" id="boundary-conditions">
+<h3>Boundary Conditions<a class="headerlink" href="#boundary-conditions" title="Permalink to this headline">¶</a></h3>
+<p>If we are considering a dish of water, the boundary conditions at
+<span class="math notranslate nohighlight">\(x=dx, 5dx\)</span> are those of a wall. There must be no flow through the wall.
+<div class="math notranslate nohighlight">
+\[u(dx) = 0\]</div>
+ <div class="math notranslate nohighlight">
+\[u(5dx) = 0\]</div>
+ But these two conditions are not
+sufficient; we also need <span class="math notranslate nohighlight">\(h\)</span> at the walls. If <span class="math notranslate nohighlight">\(u=0\)</span> at the wall for all
+time then <span class="math notranslate nohighlight">\(\partial u/\partial t=0\)</span> at the wall, so <span class="math notranslate nohighlight">\(\partial h/\partial x=0\)</span> at the wall. Using a
+one-sided difference scheme this gives
+<div class="math notranslate nohighlight">
+\[\frac {h(2dx) - h(dx)}{dx} = 0\]</div>
+ or<div class="math notranslate nohighlight">
+\[h(dx) = h(2dx)\]</div>
+
+and<div class="math notranslate nohighlight">
+\[\frac {h(4dx) - h(5dx)}{dx} = 0\]</div>
+ or<div class="math notranslate nohighlight">
+\[h(5dx) = h(4dx)\]</div>
+ which gives
+the required boundary conditions on <span class="math notranslate nohighlight">\(h\)</span> at the wall.</p>
+</div>
+<div class="section" id="simple-equations-on-a-non-staggered-grid">
+<h3>Simple Equations on a Non-staggered Grid<a class="headerlink" href="#simple-equations-on-a-non-staggered-grid" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>Given the above equations and boundary conditions, we can find the
+values of <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(h\)</span> at all 5 points when <span class="math notranslate nohighlight">\(t = 0\)</span> and <span class="math notranslate nohighlight">\(t = dt\)</span>.</p></li>
+<li><p>From (<a class="reference external" href="#lab7:eq:nonstaggerGrid1">Non-staggered, Eqn One</a>) and (<a class="reference external" href="#lab7:eq:nonstaggerGrid2">Non-staggered, Eqn Two</a>), we can find the values of <span class="math notranslate nohighlight">\(u\)</span> and
+<span class="math notranslate nohighlight">\(h\)</span> for <span class="math notranslate nohighlight">\(t = 2dt\)</span> using <span class="math notranslate nohighlight">\(u(0, x)\)</span>, <span class="math notranslate nohighlight">\(u(dt, x)\)</span>, <span class="math notranslate nohighlight">\(h(0, x)\)</span>, and
+<span class="math notranslate nohighlight">\(h(dt, x)\)</span>.</p></li>
+<li><p>Then we can find the values of <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(h\)</span> at <span class="math notranslate nohighlight">\(t = 3dt\)</span> using
+<span class="math notranslate nohighlight">\(u(dt, x)\)</span>, <span class="math notranslate nohighlight">\(u(2dt, x)\)</span>, <span class="math notranslate nohighlight">\(h(dt, x)\)</span>, and <span class="math notranslate nohighlight">\(h(2dt, x)\)</span>.</p></li>
+</ol>
+<p>We can use this approach recursively to determine the values of <span class="math notranslate nohighlight">\(u\)</span> and
+<span class="math notranslate nohighlight">\(h\)</span> at any time <span class="math notranslate nohighlight">\(t = n * dt\)</span>. The python code that solves this problem
+is provided in the file rain.py. It takes two arguments, the first is the
+number of time steps and the second is the number of horizontal grid
+points.</p>
+<p>The output is two coloured graphs.  The color represents time with black
+the earliest times and red later times.  The upper plot shows the water
+velocity (u) and the lower plot shows the water surface.  To start with
+the velocity is 0 (black line at zero across the whole domain) and the
+water surface is up at the mid point and zero at all other points (black
+line up at midpoint and zero elsewhere)</p>
+<p>Not much happens in 6 time-steps.  Do try longer and more grid points.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rain</span><span class="o">.</span><span class="n">rain</span><span class="p">([</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/01-lab7_18_0.png" src="../../../_images/01-lab7_18_0.png" />
+</div>
+</div>
+<p>If you want to change something in the script (say the colormap I’ve chosen, viridis, doesn’t work for you), you can edit rain.py in an editor or spyder.  To make it take effect here though, you have to reload rain.  See next cell for how to.  You will also need to do this if you do problem one or other tests changing rain.py but running in a notebook.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">importlib</span>
+<span class="n">importlib</span><span class="o">.</span><span class="n">reload</span><span class="p">(</span><span class="n">rain</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;module &#39;numlabs.lab7.rain&#39; from &#39;/Users/phil/repos/numeric/numlabs/lab7/rain.py&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="staggered-grids">
+<h3>Staggered Grids<a class="headerlink" href="#staggered-grids" title="Permalink to this headline">¶</a></h3>
+<p>After running the program with different numbers of spatial points, you
+will discover that the values of <span class="math notranslate nohighlight">\(u\)</span> are always zero at the odd numbered
+points, and that the values of <span class="math notranslate nohighlight">\(h\)</span> are always zero at the even numbered
+points. In other words, the values of <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(h\)</span> are zero in every
+other column starting from <span class="math notranslate nohighlight">\(u(t, dx)\)</span> and <span class="math notranslate nohighlight">\(h(t, 2dx)\)</span>, respectively.</p>
+<p>A look at (<a class="reference external" href="#lab7:eq:nonstaggerGrid1">Non-staggered, Eqn One</a>) and (<a class="reference external" href="#lab7:eq:nonstaggerGrid2">Non-staggered, Eqn Two</a>) can help us understand why this is the
+case:</p>
+<p><span class="math notranslate nohighlight">\(u(t + dt, x)\)</span> is dependent on <span class="math notranslate nohighlight">\(h(t , x + dx)\)</span> and <span class="math notranslate nohighlight">\(h(t , x - dx)\)</span>,</p>
+<p>but <span class="math notranslate nohighlight">\(h(t , x + dx)\)</span> is in turn dependent on <span class="math notranslate nohighlight">\(u\)</span> at <span class="math notranslate nohighlight">\(x + 2dx\)</span> and at
+<span class="math notranslate nohighlight">\(x\)</span>,</p>
+<p>and <span class="math notranslate nohighlight">\(h(t , x - dx)\)</span> is in turn dependent on <span class="math notranslate nohighlight">\(u\)</span> at <span class="math notranslate nohighlight">\(x - 2dx\)</span> and at
+<span class="math notranslate nohighlight">\(x\)</span>.</p>
+<p>Thus, if we just look at <span class="math notranslate nohighlight">\(u\)</span> at a particular <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(u(x)\)</span> will depend on
+<span class="math notranslate nohighlight">\(u(x + 2dx)\)</span>, <span class="math notranslate nohighlight">\(u(x - 2dx)\)</span>, <span class="math notranslate nohighlight">\(u(x + 4dx)\)</span>, <span class="math notranslate nohighlight">\(u(x - 4dx)\)</span>, <span class="math notranslate nohighlight">\(u(x + 6dx)\)</span>,
+<span class="math notranslate nohighlight">\(u(x - 6dx),\)</span> … but not on <span class="math notranslate nohighlight">\(u(x + dx)\)</span> or <span class="math notranslate nohighlight">\(u(x - dx)\)</span>. Therefore, the
+problem is actually decoupled and consists of two independent problems:
+one problem for all the <span class="math notranslate nohighlight">\(u\)</span>’s at odd numbered points and all the <span class="math notranslate nohighlight">\(h\)</span>’s
+at even numbered points, and the other problem for all the <span class="math notranslate nohighlight">\(u\)</span>’s at even
+numbered points and all the <span class="math notranslate nohighlight">\(h\)</span>’s at odd numbered points, as shown in
+Figure <a class="reference external" href="#lab7:fig:dependency">Unstaggered Dependency</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;images/dependency.png&#39;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;50%&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/01-lab7_22_0.png" src="../../../_images/01-lab7_22_0.png" />
+</div>
+</div>
+<div id='lab7:fig:dependency'>
+<b>Figure Unstaggered Dependency</b>
+</div><p>In either problem, only the variable that is relevant to that problem
+will be considered at each point. So for one problem, if at point <span class="math notranslate nohighlight">\(x\)</span> we
+consider the <span class="math notranslate nohighlight">\(u\)</span> variable, at <span class="math notranslate nohighlight">\(x + dx\)</span> and <span class="math notranslate nohighlight">\(x -dx\)</span> we consider <span class="math notranslate nohighlight">\(h\)</span>. In
+the other problem, at the same point <span class="math notranslate nohighlight">\(x\)</span>, we consider the variable <span class="math notranslate nohighlight">\(h\)</span>.</p>
+<p>Now we can see why every second <span class="math notranslate nohighlight">\(u\)</span> point and <span class="math notranslate nohighlight">\(h\)</span> point are zero for
+<em>rain</em>. We start with all of
+<span class="math notranslate nohighlight">\(u(dx), h(2dx), u(3dx), h(4dx), u(5dx) = 0\)</span>, which means they remain at
+zero.</p>
+<p>Since the original problem can be decoupled, we can solve for <span class="math notranslate nohighlight">\(u\)</span> and
+<span class="math notranslate nohighlight">\(h\)</span> on each decoupled grid separately. But why solve two problems?
+Instead, we solve for <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(h\)</span> on a single staggered grid; whereas
+before we solved for <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(h\)</span> on the complete, non-staggered grid.
+Figure <a class="reference external" href="#lab7:fig:decoupling">Decoupling</a> shows the decoupling of the grids.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;images/decoupling.png&#39;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;50%&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/01-lab7_24_0.png" src="../../../_images/01-lab7_24_0.png" />
+</div>
+</div>
+<div id='lab7:fig:decoupling'>
+<b>Figure Decoupling</b>: The two staggered grids and the unstaggered grid. Note that the
+unstaggered grid has two variables at each grid/time point whereas the
+staggered grids only have one.
+</div><p>Now consider the solution of the same problem on a staggered grid. The
+set-up of the problem is slightly different this time; we are
+considering 4 spatial points in our discussion instead of 5, shown in
+Figure <a class="reference external" href="#lab7:fig:stagger">Staggered Grid</a>. We will also be using <span class="math notranslate nohighlight">\(h_{i}\)</span> and <span class="math notranslate nohighlight">\(u_{i}\)</span> to
+denote the spatial points instead of <span class="math notranslate nohighlight">\(x = dx * i\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;images/stagger.png&#39;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;50%&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/01-lab7_27_0.png" src="../../../_images/01-lab7_27_0.png" />
+</div>
+</div>
+<div id='lab7:fig:stagger'>
+<b>Figure Staggered Grid</b>: The staggered grid for the drop in the pond problem.
+</div><p>The original equations, boundary and initial conditions are changed to
+reflect the staggered case. The equations are changed to the following:</p>
+<div id='lab7:eq:staggerGrid1'>
+(Staggered, Eqn 1)
+$$\frac {u_{i}(t+dt)-u_{i}(t-dt)}{2 dt} + g \frac {h_{i + 1}(t) - h_{i}(t)}{dx} = 0$$
+</div><div id='lab7:eq:staggerGrid2'>
+(Staggered, Eqn 2)
+$$\frac {h_{i}(t+dt)-h_{i}(t-dt)}{2 dt} + H \frac {u_{i}(t) - u_{i - 1}(t)}{dx} = 0$$
+</div><p>The initial conditions are: At <span class="math notranslate nohighlight">\(t = 0\)</span> and <span class="math notranslate nohighlight">\(t = dt\)</span>, all points have
+zero elevation except at <span class="math notranslate nohighlight">\(h_{3}\)</span>, where <div class="math notranslate nohighlight">
+\[h_{3}(0) = h_{0}\]</div>
+
+<div class="math notranslate nohighlight">
+\[h_{3}(dt) = h_{3}(0) - h_{0} Hg \frac{dt^2}{dx^2}\]</div>
+ At <span class="math notranslate nohighlight">\(t = 0\)</span> and
+<span class="math notranslate nohighlight">\(t = dt\)</span>, all points have zero velocity except at <span class="math notranslate nohighlight">\(u_{2}\)</span> and <span class="math notranslate nohighlight">\(u_{3}\)</span>,
+where <div class="math notranslate nohighlight">
+\[u_{2}(dt) = - h_{0} g \frac{dt}{dx}\]</div>
+
+<div class="math notranslate nohighlight">
+\[u_{3}(dt) = - u_{2}(dt)\]</div>
+ This time we assume there is a wall at
+<span class="math notranslate nohighlight">\(u_{1}\)</span> and <span class="math notranslate nohighlight">\(u_{4}\)</span>, so we will ignore the value of <span class="math notranslate nohighlight">\(h_{1}\)</span>. The
+boundary conditions are: <div class="math notranslate nohighlight">
+\[u_{1}(t) = 0\]</div>
+ <div class="math notranslate nohighlight">
+\[u_{4}(t) = 0\]</div>
+</p>
+</div>
+<div class="section" id="problem-one">
+<h3>Problem One<a class="headerlink" href="#problem-one" title="Permalink to this headline">¶</a></h3>
+<p>Modify <em>rain.py</em> to solve this problem (Simple
+equations on a staggered grid). Submit your code and a final plot for
+one case.</p>
+</div>
+</div>
+<div class="section" id="stability-the-cfl-condition">
+<h2>Stability: the CFL condition<a class="headerlink" href="#stability-the-cfl-condition" title="Permalink to this headline">¶</a></h2>
+<p>In the previous problem, <span class="math notranslate nohighlight">\(dt = 0.001\)</span>s is used to find <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(h\)</span>. If
+you increase <span class="math notranslate nohighlight">\(dt\)</span> by 100 times, and run <em>rain.py</em> on your staggered grid
+code again, you can see that the magnitude of <span class="math notranslate nohighlight">\(u\)</span> has increased from
+around 0.04 to <span class="math notranslate nohighlight">\(10^8\)</span>! Try this by changing <span class="math notranslate nohighlight">\(dt = 0.001\)</span> to
+<span class="math notranslate nohighlight">\(dt = 0.1\)</span> in the code and compare the values of <span class="math notranslate nohighlight">\(u\)</span> when run with
+different values of <span class="math notranslate nohighlight">\(dt\)</span>. This tells us that the scheme we have been
+using so far is unstable for large values of <span class="math notranslate nohighlight">\(dt\)</span>.</p>
+<p>To understand this instability, consider a spoked wagon wheel in an old
+western movie (or a car wheel with a pattern in a modern TV movie) such
+as that shown in Figure <a class="reference external" href="#lab7:fig:wheel-static">Wheel</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;images/wheel_static.png&#39;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;35%&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/01-lab7_30_0.png" src="../../../_images/01-lab7_30_0.png" />
+</div>
+</div>
+<div id='lab7:fig:wheel-static'>
+<b>Figure Wheel</b>: A spoked wagon wheel.
+</div><p>Sometimes the wheels appear to be going backwards. Both TV and
+movies come in frames and are shown at something like 30 frames a second.
+So a movie discretizes time. If the wheel moves just a little in the
+time step between frames, your eye connects the old position with the
+new position and the wheel moves forward <span class="math notranslate nohighlight">\(-\)</span> a single frame is shown in
+Figure <a class="reference external" href="#lab7:fig:wheel-left">Wheel Left</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;images/wheel_left.png&#39;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;35%&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/01-lab7_32_0.png" src="../../../_images/01-lab7_32_0.png" />
+</div>
+</div>
+<div id='lab7:fig:wheel-left'>
+<b>Figure Wheel Left:</b> The wheel appears to rotate counter-clockwise if its speed is slow
+enough.
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vid</span> <span class="o">=</span> <span class="n">display</span><span class="o">.</span><span class="n">YouTubeVideo</span><span class="p">(</span><span class="s2">&quot;hgQ66frbBEs&quot;</span><span class="p">,</span> <span class="n">modestbranding</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">rel</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+<span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">vid</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="500"
+    height="300"
+    src="https://www.youtube.com/embed/hgQ66frbBEs?modestbranding=1&rel=0"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
+</div>
+<p>However, if the wheel is moving faster, your eye connects each spoke
+with the next spoke and the wheel seems to move backwards <span class="math notranslate nohighlight">\(-\)</span> a single
+frame is depicted in Figure <a class="reference external" href="#lab7:fig:wheel-right">Wheel Right</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;images/wheel_right.png&#39;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;35%&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/01-lab7_36_0.png" src="../../../_images/01-lab7_36_0.png" />
+</div>
+</div>
+<div id='lab7:fig:wheel-right'>
+<b>Figure Wheel Right</b>: When the wheel spins quickly enough, it appears to rotate
+clockwise!
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vid</span> <span class="o">=</span> <span class="n">display</span><span class="o">.</span><span class="n">YouTubeVideo</span><span class="p">(</span><span class="s2">&quot;w8iQIwX-ek8&quot;</span><span class="p">,</span> <span class="n">modestbranding</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">rel</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+<span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">vid</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="500"
+    height="300"
+    src="https://www.youtube.com/embed/w8iQIwX-ek8?modestbranding=1&rel=0"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
+</div>
+<p>In a similar manner, the time discretization of any wave must be small
+enough that a given crest moves less than half a grid point in a time
+step. Consider the wave pictured in Figure <a class="reference external" href="#lab7:fig:wave-static">Wave</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;images/wave_static.png&#39;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;65%&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/01-lab7_40_0.png" src="../../../_images/01-lab7_40_0.png" />
+</div>
+</div>
+<div id='lab7:fig:wave-static'>
+<b>Figure Wave</b>: A single frame of the wave.
+</div><p>If the wave moves slowly, it seems to move in the correct direction
+(i.e. to the left), as shown in Figure <a class="reference external" href="#lab7:fig:wave-left">Wave Left</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;images/wave_left.png&#39;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;65%&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/01-lab7_42_0.png" src="../../../_images/01-lab7_42_0.png" />
+</div>
+</div>
+<div id='lab7:fig:wave-left'>
+<b>Figure Wave Left</b>: The wave moving to the left also appears to be moving to the left if
+it’s speed is slow enough.
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vid</span> <span class="o">=</span> <span class="n">display</span><span class="o">.</span><span class="n">YouTubeVideo</span><span class="p">(</span><span class="s2">&quot;CVybMbfYRXM&quot;</span><span class="p">,</span> <span class="n">modestbranding</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">rel</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+<span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">vid</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="500"
+    height="300"
+    src="https://www.youtube.com/embed/CVybMbfYRXM?modestbranding=1&rel=0"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
+</div>
+<p>However if the wave moves quickly, it seems to move backward, as in
+Figure <a class="reference external" href="#lab7:fig:wave-right">Wave Right</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;images/wave_right.png&#39;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;65%&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/01-lab7_46_0.png" src="../../../_images/01-lab7_46_0.png" />
+</div>
+</div>
+<p><a name='lab7:fig:wave-right'></a>
+<b>Figure Wave Right</b>: If the wave moves too rapidly, then it appears to be moving in the
+opposite direction.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vid</span> <span class="o">=</span> <span class="n">display</span><span class="o">.</span><span class="n">YouTubeVideo</span><span class="p">(</span><span class="s2">&quot;al2VrnkYyD0&quot;</span><span class="p">,</span> <span class="n">modestbranding</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">rel</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+<span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">vid</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="500"
+    height="300"
+    src="https://www.youtube.com/embed/al2VrnkYyD0?modestbranding=1&rel=0"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
+</div>
+<p>In summary, an explicit numerical scheme is unstable if the time step is
+too large. Such a large time step does not resolve the process being
+modelled. Now we need to calculate, for our problem, the maximum value
+of the time step is for which the scheme remains stable. To do this
+calculation we will derive the dispersion relation of the waves
+<em>in</em> the numerical scheme. The maximum time step for
+stability will be the maximum time step for which all waves either
+maintain their magnitude or decay.</p>
+<p>Mathematically, consider the equations (<a class="reference external" href="#lab7:eq:staggerGrid1">Staggered, Eqn 1</a>) and
+(<a class="reference external" href="#lab7:eq:staggerGrid2">Staggered, Eqn 2</a>). Let <span class="math notranslate nohighlight">\(x=md\)</span> and <span class="math notranslate nohighlight">\(t=p\, dt\)</span> and consider a
+solution</p>
+<div id='eq:udis'>
+(u-solution)
+$$\begin{aligned}
+u_{mp} &=& {\cal R}e \{ {\cal U} \exp [i(kx - \omega t)] \}\\
+&=& {\cal R}e \{ {\cal U} \exp [i(kmd - \omega p\, dt)] \} \nonumber\end{aligned}$$
+$$\begin{aligned}
+h_{mp} &=& {\cal R}e \{ {\cal H} \exp [i(k[x - dx/2] - \omega t)] \}\\
+&=& {\cal R}e \{ {\cal H} \exp [i(k[m - 1/2]d - \omega p\, dt)] \} \nonumber\end{aligned}$$
+where ${\cal R}e$ means take the real part and ${\cal U}$ and ${\cal H}$
+are constants. Substitution into ([Staggered, Eqn 1](#lab7:eq:staggerGrid1)) and
+([Staggered, Eqn 2](#lab7:eq:staggerGrid2)) gives two algebraic equations in ${\cal U}$
+and ${\cal H}$ which can be written: 
+$$\left[
+\begin{array}{cc} - \sin(\omega dt)/ dt & 2 g \sin(kd/2)/d \\
+2 H \sin(kd/2)/d &  -\sin(\omega \, dt)/ dt \\
+\end{array}
+\right]
+\left[
+\begin{array}{c} {\cal U}\\ {\cal H}\\ 
+\end{array} \right]
+= 0.$$ 
+</div>
+where $\exp(ikd)-\exp(-ikd)$ has been written $2 i \sin(kd)$ etc.
+In order for there to be a non-trivial solution, the determinant of the
+matrix must be zero. This determinant gives the dispersion relation
+<div id='lab7:eq:numerDisp'>
+(Numerical Dispersion Relation)
+$$ \frac{\sin^2(\omega \, dt)}{dt^2} = 4 gH \frac {\sin^2(kd/2)}{d^2}$$
+</div>
+Which can be compared to the ([Analytic Dispersion Relation](#lab7:eq:disp)), the “real” dispersion
+relation. In particular, if we decrease both the time step and the space
+step, $dt \rightarrow 0$ and $d \rightarrow 0$, 
+([Numerical Dispersion Relation](#lab7:eq:numerDisp))
+approaches ([Analytic Dispersion Relation](#lab7:eq:disp)). The effect of just the discretization in
+space can be found by letting just $dt \rightarrow 0$ which gives
+<div id='lab7:eq:numerDispSpace'>
+(Continuous Time, Discretized Space Dispersion Relation)
+$$\omega^2 = 4 gH \frac {\sin^2(kd/2)}{d^2}$$
+</div><p>The “real” dispersion relation, (<a class="reference external" href="#lab7:eq:disp">Analytic Dispersion Relation</a>), and the numerical
+dispersion relation with continuous time,
+(<a class="reference external" href="#lab7:eq:numerDispSpace">Continuous Time, Discretized Space Dispersion Relation</a>), both give <span class="math notranslate nohighlight">\(\omega^2\)</span> positive and
+therefore <span class="math notranslate nohighlight">\(\omega\)</span> real. However, this is not necessarily true for the
+numerical dispersion relation (<a class="reference external" href="#lab7:eq:numerDisp">Numerical Dispersion Relation</a>). What does a
+complex <span class="math notranslate nohighlight">\(\omega\)</span> mean? Well, go back to (<a class="reference external" href="#eq:udis">u-solution</a>). A complex
+<span class="math notranslate nohighlight">\(\omega = a + ib\)</span> gives <span class="math notranslate nohighlight">\(u \propto \exp(-iat)\exp(bt)\)</span>. The first
+exponential is oscillatory (like a wave) but the second gives
+exponential growth if <span class="math notranslate nohighlight">\(b\)</span> is positive or exponential decay if <span class="math notranslate nohighlight">\(b\)</span> is
+negative. Obviously, for a stable solution we must have <span class="math notranslate nohighlight">\(b \le 0\)</span>. So,
+using (<a class="reference external" href="#lab7:eq:numerDisp">Numerical Dispersion Relation</a>) we must find <span class="math notranslate nohighlight">\(\omega\)</span> and determine if it
+is real.</p>
+<p>Now, because (<a class="reference external" href="#lab7:eq:numerDisp">Numerical Dispersion Relation</a>) is a transcendental equation, how
+to determine <span class="math notranslate nohighlight">\(\omega\)</span> is not obvious. The following works:</p>
+<ul>
+<li><p>Re-expand <span class="math notranslate nohighlight">\(\sin(\omega\,dt)\)</span> as
+<span class="math notranslate nohighlight">\((\exp(i \omega\,dt)-\exp(-i\omega\,dt))/2i\)</span>.</p></li>
+<li><p>Write <span class="math notranslate nohighlight">\(\exp(-i\omega\,dt)\)</span> as <span class="math notranslate nohighlight">\(\lambda\)</span> and note that this implies
+<span class="math notranslate nohighlight">\(\exp(i\omega\, dt) = 1/\lambda\)</span>. If <span class="math notranslate nohighlight">\(\omega dt = a + ib\)</span> then
+<span class="math notranslate nohighlight">\(b =  ln |\lambda|\)</span>. For stability the magnitude of <span class="math notranslate nohighlight">\(\lambda\)</span> must
+be less than one.</p></li>
+<li><p>Write <span class="math notranslate nohighlight">\(4 gH \sin^2(kd/2)/d^2\)</span> as <span class="math notranslate nohighlight">\(q^2\)</span>, for brevity.</p></li>
+<li><p>Substitute in (<a class="reference external" href="#lab7:eq:numerDisp">Numerical Dispersion Relation</a>) which gives:
+<div class="math notranslate nohighlight">
+\[-(\lambda-1/\lambda)^2 = 4 q^2 dt^2\]</div>
+ or
+<div class="math notranslate nohighlight">
+\[\lambda^4 - 2 (1 - 2 q^2 dt^2) \lambda^2 + 1 = 0\]</div>
+ or</p>
+<div id='lab7:eq:lambda'>
+(Lambda Eqn)
+$$\lambda = \pm \left(1-2q^2 dt^2 \pm 2 q dt \left( q^2
+    dt^2 - 1 \right)^{1/2} \right)^{1/2}$$ 
+</div></li>
+</ul>
+<p>A plot of the four roots for <span class="math notranslate nohighlight">\(\lambda\)</span> is shown below in
+Figure <a class="reference external" href="#lab7:fig:allmag">Roots</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;images/allmag.png&#39;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;45%&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/01-lab7_51_0.png" src="../../../_images/01-lab7_51_0.png" />
+</div>
+</div>
+<div id='lab7:fig:allmag'>
+<b>Figure Roots</b>: Magnitude of the four roots of $\lambda$ as a function of $q dt$ (not
+$\omega dt$).
+</div><p>The four roots correspond to the “real” waves travelling to the right
+and left, as well two <em>computational modes</em> (see
+Section <a class="reference external" href="#Computational-Mode">Computational Mode</a> for more information). The plots for
+the four roots overlap, so it is most helpful to view <a class="reference external" href="#lab7:fig:sepmag">separate plots for each of the roots</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;images/multimag.png&#39;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;60%&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/01-lab7_53_0.png" src="../../../_images/01-lab7_53_0.png" />
+</div>
+</div>
+<div id='lab7:fig:sepmag'>
+<b>Figure Separate Roots</b>: Magnitude of the four roots of $\lambda$ as a function of $q dt$ (not $\omega dt$).
+</div><p>Now for stability
+<span class="math notranslate nohighlight">\(\lambda\)</span> must have a magnitude less than or equal to one. From
+Figure <a class="reference external" href="#lab7:fig:sepmag">Separate Roots</a>, it is easy to see that this is the same as
+requiring that <span class="math notranslate nohighlight">\(|q dt|\)</span> be less than 1.0.</p>
+<p>Substituting for <span class="math notranslate nohighlight">\(q\)</span>
+<div class="math notranslate nohighlight">
+\[1 &gt; q^2 dt^2 =  \frac {4gH}{d^2} \sin^2(kd/2) dt^2\]</div>
+ for all <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<p>The maximum wavenumber that can be resolved by a grid of size <span class="math notranslate nohighlight">\(d\)</span> is
+<span class="math notranslate nohighlight">\(k = \pi/d\)</span>. At this wavenumber, the sine takes its maximum value of 1.
+So the time step</p>
+<div id='lab7:eq:dt'>
+$$dt^2 < \frac { d^2}{4 g H}$$
+</div><p>For this case (<span class="math notranslate nohighlight">\(f = 0\)</span>) the ratio of the space step to the time step
+must be greater than the wave speed <span class="math notranslate nohighlight">\(\sqrt
+{gH}\)</span>, or <div class="math notranslate nohighlight">
+\[d / dt &gt; 2  \sqrt{gH}.\]</div>
+ This stability condition is known
+as <strong>the CFL condition</strong> (named after Courant, Friedrich and Levy).</p>
+<p>On a historical note, the first attempts at weather prediction were
+organized by Richardson using a room full of human calculators. Each
+person was responsible for one grid point and passed their values to
+neighbouring grid points. The exercise failed dismally, and until the
+theory of CFL, the exact reason was unknown. The equations Richardson
+used included fast sound waves, so the CFL condition was
+<div class="math notranslate nohighlight">
+\[d/dt &gt; 2 \times 300 {\rm m/s}.\]</div>
+ Richardson’s spatial step, <span class="math notranslate nohighlight">\(d\)</span>, was
+too small compared to <span class="math notranslate nohighlight">\(dt\)</span> and the problem was unstable.</p>
+<div class="section" id="problem-two">
+<h3>Problem Two<a class="headerlink" href="#problem-two" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>a) Find the CFL condition (in seconds) for <span class="math notranslate nohighlight">\(dt\)</span>
+for the Python example in Problem One.</p>
+</div></blockquote>
+<!--- [lab7:prob:staggered]---><p>Test your value.</p>
+<p>b) Find the CFL condition (in seconds) for <span class="math notranslate nohighlight">\(dt\)</span> for the Python
+example in <em>rain.py</em>, ie., for the non-staggered grid. Test your value.</p>
+</div>
+</div>
+<div class="section" id="accuracy">
+<h2>Accuracy<a class="headerlink" href="#accuracy" title="Permalink to this headline">¶</a></h2>
+<p>A strong method to determine the accuracy of a scheme is to compare the
+numerical solution to an analytic solution. The equations we are
+considering are wave equations and so we will compare the properties of
+the waves. Wave properties are determined by the dispersion relation and
+we will compare the <em>numerical dispersion relation</em> and the exact, continuous
+<em>analytic dispersion relation</em>. Both the time step and the space step
+(and as we’ll see below the grid) affect the accuracy. Here we will only
+consider the effect of the space step. So, consider the numerical
+dispersion relation assuming <span class="math notranslate nohighlight">\(dt \rightarrow 0\)</span> (reproduced here from
+(<a class="reference external" href="#lab7:eq:numerDispSpace">Continuous Time, Discretized Space Dispersion Relation</a>))
+<div class="math notranslate nohighlight">
+\[\omega^2 = 4 gH \frac {\sin^2(kd/2)}{d^2}\]</div>
+ with the exact, continuous
+dispersion relation (<a class="reference external" href="#lab7:eq:disp">Analytic Dispersion Relation</a>) <div class="math notranslate nohighlight">
+\[\omega^2 = gHk^2\]</div>
+</p>
+<p>We can plot the two dispersion relations as functions of <span class="math notranslate nohighlight">\(kd\)</span>, The graph
+is shown in Figure <a class="reference external" href="#lab7:fig:simpleaccuracy">Simple Accuracy</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;images/simple_accuracy.png&#39;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;50%&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/01-lab7_57_0.png" src="../../../_images/01-lab7_57_0.png" />
+</div>
+</div>
+<div id='lab7:fig:simpleaccuracy'>
+<b>Figure Simple Accuracy</b>
+</div><p>We can see that the accuracy is good for long waves (<span class="math notranslate nohighlight">\(k\)</span> small) but for
+short waves, near the limit of the grid resolutions, the discrete
+frequency is too small. As the phase speed is <span class="math notranslate nohighlight">\({\omega}/{k}\)</span>, the phase
+speed is also too small and most worrying, the group speed
+<span class="math notranslate nohighlight">\({\partial \omega}/
+{\partial k}\)</span> goes to zero!</p>
+<div class="section" id="choosing-a-grid">
+<h3>Choosing a Grid<a class="headerlink" href="#choosing-a-grid" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id2">
+<h4>No variation in y<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<p>For the simple case above, there is little choice in grid. Let’s
+consider the more complicated case, <span class="math notranslate nohighlight">\(f \not = 0\)</span>. Then <span class="math notranslate nohighlight">\(v \not = 0\)</span> and
+we have to choose where on the grid we wish to put <span class="math notranslate nohighlight">\(v\)</span>. There are two
+choices:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;images/simple_grid1.png&#39;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;50%&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/01-lab7_60_0.png" src="../../../_images/01-lab7_60_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;images/simple_grid2.png&#39;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;50%&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/01-lab7_61_0.png" src="../../../_images/01-lab7_61_0.png" />
+</div>
+</div>
+<div id='lab7:fig:simplegrids'>
+<b>Figure Two Simple Grids</b>
+</div><p>For each of these, we can calculate the discrete dispersion relation
+discussed above.</p>
+<p>For grid 1
+<div class="math notranslate nohighlight">
+\[\omega ^2 = f^2 \cos^2(\frac{kd}{2}) + \frac{4gH \sin^2(\frac{kd}{2})}{d^2}\]</div>
+</p>
+</div>
+</div>
+<div class="section" id="problem-three">
+<h3>Problem Three<a class="headerlink" href="#problem-three" title="Permalink to this headline">¶</a></h3>
+<p>Show that for grid 2
+<div class="math notranslate nohighlight">
+\[\omega ^2 = f^2  + \frac{4gH \sin^2(\frac{kd}{2})}{d^2}\]</div>
+</p>
+<p>We can plot the two dispersion relations as a function of <span class="math notranslate nohighlight">\(k\)</span> given the
+ratio of <span class="math notranslate nohighlight">\(d/R\)</span>, where <span class="math notranslate nohighlight">\(d\)</span> is the grid size and <span class="math notranslate nohighlight">\(R\)</span> is the Rossby radius
+which is given by <div class="math notranslate nohighlight">
+\[R = \frac {\sqrt{gH}}{f}.\]</div>
+</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">accuracy2d</span><span class="o">.</span><span class="n">main</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/01-lab7_63_0.png" src="../../../_images/01-lab7_63_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="problem-four">
+<h3>Problem Four<a class="headerlink" href="#problem-four" title="Permalink to this headline">¶</a></h3>
+<p>Which grid gives the best accuracy for <span class="math notranslate nohighlight">\(d=R/2\)</span>?
+Explain in what ways it is more accurate.</p>
+</div>
+<div class="section" id="problem-five">
+<h3>Problem Five<a class="headerlink" href="#problem-five" title="Permalink to this headline">¶</a></h3>
+<p>Modify <em>rain.py</em> to solve equations
+(<a class="reference external" href="#lab7:sec:firsteq">No variation in y, first eqn</a>), (<a class="reference external" href="#lab7:sec:secondeq">No variation in y, second eqn</a>) and (<a class="reference external" href="#lab7:sec:thirdeq">No variation in y, third eqn</a>) on the most accurate
+grid.</p>
+</div>
+</div>
+<div class="section" id="full-equations">
+<h2>Full Equations<a class="headerlink" href="#full-equations" title="Permalink to this headline">¶</a></h2>
+<p>In order to solve the full equations
+(<a class="reference external" href="#lab7:eq:swea">Full Equations, Eqn 1</a>), (<a class="reference external" href="#lab7:eq:sweb">Full Equations, Eqn 2</a>) and (<a class="reference external" href="#lab7:eq:swec">Full Equations, Eqn 3</a>) numerically, we need to
+discretize in 3 dimensions, two in space and one in time.
+<a class="reference external" href="#Ref:MesingerArakawa">Mesinger and Arakawa, 1976</a> introduced <a class="reference external" href="http://clouds.eos.ubc.ca/~phil/numeric/labs/lab7/lab7_files/images/allgrid.gif">five different spatial discretizations</a>.</p>
+<p>Consider first the most obvious choice an
+unstaggered grid or Arakawa A grid, shown in Figure <a class="reference external" href="#lab7:fig:gridA">Arakawa A Grid</a>. We
+might expect, from the studies above, that an unstaggered grid may not
+be the best choice. The grid A is not two de-coupled grids because of
+weak coupling through the Coriolis force. However, we will see that this
+grid is not as accurate as some of the staggered grids (B, C, D and E).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;images/grid1.png&#39;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;50%&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/01-lab7_66_0.png" src="../../../_images/01-lab7_66_0.png" />
+</div>
+</div>
+<div id='lab7:fig:gridA'>
+<b>Figure Arakawa A Grid.</b>
+</div><p>As the problem becomes more complicated, we need to simplify the
+notation; hence define a discretization operator:
+<div class="math notranslate nohighlight">
+\[(\delta_x \alpha)_{(m,n)} \equiv \frac 1 {2d} ( \alpha_{m+1,n} - \alpha_{m-1,n} )
+\]</div>
+</p>
+<p>where <span class="math notranslate nohighlight">\(d\)</span> is the grid spacing in both the <span class="math notranslate nohighlight">\(x\)</span> and
+<span class="math notranslate nohighlight">\(y\)</span> directions. Note that this discretization is the same centered
+difference we have used throughout this lab.</p>
+<p>The finite difference approximation to the full shallow water equations
+on the A grid becomes:
+<div class="math notranslate nohighlight">
+\[\frac{\partial u}{\partial t} = -g \delta_x h + fv\]</div>
+
+<div class="math notranslate nohighlight">
+\[\frac{\partial v}{\partial t} = -g \delta_y h - fu\]</div>
+
+<div class="math notranslate nohighlight">
+\[\frac{\partial h}{\partial t} = -H (\delta_x u + \delta_y v)\]</div>
+
+As before, consider a centre difference scheme (leap-frog method) for
+the time step as well, so that
+<div class="math notranslate nohighlight">
+\[\frac{\partial u}{\partial t}(t) = \frac {u(t+1)-u(t-1)}{2 dt}\]</div>
+ Putting this together with
+the spatial scheme we have:
+<a name="eq:numericalGridA"></a>
+(Numerical Scheme: Grid A)
+<div class="math notranslate nohighlight">
+\[\frac {u(t+1)-u(t-1)}{2 dt} = -g \delta_x h(t) + fv(t)\]</div>
+
+<div class="math notranslate nohighlight">
+\[\frac{v(t+1)-v(t-1)}{2 dt} = -g \delta_y h(t) - fu(t)\]</div>
+
+<div class="math notranslate nohighlight">
+\[\frac{h(t+1)-h(t-1)}{2 dt} = -H (\delta_x u(t) + \delta_y v(t))\]</div>
+ Each
+of these equations can be rearranged to give <span class="math notranslate nohighlight">\(u(t+1)\)</span>, <span class="math notranslate nohighlight">\(v(t+1)\)</span> and
+<span class="math notranslate nohighlight">\(h(t+1)\)</span>, respectively. Then given the values of the three variables at
+every grid point at two times, (<span class="math notranslate nohighlight">\(t\)</span> and <span class="math notranslate nohighlight">\(t-1\)</span>), these three equations
+allow you to calculate the updated values, the values of the variables
+at <span class="math notranslate nohighlight">\(t+1\)</span>. Once again, the following questions arise regarding the
+scheme:</p>
+<ul class="simple">
+<li><p><strong>Is it stable?</strong></p></li>
+<li><p><strong>Is it accurate?</strong></p></li>
+</ul>
+<div class="section" id="stability">
+<h3>Stability<a class="headerlink" href="#stability" title="Permalink to this headline">¶</a></h3>
+<p>To determine the stability of the scheme, we need to repeat the analysis
+of section <a class="reference external" href="#Stability:-the-CFL-condition">Stability</a> for the 2 spatial dimensions used here. The
+first step is to assume a form of the solutions:</p>
+<div id='eq:zdis'>
+$$\begin{aligned}
+z_{mnp} &=& {\cal R}e \{ {\cal Z} \exp [i(kx + \ell y - \omega t)] \}\\
+&=& {\cal R}e \{ {\cal Z} \exp [i(kmd + \ell n d- \omega p\, dt)] \} \nonumber\end{aligned}$$
+</div>
+where $z$ represents any of $u$, $v$ and $h$ and we have let $x=md$,
+$y=nd$ and $t=p\,dt$. Substitution into ([Numerical Scheme: Grid A](#eq:numericalGridA)) gives three algebraic equation in
+${\cal U}$, ${\cal V}$ and ${\cal H}$: $$\left[
+\begin{array}{ccc} - i \sin(\omega dt)/ dt & - f & i g \sin(kd)/d \\
+f & - i \sin(\omega dt)/ dt & i g \sin(\ell d)/d \\
+i H \sin(kd)/d &  i H \sin(\ell d)/d &  -i \sin(\omega \, dt)/ dt \\
+\end{array}
+\right]
+\left[
+\begin{array}{c} {\cal U}\\ {\cal V} \\ {\cal H}\\ 
+\end{array} \right]
+= 0.$$<p>Setting the determinate to zero gives the dispersion relation:</p>
+<div id='lab7:eq:full:numDisp'>
+(Full Numerical Dispersion Relation)
+$$
+\frac {\sin^2(\omega\,dt)}{dt^2} = f^2 + \frac{gH}{d^2} \left( \sin^2(kd) + \sin^2(\ell d) \right)$$
+</div>
+Still following section [Stability](#Stability:-the-CFL-condition), let
+$\lambda = \exp (i \omega\, dt)$ and let
+$q^2 = f^2 + {gH}/{d^2} \left( \sin^2(kd) + \sin^2(\ell d) \right)$,
+substitution into ([Full Numerical Dispersion Relation](#lab7:eq:full:numDisp)) gives
+$$-(\lambda-1/\lambda)^2 = 4 q^2 dt^2$$ or equation ([Lambda Eqn](#lab7:eq:lambda))
+again. For stability $\lambda$ must be less than 1, so
+$$1 > q^2 dt^2 = {dt^2} \left(f^2 + {gH}/{d^2} \left( \sin^2(kd) + \sin^2(\ell d) \right)
+\right)$$ The sines take their maximum values at $k=\pi/(2d)$ and
+$\ell=\pi/(2d)$ giving $$dt^2 < \frac{1}{f^2 + 2 gH/d^2}$$ This is the
+CFL condition for the full equations on the Arakawa A grid. Note that
+the most unstable mode moves at $45^o$ to the grid.<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;images/fourgrids.png&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s1">&#39;80%&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/01-lab7_69_0.png" src="../../../_images/01-lab7_69_0.png" />
+</div>
+</div>
+<p><a name="FigureFourGrids"></a>
+<b>Figure Four More Grids.</b> Note that E is simply a rotation of grid B by <span class="math notranslate nohighlight">\(45^\circ\)</span>.</p>
+</div>
+<div class="section" id="problem-six">
+<h3>Problem Six<a class="headerlink" href="#problem-six" title="Permalink to this headline">¶</a></h3>
+<p>Use the interactive example below to investigate stability of the various grids.  Calculate the stability for each grids A, B, and C.  Find the dt for stability (to one significant figure) given <span class="math notranslate nohighlight">\(f = 1 \times 10^{-4}\)</span>s<span class="math notranslate nohighlight">\(^{-1}\)</span>, <span class="math notranslate nohighlight">\(g = 10\)</span> m s<span class="math notranslate nohighlight">\(^{-2}\)</span>, <span class="math notranslate nohighlight">\(H = 4000\)</span> m and <span class="math notranslate nohighlight">\(dx = 20\)</span> km. Is it the same for all four grids? Why not?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># grid A is grid 1, grid B is grid 2 and and grid C is grid 3</span>
+<span class="c1"># ngrid is the number of grid points in x and y</span>
+<span class="c1"># dt is the time step in seconds</span>
+<span class="c1"># T is the time plotted is seconds to 4*3600 is 4 hours</span>
+<span class="n">interactive1</span><span class="o">.</span><span class="n">interactive1</span><span class="p">(</span><span class="n">grid</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">ngrid</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mi">4</span><span class="o">*</span><span class="mi">3600</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>dx/dt 666.667
+
+sqrt(g*H0) 100.000
+
+Flat Bottom
+</pre></div>
+</div>
+<img alt="../../../_images/01-lab7_71_1.png" src="../../../_images/01-lab7_71_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h3>Accuracy<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>To determine the accuracy of the spatial discretization, we will compare
+the <em>numerical dispersion relation</em> (<a class="reference external" href="#lab7:eq:full:numDisp">Full Numerical Dispersion Relation</a>) for
+<span class="math notranslate nohighlight">\(dt \rightarrow 0\)</span> <div class="math notranslate nohighlight">
+\[\omega^2 = f^2 + gH \frac {\sin^2(kd)}{d^2} +
+gH \frac {\sin^2 (\ell d)}{d^2}\]</div>
+ with the exact, <em>continuous dispersion
+relation</em></p>
+<div id='lab7:eq:full_disp'>
+(Full Analytic Dispersion Relation)
+$$
+\omega^2 = f^2 + gH(k^2+\ell^2)$$
+</div><p>We can plot the two dispersion relations as functions of <span class="math notranslate nohighlight">\(k\)</span> and <span class="math notranslate nohighlight">\(\ell\)</span>,
+given the ratio of <span class="math notranslate nohighlight">\(d/R\)</span>, where <span class="math notranslate nohighlight">\(d\)</span> is the grid size and <span class="math notranslate nohighlight">\(R\)</span> is the
+Rossby radius defined in the previous section. For example, the exact
+<span class="math notranslate nohighlight">\(\omega\)</span> and its discrete approximation, using Grid A and <span class="math notranslate nohighlight">\(d/R = 1/2\)</span>,
+can be compared in Figure <a class="reference external" href="#lab7:fig:accuracy-demo">Accuracy Comparison</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;images/accuracy_demo.png&#39;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;60%&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/01-lab7_73_0.png" src="../../../_images/01-lab7_73_0.png" />
+</div>
+</div>
+<div id='lab7:fig:accuracy-demo'>
+<b>Figure Accuracy Comparison:</b> A comparison of the exact $\omega$ and the discrete approximation
+using Grid A and with $d/R=1/2$.
+</div><p>It is easy to see that the Grid A approximation is not accurate enough.
+There are a number of other possibilities for grids, all of which
+<em>stagger</em> the unknowns; that is, different variables are placed at
+different spatial positions as discussed in
+section <a class="reference external" href="#Staggered-Grids">Staggered Grids</a>.</p>
+<p>Four other grids, which are known as <a class="reference external" href="#Ref:MesingerArakawa">Mesinger and Arakawa</a> B, C, D and E
+grids as shown above <a class="reference external" href="#FigureFourGrids">Figure Four More Grids</a>.</p>
+<p>To work with these grids, we must introduce an averaging operator,
+defined in terms of <em>half-points</em> on the grid:
+<div class="math notranslate nohighlight">
+\[\overline{\alpha}_{mn}^{x} = \frac{\alpha_{m+\frac{1}{2},n} + \alpha_{m-\frac{1}{2},n}}{2}\]</div>
+
+and modify the difference operator
+<div class="math notranslate nohighlight">
+\[(\delta_{x}\alpha)_{mn} = \frac{\alpha_{m+\frac{1}{2},n} -
+\alpha_{m-\frac{1}{2},n}}{d}\]</div>
+</p>
+</div>
+<div class="section" id="problem-seven">
+<h3>Problem Seven<a class="headerlink" href="#problem-seven" title="Permalink to this headline">¶</a></h3>
+<p>A.  For grid B, write down the finite difference form of the shallow
+water equations.</p>
+<p>B.  For grid C, write down the finite difference form of the shallow
+water equations.</p>
+<p>C.  For grid D, write down the finite difference form of the shallow
+water equations.</p>
+<p>The dispersion relation for each grid can be found in a manner analgous
+to that for the A grid. For the B grid the dispersion relation is
+<div class="math notranslate nohighlight">
+\[\left( \frac {\omega}{f} \right)^2
+= 1 + 4 \left( \frac {R}{d} \right)^2 \left( \sin^2 \frac {k d}{2}\cos^2 \frac{\ell d}{2} + \cos^2 \frac {k d}{2}\sin^2 \frac{\ell d}{2} \right)\]</div>
+
+and for the C grid it is <div class="math notranslate nohighlight">
+\[\left( \frac {\omega}{f} \right)^2
+= \cos^2 \frac {k d}{2} \cos^2 \frac{\ell d}{2}  + 4 \left( \frac {R}{d} \right)^2 \left( \sin^2 \frac {k d}{2} + \sin^2 \frac {\ell d}{2} \right)\]</div>
+</p>
+</div>
+<div class="section" id="problem-eight">
+<h3>Problem Eight<a class="headerlink" href="#problem-eight" title="Permalink to this headline">¶</a></h3>
+<p>Find the dispersion relation for the D grid.</p>
+<p>In the interactive exercise below, you will enter the dispersion for
+each of the grids. Study each plot carefully for accuracy of phase and
+group speed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">disp_analytic</span><span class="p">(</span><span class="n">kd</span><span class="p">,</span> <span class="n">ld</span><span class="p">,</span> <span class="n">Rod</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+    <span class="n">Omegaof</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">Rod</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">kd</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">ld</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">Omegaof</span>
+<span class="c1"># define disp_A, disp_B, disp_C here and run the cell</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># replace the second disp_analytic with one of your numerical dispersion functions, e.g. disp_A</span>
+<span class="n">dispersion_2d</span><span class="o">.</span><span class="n">dispersion_2d</span><span class="p">(</span><span class="n">disp_analytic</span><span class="p">,</span> <span class="n">disp_analytic</span><span class="p">,</span> <span class="n">Rod</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/01-lab7_78_0.png" src="../../../_images/01-lab7_78_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="problem-nine">
+<h3>Problem Nine<a class="headerlink" href="#problem-nine" title="Permalink to this headline">¶</a></h3>
+<p>A.  For <span class="math notranslate nohighlight">\(R/d = 2\)</span> which grid gives the most accurate solution?  As well as the closeness of fit of <span class="math notranslate nohighlight">\(\omega/f\)</span>, also consider the group speed (gradient of the curve).  The group speed is the speed at which wave energy propagates.</p>
+<p>B.  For <span class="math notranslate nohighlight">\(R/d = 0.2\)</span> which grid gives the most accurate solution?  As well as the closeness of fit of <span class="math notranslate nohighlight">\(\omega/f\)</span>, also consider the group speed (gradient of the curve).  The group speed is the speed at which wave energy propagates.</p>
+</div>
+</div>
+<div class="section" id="details">
+<h2>Details<a class="headerlink" href="#details" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="starting-the-simulation-full-equations">
+<h3>Starting the Simulation Full Equations<a class="headerlink" href="#starting-the-simulation-full-equations" title="Permalink to this headline">¶</a></h3>
+<p>The <em>leap-frog scheme</em> requires values of <span class="math notranslate nohighlight">\(u\)</span>, <span class="math notranslate nohighlight">\(v\)</span> and <span class="math notranslate nohighlight">\(h\)</span> at step 1 as
+well as at step 0. However, the initial conditions only provide starting
+values at step 0, so we must find some other way to obtain values at
+step 1. There are various methods of obtaining the second set of
+starting values, and the code used in this laboratory uses a
+<em>predictor/corrector method</em> to obtain values at step 1 from the values
+at step 0. For the simple equations this process was discussed in
+section <a class="reference external" href="#Predictor-Corrector-to-Start">Predictor-Corrector to Start</a>. For the full equations the procedure goes
+as follows:</p>
+<ul class="simple">
+<li><p>the solution at step <span class="math notranslate nohighlight">\(1\)</span> is predicted using a <em>forward Euler step</em>:
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{l}
+u(1) = u(0) + dt (f v(0)-g \delta_x h(0))\\
+v(1) = v(0) + dt (-f u(0)-g \delta_y h(0))\\
+h(1) = h(0) + dt (-H(\delta_x u(0) + \delta_y v(0))) 
+\end{array}\end{split}\]</div>
+</p></li>
+<li><p>then, step <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span> is estimated by averaging step <span class="math notranslate nohighlight">\(0\)</span> and the
+predicted step <span class="math notranslate nohighlight">\(1\)</span>: <div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{l}  
+u(1/2) = 1/2 (u(0)+u(1)) \\
+v(1/2) = 1/2 (v(0)+v(1)) \\
+h(1/2) = 1/2 (h(0)+h(1)) 
+\end{array}\end{split}\]</div>
+</p></li>
+<li><p>finally, the step <span class="math notranslate nohighlight">\(1\)</span> approximation is corrected using leap frog
+from <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(1\)</span> (here, we use only a half time-step
+<span class="math notranslate nohighlight">\(\frac{1}{2} dt\)</span>): <div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{l}
+u(1) = u(0) + dt (f v(1/2)-g\delta_x h(1/2)) \\
+v(1) = v(0) + dt(-f u(1/2)-g\delta_y h(1/2)) \\
+h(1) = h(0) + dt(-H (\delta_x u(1/2)+\delta_y v(1/2))) 
+\end{array}\end{split}\]</div>
+</p></li>
+</ul>
+</div>
+<div class="section" id="initialization">
+<h3>Initialization<a class="headerlink" href="#initialization" title="Permalink to this headline">¶</a></h3>
+<p>The initial conditions used for the stability demo for the full
+equations are Poincare waves as described in the physical example in
+Section <a class="reference external" href="#Physical-Example,-Poincar%C3%A9-Waves">Physical Example, Poincaré Waves</a>.</p>
+<p>Assuming a surface height elevation <div class="math notranslate nohighlight">
+\[h = \cos (kx+\ell y)\]</div>
+ equations
+(<a class="reference external" href="#lab7:eq:swea">Full Eqns, Eqn 1</a>,<a class="reference external" href="#lab7:eq:sweb">Full Eqns, Eqn 2</a>) give <div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+u &amp;=&amp; \frac {-1} {H(k^2+\ell^2)} \, \left( k \omega \cos(kx+\ell
+y)+f \ell \sin(kx+\ell y) \right) \nonumber \\
+v &amp;=&amp; \frac 1  {H(k^2+\ell^2)} \, \left( -\ell \omega \cos(kx+\ell
+y)+f k \sin(kx+\ell y)\right) \nonumber \end{aligned}\end{split}\]</div>
+ where
+<span class="math notranslate nohighlight">\(\ell\)</span> and <span class="math notranslate nohighlight">\(k\)</span> are selected by the user. It is assumed <span class="math notranslate nohighlight">\(g = 9.8\)</span>m/s<span class="math notranslate nohighlight">\(^2\)</span>,
+<span class="math notranslate nohighlight">\(H = 400\)</span>m and <span class="math notranslate nohighlight">\(f = 10^{-4}\)</span>/s. The value of the frequency <span class="math notranslate nohighlight">\(\omega\)</span> is
+given by the dispersion relation, (<a class="reference external" href="#lab7:eq:full_disp">Full Analytic Dispersion Relation</a>).</p>
+</div>
+<div class="section" id="id4">
+<h3>Boundary Conditions<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>The boundary conditions used for the stability demo for the full
+equations are <em>“periodic”</em> in both x and y. Anything which propagates
+out the left hand side comes in the right hand side, <em>etc</em>. This
+condition forces a periodicity on the flow, the wavelengths of the
+simulated waves must be sized so that an integral number of waves fits
+in the domain.</p>
+<p>Specifically, for a <span class="math notranslate nohighlight">\(m \times n\)</span> grid, the boundary conditions for the
+variable <span class="math notranslate nohighlight">\(h\)</span> along the right and left boundaries are <div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+h(i=1,j) &amp;=&amp; h(i=m-1,j)\,\,\, {\rm for}\,\,\, j=2 \,\, {\rm to} \,\,n-1\\ \nonumber
+h(i=m,j) &amp;=&amp; h(i=2,j) \,\,\,  {\rm for}\,\,\, j=2 \,\, {\rm to} \,\,n-1
+\end{aligned}\end{split}\]</div>
+ and along the top and bottom boundaries
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+h(i,j=1) &amp;=&amp; h(i,j=n-1)\,\,\, {\rm for} \,\,\, i=2 \,\, {\rm to} \,\,m-1\\ \nonumber
+h(i,j=n) &amp;=&amp; h(i,j=2)  \,\,\, {\rm for} \,\,\, i=2 \,\, {\rm to} \,\,m-1 .
+\end{aligned}\end{split}\]</div>
+ The conditions for <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(v\)</span> are identical.</p>
+</div>
+<div class="section" id="computational-mode">
+<h3>Computational Mode<a class="headerlink" href="#computational-mode" title="Permalink to this headline">¶</a></h3>
+<p>In section <a class="reference external" href="#Stability">Stability</a> it was determined that there are four
+oscillatory modes. Consider letting <span class="math notranslate nohighlight">\(dt \rightarrow 0\)</span> in
+(<a class="reference external" href="#lab7:eq:lambda">Lambda Eqn</a>). Two of the roots give <span class="math notranslate nohighlight">\(+1\)</span> and two roots give <span class="math notranslate nohighlight">\(-1\)</span>.</p>
+<p>Consider the variable <span class="math notranslate nohighlight">\(u\)</span> at time <span class="math notranslate nohighlight">\(p \, dt\)</span> and one time step later at
+time <span class="math notranslate nohighlight">\((p+1) \, dt\)</span>.
+<div class="math notranslate nohighlight">
+\[\frac{u_{m(p+1)}}{u_{mp}} = \frac {{\cal R}e \{ {\cal U} \exp [i(kmd - \omega (p+1)\, dt)] \} } {{\cal R}e \{ {\cal U} \exp [i(kmd - \omega p\, dt)] \} } = \exp(i \omega \, dt) = \lambda\]</div>
+
+Thus, <span class="math notranslate nohighlight">\(\lambda\)</span> gives the ratio of the velocity at the next time step to
+its value at the current time step. Therefore, as the time step gets
+very small, physically we expect the system not to change much between
+steps. In the limit of zero time step, the value of <span class="math notranslate nohighlight">\(u\)</span> or <span class="math notranslate nohighlight">\(h\)</span> should
+not change between steps; that is <span class="math notranslate nohighlight">\(\lambda\)</span> should be <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<p>A value of <span class="math notranslate nohighlight">\(\lambda = -1\)</span> implies <span class="math notranslate nohighlight">\(u\)</span> changes sign between each step, no
+matter how small the step. This mode is not a physical mode of
+oscillation, but rather a <em>computational mode</em>, which is entirely
+non-physical. It arises from using a centre difference scheme in time
+and not staggering the grid in time. There are schemes that avoid
+introducing such spurious modes (by staggering in time), but we won’t
+discuss them here (for more information, see <a class="reference external" href="#Ref:MesingerArakawa">Mesinger and Arakawa, 1976</a>
+[Ch. II]). However, the usual practice in geophysical fluid dynamics is
+to use the leap-frog scheme anyway (since it is second order in time)
+and find a way to keep the computational modes “small”, in some sense.</p>
+<p>For a reasonably small value of <span class="math notranslate nohighlight">\(dt\)</span>, the computational modes have
+<span class="math notranslate nohighlight">\(\lambda \approx -1\)</span>. Therefore, these modes can be eliminated almost
+completely by averaging two adjacent time steps. To understand why this
+is so, think of a computational mode <span class="math notranslate nohighlight">\(\hat{u}_{mp}\)</span> at time level <span class="math notranslate nohighlight">\(p\)</span>,
+which is added to its counterpart,
+<span class="math notranslate nohighlight">\(\hat{u}_{m(p+1)} \approx -\hat{u}_{mp}\)</span> at the next time step: <em>their
+sum is approximately zero!</em> For the code in this lab, it is adequate to
+average the solution in this fashion only every 101 time steps (though
+larger models may need to be averaged more often). After the averaging
+is performed, the code must be restarted; see <a class="reference external" href="#Starting-the-Simulation-Full-Equations">Section on Starting</a>.</p>
+</div>
+</div>
+<div class="section" id="glossary">
+<h2>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
+<p><strong>Poincare waves:</strong> These are waves that obey the dispersion relation <span class="math notranslate nohighlight">\(\omega ^2=f^2+k^2 c^2\)</span>, where <span class="math notranslate nohighlight">\(c\)</span> is the wave speed, <span class="math notranslate nohighlight">\(k\)</span> is the magnitude of the wavenumber vector, <span class="math notranslate nohighlight">\(f\)</span> is the Coriolis frequency, and <span class="math notranslate nohighlight">\(\omega\)</span> is the wave frequency.</p>
+<p><strong>CFL condition:</strong> named after Courant, Friedrichs and Levy, who first derived the relationship. This is a stability condition for finite difference schemes (for propagation problems) that corresponds physically to the idea that the continuous domain of dependence must contain the corresponding domain of dependence for the discrete problem.</p>
+<p><strong>dispersive wave:</strong> Any wave whose speed varies with the wavenumber. As a consequence, waves of different wavelengths that start at the same location will move away at different speeds, and hence will spread out, or <em>disperse</em>.</p>
+<p><strong>dispersion relation:</strong> For dispersive waves, this relation links the frequency (and hence also the phase speed) to the wavenumber, for a given wave. See also, <em>dispersive wave</em>.</p>
+<p><strong>dispersive wave:</strong> Any wave whose speed varies with the wavenumber. As a consequence, waves of different wavelengths that start at the same location will move away at different speeds, and hence will spread out, or <em>disperse</em>.</p>
+<p><strong>dispersion relation:</strong> For dispersive waves, this relation links the frequency (and hence also the phase speed) to the wavenumber, for a given wave. See also, <em>dispersive wave</em>.</p>
+<p><strong>staggered grid:</strong> This refers to a problem with several unknown functions, where the discrete unknowns are not located at same grid points; rather, they are <em>staggered</em> from each other. For example, it is often the case that in addition to the grid points themselves, some uknowns will be placed at the center of grid cells, or at the center of the sides of the grid cells.</p>
+<p><strong>leap-frog scheme:</strong> This term is used to refer to time discretization schemes that use the centered difference formula to discretize the first time derivative in PDE problems. The resulting difference scheme relates the solution at the next time step to the solution <em>two</em> time steps previous. Hence, the even- and odd-numbered time steps are linked together, with the resulting computation performed in a <em>leap-frog</em> fashion.</p>
+<p><strong>periodic boundary conditions:</strong> Spatial boundary conditions where the value of the solution at one end of the domain is required to be equal to the value on the other end (compare to dirichlet boundary values, where the the solution at both ends is fixed at a specific value or values). This enforces periodicity on the solution, and in terms of a fluid flow problem, these conditions can be thought of more intuitively as requiring that any flow out of the one boundary must return through the corresponding boundary on the other side.</p>
+<p><strong>computational mode:</strong> When performing a modal analysis of a numerical scheme, this is a mode in the solution that does not correspond to any of the “real” (or physical) modes in the continuous problem. It is an artifact of the discretization process only, and can sometimes lead to spurious computational results (for example, with the leap-frog time stepping scheme).</p>
+<p><a name="References"></a></p>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p><a name="Ref:Cushman-Roisin"></a>
+Cushman-Roisin, B., 1994: Introduction to Geophysical Fluid Dynamics, Prentice Hall.</p>
+<p><a name="Ref:Gill"></a>
+Gill, A.E., 1982: Atmosphere-Ocean Dynamics, Academic Press, Vol. 30 International Geophysics Series, New York.</p>
+<p><a name="Ref:MesingerArakawa"></a>
+Mesinger, F. and A. Arakawa, 1976: Numerical Methods Used in Atmospheric Models,GARP Publications Series No.~17, Global Atmospheric Research Programme.</p>
+<p><a name="Ref:PondPickard"></a>
+Pond, G.S. and G.L. Pickard, 1983: Introductory Dynamic Oceanography, Pergamon, Great Britain, 2nd Edition.</p>
+<p><a name="Ref:Pressetal"></a>
+Press, W.H., S.A. Teukolsky, W.T. Vetterling and B.P. Flannery, 1992: Numerical Recipes in FORTRAN: The Art of Scientific Computing, Cambridge University Press, Cambridge, 2n Edition.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Numeric project
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

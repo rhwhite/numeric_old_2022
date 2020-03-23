@@ -1,0 +1,1140 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Solving Ordinary Differential Equations with the Runge-Kutta Methods &mdash; Numeric course 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script src="../../../../_static/togglebutton.js"></script>
+        <script >var togglebuttonSelector = '.toggle, .tag_hide_input div.cell_input, .tag_hide_output div.cell_output, .tag_hide_cell.cell';</script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/togglebutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/mystnb.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> Numeric course
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../course_bootstrap.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ugradsyllabus20.html">Undergrad Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../gradsyllabus20.html">Grad Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../schedule20.html">Detailed Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../texts.html">Optional texts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebook_toc.html">Course/lab descriptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../week_notes.html">Weekly notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../assignments.html">Weekly assignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../quizzes.html">Quizzes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../solutions.html">Solutions</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Numeric course</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Solving Ordinary Differential Equations with the Runge-Kutta Methods</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../_sources/jupyter_execute/jupyter_execute/doc_notebooks/lab4/01-lab4.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="solving-ordinary-differential-equations-with-the-runge-kutta-methods">
+<h1>Solving Ordinary Differential Equations with the Runge-Kutta Methods<a class="headerlink" href="#solving-ordinary-differential-equations-with-the-runge-kutta-methods" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="list-of-problems">
+<h2>List of Problems<a class="headerlink" href="#list-of-problems" title="Permalink to this headline">¶</a></h2>
+<!-- {#list-of-problems .unnumbered} --><ul class="simple">
+<li><p><a class="reference external" href="#problem_midpoint">Problem midpoint</a></p></li>
+<li><p><a class="reference external" href="#problem_tableau">Problem tableau</a></p></li>
+<li><p><a class="reference external" href="#problemrk4">Problem Runge Kutta4</a></p></li>
+<li><p><a class="reference external" href="#problem_embedded">Problem embedded</a></p></li>
+<li><p><a class="reference external" href="#prob_a">Problem coding A</a></p></li>
+<li><p><a class="reference external" href="#prob_b">Problem coding B</a></p></li>
+<li><p><a class="reference external" href="#prob_c">Problem coding C</a></p></li>
+</ul>
+</div>
+<div class="section" id="assignment-handin-upload-a-single-fresh-notebook-that-contains-your-answers">
+<h2>Assignment handin  – upload a single, fresh notebook that contains your answers<a class="headerlink" href="#assignment-handin-upload-a-single-fresh-notebook-that-contains-your-answers" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Assignment:  A409 do Problems 2 (tableau), 3 (Runge Kutta4), 4 (embedded), Coding A and Coding B</p></li>
+<li><p>Assignment:  Grads do Problems 2 (tableau), 3 (Runge Kutta4), 4 (embedded), Coding A, Coding B and Coding C</p></li>
+</ul>
+</div>
+<div class="section" id="objectives">
+<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">¶</a></h2>
+<p>In this lab, you will explore Runge-Kutta methods for solving ordinary
+differential equations. The goal is to gain a better understanding of
+some of the more popular Runge-Kutta methods and the corresponding
+numerical code.</p>
+<p>Specifically you will be able to:</p>
+<ul class="simple">
+<li><p>describe the mid-point method</p></li>
+<li><p>construct a Runge-Kutta tableau from equations or equations from a
+tableau</p></li>
+<li><p>describe how a Runge-Kutta method estimates truncation error</p></li>
+<li><p>edit a working Octave code to use a different method or solve a
+different problem</p></li>
+</ul>
+</div>
+<div class="section" id="readings">
+<h2>Readings<a class="headerlink" href="#readings" title="Permalink to this headline">¶</a></h2>
+<p>There is no required reading for this lab, beyond the contents of the
+lab itself. However, if you would like additional background on any of
+the following topics, then refer to the sections indicated below.</p>
+<p><strong>Runge-Kutta Methods:</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>-   Newman, Chapter 8
+
+-   Press, et al.  Section 16.1
+
+-   Burden &amp; Faires  Section 5.4
+</pre></div>
+</div>
+</div>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Ordinary differential equations (ODEs) arise in many physical
+situations. For example, there is the first-order Newton cooling
+equation discussed in , and perhaps the most famous equation of all, the
+second-order Newton’s Second Law of Mechanics <span class="math notranslate nohighlight">\(F=ma\)</span> .</p>
+<p>In general, higher-order equations, such as Newton’s force equation, can
+be rewritten as a system of first-order equations . So the generic
+problem in ODEs is a set of N coupled first-order differential equations
+of the form,</p>
+<p><div class="math notranslate nohighlight">
+\[
+\frac{d{\bf y}}{dt} = f({\bf y},t)
+\]</div>
+</p>
+<p>where <span class="math notranslate nohighlight">\({\bf y}\)</span> is a vector of
+variables.</p>
+<p>For a complete specification of the solution, boundary conditions for
+the problem must be given. Typically, the problems are broken up into
+two classes:</p>
+<ul class="simple">
+<li><p><strong>Initial Value Problem (IVP)</strong>: the initial values of
+<span class="math notranslate nohighlight">\({\bf y}\)</span> are specified.</p></li>
+<li><p><strong>Boundary Value Problem (BVP)</strong>: <span class="math notranslate nohighlight">\({\bf y}\)</span> is
+specified at the initial and final times.</p></li>
+</ul>
+<p>For this lab, we are concerned with the IVP’s. BVP’s tend to be much
+more difficult to solve and involve techniques which will not be dealt
+with in this set of labs.</p>
+<p>Now as was pointed out in , in general, it will not be possible to find
+exact, analytic solutions to the ODE. However, it is possible to find an
+approximate solution with a finite difference scheme such as the forward
+Euler method . This is a simple first-order, one-step scheme which is
+easy to implement. However, this method is rarely used in practice as it
+is neither very stable nor accurate.</p>
+<p>The higher-order Taylor methods discussed in are one alternative but
+involve higher-order derivatives that must be calculated by hand or
+worked out numerically in a multi-step scheme. Like the forward Euler
+method, stability is a concern.</p>
+<p>The Runge-Kutta methods are higher-order, one-step schemes that makes
+use of information at different <span><em>stages</em></span> between the
+beginning and end of a step. They are more stable and accurate than the
+forward Euler method and are still relatively simple compared to schemes
+such as the multi-step predictor-corrector methods or the Bulirsch-Stoer
+method. Though they lack the accuracy and efficiency of these more
+sophisticated schemes, they are still powerful methods that almost
+always succeed for non-stiff IVPs.</p>
+</div>
+<div class="section" id="runge-kutta-methods">
+<h2>Runge-Kutta methods<a class="headerlink" href="#runge-kutta-methods" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="the-midpoint-method-a-two-stage-runge-kutta-method">
+<h3>The Midpoint Method: A Two-Stage Runge-Kutta Method<a class="headerlink" href="#the-midpoint-method-a-two-stage-runge-kutta-method" title="Permalink to this headline">¶</a></h3>
+<p>The forward Euler method takes the solution at time <span class="math notranslate nohighlight">\(t_n\)</span> and advances
+it to time <span class="math notranslate nohighlight">\(t_{n+1}\)</span> using the value of the derivative <span class="math notranslate nohighlight">\(f(y_n,t_n)\)</span> at
+time <span class="math notranslate nohighlight">\(t_n\)</span></p>
+<p><div class="math notranslate nohighlight">
+\[y_{n+1} = y_n + h f(y_n,t_n)\]</div>
+</p>
+<p>where <span class="math notranslate nohighlight">\(h \equiv \Delta t\)</span>.</p>
+<p><img alt="fig1" src="jupyter_execute/jupyter_execute/doc_notebooks/lab4/images/euler.png" /></p>
+<p>Figure euler: The forward Euler method is essentially a straight-line approximation
+to the solution, over the interval of one step, using the derivative at
+the starting point as the slope.</p>
+<p>The idea of the Runge-Kutta schemes is to take advantage of derivative
+information at the times between <span class="math notranslate nohighlight">\(t_n\)</span> and <span class="math notranslate nohighlight">\(t_{n+1}\)</span> to increase the
+order of accuracy.</p>
+<p>For example, in the midpoint method, the derivative at the initial time
+is used to approximate the derivative at the midpoint of the interval,
+<span class="math notranslate nohighlight">\(f(y_n+\frac{1}{2}hf(y_n,t_n), t_n+\frac{1}{2}h)\)</span>. The derivative at the
+midpoint is then used to advance the solution to the next step. The
+method can be written in two <em>stages</em> <span class="math notranslate nohighlight">\(k_i\)</span>,</p>
+<div id="eq:midpoint"><b>eq:midpoint</b></div>
+$$
+\begin{aligned}
+   \begin{array}{l}
+    k_1 =  h f(y_n,t_n)\\
+    k_2 = h f(y_n+\frac{1}{2}k_1, t_n+\frac{1}{2}h)\\
+    y_{n+1} = y_n + k_2
+  \end{array}
+\end{aligned}
+$$ <p>The midpoint method is known
+as a 2-stage Runge-Kutta formula.</p>
+<p><img alt="fig2" src="jupyter_execute/jupyter_execute/doc_notebooks/lab4/images/midpoint.png" /></p>
+<p>Figure midpoint: The midpoint method again uses the derivative at the starting point to
+approximate the solution at the midpoint. The derivative at the midpoint
+is then used as the slope of the straight-line approximation.</p>
+</div>
+<div class="section" id="second-order-runge-kutta-methods">
+<h3>Second-Order Runge-Kutta Methods<a class="headerlink" href="#second-order-runge-kutta-methods" title="Permalink to this headline">¶</a></h3>
+<p>As was shown in lab 2 , the error in the forward Euler method is
+proportional to <span class="math notranslate nohighlight">\(h\)</span>. In other words, the forward Euler method has an
+accuracy which is <em>first order</em> in <span class="math notranslate nohighlight">\(h\)</span>.</p>
+<p>The advantage of the midpoint method is that the extra derivative
+information at the midpoint results in the first order error term
+cancelling out, making the method <em>second order</em> accurate.
+This can be shown by a Taylor expansion of equation
+<a class="reference external" href="#eq:midpoint">eq:midpoint</a></p>
+<div id='problem_midpoint'><b>Problem midpoint</b></div><p>Even though the midpoint method is second-order
+accurate, it may still be less accurate than the forward Euler method.
+In the demo below, compare the accuracy of the two methods on the
+initial value problem</p>
+<div id="eq:linexp"><b>eq:linexp</b></div>
+\begin{equation}
+\frac{dy}{dt} = -y +t +1,  \;\;\;\; y(0) =1
+\end{equation}<p>which has the exact
+solution
+\begin{equation}
+y(t) = t + e^{-t}
+\end{equation}</p>
+<ol class="simple">
+<li><p>Why is it possible that the midpoint method may be less accurate
+than the forward Euler method, even though it is a higher order
+method?</p></li>
+<li><p>Based on the numerical solutions of <a class="reference external" href="#eq:linexp">eq:linexp</a>, which method
+appears more accurate?</p></li>
+<li><p>Cut the stepsize in half and check the error at a given time. Repeat
+a couple of more times. How does the error drop relative to the
+change in stepsize?</p></li>
+<li><p>How do the numerical solutions compare to <span class="math notranslate nohighlight">\(y(t) = t + e^{-t}\)</span> when
+you change the initial time? Why?</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">context</span>
+<span class="kn">from</span> <span class="nn">numlabs.lab4.lab4_functions</span> <span class="kn">import</span> <span class="n">initinter41</span><span class="p">,</span><span class="n">eulerinter41</span><span class="p">,</span><span class="n">midpointinter41</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">initialVals</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;yinitial&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span><span class="s1">&#39;t_beg&#39;</span><span class="p">:</span><span class="mf">0.</span><span class="p">,</span><span class="s1">&#39;t_end&#39;</span><span class="p">:</span><span class="mf">1.</span><span class="p">,</span><span class="s1">&#39;dt&#39;</span><span class="p">:</span><span class="mf">0.25</span><span class="p">,</span><span class="s1">&#39;c1&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span><span class="s1">&#39;c2&#39;</span><span class="p">:</span><span class="mf">1.</span><span class="p">,</span><span class="s1">&#39;c3&#39;</span><span class="p">:</span><span class="mf">1.</span><span class="p">}</span>
+<span class="n">coeff</span> <span class="o">=</span> <span class="n">initinter41</span><span class="p">(</span><span class="n">initialVals</span><span class="p">)</span>
+<span class="n">timeVec</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">coeff</span><span class="o">.</span><span class="n">t_beg</span><span class="p">,</span><span class="n">coeff</span><span class="o">.</span><span class="n">t_end</span><span class="p">,</span><span class="n">coeff</span><span class="o">.</span><span class="n">dt</span><span class="p">)</span>
+<span class="n">nsteps</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">timeVec</span><span class="p">)</span>
+<span class="n">ye</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">ym</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">y</span><span class="o">=</span><span class="n">coeff</span><span class="o">.</span><span class="n">yinitial</span>
+<span class="n">ye</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coeff</span><span class="o">.</span><span class="n">yinitial</span><span class="p">)</span>
+<span class="n">ym</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coeff</span><span class="o">.</span><span class="n">yinitial</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">nsteps</span><span class="p">):</span>
+    <span class="n">ynew</span><span class="o">=</span><span class="n">eulerinter41</span><span class="p">(</span><span class="n">coeff</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">timeVec</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">ye</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ynew</span><span class="p">)</span>
+    <span class="n">ynew</span><span class="o">=</span><span class="n">midpointinter41</span><span class="p">(</span><span class="n">coeff</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">timeVec</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">ym</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ynew</span><span class="p">)</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">ynew</span>
+<span class="n">analytic</span><span class="o">=</span><span class="n">timeVec</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">timeVec</span><span class="p">)</span>
+<span class="n">theFig</span><span class="p">,</span><span class="n">theAx</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">l1</span><span class="o">=</span><span class="n">theAx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeVec</span><span class="p">,</span><span class="n">analytic</span><span class="p">,</span><span class="s1">&#39;b-&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;analytic&#39;</span><span class="p">)</span>
+<span class="n">theAx</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;time (seconds)&#39;</span><span class="p">)</span>
+<span class="n">l2</span><span class="o">=</span><span class="n">theAx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeVec</span><span class="p">,</span><span class="n">ye</span><span class="p">,</span><span class="s1">&#39;r-&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;euler&#39;</span><span class="p">)</span>
+<span class="n">l3</span><span class="o">=</span><span class="n">theAx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeVec</span><span class="p">,</span><span class="n">ym</span><span class="p">,</span><span class="s1">&#39;g-&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;midpoint&#39;</span><span class="p">)</span>
+<span class="n">theAx</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+<span class="n">theAx</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;interactive 4.1&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>******************************
+context imported. Front of path:
+/Users/phil/repos/numeric
+back of path: /Users/phil/.ipython
+******************************
+
+through /Users/phil/repos/numeric/notebooks/lab4/context.py
+</pre></div>
+</div>
+<img alt="../../../../_images/01-lab4_14_11.png" src="../../../../_images/01-lab4_14_11.png" />
+</div>
+</div>
+<p>In general, an <em>explicit</em> 2-stage Runge-Kutta method can be
+written as</p>
+<div id='eq:explicitrk2'><b> eq:explicitrk1</b> </div><p>\begin{align}
+k_1 =&amp;  h f(y_n,t_n)\<br />
+k_2 =&amp; h f(y_n+b_{21}k_1, t_n+a_2h) \<br />
+y_{n+1} =&amp; y_n + c_1k_1 +c_2k_2
+\end{align}</p>
+<p>The scheme is said to be
+<span><em>explicit</em></span> since a given stage does not depend
+<span><em>implicitly</em></span> on itself, as in the backward Euler method ,
+or on a later stage.</p>
+<p>Other explicit second-order schemes can be derived by comparing the
+formula <a class="reference external" href="#eq:explicitrk2">eq: explicitrk2</a> to the second-order Taylor method and
+matching terms to determine the coefficients <span class="math notranslate nohighlight">\(a_2\)</span>, <span class="math notranslate nohighlight">\(b_{21}\)</span>, <span class="math notranslate nohighlight">\(c_1\)</span> and
+<span class="math notranslate nohighlight">\(c_2\)</span>.</p>
+<p>See <a class="reference external" href="#app_midpoint">Appendix midpoint</a> for the derivation of the midpoint
+method.</p>
+</div>
+<div class="section" id="the-runge-kutta-tableau">
+<h3>The Runge-Kutta Tableau<a class="headerlink" href="#the-runge-kutta-tableau" title="Permalink to this headline">¶</a></h3>
+<p>A general s-stage Runge-Kutta method can be written as,</p>
+<p><div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{l}
+k_i = h f(y_n+ {\displaystyle \sum_{j=1}^{s} } b_{ij}k_j, t_n+a_ih), 
+\;\;\; i=1,..., s\\
+y_{n+1} = y_n + {\displaystyle \sum_{j=1}^{s}} c_jk_j 
+\end{array}
+\end{split}\]</div>
+</p>
+<!-- \label{lab4:eq:rks} --><p>An <em>explicit</em> Runge-Kutta method has <span class="math notranslate nohighlight">\(b_{ij}=0\)</span> for
+<span class="math notranslate nohighlight">\(i\leq j\)</span>, i.e. a given stage <span class="math notranslate nohighlight">\(k_i\)</span> does not depend on itself or a later
+stage <span class="math notranslate nohighlight">\(k_j\)</span>.</p>
+<p>The coefficients can be expressed in a tabular form known as the
+Runge-Kutta tableau.</p>
+<p><div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{|c|c|cccc|c|} \hline
+i &amp; a_i &amp;{b_{ij}} &amp;  &amp;  &amp;&amp; c_i \\ \hline
+1 &amp; a_1 &amp; b_{11} &amp; b_{12} &amp; ... &amp; b_{1s} &amp; c_1\\
+2 &amp; a_2 &amp; b_{21} &amp; b_{22} &amp; ... &amp; b_{2s} &amp; c_2\\ 
+\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp;  &amp; \vdots &amp; \vdots\\
+s &amp;a_s &amp; b_{s1} &amp; b_{s2} &amp; ... &amp; b_{ss} &amp; c_s\\\hline
+{j=} &amp; &amp; 1 \  2 &amp; ... &amp; s &amp; \\ \hline
+\end{array}
+\end{split}\]</div>
+</p>
+<p>An explicit scheme will be strictly lower-triangular.</p>
+<p>For example, a general 2-stage Runge-Kutta method,</p>
+<p><div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{l}
+k_1 =  h f(y_n+b_{11}k_1+b_{12}k_2,t_n+a_1h)\\
+k_2 = h f(y_n+b_{21}k_1+b_{22}k_2, t_n+a_2h)\\
+y_{n+1} = y_n + c_1k_1 +c_2k_2
+\end{array}
+\end{split}\]</div>
+</p>
+<p>has the coefficients,</p>
+<p><div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{|c|c|cc|c|} \hline
+i &amp; a_i &amp; {b_{ij}} &amp; &amp; c_i \\ \hline
+1 &amp; a_1 &amp; b_{11} &amp; b_{12}  &amp; c_1\\
+2 &amp; a_2 &amp; b_{21} &amp; b_{22}  &amp; c_2\\ \hline
+{j=} &amp; &amp; 1 &amp; 2 &amp; \\ \hline
+\end{array}
+\end{split}\]</div>
+</p>
+<!-- \label{lab4:eq:rk2} --><p>In particular, the midpoint method is given by the tableau,</p>
+<p><div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{|c|c|cc|c|} \hline
+i &amp; a_i &amp; {b_{ij}} &amp;   &amp; c_i \\ \hline
+1 &amp; 0 &amp; 0 &amp;  0 &amp; 0\\
+2 &amp; \frac{1}{2} &amp; \frac{1}{2} &amp; 0 &amp; 1\\ \hline
+{j=} &amp; &amp; 1 &amp; 2 &amp; \\ \hline
+\end{array}
+\end{split}\]</div>
+</p>
+<div id="problem_tableau"></div><div class="section" id="problem-tableau">
+<h4>Problem tableau<a class="headerlink" href="#problem-tableau" title="Permalink to this headline">¶</a></h4>
+<p>Write out the tableau for</p>
+<ol class="simple">
+<li><p><a class="reference external" href="#eq:heuns">Heun’s method</a></p></li>
+<li><p>the fourth-order Runge-Kutta method (<a class="reference external" href="#eq:rk4">eq:rk4</a>) discussed in the
+next section.</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="explicit-fourth-order-runge-kutta-method">
+<h3>Explicit Fourth-Order Runge-Kutta Method<a class="headerlink" href="#explicit-fourth-order-runge-kutta-method" title="Permalink to this headline">¶</a></h3>
+<!-- {#lab4:sec:rk4} --><p>Explicit Runge-Kutta methods are popular as each stage can be calculated
+with one function evaluation. In contrast, implicit Runge-Kutta methods
+usually involves solving a non-linear system of equations in order to
+evaluate the stages. As a result, explicit schemes are much less
+expensive to implement than implicit schemes.</p>
+<p>However, there are cases in which implicit schemes are necessary and
+that is in the case of <em>stiff</em> sets of equations. See
+section 16.6 of Press et al. for a discussion. For these labs, we will
+focus on non-stiff equations and on explicit Runge-Kutta methods.</p>
+<p>The higher-order Runge-Kutta methods can be derived by in manner similar
+to the midpoint formula. An s-stage method is compared to a Taylor
+method and the terms are matched up to the desired order.</p>
+<p>Methods of order <span class="math notranslate nohighlight">\(M &gt; 4\)</span> require <span class="math notranslate nohighlight">\(M+1\)</span> or <span class="math notranslate nohighlight">\(M+2\)</span> function evaluations or
+stages, in the case of explicit Runge-Kutta methods. As a result,
+fourth-order Runge-Kutta methods have achieved great popularity over the
+years as they require only four function evaluations per step. In
+particular, there is the classic fourth-order Runge-Kutta formula:</p>
+<p><div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{l}
+k_1 =  h f(y_n,t_n)\\
+k_2 = h f(y_n+\frac{k_1}{2}, t_n+\frac{h}{2})\\
+k_3 = h f(y_n+\frac{k_2}{2}, t_n+\frac{h}{2})\\
+k_4 = h f(y_n+k_3, t_n+h)\\
+y_{n+1} = y_n + \frac{k_1}{6}+ \frac{k_2}{3}+ \frac{k_3}{3} + \frac{k_4}{6}
+\end{array}
+\end{split}\]</div>
+</p>
+<div id="problemrk4"><b>Problem RK4</b><p>In the cell below, compare compare solutions to the test
+problem</p>
+<div id="eq:test"><b>eq:test</b><div>
+$$
+\frac{dy}{dt} = -y +t +1,  \;\;\;\; y(0) =1
+$$ <p>generated with the
+fourth-order Runge-Kutta method to solutions generated by the forward
+Euler and midpoint methods.</p>
+<ol class="simple">
+<li><p>Based on the numerical solutions of (<a class="reference external" href="#eq:test">eq:test</a>), which of the
+three methods appears more accurate?</p></li>
+<li><p>Again determine how the error changes relative to the change in
+stepsize, as the stepsize is halved.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numlabs.lab4.lab4_functions</span> <span class="kn">import</span> <span class="n">initinter41</span><span class="p">,</span><span class="n">eulerinter41</span><span class="p">,</span><span class="n">midpointinter41</span><span class="p">,</span>\
+                                        <span class="n">rk4ODEinter41</span>
+<span class="n">initialVals</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;yinitial&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span><span class="s1">&#39;t_beg&#39;</span><span class="p">:</span><span class="mf">0.</span><span class="p">,</span><span class="s1">&#39;t_end&#39;</span><span class="p">:</span><span class="mf">1.</span><span class="p">,</span><span class="s1">&#39;dt&#39;</span><span class="p">:</span><span class="mf">0.05</span><span class="p">,</span><span class="s1">&#39;c1&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span><span class="s1">&#39;c2&#39;</span><span class="p">:</span><span class="mf">1.</span><span class="p">,</span><span class="s1">&#39;c3&#39;</span><span class="p">:</span><span class="mf">1.</span><span class="p">}</span>
+<span class="n">coeff</span> <span class="o">=</span> <span class="n">initinter41</span><span class="p">(</span><span class="n">initialVals</span><span class="p">)</span>
+<span class="n">timeVec</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">coeff</span><span class="o">.</span><span class="n">t_beg</span><span class="p">,</span><span class="n">coeff</span><span class="o">.</span><span class="n">t_end</span><span class="p">,</span><span class="n">coeff</span><span class="o">.</span><span class="n">dt</span><span class="p">)</span>
+<span class="n">nsteps</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">timeVec</span><span class="p">)</span>
+<span class="n">ye</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">ym</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">yrk</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">y</span><span class="o">=</span><span class="n">coeff</span><span class="o">.</span><span class="n">yinitial</span>
+<span class="n">ye</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coeff</span><span class="o">.</span><span class="n">yinitial</span><span class="p">)</span>
+<span class="n">ym</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coeff</span><span class="o">.</span><span class="n">yinitial</span><span class="p">)</span>
+<span class="n">yrk</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coeff</span><span class="o">.</span><span class="n">yinitial</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">nsteps</span><span class="p">):</span>
+    <span class="n">ynew</span><span class="o">=</span><span class="n">eulerinter41</span><span class="p">(</span><span class="n">coeff</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">timeVec</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">ye</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ynew</span><span class="p">)</span>
+    <span class="n">ynew</span><span class="o">=</span><span class="n">midpointinter41</span><span class="p">(</span><span class="n">coeff</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">timeVec</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">ym</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ynew</span><span class="p">)</span>
+    <span class="n">ynew</span><span class="o">=</span><span class="n">rk4ODEinter41</span><span class="p">(</span><span class="n">coeff</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">timeVec</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">yrk</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ynew</span><span class="p">)</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">ynew</span>
+<span class="n">analytic</span><span class="o">=</span><span class="n">timeVec</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">timeVec</span><span class="p">)</span>
+<span class="n">theFig</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">theFig</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="n">theAx</span><span class="o">=</span><span class="n">theFig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="n">l1</span><span class="o">=</span><span class="n">theAx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeVec</span><span class="p">,</span><span class="n">analytic</span><span class="p">,</span><span class="s1">&#39;b-&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;analytic&#39;</span><span class="p">)</span>
+<span class="n">theAx</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;time (seconds)&#39;</span><span class="p">)</span>
+<span class="n">l2</span><span class="o">=</span><span class="n">theAx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeVec</span><span class="p">,</span><span class="n">ye</span><span class="p">,</span><span class="s1">&#39;r-&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;euler&#39;</span><span class="p">)</span>
+<span class="n">l3</span><span class="o">=</span><span class="n">theAx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeVec</span><span class="p">,</span><span class="n">ym</span><span class="p">,</span><span class="s1">&#39;g-&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;midpoint&#39;</span><span class="p">)</span>
+<span class="n">l4</span><span class="o">=</span><span class="n">theAx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeVec</span><span class="p">,</span><span class="n">yrk</span><span class="p">,</span><span class="s1">&#39;m-&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;rk4&#39;</span><span class="p">)</span>
+<span class="n">theAx</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+<span class="n">theAx</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;interactive 4.2&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../_images/01-lab4_21_01.png" src="../../../../_images/01-lab4_21_01.png" />
+</div>
+</div>
+</div>
+<div class="section" id="embedded-runge-kutta-methods-estimate-of-the-truncation-error">
+<h3>Embedded Runge-Kutta Methods: Estimate of the Truncation Error<a class="headerlink" href="#embedded-runge-kutta-methods-estimate-of-the-truncation-error" title="Permalink to this headline">¶</a></h3>
+<!-- {#lab4:sec:embeddedrk} --><p>It is possible to find two methods of different order which share the
+same stages <span class="math notranslate nohighlight">\(k_i\)</span> and differ only in the way they are combined, i.e. the
+coefficients <span class="math notranslate nohighlight">\(c_i\)</span>. For example, the original so-called embedded
+Runge-Kutta scheme was discovered by Fehlberg and consisted of a
+fourth-order scheme and fifth-order scheme which shared the same six
+stages.</p>
+<p>In general, a fourth-order scheme embedded in a fifth-order scheme will
+share the stages</p>
+<p><div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{l}
+k_1 =  h f(y_n,t_n)\\
+k_2 = h f(y_n+b_{21}k_1, t_n+a_2h)\\
+\vdots \\
+k_6 = h f(y_n+b_{51}k_1+ ...+b_{56}k_6, t_n+a_6h)
+\end{array}
+\end{split}\]</div>
+</p>
+ <!-- \label{lab4:eq:stages} --><!-- \label{lab4:eq:fifth} --><p>The fifth-order formula takes the step:</p>
+<p><div class="math notranslate nohighlight">
+\[
+y_{n+1}=y_n+c_1k_1+c_2k_2+c_3k_3+c_4k_4+c_5k_5+c_6k_6
+\]</div>
+</p>
+<p>while the
+embedded fourth-order formula takes a different step:</p>
+<!-- \label{lab4:eq:fourth} --><p><div class="math notranslate nohighlight">
+\[
+y_{n+1}^*=y_n+c^*_1k_1+c^*_2k_2+c^*_3k_3+c^*_4k_4+c^*_5k_5+c^*_6k_6
+\]</div>
+</p>
+<p>If we now take the difference between the two numerical estimates, we
+get an estimate <span class="math notranslate nohighlight">\(\Delta_{\rm spec}\)</span> of the truncation error for the
+fourth-order method,</p>
+<!-- \label{lab4:eq:errorest} --><p><div class="math notranslate nohighlight">
+\[
+\Delta_{\rm est}(i)=y_{n+1}(i) - y_{n+1}^{*}(i) 
+= \sum^{6}_{i=1}(c_i-c_{i}^{*})k_i
+\]</div>
+</p>
+<p>This will prove to be very useful
+in the next lab where we provide the Runge-Kutta algorithms with
+adaptive stepsize control. The error estimate is used as a guide to an
+appropriate choice of stepsize.</p>
+<p>An example of an embedded Runge-Kutta scheme was found by Cash and Karp
+and has the tableau:</p>
+<p><div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{|c|c|cccccc|c|c|} \hline
+i &amp; a_i &amp; {b_{ij}} &amp; &amp; &amp; &amp; &amp;  &amp; c_i &amp; c^*_i \\ \hline
+1 &amp;  &amp;  &amp;  &amp;  &amp; &amp;  &amp;  &amp; \frac{37}{378} &amp; \frac{2825}{27648}\\
+2 &amp; \frac{1}{5} &amp; \frac{1}{5}&amp;  &amp;  &amp; &amp;  &amp; &amp; 0 &amp;0 \\
+3 &amp; \frac{3}{10} &amp; \frac{3}{40}&amp;\frac{9}{40}&amp;  &amp; &amp; &amp;  &amp;\frac{250}{621}&amp;\frac{18575}{48384}\\
+4 &amp;  \frac{3}{5}&amp;\frac{3}{10}&amp; -\frac{9}{10}&amp;\frac{6}{5}&amp; &amp; &amp;  &amp;\frac{125}{594}&amp; \frac{13525}{55296}\\
+5 &amp; 1 &amp; -\frac{11}{54}&amp;\frac{5}{2}&amp;-\frac{70}{27}&amp;\frac{35}{27}&amp;  &amp;  &amp; 0 &amp; \frac{277}{14336}\\
+6 &amp;  \frac{7}{8}&amp;  \frac{1631}{55296}&amp;  \frac{175}{512}&amp;\frac{575}{13824}&amp; \frac{44275}{110592}&amp; \frac{253}{4096}&amp;  &amp; \frac{512}{1771} &amp; \frac{1}{4}\\\hline
+{j=} &amp; &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 &amp; &amp; \\ \hline
+\end{array}
+\end{split}\]</div>
+</p>
+<p><a name="problem_embedded"></a></p>
+<div class="section" id="problem-embedded">
+<h4>Problem embedded<a class="headerlink" href="#problem-embedded" title="Permalink to this headline">¶</a></h4>
+<p>Though the error estimate is for the embedded
+fourth-order Runge-Kutta method, the fifth-order method can be used in
+practice for calculating the solution, the assumption being the
+fifth-order method should be at least as accurate as the fourth-order
+method. In the demo below, compare solutions of the test problem
+<a class="reference external" href="#eq:test2]">eq:test2</a></p>
+<div id="eq:test2"><b>eq:test2</b></div>
+$$\frac{dy}{dt} = -y +t +1,  \;\;\;\; y(0) =1$$<p>generated by the fifth-order method with solutions generated by the
+standard fourth-order Runge-Kutta method. Which method
+is more accurate? Again, determine how the error decreases as you halve
+the stepsizes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="kn">from</span> <span class="nn">numlabs.lab4.lab4_functions</span> <span class="kn">import</span> <span class="n">initinter41</span><span class="p">,</span><span class="n">rk4ODEinter41</span><span class="p">,</span><span class="n">rkckODEinter41</span>
+<span class="n">initialVals</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;yinitial&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span><span class="s1">&#39;t_beg&#39;</span><span class="p">:</span><span class="mf">0.</span><span class="p">,</span><span class="s1">&#39;t_end&#39;</span><span class="p">:</span><span class="mf">1.</span><span class="p">,</span><span class="s1">&#39;dt&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span><span class="s1">&#39;c1&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span><span class="s1">&#39;c2&#39;</span><span class="p">:</span><span class="mf">1.</span><span class="p">,</span><span class="s1">&#39;c3&#39;</span><span class="p">:</span><span class="mf">1.</span><span class="p">}</span>
+<span class="n">coeff</span> <span class="o">=</span> <span class="n">initinter41</span><span class="p">(</span><span class="n">initialVals</span><span class="p">)</span>
+
+<span class="n">timeVec</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">coeff</span><span class="o">.</span><span class="n">t_beg</span><span class="p">,</span><span class="n">coeff</span><span class="o">.</span><span class="n">t_end</span><span class="p">,</span><span class="n">coeff</span><span class="o">.</span><span class="n">dt</span><span class="p">)</span>
+<span class="n">nsteps</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">timeVec</span><span class="p">)</span>
+<span class="n">ye</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">ym</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">yrk</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">yrkck</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">y1</span><span class="o">=</span><span class="n">coeff</span><span class="o">.</span><span class="n">yinitial</span>
+<span class="n">y2</span><span class="o">=</span><span class="n">coeff</span><span class="o">.</span><span class="n">yinitial</span>
+<span class="n">yrk</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coeff</span><span class="o">.</span><span class="n">yinitial</span><span class="p">)</span>
+<span class="n">yrkck</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coeff</span><span class="o">.</span><span class="n">yinitial</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">nsteps</span><span class="p">):</span>
+    <span class="n">ynew</span><span class="o">=</span><span class="n">rk4ODEinter41</span><span class="p">(</span><span class="n">coeff</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="n">timeVec</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">yrk</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ynew</span><span class="p">)</span>
+    <span class="n">y1</span><span class="o">=</span><span class="n">ynew</span> 
+    <span class="n">ynew</span><span class="o">=</span><span class="n">rkckODEinter41</span><span class="p">(</span><span class="n">coeff</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span><span class="n">timeVec</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">yrkck</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ynew</span><span class="p">)</span>
+    <span class="n">y2</span><span class="o">=</span><span class="n">ynew</span> 
+<span class="n">analytic</span><span class="o">=</span><span class="n">timeVec</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">timeVec</span><span class="p">)</span>
+<span class="n">theFig</span><span class="p">,</span><span class="n">theAx</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">l1</span><span class="o">=</span><span class="n">theAx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeVec</span><span class="p">,</span><span class="n">analytic</span><span class="p">,</span><span class="s1">&#39;b-&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;analytic&#39;</span><span class="p">)</span>
+<span class="n">theAx</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;time (seconds)&#39;</span><span class="p">)</span>
+<span class="n">l2</span><span class="o">=</span><span class="n">theAx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeVec</span><span class="p">,</span><span class="n">yrkck</span><span class="p">,</span><span class="s1">&#39;g-&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;rkck&#39;</span><span class="p">)</span>
+<span class="n">l3</span><span class="o">=</span><span class="n">theAx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeVec</span><span class="p">,</span><span class="n">yrk</span><span class="p">,</span><span class="s1">&#39;m-&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;rk&#39;</span><span class="p">)</span>
+<span class="n">theAx</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+<span class="n">theAx</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;interactive 4.3&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../_images/01-lab4_25_01.png" src="../../../../_images/01-lab4_25_01.png" />
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="python-moving-from-a-notebook-to-a-library">
+<h2>Python: moving from a notebook to a library<a class="headerlink" href="#python-moving-from-a-notebook-to-a-library" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="managing-problem-configurations">
+<h3>Managing problem configurations<a class="headerlink" href="#managing-problem-configurations" title="Permalink to this headline">¶</a></h3>
+<p>So far we’ve hardcoded our initialVars file into a cell.  We need a strategy for saving
+this information into a file that we can keep track of using git, and modify for
+various runs.  In python the fundamental data type is the dictionary.  It’s very
+flexible, but that comes at a cost – there are other data structures that are better
+suited to storing this type of information.</p>
+<div class="section" id="mutable-vs-immutable-data-types">
+<h4>Mutable vs. immutable data types<a class="headerlink" href="#mutable-vs-immutable-data-types" title="Permalink to this headline">¶</a></h4>
+<p>Python dictionaries and lists are <strong>mutable</strong>, which means they can be modified after they
+are created.  Python tuples, on the other hand, are <strong>immutable</strong> – there is no way of changing
+them without creating a copy.  Why does this matter?  One reason is efficiency and safety, an
+immutable object is easier to reason about.  Another reason is that immutable objects are <strong>hashable</strong>,
+that is, they can be turned into a unique string that can be guaranteed to represent that exact
+instance of the datatype.  Hashable data structures can be used as dictionary keys, mutable
+data structures can’t.  Here’s an illustration – this cell works:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test_dict</span><span class="o">=</span><span class="nb">dict</span><span class="p">()</span>
+<span class="n">the_key</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">test_dict</span><span class="p">[</span><span class="n">the_key</span><span class="p">]</span><span class="o">=</span><span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>{(0, 1, 2, 3): 5}
+</pre></div>
+</div>
+</div>
+</div>
+<p>this cell fails:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">traceback</span><span class="o">,</span> <span class="nn">sys</span>
+<span class="n">test_dict</span><span class="o">=</span><span class="nb">dict</span><span class="p">()</span>
+<span class="n">the_key</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">test_dict</span><span class="p">[</span><span class="n">the_key</span><span class="p">]</span><span class="o">=</span><span class="mi">5</span>
+<span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="n">tb</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()</span>
+    <span class="n">traceback</span><span class="o">.</span><span class="n">print_exception</span><span class="p">(</span><span class="o">*</span><span class="n">tb</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="stderr docutils container">
+<pre class="stderr literal-block">Traceback (most recent call last):
+  File &quot;&lt;ipython-input-5-5d4d6e884142&gt;&quot;, line 5, in &lt;module&gt;
+    test_dict[the_key]=5
+TypeError: unhashable type: 'list'
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="named-tuples">
+<h4>Named tuples<a class="headerlink" href="#named-tuples" title="Permalink to this headline">¶</a></h4>
+<p>One particular tuple flavor that bridges the gap between tuples and dictionaries
+is the <a class="reference external" href="https://docs.python.org/3/library/collections.html#collections.namedtuple">namedtuple</a>.
+It has the ability to look up values by attribute instead of numerical index (unlike
+a tuple), but it’s immutable and so can be used as a dictionary key.  The cell
+below show how to convert from a dictionary to a namedtuple for our case:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
+<span class="n">initialDict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;yinitial&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span><span class="s1">&#39;t_beg&#39;</span><span class="p">:</span><span class="mf">0.</span><span class="p">,</span><span class="s1">&#39;t_end&#39;</span><span class="p">:</span><span class="mf">1.</span><span class="p">,</span>
+                    <span class="s1">&#39;dt&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span><span class="s1">&#39;c1&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span><span class="s1">&#39;c2&#39;</span><span class="p">:</span><span class="mf">1.</span><span class="p">,</span><span class="s1">&#39;c3&#39;</span><span class="p">:</span><span class="mf">1.</span><span class="p">}</span>     
+<span class="n">inittup</span><span class="o">=</span><span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;inittup&#39;</span><span class="p">,</span><span class="s1">&#39;dt c1 c2 c3 t_beg t_end yinitial&#39;</span><span class="p">)</span>
+<span class="n">initialCond</span><span class="o">=</span><span class="n">inittup</span><span class="p">(</span><span class="o">**</span><span class="n">initialDict</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;values are </span><span class="si">{</span><span class="n">initialCond</span><span class="o">.</span><span class="n">c1</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">initialCond</span><span class="o">.</span><span class="n">yinitial</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>values are -1.0 and 1
+</pre></div>
+</div>
+</div>
+</div>
+<p>Comment on the cell above:</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">inittup=namedtuple('inittup','dt</span> <span class="pre">c1</span> <span class="pre">c2</span> <span class="pre">c3</span> <span class="pre">t_beg</span> <span class="pre">t_end</span> <span class="pre">yinitial')</span></code>
+creats a new data type with a type name (inittup) and properties
+(the attributes we wlll need like dt, c1 etc.)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">initialCond=inittup(**initialDict)</span></code>
+uses “keyword expansion” via the “doublesplat” operator <code class="docutils literal notranslate"><span class="pre">**</span></code> to expand
+the initialDict into a set of key=value pairs for the inittup constructor
+which makes an instance of our new datatype called initialCond</p></li>
+<li><p>we access these readonly members of the instance using attributes like this:
+<code class="docutils literal notranslate"><span class="pre">newc1</span> <span class="pre">=</span> <span class="pre">initialCond.c1</span></code></p></li>
+</ol>
+<p>Note the other big benefit for namedtuples – “initialCond.c1” is self-documenting,
+you don’t have to explain that the tuple value initialCond[3]  holds c1,
+and you never have to worry about changes to  the order of the tuple changing the
+results of your code.</p>
+</div>
+</div>
+<div class="section" id="saving-named-tuples-to-a-file">
+<h3>Saving named tuples to a file<a class="headerlink" href="#saving-named-tuples-to-a-file" title="Permalink to this headline">¶</a></h3>
+<p>One drawback to namedtuples is that there’s no one annointed way to <strong>serialize</strong> them
+i.e. we are in charge of trying to figure out how to write our namedtuple out
+to a file for future use.  Contrast this with lists, strings, and scalar numbers and
+dictionaries, which all have a builtin <strong>json</strong> representation in text form.</p>
+<p>So here’s how to turn our named tuple back into a dictionary:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<span class="c1"># make the named tuple a dictionary</span>
+<span class="c1">#</span>
+<span class="n">initialDict</span> <span class="o">=</span> <span class="n">initialCond</span><span class="o">.</span><span class="n">_asdict</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">initialDict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>OrderedDict([(&#39;dt&#39;, 0.2), (&#39;c1&#39;, -1.0), (&#39;c2&#39;, 1.0), (&#39;c3&#39;, 1.0), (&#39;t_beg&#39;, 0.0), (&#39;t_end&#39;, 1.0), (&#39;yinitial&#39;, 1)])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Why does <code class="docutils literal notranslate"><span class="pre">_asdict</span></code> start with an underscore?  It’s to keep the fundamental
+methods and attributes of the namedtuple class separate from the attributes
+we added when we created the new <code class="docutils literal notranslate"><span class="pre">inittup</span></code> class. For more information, see
+the <a class="reference external" href="https://docs.python.org/3.7/library/collections.html#module-collections">collections docs</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">outputDict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">initialconds</span> <span class="o">=</span> <span class="n">initialDict</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="n">outputDict</span><span class="p">[</span><span class="s1">&#39;history&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;written Jan. 28, 2020&#39;</span>
+<span class="n">outputDict</span><span class="p">[</span><span class="s1">&#39;plot_title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;simple damped oscillator run 1&#39;</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;run1.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">jsonout</span><span class="p">:</span>
+    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">outputDict</span><span class="p">,</span><span class="n">jsonout</span><span class="p">,</span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+<p>After running this cell, you should see the following <a class="reference external" href="https://en.wikipedia.org/wiki/JSON">json output</a> in the file <code class="docutils literal notranslate"><span class="pre">run1.json</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;initialconds&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;dt&quot;</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span>
+        <span class="s2">&quot;c1&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="s2">&quot;c2&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="s2">&quot;c3&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="s2">&quot;t_beg&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="s2">&quot;t_end&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="s2">&quot;yinitial&quot;</span><span class="p">:</span> <span class="mi">1</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;history&quot;</span><span class="p">:</span> <span class="s2">&quot;written Jan. 28, 2020&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;plot_title&quot;</span><span class="p">:</span> <span class="s2">&quot;simple damped oscillator run 1&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="reading-a-json-file-back-into-python">
+<h3>Reading a json file back into python<a class="headerlink" href="#reading-a-json-file-back-into-python" title="Permalink to this headline">¶</a></h3>
+<p>To recover your conditions read the file back in as a dictionary:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;run1.json&quot;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">jsonin</span><span class="p">:</span>
+    <span class="n">inputDict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">jsonin</span><span class="p">)</span>
+<span class="n">initial_conds</span> <span class="o">=</span> <span class="n">inittup</span><span class="p">(</span><span class="o">**</span><span class="n">inputDict</span><span class="p">[</span><span class="s1">&#39;initialconds&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;values are </span><span class="si">{</span><span class="n">initial_conds</span><span class="o">.</span><span class="n">c1</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">initial_conds</span><span class="o">.</span><span class="n">yinitial</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>values are -1.0 and 1
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="passing-a-derivative-function-to-an-integrator">
+<h3>Passing a derivative function to an integrator<a class="headerlink" href="#passing-a-derivative-function-to-an-integrator" title="Permalink to this headline">¶</a></h3>
+<p>In python, functions are first class objects, which means you can pass them around like any
+other datatype, no need to get function handles as in matlab or Fortran.  The integrators
+in <a class="reference external" href="https://github.com/phaustin/numeric/blob/master/numlabs/lab4/example/test.py">test.py</a>
+have been written to accept a derivative function of the form:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">derivs4</span><span class="p">(</span><span class="n">coeff</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+</pre></div>
+</div>
+<p>i.e. as long as the derivative can be written in terms of coefficients
+and the previous value of y, the integrator will move the ode ahead one
+timestep.  If we wanted coefficients that were a function of time, we would
+need to also include those functions the coeff namedtuple, and add keep track of the
+timestep through the integration.</p>
+<p>Here’s an example using foward euler to integrate the harmonic oscillator</p>
+<p>Note that you can also run this from the terminal by doing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">numlabs</span><span class="o">/</span><span class="n">lab4</span><span class="o">/</span><span class="n">example</span>
+<span class="n">python</span> <span class="n">do_example</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">numlabs.lab4.example.do_example</span> <span class="kn">import</span> <span class="n">get_init</span><span class="p">,</span><span class="n">euler4</span>
+<span class="c1">#</span>
+<span class="c1"># specify the derivs function</span>
+<span class="c1">#</span>
+<span class="k">def</span> <span class="nf">derivs</span><span class="p">(</span><span class="n">coeff</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+  <span class="n">f</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="c1">#create a 2 element vector to hold the derivitive</span>
+  <span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+  <span class="n">f</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span> <span class="o">-</span><span class="mf">1.</span><span class="o">*</span><span class="n">coeff</span><span class="o">.</span><span class="n">c1</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">coeff</span><span class="o">.</span><span class="n">c2</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+  <span class="k">return</span> <span class="n">f</span>
+<span class="c1">#</span>
+<span class="c1"># first make sure we have an input file in this directory</span>
+<span class="c1">#</span>
+
+<span class="n">coeff</span><span class="o">=</span><span class="n">get_init</span><span class="p">()</span>
+
+<span class="c1">#</span>
+<span class="c1"># integrate and save the result in savedata</span>
+<span class="c1">#</span>
+<span class="n">time</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">coeff</span><span class="o">.</span><span class="n">t_beg</span><span class="p">,</span><span class="n">coeff</span><span class="o">.</span><span class="n">t_end</span><span class="p">,</span><span class="n">coeff</span><span class="o">.</span><span class="n">dt</span><span class="p">)</span>
+<span class="n">y</span><span class="o">=</span><span class="n">coeff</span><span class="o">.</span><span class="n">yinitial</span>
+<span class="n">nsteps</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">time</span><span class="p">)</span> 
+<span class="n">savedata</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">([</span><span class="n">nsteps</span><span class="p">],</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nsteps</span><span class="p">):</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">euler4</span><span class="p">(</span><span class="n">coeff</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">derivs</span><span class="p">)</span>
+    <span class="n">savedata</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">theFig</span><span class="p">,</span><span class="n">theAx</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">theAx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">savedata</span><span class="p">,</span><span class="s1">&#39;o-&#39;</span><span class="p">)</span>
+<span class="n">theAx</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">coeff</span><span class="o">.</span><span class="n">plot_title</span><span class="p">)</span>
+<span class="n">theAx</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;time (seconds)&#39;</span><span class="p">)</span>
+<span class="n">theAx</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;y0&#39;</span><span class="p">);</span>
+
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../_images/01-lab4_41_01.png" src="../../../../_images/01-lab4_41_01.png" />
+</div>
+</div>
+<div id="prob_a"></div><div class="section" id="problem-coding-a">
+<h4>problem coding A<a class="headerlink" href="#problem-coding-a" title="Permalink to this headline">¶</a></h4>
+<p>As set up above, do_example.py
+solves the damped, harmonic oscillator with the (unstable) forward Euler method.</p>
+<ol>
+<li><p>Write a new routine that solves the harmonic oscilator using <a class="reference external" href="#eq:heuns">Heun’s method</a>
+along the lines of the routines in <a class="reference external" href="https://github.com/phaustin/numeric/blob/master/numlabs/lab4/lab4_functions.py">lab4_functions.py</a></p>
+<p>Hand in a fresh notebook with the code and a plot.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="problem-coding-b">
+<h4>problem coding B<a class="headerlink" href="#problem-coding-b" title="Permalink to this headline">¶</a></h4>
+<ol>
+<li><p>Now solve the following test equation by both the midpoint and
+Heun’s method and compare.</p>
+<p><div class="math notranslate nohighlight">
+\[f(y,t) = t - y  + 1.0\]</div>
+</p>
+<p>Choose two sets
+of initial conditions and determine if
+there is any difference between the two methods when applied to
+either problem. Should there be? Explain by analyzing the steps
+that each method is taking.</p>
+</li>
+<li><p>Add your answer as new cells to the problem A notebook</p></li>
+</ol>
+</div>
+<div class="section" id="problem-coding-c">
+<h4>problem coding C<a class="headerlink" href="#problem-coding-c" title="Permalink to this headline">¶</a></h4>
+<ol class="simple">
+<li><p>Solve the Newtonian cooling equation of lab 1 by any of the above
+methods.</p></li>
+<li><p>Add cells that do this and also generate some plots, showing your along with the parameter values and
+initial conditions.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="mathematical-notes">
+<h2>Mathematical Notes<a class="headerlink" href="#mathematical-notes" title="Permalink to this headline">¶</a></h2>
+<!-- {#lab4:ap:mathnote} --><!--  {#lab4:ap:midpointderiv} --><div class="section" id="note-on-the-derivation-of-the-second-order-runge-kutta-methods">
+<h3>Note on the Derivation of the Second-Order Runge-Kutta Methods<a class="headerlink" href="#note-on-the-derivation-of-the-second-order-runge-kutta-methods" title="Permalink to this headline">¶</a></h3>
+<p>A general s-stage Runge-Kutta method can be written as,</p>
+<p><div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{l}
+k_i = h f(y_n+ {\displaystyle \sum_{j=1}^{s} } b_{ij}k_j, t_n+a_ih), 
+\;\;\; i=1,..., s\\
+y_{n+1} = y_n + {\displaystyle \sum_{j=1}^{s}} c_jk_j 
+\end{array}
+\end{split}\]</div>
+</p>
+<p>where</p>
+<p><span class="math notranslate nohighlight">\({\displaystyle \sum_{j=1}^{s} } b_{ij} = a_i\)</span>.</p>
+<p>In particular, an <em>explicit</em> 2-stage Runge-Kutta method can
+be written as,</p>
+<p><div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{l}
+k_1 =  h f(y_n,t_n)\\
+k_2 = h f(y_n+ak_1, t_n+ah)\\
+y_{n+1} = y_n + c_1k_1 +c_2k_2
+\end{array}
+\end{split}\]</div>
+</p>
+<p>where</p>
+<p><span class="math notranslate nohighlight">\(b_{21} = a_2 \equiv a\)</span>.</p>
+<p>So we want
+to know what values of <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span> leads to a second-order
+method, i.e. a method with an error proportional to <span class="math notranslate nohighlight">\(h^3\)</span>.</p>
+<p>To find out, we compare the method against a second-order Taylor expansion,</p>
+<!-- \label{lab4:eq:taylor} --><p><div class="math notranslate nohighlight">
+\[
+y(t_n+h) = y(t_n) + hy^\prime(t_n) + \frac{h^2}{2}y^{\prime \prime}(t_n)
++ O(h^3)
+\]</div>
+</p>
+<p>So for the <span class="math notranslate nohighlight">\(y_{n+1}\)</span> to be second-order accurate, it must match the
+Taylor method. In other words, <span class="math notranslate nohighlight">\(c_1k_1 +c_2k_2\)</span> must
+match <span class="math notranslate nohighlight">\(hy^\prime(t_n) + \frac{h^2}{2}y^{\prime \prime}\)</span>. To do this, we
+need to express <span class="math notranslate nohighlight">\(k_1\)</span> and <span class="math notranslate nohighlight">\(k_2\)</span> in terms of derivatives of <span class="math notranslate nohighlight">\(y\)</span> at time
+<span class="math notranslate nohighlight">\(t_n\)</span>.</p>
+<p>First note, <span class="math notranslate nohighlight">\(k_1 = hf(y_n, t_n) = hy^\prime(t_n)\)</span>.</p>
+<p>Next, we can expand <span class="math notranslate nohighlight">\(k_2\)</span> about <span class="math notranslate nohighlight">\((y_n.t_n)\)</span>,</p>
+<!-- \label{lab4:eq:k1} --><p><div class="math notranslate nohighlight">
+\[
+k_2 = hf(y_n+ak_1, t_n+ah) = h(f + haf_t + haf_yy^\prime + O(h^2))
+\]</div>
+</p>
+<!-- \label{lab4:eq:secder} --><p>However, we can write <span class="math notranslate nohighlight">\(y^{\prime \prime}\)</span> as,</p>
+<p><div class="math notranslate nohighlight">
+\[
+y^{\prime \prime} = \frac{df}{dt} = f_t + f_yy^\prime
+\]</div>
+
+This allows us
+to rewrite <span class="math notranslate nohighlight">\(k_2\)</span> in terms of <span class="math notranslate nohighlight">\(y^{\prime \prime}\)</span>,</p>
+<p><div class="math notranslate nohighlight">
+\[k_2 = h(y^\prime +  hay^{\prime \prime}+ O(h^2))\]</div>
+</p>
+<p>Substituting these expressions for <span class="math notranslate nohighlight">\(k_i\)</span> back into the Runge-Kutta
+formula gives us,
+<div class="math notranslate nohighlight">
+\[y_{n+1} = y_n + c_1hy^\prime +c_2h(y^\prime +  hay^{\prime \prime})\]</div>
+
+or
+<div class="math notranslate nohighlight">
+\[y_{n+1} = y_n + h(c_1 +c_2)y^\prime +  h^2(c_2a)y^{\prime \prime}\]</div>
+</p>
+<p>If we compare this against the second-order Taylor method,
+we see that we need,</p>
+<p><div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{l}
+c_1 + c_2 = 1\\
+a c_2 = \frac{1}{2}
+\end{array}
+\end{split}\]</div>
+</p>
+<p>for the Runge-Kutta method to be
+second-order.</p>
+<div id="app_midpoint"></div>
+If we choose $a = 1/2$, this implies $c_2 = 1$ and $c_1=0$. This gives
+us the midpoint method.<p>However, note that other choices are possible. In fact, we have a
+<em>one-parameter family</em> of second-order methods. For example
+if we choose, <span class="math notranslate nohighlight">\(a=1\)</span> and <span class="math notranslate nohighlight">\(c_1=c_2=\frac{1}{2}\)</span>, we get the
+<em>modified Euler method</em>,</p>
+<!-- \label{lab4:eq:modifiedeuler} --><p><div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{l}
+k_1 =  h f(y_n,t_n)\\
+k_2 = h f(y_n+k_1, t_n+h)\\
+y_{n+1} = y_n + \frac{1}{2}(k_1 +k_2)
+\end{array}
+\end{split}\]</div>
+</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<p>while the choice
+<span class="math notranslate nohighlight">\(a=\frac{2}{3}\)</span>, <span class="math notranslate nohighlight">\(c_1=\frac{1}{4}\)</span> and <span class="math notranslate nohighlight">\(c_2=\frac{3}{4}\)</span>, gives us</p>
+<div id="eq:heuns"><b>Heun's Method</b></div><p><div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{l}
+k_1 =  h f(y_n,t_n)\\
+k_2 = h f(y_n+\frac{2}{3}k_1, t_n+\frac{2}{3}h)\\
+y_{n+1} = y_n + \frac{1}{4}k_1 + \frac{3}{4}k_2
+\end{array}
+\end{split}\]</div>
+</p>
+</div>
+</div>
+<div class="section" id="glossary">
+<h2>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p><strong>driver</strong>  A routine that calls the other routines to solve the
+problem.</p></li>
+<li><p><strong>embedded Runge-Kutta methods</strong>:  Two Runge-Kutta
+methods that share the same stages. The difference between the solutions
+give an estimate of the local truncation error.</p></li>
+<li><p><strong>explicit</strong>  In an explicit numerical scheme, the calculation of the solution at a given
+step or stage does not depend on the value of the solution at that step
+or on a later step or stage.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>        
+</pre></div>
+</div>
+</li>
+<li><p><strong>fourth-order Runge-Kutta method</strong>  A popular fourth-order, four-stage, explicit Runge-Kutta
+method.</p></li>
+<li><p><strong>implicit</strong>: In an implicit numerical scheme, the
+calculation of the solution at a given step or stage does depend on the
+value of the solution at that step or on a later step or stage. Such
+methods are usually more expensive than implicit schemes but are better
+for handling stiff ODEs.</p></li>
+<li><p><strong>midpoint method</strong> :  A two-stage,
+second-order Runge-Kutta method.</p></li>
+<li><p><strong>stages</strong>:  The approximations
+to the derivative made in a Runge-Kutta method between the start and end
+of a step.</p></li>
+<li><p><strong>tableau</strong>  The tableau for a Runge-Kutta method
+organizes the coefficients for the method in tabular form.</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Numeric project
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
