@@ -22,4 +22,6 @@ Numerical Methods
    
    Quizzes <quizzes>
 
+   Rubrics <rubrics>
+   
    Solutions <solutions.rst>

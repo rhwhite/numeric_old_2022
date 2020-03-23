@@ -128,8 +128,8 @@ from numlabs.lab8 import quiz8 as quiz
 Image(filename='images/rect.png',width='45%') 
 
 # %% [markdown]
-# <div id='Figure-Model-Ocean'>
-# **Figure Model Ocean.** The rectangular ocean with flat bottom, ignoring curvature
+# <div id="Figure-Model-Ocean">
+# <strong>Figure Model Ocean</strong> The rectangular ocean with flat bottom, ignoring curvature
 # effects.
 # </div>
 #
@@ -141,24 +141,31 @@ Image(filename='images/rect.png',width='45%')
 # throughout), then the equations governing the fluid motion on the
 # $\beta$-plane are: 
 #
-# <a name='eq:xmom'></a>
-# (X-Momentum Eqn)
-# $$
-#   \frac {\partial u}{\partial t} + u \frac {\partial u}{\partial x} + v \frac {\partial u}{\partial y} + w \frac{\partial u}{\partial z} - fv = - \, \frac{1}{\rho} \, \frac {\partial p}{\partial x}
-#   + A_v \, \frac{\partial^2 u}{\partial z^2} + A_h \, \nabla^2 u
-# $$
-# <a name='eq:ymom'></a>
-# (Y-Momentum Eqn)
-# $$
-#   \frac{\partial v}{\partial t} + u \frac{\partial v}{\partial x} + v \frac{\partial v}{\partial y} + w \frac{\partial v}{\partial z} + fu = - \, \frac{1}{\rho} \, \frac{\partial p}{\partial y}
-#   + A_v \, \frac{\partial^2 v}{\partial z^2} + A_h \, \nabla^2 v
-# $$
-# <a name='eq:hydrostatic'></a>
-# (Hydrostatic Eqn)
-# $$\frac{\partial p}{\partial z} = - \rho g$$
-# <a name='eq:continuity'></a>
-# (Continuity Eqn)
-# $$\frac {\partial u}{\partial x} + \frac{\partial v}{\partial y} = - \, \frac{\partial w}{\partial z}$$
+# <div id="eq:xmom">(X-Momentum Eqn)</div>
+#
+# \begin{equation}
+# \frac{\partial u}{\partial t} + u \frac {\partial u}{\partial x} + v \frac {\partial u}{\partial y} + w \frac{\partial u}{\partial z} - fv = - \, \frac{1}{\rho} \, \frac {\partial p}{\partial x}
+# + A_v \, \frac{\partial^2 u}{\partial z^2} + A_h \, \nabla^2 u
+# \end{equation}
+#
+# <div id="eq:ymom">(Y-Momentum Eqn)</div>
+#
+# \begin{equation}
+# \frac{\partial v}{\partial t} + u \frac{\partial v}{\partial x} + v \frac{\partial v}{\partial y} + w \frac{\partial v}{\partial z} + fu = - \, \frac{1}{\rho} \, \frac{\partial p}{\partial y}
+# + A_v \, \frac{\partial^2 v}{\partial z^2} + A_h \, \nabla^2 v
+# \end{equation}
+#
+# <div id="eq:hydrostatic">(Hydrostatic Eqn)</div>
+#
+# \begin{equation}
+# \frac{\partial p}{\partial z} = - \rho g
+# \end{equation}
+#
+# <div id="eq:continuity">(Continuity Eqn)</div>
+#
+# \begin{equation}
+# \frac {\partial u}{\partial x} + \frac{\partial v}{\partial y} = - \, \frac{\partial w}{\partial z}
+# \end{equation}
 #
 # where
 #

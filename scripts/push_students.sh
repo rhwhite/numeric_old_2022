@@ -18,6 +18,7 @@ rsync -avz demonstrations/numba_demo.ipynb students/demonstrations/.
 rsync -avz demonstrations/parallel_python.ipynb students/demonstrations/.
 rsync -avz demonstrations/images students/demonstrations/.
 rsync -avz demonstrations/testing_functions.py students/demonstrations/.
+rsync -avz demonstrations/*py.py students/demonstrations/.
 rsync -avz utils students/
 rsync -avz numlabs students/
 rsync -avz Readme_students.md students/Readme.md
