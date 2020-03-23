@@ -3,3 +3,5 @@ ________________
 
 
 * `Undergrad project <pdfs/project_numeric_ugrad_rubric.pdf>`_
+
+* `Presentations rubric <pdfs/presentations_rubric.pdf>`_

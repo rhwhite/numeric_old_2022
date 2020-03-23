@@ -197,7 +197,7 @@
     "<div id=\"eq:xmom\">(X-Momentum Eqn)</div>\n",
     "\n",
     "\\begin{equation}\n",
-    "\\frac {\\partial u}{\\partial t} + u \\frac {\\partial u}{\\partial x} + v \\frac {\\partial u}{\\partial y} + w \\frac{\\partial u}{\\partial z} - fv = - \\, \\frac{1}{\\rho} \\, \\frac {\\partial p}{\\partial x}\n",
+    "\\frac{\\partial u}{\\partial t} + u \\frac {\\partial u}{\\partial x} + v \\frac {\\partial u}{\\partial y} + w \\frac{\\partial u}{\\partial z} - fv = - \\, \\frac{1}{\\rho} \\, \\frac {\\partial p}{\\partial x}\n",
     "+ A_v \\, \\frac{\\partial^2 u}{\\partial z^2} + A_h \\, \\nabla^2 u\n",
     "\\end{equation}\n",
     "\n",
@@ -2168,6 +2168,36 @@
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
    "version": "3.7.6"
+  },
+  "latex_envs": {
+   "LaTeX_envs_menu_present": true,
+   "autoclose": false,
+   "autocomplete": true,
+   "bibliofile": "biblio.bib",
+   "cite_by": "apalike",
+   "current_citInitial": 1,
+   "eqLabelWithNumbers": true,
+   "eqNumInitial": 1,
+   "hotkeys": {
+    "equation": "meta-9"
+   },
+   "labels_anchors": false,
+   "latex_user_defs": false,
+   "report_style_numbering": false,
+   "user_envs_cfg": false
+  },
+  "toc": {
+   "base_numbering": 1,
+   "nav_menu": {},
+   "number_sections": true,
+   "sideBar": true,
+   "skip_h1_title": false,
+   "title_cell": "Table of Contents",
+   "title_sidebar": "Contents",
+   "toc_cell": false,
+   "toc_position": {},
+   "toc_section_display": true,
+   "toc_window_display": true
   }
  },
  "nbformat": 4,
