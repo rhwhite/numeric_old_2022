@@ -25,9 +25,9 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/language_data.js"></script>
-        <script src="_static/togglebutton.js"></script>
-        <script >var togglebuttonSelector = '.toggle, .tag_hide_input div.cell_input, .tag_hide_output div.cell_output, .tag_hide_cell.cell';</script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -36,11 +36,9 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/togglebutton.css" type="text/css" />
-  <link rel="stylesheet" href="_static/mystnb.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Laboratory 1: An Introduction to the Numerical Solution of Differential Equations: Discretization (2020/Jan/6)" href="doc_notebooks/lab1/01-lab1.html" />
+    <link rel="next" title="&lt;no title&gt;" href="doc_notebooks/lab1/01-lab1.html" />
     <link rel="prev" title="Optional textbooks" href="texts.html" /> 
 </head>
 
@@ -92,17 +90,7 @@
 <li class="toctree-l1"><a class="reference internal" href="schedule20.html">Detailed Schedule</a></li>
 <li class="toctree-l1"><a class="reference internal" href="texts.html">Optional texts</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Course/lab descriptions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab1/01-lab1.html">  Lab 1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab2/01-lab2.html">  Lab 2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html">  Lab 3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab4/01-lab4.html">  Lab 4</a></li>
-<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab5/01-lab5.html">  Lab 5</a></li>
-<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab6/lab6.html">  Lab 6</a></li>
-<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html">  Lab 7</a></li>
-<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab8/01-lab_8.html">  Lab 8</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fft_lab.html">  Lab 9</a></li>
-<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab10/01-lab_10.html">Laboratory 10: Numerical Advection Schemes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="doc_notebooks/lab10/01-lab_10.html#table-of-contents">Table of Contents</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="week_notes.html">Weekly notes</a></li>
@@ -174,21 +162,35 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="numeric-notebooks">
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="numeric-notebooks">
 <h1>Numeric notebooks<a class="headerlink" href="#numeric-notebooks" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="doc_notebooks/lab1/01-lab1.html">  Lab 1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="doc_notebooks/lab2/01-lab2.html">  Lab 2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="doc_notebooks/lab3/01-lab3.html">  Lab 3</a></li>
-<li class="toctree-l1"><a class="reference internal" href="doc_notebooks/lab4/01-lab4.html">  Lab 4</a></li>
-<li class="toctree-l1"><a class="reference internal" href="doc_notebooks/lab5/01-lab5.html">  Lab 5</a></li>
-<li class="toctree-l1"><a class="reference internal" href="doc_notebooks/lab6/lab6.html">  Lab 6</a></li>
-<li class="toctree-l1"><a class="reference internal" href="doc_notebooks/lab7/01-lab7.html">  Lab 7</a></li>
-<li class="toctree-l1"><a class="reference internal" href="doc_notebooks/lab8/01-lab_8.html">  Lab 8</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fft_lab.html">  Lab 9</a></li>
-<li class="toctree-l1"><a class="reference internal" href="doc_notebooks/lab10/01-lab_10.html">Laboratory 10: Numerical Advection Schemes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="doc_notebooks/lab10/01-lab_10.html#table-of-contents">Table of Contents</a></li>
 </ul>
 </div>
 </div>
@@ -201,7 +203,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="doc_notebooks/lab1/01-lab1.html" class="btn btn-neutral float-right" title="Laboratory 1: An Introduction to the Numerical Solution of Differential Equations: Discretization (2020/Jan/6)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="doc_notebooks/lab1/01-lab1.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="texts.html" class="btn btn-neutral float-left" title="Optional textbooks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

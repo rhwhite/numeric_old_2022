@@ -52,18 +52,22 @@ https://phaustin.github.io/numeric/notebook_toc.html
 Grades
 ------
 
--  Laboratory Exercises 30%
+High Project
+>>>>>>>>>>>>
 
--  Quizzes 10%
+* Laboratory Exercises 50%
+* Project Proposal 10%
+* Project 30%
+* Project Oral Presentation 10%
+  
+Low Project
+>>>>>>>>>>>
 
--  Mini-projects 20%
-
--  Project Proposal 5%
-
--  Project 30%
-
--  Project Oral Presentation 5%
-
+* Laboratory Exercises 80%
+* Project Proposal 10%
+* Project 5%
+* Project Oral Presentation 5%
+  
 Meeting Times
 -------------
 
