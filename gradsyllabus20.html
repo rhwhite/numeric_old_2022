@@ -21,13 +21,13 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/togglebutton.js"></script>
+        <script >var togglebuttonSelector = '.toggle, .tag_hide_input div.cell_input, .tag_hide_output div.cell_output, .tag_hide_cell.cell';</script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -36,6 +36,8 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/togglebutton.css" type="text/css" />
+  <link rel="stylesheet" href="_static/mystnb.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Dates" href="schedule20.html" />
@@ -93,14 +95,15 @@
 <li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#course-structure">Course Structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#meeting-times">Meeting Times</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#grades">Grades</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#high-project">High Project</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#low-project">Low Project</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#grades">Grades</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#laboratory-problem-sets">Laboratory Problem Sets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#set-laboratories">Set Laboratories</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#optional-laboratories">Optional Laboratories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#optional-laboratories">Optional Laboratories</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#odes-and-ffts">ODE’s and FFT’s</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pdes">PDE’s</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#smattering-of-ode-s-and-pde-s">Smattering of ODE’s and PDE’s</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#project">Project</a></li>
 </ul>
 </li>
@@ -176,31 +179,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  
-<style>
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<div class="section" id="graduate-numerical-techniques-for-atmosphere-ocean-and-earth-scientists-eosc-511-atsc-506">
+  <div class="section" id="graduate-numerical-techniques-for-atmosphere-ocean-and-earth-scientists-eosc-511-atsc-506">
 <h1>Graduate Numerical Techniques for Atmosphere, Ocean and Earth Scientists: EOSC 511 / ATSC 506<a class="headerlink" href="#graduate-numerical-techniques-for-atmosphere-ocean-and-earth-scientists-eosc-511-atsc-506" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="pdf-copy">
 <h2>PDF copy<a class="headerlink" href="#pdf-copy" title="Permalink to this headline">¶</a></h2>
@@ -251,24 +230,12 @@ browser to:</p>
 </div>
 <div class="section" id="grades">
 <h2>Grades<a class="headerlink" href="#grades" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="high-project">
-<h3>High Project<a class="headerlink" href="#high-project" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>Laboratory Exercises 50%</p></li>
+<li><p>Laboratory Exercises 30%</p></li>
 <li><p>Project Proposal 10%</p></li>
-<li><p>Project 30%</p></li>
+<li><p>Project 50%</p></li>
 <li><p>Project Oral Presentation 10%</p></li>
 </ul>
-</div>
-<div class="section" id="low-project">
-<h3>Low Project<a class="headerlink" href="#low-project" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>Laboratory Exercises 80%</p></li>
-<li><p>Project Proposal 10%</p></li>
-<li><p>Project 5%</p></li>
-<li><p>Project Oral Presentation 5%</p></li>
-</ul>
-</div>
 </div>
 <div class="section" id="laboratory-problem-sets">
 <h2>Laboratory Problem Sets<a class="headerlink" href="#laboratory-problem-sets" title="Permalink to this headline">¶</a></h2>
@@ -305,22 +272,31 @@ webpage.</p>
 <h2>Optional Laboratories<a class="headerlink" href="#optional-laboratories" title="Permalink to this headline">¶</a></h2>
 <p>Choose one of the following concentrations or talk to your instructors
 about a combination of your choosing. Time scale two and a half weeks.</p>
+<div class="section" id="odes-and-ffts">
+<h3>ODE’s and FFT’s<a class="headerlink" href="#odes-and-ffts" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Rest of Lab 5</p></li>
 <li><p>Lab 6</p></li>
 <li><p>Lab 9 (FFT’s)</p></li>
 </ul>
+</div>
+<div class="section" id="pdes">
+<h3>PDE’s<a class="headerlink" href="#pdes" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>End of Lab 7</p></li>
 <li><p>Lab 8</p></li>
 <li><p>Lab 10</p></li>
 </ul>
+</div>
+<div class="section" id="smattering-of-ode-s-and-pde-s">
+<h3>Smattering of ODE’s and PDE’s<a class="headerlink" href="#smattering-of-ode-s-and-pde-s" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Rest of Lab 5</p></li>
 <li><p>Lab 6</p></li>
 <li><p>Rest of Lab 7</p></li>
 <li><p>Lab 10</p></li>
 </ul>
+</div>
 </div>
 <div class="section" id="project">
 <h2>Project<a class="headerlink" href="#project" title="Permalink to this headline">¶</a></h2>

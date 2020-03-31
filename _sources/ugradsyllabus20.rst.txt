@@ -52,31 +52,18 @@ https://phaustin.github.io/numeric/notebook_toc.html
 Grades
 ------
 
-Your grades will be calculated in two ways and we will use which ever
-is higher.
+-  Laboratory Exercises 30%
 
-Original
->>>>>>>>
+-  Quizzes 10%
 
-- Laboratory Exercises 30%
-- Quizzes 10%
-- Mini-projects 20%
-- Project Proposal 5%
-- Project 30%
-- Project Oral Presentation 5%
-  
-Lower Final Project
->>>>>>>>>>>>>>>>>>>
+-  Mini-projects 20%
 
-- Laboratory Exercises 45%
-- Quizzes 10%
-- Mini-projects 30%
-- Project Proposal 5%
-- Project 5%
-- Project Oral Presentation 5%
+-  Project Proposal 5%
 
+-  Project 30%
 
-o  
+-  Project Oral Presentation 5%
+
 Meeting Times
 -------------
 
