@@ -25,9 +25,9 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/language_data.js"></script>
-        <script src="../_static/togglebutton.js"></script>
-        <script >var togglebuttonSelector = '.toggle, .tag_hide_input div.cell_input, .tag_hide_output div.cell_output, .tag_hide_cell.cell';</script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -36,8 +36,6 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/togglebutton.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/mystnb.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
 </head>
@@ -159,56 +157,79 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="student-installs">
-<h1>Student installs<a class="headerlink" href="#student-installs" title="Permalink to this headline">¶</a></h1>
-<p><strong>If you already have conda or anaconda installed, skip to <code class="docutils literal notranslate"><span class="pre">Git</span> <span class="pre">install</span></code> below</strong></p>
-<div class="section" id="for-macos-new-installs">
-<h2>For MacOS new installs<a class="headerlink" href="#for-macos-new-installs" title="Permalink to this headline">¶</a></h2>
-<ol class="simple">
-<li><p>Download miniconda from  https://docs.conda.io/en/latest/miniconda.html  – choose the <code class="docutils literal notranslate"><span class="pre">Miniconda3</span> <span class="pre">MacOSX</span> <span class="pre">64-bit</span> <span class="pre">pkg</span></code> file from the menu and run it, agreeing to the licences and accepting all defaults. You should install for “just me”</p></li>
-<li><p>To test your installation, open a fresh terminal window and at the prompt type <code class="docutils literal notranslate"><span class="pre">which</span> <span class="pre">conda</span></code>.  You should see something resembling the following output, with your username instead of <code class="docutils literal notranslate"><span class="pre">phil</span></code>:</p></li>
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Student-installs">
+<h1>Student installs<a class="headerlink" href="#Student-installs" title="Permalink to this headline">¶</a></h1>
+<p><strong>If you already have conda or anaconda installed, skip to ``Git install`` below</strong></p>
+<div class="section" id="For-MacOS-new-installs">
+<h2>For MacOS new installs<a class="headerlink" href="#For-MacOS-new-installs" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Download miniconda from <a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">https://docs.conda.io/en/latest/miniconda.html</a> – choose the <code class="docutils literal notranslate"><span class="pre">Miniconda3</span> <span class="pre">MacOSX</span> <span class="pre">64-bit</span> <span class="pre">pkg</span></code> file from the menu and run it, agreeing to the licences and accepting all defaults. You should install for “just me”</p></li>
+<li><p>To test your installation, open a fresh terminal window and at the prompt type <code class="docutils literal notranslate"><span class="pre">which</span> <span class="pre">conda</span></code>. You should see something resembling the following output, with your username instead of <code class="docutils literal notranslate"><span class="pre">phil</span></code>:</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">which</span> <span class="n">conda</span>
 <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">phil</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">miniconda3</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">conda</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="for-windows-new-installs">
-<h2>For Windows new installs<a class="headerlink" href="#for-windows-new-installs" title="Permalink to this headline">¶</a></h2>
-<ol class="simple">
-<li><p>Download miniconda from  https://docs.conda.io/en/latest/miniconda.html  – choose the <code class="docutils literal notranslate"><span class="pre">Miniconda3</span> <span class="pre">Windows</span> <span class="pre">64-bit</span></code>. download from the menu and run it, agreeing to the licences and accepting all defaults.</p></li>
+<div class="section" id="For-Windows-new-installs">
+<h2>For Windows new installs<a class="headerlink" href="#For-Windows-new-installs" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Download miniconda from <a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">https://docs.conda.io/en/latest/miniconda.html</a> – choose the <code class="docutils literal notranslate"><span class="pre">Miniconda3</span> <span class="pre">Windows</span> <span class="pre">64-bit</span></code>. download from the menu and run it, agreeing to the licences and accepting all defaults.</p></li>
 </ol>
 <p>The installer should suggest installing in a path that looks like:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">phil</span>\<span class="n">Miniconda3</span>
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>Once the install completes hit the windows key and start typing <code class="docutils literal notranslate"><span class="pre">anaconda</span></code>.  You should see a shortcut that looks like:</p></li>
+<ol class="arabic simple" start="2">
+<li><p>Once the install completes hit the windows key and start typing <code class="docutils literal notranslate"><span class="pre">anaconda</span></code>. You should see a shortcut that looks like:</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Anaconda</span> <span class="n">Powershell</span> <span class="n">Prompt</span>
 <span class="p">(</span><span class="n">Miniconda3</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><strong>Note that Windows comes with two different terminals <code class="docutils literal notranslate"><span class="pre">cmd</span></code> (old) and <code class="docutils literal notranslate"><span class="pre">powershell</span></code> (new).  Always select the powershell version of the anaconda terminal</strong></p>
-<ol class="simple">
-<li><p>Select the short cut.  If the install was successful you should see something like:</p></li>
+<p><strong>Note that Windows comes with two different terminals ``cmd`` (old) and ``powershell`` (new). Always select the powershell version of the anaconda terminal</strong></p>
+<ol class="arabic simple" start="3">
+<li><p>Select the short cut. If the install was successful you should see something like:</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">base</span><span class="p">)</span> <span class="p">(</span><span class="n">Miniconda3</span><span class="p">):</span><span class="n">Users</span><span class="o">/</span><span class="n">phil</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>with your username substituted for phil.</p>
 </div>
-<div class="section" id="git-install">
-<h2>Git install<a class="headerlink" href="#git-install" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Git-install">
+<h2>Git install<a class="headerlink" href="#Git-install" title="Permalink to this headline">¶</a></h2>
 <p>Inside your powershell or MacOs terminal, install git using conda:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">git</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="setting-up-the-course-repository">
-<h2>Setting up the course repository<a class="headerlink" href="#setting-up-the-course-repository" title="Permalink to this headline">¶</a></h2>
-<p>In the terminal, change directories to your home directory (called <code class="docutils literal notranslate"><span class="pre">~</span></code> for short) and make a new directory
-called <code class="docutils literal notranslate"><span class="pre">repos</span></code> to hold the course notebook repository.  Change into <code class="docutils literal notranslate"><span class="pre">repos</span></code> and clone the course:</p>
+<div class="section" id="Setting-up-the-course-repository">
+<h2>Setting up the course repository<a class="headerlink" href="#Setting-up-the-course-repository" title="Permalink to this headline">¶</a></h2>
+<p>In the terminal, change directories to your home directory (called <code class="docutils literal notranslate"><span class="pre">~</span></code> for short) and make a new directory called <code class="docutils literal notranslate"><span class="pre">repos</span></code> to hold the course notebook repository. Change into <code class="docutils literal notranslate"><span class="pre">repos</span></code> and clone the course:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~</span>
 <span class="n">mkdir</span> <span class="n">repos</span>
 <span class="n">cd</span> <span class="n">repos</span>
@@ -216,8 +237,8 @@ called <code class="docutils literal notranslate"><span class="pre">repos</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="creating-the-course-environment">
-<h2>Creating the course environment<a class="headerlink" href="#creating-the-course-environment" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Creating-the-course-environment">
+<h2>Creating the course environment<a class="headerlink" href="#Creating-the-course-environment" title="Permalink to this headline">¶</a></h2>
 <p>In the terminal, execute the following commands:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">numeric_students</span><span class="o">/</span><span class="n">utils</span>
 <span class="n">conda</span> <span class="n">env</span> <span class="n">create</span> <span class="o">-</span><span class="n">f</span> <span class="n">numeric</span><span class="o">.</span><span class="n">yml</span>
@@ -225,8 +246,8 @@ called <code class="docutils literal notranslate"><span class="pre">repos</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="opening-the-notebook-folder">
-<h2>Opening the notebook folder<a class="headerlink" href="#opening-the-notebook-folder" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Opening-the-notebook-folder">
+<h2>Opening the notebook folder<a class="headerlink" href="#Opening-the-notebook-folder" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="n">repos</span><span class="o">/</span><span class="n">numeric_students</span><span class="o">/</span><span class="n">numeric_notebooks</span>
 <span class="n">jupyter</span> <span class="n">notebook</span>
 </pre></div>

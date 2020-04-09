@@ -1,9 +1,10 @@
 # Fdb version 3
-["pdflatex"] 1585167622 "project_numeric_grad_rubric.tex" "project_numeric_grad_rubric.pdf" "project_numeric_grad_rubric" 1585167622
+["pdflatex"] 1586224771 "project_numeric_grad_rubric.tex" "project_numeric_grad_rubric.pdf" "project_numeric_grad_rubric" 1586224771
   "/usr/local/texlive/2019/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1136768653 1324 c910af8c371558dc20f2d7822f66fe64 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmr12.tfm" 1136768653 1288 655e228510b4c2a1abe905c368440826 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb" 1248133631 32080 340ef9bf63678554ee606688e7b5339d ""
+  "/usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1248133631 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
   "/usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1248133631 32762 224316ccc9ad3ca0423a14971cfa7fc1 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb" 1248133631 32716 08e384dc442464e7285e891af9f45947 ""
@@ -18,9 +19,9 @@
   "/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1557342064 3277517 23507ed665b4dd9046f0f2a94bbef2be ""
   "/usr/local/texlive/2019/texmf-var/web2c/pdftex/pdflatex.fmt" 1557342086 4259635 562fc36ec496993777a6c428d8bfb811 ""
   "/usr/local/texlive/2019/texmf.cnf" 1557341546 577 d150fef99ac436ad1156e86b0892f6ef ""
-  "project_numeric_grad_rubric.aux" 1585167622 8 a94a2480d3289e625eea47cd1b285758 "pdflatex"
-  "project_numeric_grad_rubric.tex" 1585167620 2146 b7fab61a53d79c2c25dbe5c7e20a4e61 ""
+  "project_numeric_grad_rubric.aux" 1586224771 8 a94a2480d3289e625eea47cd1b285758 "pdflatex"
+  "project_numeric_grad_rubric.tex" 1586224769 2199 220578826b815abd53e6c7a798f90654 ""
   (generated)
-  "project_numeric_grad_rubric.log"
-  "project_numeric_grad_rubric.pdf"
   "project_numeric_grad_rubric.aux"
+  "project_numeric_grad_rubric.pdf"
+  "project_numeric_grad_rubric.log"
