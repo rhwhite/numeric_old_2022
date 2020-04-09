@@ -18,5 +18,6 @@ dependencies:
   - git
   - pip:
     - tabulate
+    - git+https://github.com/spatialaudio/nbsphinx.git
   
-prefix: /Users/phil/a50037/envs/numeric
+prefix: 
