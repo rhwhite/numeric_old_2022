@@ -59,13 +59,20 @@ Meeting Times
 Grades
 ------
 
--  Laboratory Exercises 30%
+- High Project
 
--  Project Proposal 10%
+  -  Laboratory Exercises 50%
+  -  Project Proposal 10%
+  -  Project 30%
+  -  Project Oral Presentation 10%
 
--  Project 50%
+- Low Project
 
--  Project Oral Presentation 10%
+  -  Laboratory Exercises 80%
+  -  Project Proposal 10%
+  -  Project 5%
+  -  Project Oral Presentation 5%
+
 
 Laboratory Problem Sets
 -----------------------
