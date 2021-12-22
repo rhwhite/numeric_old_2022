@@ -20,8 +20,8 @@ advection, population growth.
 Instructors
 -----------
 
-| Phil Austin, 2-2175, paustin@eoas.ubc.ca, Rm 157 EOS South
-| Susan Allen, 2-2828, sallen@eoas.ubc.ca, Rm 3017 ESB
+| Rachel White, rwhite@eoas.ubc.ca, Rm 4019 ESB
+| Susan Allen, sallen@eoas.ubc.ca, Rm 3017 ESB
 
 Prerequisites
 -------------
@@ -40,60 +40,45 @@ of which use the computer. The course consists of three parts. A set of
 interactive, computer based laboratory exercises, two mini-projects and
 a final project.
 
-During the meeting times, we will hold short quizzes (just to make sure
-you are keeping up) and brief presentations to help with technical
-matters and the more difficult sections of the course.
+During the meeting times, there will be group worksheets to delve
+into the material, brief presentations to help with technical
+matters, time to ask questions in a group format and also individually
+and time to read and work on the laboratories.
+
+It will be important to read the labs before class to do the
+worksheets.  To encourage good practices there are quizzes on canvas
+for each lab.
 
 You can use a web-browser to examine the course exercises. Point your
 browser to:
 
-https://phaustin.github.io/numeric/notebook_toc.html
+https://rhwhite.github.io/numeric_2022/notebook_toc.html
 
 Grades
 ------
 
-Your grades will be calculated in two ways and we will use which ever
-is higher. 
-​
-1. Original
-   
    -  Laboratory Exercises 30%
-   -  Quizzes 10%
+   -  Quizzes 5%
+   -  Worksheets 5%
    -  Mini-projects 20%
    -  Project Proposal 5%
    -  Project 30%
    -  Project Oral Presentation 5%
 ​
-2. Lower Final Project
-   
-   -  Laboratory Exercises 45%
-   -  Quizzes 10%
-   -  Mini-projects 30%
-   -  Project Proposal 5%
-   -  Project 5%
-   -  Project Oral Presentation 5%
-
-
-
 Meeting Times
 -------------
 
-1400-1600 Mondays, Room 135, Earth and Oceans Sciences (EOS) Main
+1400-1600 Mondays, Room 127, Earth and Oceans Sciences (EOS) Main
 
 Laboratory Problem Sets
 -----------------------
 
-The laboratory problem sets can be given to either instructor when
-completed. (We have mail boxes in the Earth and Ocean Sciences Main
-Office). They may be hand written or typed. You may wish or be asked to
-include plots and diagrams. You can email us plots instead of printing
-them. Sometimes, rather than a large series of plots, you may wish to
+The laboratory problem sets are to be uploaded to the course CANVAS page. Sometimes, rather than a large series of plots, you may wish to
 include a summarizing table. If you do not understand the scope of a
-problem, please ask. The time scales given in the Contents section are
-based on 7 hours/week additional to class time. Help with the labs is
-available 1) through piazza on Connect so you can contact your classmates
+problem, please ask. Help with the labs is
+available 1) through piazza (see CANVAS) so you can contact your classmates
 and ask them 2) during the weekly scheduled lab or 3) directly from the
-instructors. Assignments, mini-projects and the project are expected on
+instructors. Assignments, quizzes, mini-projects and the project are expected on
 time. Late ones will be marked and then the mark will be multiplied by
 :math:`(0.9)^{\rm (number\ of\ days\ or\ part\ days\ late)}`. (Below we
 give two dates for each assignment. You should aim for the first one
@@ -113,12 +98,7 @@ covered in the quizzes.
 
    -  Estimate: 8 hours
 
-   -  Quiz #1 Objectives [2]_ pertaining to Lab 1 sections
-      Introduction, Discretization, Difference Approximations to the
-      First Derivative
-
-   -  Quiz #2 Objectives pertaining to Lab 1 all sections and Lab 2
-      sections Introduction, Accuracy of Difference Approximations
+   -  Quiz #1 Objectives [2]_ pertaining to Lab 1
 
    -  Assignment: See web.
 
@@ -126,10 +106,7 @@ covered in the quizzes.
 
    -  Estimate: 6 hours
 
-   -  Quiz #2 Objectives pertaining to Lab 1 all section and Lab 2 sections Introduction, Accuracy of Difference Approximations
-
-   -  Quiz #3 Objectives pertaining to Lab 2 all sections and Lab 3
-      section Linear Systems.
+   -  Quiz #2 Objectives pertaining to Lab 2
 
    -  Assignment: See web.
 
@@ -137,10 +114,7 @@ covered in the quizzes.
 
    -  Estimate: 8 hours
 
-   -  Quiz #3 Objectives pertaining to Lab 2 all sections and Lab 3
-      section Linear Systems.
-
-   -  Quiz #4 Objectives pertaining to Lab 3 all sections.
+   -  Quiz #3 Objectives pertaining to Lab 3
 
    -  Assignment: See web.
 
@@ -154,11 +128,7 @@ covered in the quizzes.
 
    -  Estimate: 8 hours
 
-   -  Quiz #5 Objectives pertaining to Lab 4 section Solving Ordinary
-      Diff. Eqns with the Runge-Kutta Method, to end of subsection The
-      Runge-Kutta Tableau
-
-   -  Quiz #6 Objectives pertaining to Lab 4 all sections and Lab 5 section Daisyworld
+   -  Quiz #5 Objectives pertaining to Lab 4
 
    -  Assignment: See web.
 
@@ -166,12 +136,9 @@ covered in the quizzes.
 
    -  Estimate: 6 hours
 
-   -  Quiz #6 Objectives pertaining to Lab 4 all sections and Lab 5
-      section Daisyworld
+   -  Quiz #6 Objectives pertaining to Lab 5
 
-   -  Quiz #7 Objectives pertaining to Lab 5 all sections
-
-   -  Assignment: 4a, 4b, 6-1, 6-2, 6-3
+   -  Assignment: See web
 
 -  Mini-Project #2
 
@@ -183,8 +150,7 @@ covered in the quizzes.
 
    -  Estimate: 8 hours
 
-   -  Quiz #8 Objectives pertaining to Lab 7 sections Physical Example,
-      Poincare Waves and Numerical Solution
+   -  Quiz #7-7 Objectives pertaining to Lab 
 
    -  Assignment: See web.
 
@@ -192,14 +158,15 @@ covered in the quizzes.
 
    -  Estimate: 8 hours
 
-   -  Quiz #8 Objections pertaining to Lab 6 sections Introduction and
-      the Lorenz Equations
+   -  Quiz #7-6 Objectives pertaining to Lab 6
 
 -  Assignment: See web.
 
 -  Project
 
    -  Estimate: 16 hours
+
+   -  Proposal
 
    -  20 minute presentation to the class
 
