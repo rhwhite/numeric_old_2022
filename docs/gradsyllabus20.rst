@@ -16,7 +16,7 @@ and Earth Science.
 Instructors
 -----------
 
-| Phil Austin, 2-2175, paustin@eos.ubc.ca, Rm 157 EOS South
+| Rachel White, 2-2175, rhite@eoas.ubc.ca, Rm 4019 ESB
 | Susan Allen, 2-2828, sallen@eoas.ubc.ca, Rm 3017 ESB
 
 Prerequisites
