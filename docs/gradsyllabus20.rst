@@ -61,17 +61,11 @@ Grades
 
 - High Project
 
-  -  Laboratory Exercises 50%
+  -  Laboratory Exercises 35%
+  -  Quizzes 5%
   -  Project Proposal 10%
-  -  Project 30%
+  -  Project 40%
   -  Project Oral Presentation 10%
-
-- Low Project
-
-  -  Laboratory Exercises 80%
-  -  Project Proposal 10%
-  -  Project 5%
-  -  Project Oral Presentation 5%
 
 
 Laboratory Problem Sets
