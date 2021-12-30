@@ -24,7 +24,7 @@ Prerequisites
 
 The course assumes a mathematics background including vector calculus
 and linear algebra. Students weak in either of these areas will be
-directed to readings to strengthen their knowledge. Some programming
+directed to readings to strengthen their knowledge. Programming
 experience is greatly recommended.
 
 Course Structure
@@ -35,34 +35,33 @@ based laboratory course. The computer will lead you through the
 laboratory (like a set of lab notes) and you will answer problems most
 of which use the computer. The course consists of three parts. A set of
 required interactive, computer based laboratory exercises, a choice of
-optional laboratory exercises and a project. The project will be
-determined through consultation between the student and their
-supervisor.
+optional laboratory exercises and a project. The project will be a
+group project
+determined through consultation between the instructors, the student and their
+supervisors.
 
-During the meeting times, we will have brief presentations to help with
-technical matters and the more difficult sections of the course. It is
-highly recommended that you join us to work on the course during the
-meeting times. Past students who did so got a great deal more out of the
-course than those that worked on their own.
+During the meeting times, there will be group worksheets to delve
+into the material, brief presentations to help with technical
+matters, time to ask questions in a group format and also individually
+and time to read and work on the laboratories.
 
 You can use a web-browser to examine the course exercises. Point your
 browser to:
 
-https://phaustin.github.io/numeric/notebook_toc.html
+https://rhwhite.github.io/numeric/notebook_toc.html
 
 
 Meeting Times
 -------------
 
-1400-1600 Mondays, Room 135, Earth and Oceans Sciences (EOS) Main
+1400-1600 Mondays, Room 127, Earth and Oceans Sciences (EOS) Main
 
 Grades
 ------
 
-- High Project
-
-  -  Laboratory Exercises 35%
+  -  Laboratory Exercises 30%
   -  Quizzes 5%
+  -  Worksheets 5%
   -  Project Proposal 10%
   -  Project 40%
   -  Project Oral Presentation 10%
@@ -71,21 +70,17 @@ Grades
 Laboratory Problem Sets
 -----------------------
 
-The laboratory problem sets can be given to either instructor when
-completed. (We have mail boxes in the Earth and Ocean Sciences Main
-Office). They may be hand written or typed. You may wish or be asked to
-include plots and diagrams. Sometimes, rather than a large series of
-plots, you may wish to include a summarizing table. If you do not
-understand the scope of a problem, please ask. The time scales given in
-the Contents section are based on 9 hours/week. Help with the labs is
-available 1) through piazza on Connect so you can contact your classmates
+The laboratory problem sets are to be uploaded to the course CANVAS page. Sometimes, rather than a large series of plots, you may wish to
+include a summarizing table. If you do not understand the scope of a
+problem, please ask. Help with the labs is
+available 1) through piazza (see CANVAS) so you can contact your classmates
 and ask them 2) during the weekly scheduled lab or 3) directly from the
-instructors. Assignments and the project are expected on time. Late ones
-will be marked and then the mark will be multiplied by
+instructors. Assignments, quizzes, mini-projects and the project are expected on
+time. Late ones will be marked and then the mark will be multiplied by
 :math:`(0.9)^{\rm (number\ of\ days\ or\ part\ days\ late)}`. (Below we
 give two dates for each assignment. You should aim for the first one
 (this would keep you totally up to date). The later one allows a couple
-of days “in case”.)
+of days in case. )
 
 Set Laboratories
 ----------------
@@ -108,8 +103,7 @@ webpage.
 Optional Laboratories
 ---------------------
 
-Choose one of the following concentrations or talk to your instructors
-about a combination of your choosing. Time scale two and a half weeks.
+Choose one of the following concentration. Time scale two and a half weeks.
 
 ODE’s and FFT’s
 ~~~~~~~~~~~~~~~
@@ -143,7 +137,7 @@ Smattering of ODE's and PDE's
 Project
 -------
 
--  Choosen in consultation with your research supervisor and the
+-  Done in groups of three. Choosen in consultation with your research supervisors and the
    instructors. Should be choosen before the optional labs.
 
 -  Time scale three and half weeks.
